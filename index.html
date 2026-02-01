@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>NUR 138 Unit 1 – Interactive Study Guide</title>
   <style>
     :root {
@@ -410,9 +410,42 @@ figure img { margin:0 auto; }
 .vizWrap.routesFirst .vizWide .svgBox{ overflow-x:auto; }
 
 
-    .pillLink { text-decoration:none; display:inline-block; font-weight:700; color:var(--text); }
-    .pillLink:hover { filter: brightness(0.98); }
-    
+/* ===== iPhone / Mobile Responsiveness Pack (added) ===== */
+html, body { max-width:100%; overflow-x:hidden; }
+img, svg, iframe { max-width:100%; height:auto; }
+
+/* Make any wide table scroll instead of breaking layout */
+.tableWrap, .tblWrap, .table-wrap, .tableWrap2 {
+  width:100%;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  border-radius:14px;
+}
+table { min-width: 640px; }
+
+/* SVG containers */
+.svgBox{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.svgBox svg{ max-width:100%; height:auto; display:block; margin:0 auto; }
+
+/* Better tap targets */
+button, .smallBtn, .choiceBtn, a.btn, a.smallBtn {
+  min-height:44px;
+  padding:10px 12px;
+  font-size:14px;
+}
+
+/* Avoid iPhone auto-zoom on inputs */
+input, select, textarea { font-size:16px; }
+
+/* Reduce cramped spacing on small screens */
+@media (max-width: 820px){
+  body { font-size:16px; }
+  .card, .panel, .box { padding:14px !important; }
+  h1 { font-size:22px !important; }
+  h2 { font-size:18px !important; }
+  .grid, .cols, .twoCol { grid-template-columns:1fr !important; }
+}
+
 </style>
 </head>
 <body>
@@ -450,21 +483,6 @@ figure img { margin:0 auto; }
       <main class="card">
 
         
-
-
-<section id="instructorCompanion" class="section">
-  <details open>
-    <summary>⭐ Instructor Exam Companion (Teacher Questions)</summary>
-    <div class="content">
-      <p class="muted">Use this companion to drill your teacher’s Unit 1 ANS questions with instant feedback and rationales. Works best after you review the SNS/PNS sections.</p>
-      <div class="btnrow">
-        <a class="pill pillLink" href="unit1_exam_companion.html" target="_blank" rel="noopener">Open Instructor Exam Companion</a>
-      </div>
-      <p class="tiny muted" style="margin-top:8px;">GitHub setup: upload <b>unit1_exam_companion.html</b> in the same folder as <b>index.html</b>.</p>
-    </div>
-  </details>
-</section>
-
 <section id="studyMethod">
   <details class="section" open>
     <summary>0) How to Study Pharmacology (Interactive Framework)</summary>
