@@ -259,7 +259,7 @@
 .panel{border:1px solid var(--border);border-radius:16px;background:rgba(255,255,255,.92);padding:12px}
 .checkGrid{display:grid;gap:8px;margin-top:10px}
 .checkItem{display:flex;gap:10px;align-items:flex-start;padding:10px;border:1px solid var(--border);border-radius:14px;background:rgba(255,255,255,.96)}
-.checkItem input{transform:translateY(2px)}
+.checkItem input{width:22px;height:22px;flex:0 0 22px;margin:0;margin-top:2px;accent-color:var(--accent)}
 .checkItem .lbl{font-weight:900}
 .checkItem .desc{font-size:12px;color:var(--muted);margin-top:2px;line-height:1.35}
 .templateBox{border:1px solid var(--border);border-radius:14px;padding:12px;background:rgba(255,255,255,.96);white-space:pre-wrap;line-height:1.45;overflow:auto}
@@ -446,6 +446,22 @@ input, select, textarea { font-size:16px; }
   .grid, .cols, .twoCol { grid-template-columns:1fr !important; }
 }
 
+
+/* Mobile checklist alignment fix */
+.checkItem input{
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  margin: 2px 0 0 0;
+  transform: none !important;
+}
+.checkItem > div{ flex:1; min-width:0; }
+
+
+/* === iPhone checklist alignment fix === */
+.checklistRow{display:grid;grid-template-columns:26px 1fr;gap:12px;align-items:start;}
+.checklistRow input[type="checkbox"]{width:22px;height:22px;margin-top:2px;accent-color:var(--accent);}
+
 </style>
 </head>
 <body>
@@ -489,7 +505,14 @@ input, select, textarea { font-size:16px; }
     <div class="content">
       <p class="muted">Use this same “recipe” for every drug class. Hard exams test patterns: indications, contraindications, monitoring, and patient teaching.</p>
 
-      <div class="grid2">
+      
+      <div class="panel" style="border:2px solid var(--accent); background:rgba(122,162,255,.10);">
+        <h3 style="margin-top:0;">Instructor Exam Companion – Unit 1 (ANS)</h3>
+        <p class="tiny muted">Practice questions taken directly from instructor material. Use after reviewing the guide or to simulate exam day.</p>
+        <a class="btn primary" href="unit1_exam_companion.html" target="_blank" rel="noopener">Open Unit 1 Exam Companion</a>
+      </div>
+
+<div class="grid2">
         <div class="panel">
           <h3>Drug-Class Recipe Checklist (tap to track)</h3>
           <p class="tiny muted">This checklist saves on your device so you can see what you’ve covered.</p>
