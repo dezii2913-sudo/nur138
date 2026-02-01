@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NUR 138 Unit 1 – Instructor Exam Companion (ANS)</title>
+<style>
+:root{
+  --bg:#f6f8fc; --card:#ffffff; --ink:#0f172a; --muted:#64748b; --border:#e5e7eb;
+  --accent:#4f46e5; --accent2:#06b6d4; --good:#16a34a; --bad:#dc2626;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:var(--bg);color:var(--ink);line-height:1.45}
+header{position:sticky;top:0;background:rgba(246,248,252,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:50}
+.wrap{max-width:1100px;margin:0 auto;padding:14px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+h1{font-size:18px;margin:0;font-weight:850;letter-spacing:.2px}
+.badge{font-size:12px;padding:6px 10px;border-radius:999px;background:#eef2ff;border:1px solid #e0e7ff;color:#3730a3}
+main{max-width:1100px;margin:0 auto;padding:18px 16px 80px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:16px;box-shadow:0 10px 24px rgba(0,0,0,.05);margin-bottom:14px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{appearance:none;border:1px solid var(--border);background:#fff;border-radius:12px;padding:10px 12px;font-weight:650;cursor:pointer}
+.btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;color:#fff}
+.btn.ghost{background:#f8fafc}
+.small{font-size:12px;color:var(--muted)}
+.progress{display:flex;gap:10px;flex-wrap:wrap}
+.pill{font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid var(--border);background:#f8fafc}
+.q{border:1px solid var(--border);border-radius:16px;padding:14px;margin-top:12px}
+.qhead{display:flex;gap:10px;align-items:flex-start;justify-content:space-between}
+.qnum{font-weight:900}
+.stem{font-weight:750}
+.opts{display:grid;gap:10px;margin-top:10px}
+.opt{border:1px solid var(--border);border-radius:14px;padding:10px 12px;background:#fff;display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.opt input{margin-top:3px}
+.opt:hover{border-color:#c7d2fe;box-shadow:0 6px 16px rgba(79,70,229,.08)}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.feedback{margin-top:10px;border-radius:14px;padding:10px 12px;border:1px dashed var(--border);background:#f8fafc}
+.feedback.good{border-color:rgba(22,163,74,.35);background:rgba(22,163,74,.06)}
+.feedback.bad{border-color:rgba(220,38,38,.35);background:rgba(220,38,38,.06)}
+.rationale{margin-top:10px;display:grid;gap:8px}
+.rItem{border:1px solid var(--border);border-radius:12px;padding:10px 12px;background:#fff}
+.rItem.good{border-color:rgba(22,163,74,.35)}
+.rItem.bad{border-color:rgba(220,38,38,.35)}
+hr{border:none;border-top:1px solid var(--border);margin:12px 0}
+.note{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:14px;padding:10px 12px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Unit 1 – Instructor Exam Companion (ANS)</h1>
+    <span class="badge">Teacher-sourced questions • interactive • rationales</span>
+    <div style="flex:1"></div>
+    <button class="btn ghost" id="modeBtn" type="button">Mode: Immediate Feedback</button>
+    <button class="btn" id="missedBtn" type="button">Practice: All Questions</button>
+    <button class="btn" id="resetBtn" type="button">Reset Progress</button>
+  </div>
+</header>
+
+<main>
+  <div class="card">
+    <div class="row" style="justify-content:space-between;align-items:flex-start">
+      <div>
+        <div style="font-weight:900;font-size:16px">How to use this</div>
+        <div class="small" style="margin-top:6px">
+          Use this after reviewing the Unit 1 guide. Choose <b>Immediate Feedback</b> for learning, or <b>Exam Mode</b> to see answers at the end.
+          Your results are saved on this device/browser.
+        </div>
+      </div>
+      <div class="progress" id="stats"></div>
+    </div>
+    <hr/>
+    <div class="note">
+      <b>Tip:</b> If you miss a question, flip to “Practice missed only” and drill until you can explain the receptor logic out loud.
+    </div>
+  </div>
+
+  <div id="quiz"></div>
+
+  <div class="card" id="examRevealCard" style="display:none">
+    <div style="font-weight:900;font-size:16px">Exam Mode – Reveal Answers</div>
+    <div class="small" style="margin-top:6px">In Exam Mode, submit all questions first, then tap reveal to see answers + rationales.</div>
+    <div class="tools" style="margin-top:10px">
+      <button class="btn primary" type="button" id="revealBtn">Reveal All Answers</button>
+    </div>
+  </div>
+</main>
+
+<script>
+const QUIZ = [{"num": 1, "stem": "Airway resistance is decreased after administration of", "options": [{"label": "A", "text": "Terbutaline"}, {"label": "B", "text": "Phenylephrine"}, {"label": "C", "text": "Propranolol"}, {"label": "D", "text": "Neostigmine"}], "correct": ["A"], "multi": false, "explanations": {"A": "Terbutaline is a \u03b22-agonist \u2192 bronchodilation \u2192 \u2193 airway resistance (used for asthma).", "B": "Phenylephrine is \u03b11-agonist \u2192 vasoconstriction/decongestant; does not bronchodilate.", "C": "Propranolol blocks \u03b21/\u03b22 \u2192 can cause bronchoconstriction (worsens airway resistance).", "D": "Neostigmine increases ACh (cholinergic) \u2192 bronchoconstriction/secretions."}}, {"num": 2, "stem": "Mydriasis without paralyzing accommodation is obtained with the instillation of", "options": [{"label": "A", "text": "Phenylephrine"}, {"label": "B", "text": "Atropine"}, {"label": "C", "text": "Timolol"}, {"label": "D", "text": "Pilocarpine"}], "correct": ["A"], "multi": false, "explanations": {"A": "Phenylephrine (\u03b11) causes mydriasis by contracting radial muscle; accommodation isn\u2019t paralyzed (no cycloplegia).", "B": "Atropine is antimuscarinic \u2192 mydriasis + cycloplegia (paralyzes accommodation).", "C": "Timolol is a \u03b2-blocker used for glaucoma; does not cause mydriasis.", "D": "Pilocarpine is muscarinic agonist \u2192 miosis (constricts pupils)."}}, {"num": 3, "stem": "A supraventricular tachycardia may be treated effectively by administering", "options": [{"label": "A", "text": "Isoproterenol"}, {"label": "B", "text": "Atropine"}, {"label": "C", "text": "Epinephrine"}, {"label": "D", "text": "Propranolol"}], "correct": ["D"], "multi": false, "explanations": {"A": "Isoproterenol is \u03b21/\u03b22 agonist \u2192 increases HR (could worsen SVT).", "B": "Atropine increases HR via antimuscarinic effects; not first-line for SVT rhythm control.", "C": "Epinephrine increases HR/contractility; can worsen SVT.", "D": "Propranolol is a \u03b2-blocker \u2192 slows AV conduction/HR \u2192 can treat SVT."}}, {"num": 4, "stem": "A patient is being treated for BPH with tamsulosin. He subsequently develops peptic ulcer disease. You decide against recommending atropine to facilitate ulcer healing because", "options": [{"label": "A", "text": "Tamsulosin prevents antispasmodic effect of atropine"}, {"label": "B", "text": "It increases the metabolism of tamsulosin"}, {"label": "C", "text": "Tamsulosin decreases the excretion of atropine"}, {"label": "D", "text": "It causes urinary retention"}], "correct": ["D"], "multi": false, "explanations": {"A": "Tamsulosin blocks \u03b11 in prostate/bladder neck; it doesn\u2019t block atropine\u2019s GI antispasmodic effect.", "B": "No clinically relevant increase in tamsulosin metabolism from atropine here.", "C": "Not the key issue; excretion interaction isn\u2019t the reason.", "D": "Atropine is anticholinergic \u2192 urinary retention; risky in BPH even if on tamsulosin."}}, {"num": 5, "stem": "Muscarinic receptor stimulation resulting in bronchoconstriction can be blocked by", "options": [{"label": "A", "text": "Isoproterenol"}, {"label": "B", "text": "Ipratropium"}, {"label": "C", "text": "Prazosin"}, {"label": "D", "text": "Propranolol"}], "correct": ["B"], "multi": false, "explanations": {"A": "Isoproterenol (\u03b2 agonist) bronchodilates but does not block muscarinic receptors directly.", "B": "Ipratropium is antimuscarinic \u2192 blocks muscarinic bronchoconstriction and secretions.", "C": "Prazosin is \u03b11-blocker; doesn\u2019t affect muscarinic bronchoconstriction.", "D": "Propranolol blocks \u03b2 receptors; can worsen bronchoconstriction."}}, {"num": 6, "stem": "Which of the following agents produces a vasopressor effect that can relieve nasal congestion?", "options": [{"label": "A", "text": "Cocaine"}, {"label": "B", "text": "Atropine"}, {"label": "C", "text": "Reserpine"}, {"label": "D", "text": "Mecamylamine"}], "correct": ["A"], "multi": false, "explanations": {"A": "Cocaine blocks NE reuptake \u2192 vasoconstriction \u2192 decongestant effect (vasopressor).", "B": "Atropine is antimuscarinic; not a vasopressor for congestion.", "C": "Reserpine depletes NE stores \u2192 hypotension; opposite of vasopressor.", "D": "Mecamylamine blocks nicotinic receptors \u2192 decreases SNS tone (lowers BP)."}}, {"num": 7, "stem": "Nitroglycerine relaxes smooth vascular muscles by producing nitric oxide. Which of the following agents will potentiate the effects of nitroglycerine on blood pressure?", "options": [{"label": "A", "text": "Norepinephrine"}, {"label": "B", "text": "Acetylcholine"}, {"label": "C", "text": "Atropine"}, {"label": "D", "text": "Donepezil"}], "correct": ["B"], "multi": false, "explanations": {"A": "Norepinephrine raises BP; it would oppose nitro\u2019s BP-lowering effect.", "B": "Acetylcholine causes vasodilation via endothelial NO; can further lower BP with nitro.", "C": "Atropine blocks parasympathetic tone; not a typical potentiator of nitro hypotension.", "D": "Donepezil increases ACh (AChE inhibitor) \u2192 more cholinergic vasodilation \u2192 can potentiate nitro hypotension."}}, {"num": 8, "stem": "Select all the signs and symptoms a patient can experience when the stimulation of the parasympathetic nervous system: Select all that apply:", "options": [{"label": "A", "text": "Bradycardia"}, {"label": "B", "text": "Dilated pupils"}, {"label": "C", "text": "Bronchoconstriction"}, {"label": "D", "text": "Constrict pupils"}, {"label": "E", "text": "Bladder contraction"}, {"label": "F", "text": "Dry mouth"}, {"label": "G", "text": "Slow digestion"}, {"label": "H", "text": "Hypertension"}], "correct": ["A", "C", "D", "E"], "multi": true, "explanations": {"A": "Bradycardia = parasympathetic (vagus) slows SA node.", "B": "Dilated pupils = sympathetic (parasympathetic causes constriction).", "C": "Bronchoconstriction = parasympathetic muscarinic effect.", "D": "Constricted pupils (miosis) = parasympathetic.", "E": "Bladder contraction/urination = parasympathetic.", "F": "Dry mouth = anticholinergic/sympathetic; parasympathetic increases secretions.", "G": "Slow digestion is not correct\u2014parasympathetic generally increases GI motility/secretions (\u201crest and digest\u201d).", "H": "Hypertension is sympathetic; parasympathetic tends to lower HR/BP."}}, {"num": 9, "stem": "The sympathetic nervous system postganglionic neuron releases what neurotransmitter?", "options": [{"label": "A", "text": "Acetylcholine"}, {"label": "B", "text": "Norepinephrine"}, {"label": "C", "text": "Both Acetylcholine and Norepinephrine"}, {"label": "D", "text": "Arginine"}], "correct": ["B"], "multi": false, "explanations": {"A": "ACh is released by all preganglionic neurons, but most sympathetic postganglionic neurons release NE.", "B": "Correct: sympathetic postganglionic neurons usually release norepinephrine.", "C": "Not usually both from the same postganglionic neuron (exceptions like sweat glands release ACh).", "D": "Arginine is not the SNS neurotransmitter here."}}, {"num": 10, "stem": "A client is given epinephrine; the nurse should monitor for what condition?", "options": [{"label": "A", "text": "Bradycardia"}, {"label": "B", "text": "Increased blood pressure"}, {"label": "C", "text": "Pupil constriction"}, {"label": "D", "text": "Bronchial constriction"}], "correct": ["B"], "multi": false, "explanations": {"A": "Epinephrine (\u03b1/\u03b2 agonist) increases HR; bradycardia is not expected.", "B": "Correct: \u03b11 stimulation causes vasoconstriction \u2192 \u2191 blood pressure (monitor BP, headache).", "C": "Epinephrine causes mydriasis (dilation), not constriction.", "D": "Epinephrine via \u03b22 causes bronchodilation, not constriction."}}, {"num": 11, "stem": "The nurse teaches the client receiving atropine to expect what side effect?", "options": [{"label": "A", "text": "Diarrhea"}, {"label": "B", "text": "Bradycardia"}, {"label": "C", "text": "Blurred vision"}, {"label": "D", "text": "Frequent urination"}], "correct": ["C"], "multi": false, "explanations": {"A": "Atropine decreases GI motility \u2192 constipation, not diarrhea.", "B": "Atropine increases HR (tachycardia), not bradycardia.", "C": "Correct: anticholinergic causes mydriasis \u2192 blurred vision/photophobia.", "D": "Atropine can cause urinary retention, not frequent urination."}}, {"num": 12, "stem": "The nurse realizes that cholinergic agonists mimic which parasympathetic neurotransmitter?", "options": [{"label": "A", "text": "Dopamine"}, {"label": "B", "text": "Acetylcholine"}, {"label": "C", "text": "Cholinesterase"}, {"label": "D", "text": "Monoamine oxidase"}], "correct": ["B"], "multi": false, "explanations": {"A": "Dopamine is not the main parasympathetic neurotransmitter.", "B": "Correct: cholinergic agonists mimic acetylcholine at receptors.", "C": "Cholinesterase is the enzyme that breaks down ACh, not the neurotransmitter.", "D": "MAO breaks down monoamines; not parasympathetic NT."}}, {"num": 13, "stem": "When administering a cholinergic agonist, you would expect to find what effects?", "options": [{"label": "A", "text": "Increased heart rate"}, {"label": "B", "text": "increase peristalsis"}, {"label": "C", "text": "Decreased salivation"}, {"label": "D", "text": "Increased pupil constriction"}], "correct": ["D"], "multi": false, "explanations": {"A": "Cholinergic agonists decrease HR (bradycardia), not increase it.", "B": "They increase GI motility/secretions \u2192 increased peristalsis (this is true but question expects single best; see D).", "C": "They increase salivation/secretions, not decrease.", "D": "Correct: muscarinic stimulation causes miosis (pupil constriction)."}}, {"num": 14, "stem": "Select all the signs and symptoms a patient can experience with the stimulation of the sympathetic nervous system: Select all that apply:", "options": [{"label": "A", "text": "Tachycardia"}, {"label": "B", "text": "Hypotension"}, {"label": "C", "text": "Hyperglycemia"}, {"label": "D", "text": "Dilated pupils"}, {"label": "E", "text": "Urinary incontinence"}, {"label": "F", "text": "Bronchodilation"}, {"label": "G", "text": "Cold and clammy"}, {"label": "H", "text": "Excessive salivation"}, {"label": "I", "text": "Sweating"}], "correct": ["A", "C", "D", "F", "I"], "multi": true, "explanations": {"A": "Tachycardia = SNS (\u03b21).", "B": "Hypotension is not typical SNS (SNS tends to raise BP).", "C": "Hyperglycemia = SNS (\u03b22 stimulates glycogenolysis).", "D": "Dilated pupils = SNS (\u03b11).", "E": "SNS usually causes urinary retention, not incontinence.", "F": "Bronchodilation = SNS (\u03b22).", "G": "Cold/clammy skin = SNS vasoconstriction + sweating.", "H": "Excessive salivation is parasympathetic; SNS tends to dry mouth.", "I": "Sweating can increase with SNS; (sweat glands are sympathetically controlled)."}}, {"num": 15, "stem": "Select all the signs and symptoms a patient can experience when the stimulation of the parasympathetic nervous system: Select all that apply:", "options": [{"label": "A", "text": "Bradycardia"}, {"label": "B", "text": "Dilated pupils"}, {"label": "C", "text": "Bronchoconstriction"}, {"label": "D", "text": "Constrict pupils"}, {"label": "E", "text": "Bladder contraction"}, {"label": "F", "text": "Dry mouth"}, {"label": "G", "text": "Slow digestion"}, {"label": "H", "text": "Hypertension"}], "correct": ["A", "C", "D", "E"], "multi": true, "explanations": {"A": "Bradycardia = parasympathetic (vagus) slows SA node.", "B": "Dilated pupils = sympathetic (parasympathetic causes constriction).", "C": "Bronchoconstriction = parasympathetic muscarinic effect.", "D": "Constricted pupils (miosis) = parasympathetic.", "E": "Bladder contraction/urination = parasympathetic.", "F": "Dry mouth = anticholinergic/sympathetic; parasympathetic increases secretions.", "G": "Slow digestion is not correct\u2014parasympathetic generally increases GI motility/secretions (\u201crest and digest\u201d).", "H": "Hypertension is sympathetic; parasympathetic tends to lower HR/BP."}}, {"num": 16, "stem": "The _________ nervous system stimulates cranial nerve ______, which is responsible for slowing the heart rate, constricting the airway, and stimulating digestion.", "options": [{"label": "A", "text": "parasympathetic, X"}, {"label": "B", "text": "sympathetic, V"}, {"label": "C", "text": "parasympathetic, III"}, {"label": "D", "text": "sympathetic, VII"}], "correct": ["A"], "multi": false, "explanations": {"A": "Correct: parasympathetic uses cranial nerve X (vagus) to slow HR and promote digestion.", "B": "Sympathetic doesn\u2019t use CN V for these core functions.", "C": "CN III controls pupil accommodation; not the main vagal slowing of HR.", "D": "CN VII is facial nerve; not the main cardiac vagal pathway."}}, {"num": 17, "stem": "A patient starts on a norepinephrine drip. What side effects can this medication cause? Select all that apply:", "options": [{"label": "A", "text": "Tachycardia"}, {"label": "B", "text": "Hypoglycemia"}, {"label": "C", "text": "Hypertension"}, {"label": "D", "text": "Bronchoconstriction"}], "correct": ["A", "C"], "multi": true, "explanations": {"A": "Norepinephrine (\u03b11, \u03b21) can increase HR/ectopy (tachycardia) though reflex bradycardia can occur\u2014monitor rhythm.", "B": "NE tends to increase glucose (stress response), not hypoglycemia.", "C": "NE strongly raises BP (\u03b11 vasoconstriction) \u2192 hypertension.", "D": "NE does not cause bronchoconstriction (minimal \u03b22 activity)."}}, {"num": 18, "stem": "A patient with myasthenia gravis starts on Pyridostigmine. What assessment finding demonstrates the drug is working correctly?", "options": [{"label": "A", "text": "The patient experiences dilation of the pupils."}, {"label": "B", "text": "The patient experiences a relaxed bladder."}, {"label": "C", "text": "The patient experiences bronchodilation."}, {"label": "D", "text": "The patient experiences normal muscle function in the face and eyes."}], "correct": ["D"], "multi": false, "explanations": {"A": "Mydriasis is not the goal; MG therapy improves muscle strength.", "B": "Pyridostigmine increases ACh \u2192 may increase bladder contraction, not relax it.", "C": "Bronchodilation is SNS/\u03b22; not the primary therapeutic effect for MG.", "D": "Correct: improved skeletal muscle function (ptosis/facial weakness improves)."}}, {"num": 19, "stem": "Select the drugs below that are considered anticholinergic drugs (also called parasympatholytic):", "options": [{"label": "A", "text": "Pyridostigmine"}, {"label": "B", "text": "Atropine"}, {"label": "C", "text": "Ipratropium"}, {"label": "D", "text": "Propranolol"}], "correct": ["B", "C"], "multi": true, "explanations": {"A": "Pyridostigmine is cholinesterase inhibitor (cholinergic), not anticholinergic.", "B": "Atropine is anticholinergic (parasympatholytic).", "C": "Ipratropium is anticholinergic (blocks muscarinic receptors in lungs).", "D": "Propranolol is a beta blocker (adrenergic antagonist), not anticholinergic."}}, {"num": 20, "stem": "What are some side effects of adrenergic antagonist drugs (sympatholytic): select all that apply", "options": [{"label": "A", "text": "Tachycardia"}, {"label": "B", "text": "Bradycardia"}, {"label": "C", "text": "Bronchoconstriction"}, {"label": "D", "text": "Bronchodilation"}], "correct": ["B", "C"], "multi": true, "explanations": {"A": "Adrenergic antagonists more often cause bradycardia, not tachycardia.", "B": "Correct: \u03b2-blockade can cause bradycardia.", "C": "Correct: nonselective \u03b2-blockers can cause bronchoconstriction (\u03b22 blockade).", "D": "Bronchodilation is \u03b22 stimulation, not antagonism."}}, {"num": 21, "stem": "Select the drugs below that are considered sympathomimetic drugs:", "options": [{"label": "A", "text": "Albuterol"}, {"label": "B", "text": "Dopamine"}, {"label": "C", "text": "Epinephrine"}, {"label": "D", "text": "Propranolol"}], "correct": ["A", "B", "C"], "multi": true, "explanations": {"A": "Albuterol is a \u03b22 agonist (sympathomimetic).", "B": "Dopamine is an adrenergic agonist (dose-dependent) \u2192 sympathomimetic.", "C": "Epinephrine is \u03b1/\u03b2 agonist \u2192 sympathomimetic.", "D": "Propranolol blocks \u03b2 receptors (sympatholytic), not sympathomimetic."}}];
+
+const KEY = "nur138_unit1_exam_companion_v1";
+let state = loadState();
+
+let examMode = state.examMode ?? false;      // false = immediate feedback
+let practiceMode = state.practiceMode ?? "all"; // "all" | "missed"
+
+function loadState(){
+  try{ return JSON.parse(localStorage.getItem(KEY)) || {}; }catch(e){ return {}; }
+}
+function saveState(){
+  localStorage.setItem(KEY, JSON.stringify(state));
+}
+
+function normalizeLetters(arr){
+  return (arr||[]).map(x=>String(x).toUpperCase()).sort().join("");
+}
+
+function computeStats(){
+  const total = QUIZ.length;
+  let answered=0, correct=0, missed=0;
+  for(const q of QUIZ){
+    const r = state.responses?.[q.num];
+    if(r && r.submitted){
+      answered++;
+      const got = normalizeLetters(r.selected);
+      const need = normalizeLetters(q.correct);
+      if(got===need) correct++; else missed++;
+    }
+  }
+  return {total, answered, correct, missed};
+}
+
+function setStatsUI(){
+  const s = computeStats();
+  document.getElementById("stats").innerHTML = `
+    <span class="pill"><b>${s.answered}</b> / ${s.total} submitted</span>
+    <span class="pill"><b>${s.correct}</b> correct</span>
+    <span class="pill"><b>${s.missed}</b> missed</span>
+  `;
+}
+
+function getFilteredQuiz(){
+  if(practiceMode==="missed"){
+    return QUIZ.filter(q=>{
+      const r = state.responses?.[q.num];
+      if(!r || !r.submitted) return false;
+      return normalizeLetters(r.selected)!==normalizeLetters(q.correct);
+    });
+  }
+  return QUIZ;
+}
+
+function render(){
+  // top controls
+  document.getElementById("modeBtn").textContent = examMode ? "Mode: Exam (Reveal at end)" : "Mode: Immediate Feedback";
+  document.getElementById("missedBtn").textContent = practiceMode==="missed" ? "Practice: Missed Only" : "Practice: All Questions";
+  document.getElementById("examRevealCard").style.display = examMode ? "block" : "none";
+
+  setStatsUI();
+
+  const list = getFilteredQuiz();
+  const host = document.getElementById("quiz");
+  host.innerHTML = "";
+  if(list.length===0 && practiceMode==="missed"){
+    host.innerHTML = `<div class="card"><b>Nice.</b> You have no missed questions right now. Switch back to “All Questions” to keep practicing.</div>`;
+    return;
+  }
+
+  for(const q of list){
+    const r = state.responses?.[q.num] || {selected:[], submitted:false, revealed:false};
+    const multi = q.multi;
+    const inputType = multi ? "checkbox" : "radio";
+
+    const qEl = document.createElement("div");
+    qEl.className = "card q";
+    qEl.id = "q"+q.num;
+
+    const optsHtml = q.options.map(o=>{
+      const checked = r.selected.includes(o.label) ? "checked" : "";
+      return `
+        <label class="opt">
+          <input type="${inputType}" name="q_${q.num}" value="${o.label}" ${checked} />
+          <div><b>${o.label}.</b> ${escapeHtml(o.text)}</div>
+        </label>
+      `;
+    }).join("");
+
+    qEl.innerHTML = `
+      <div class="qhead">
+        <div>
+          <div class="qnum">Question ${q.num}</div>
+          <div class="stem">${escapeHtml(q.stem)}</div>
+          <div class="small" style="margin-top:4px">${multi ? "Select all that apply." : "Select ONE best answer."}</div>
+        </div>
+      </div>
+
+      <div class="opts">${optsHtml}</div>
+
+      <div class="tools">
+        <button class="btn primary" type="button" data-action="submit">Submit</button>
+        <button class="btn" type="button" data-action="clear">Clear</button>
+        <button class="btn ghost" type="button" data-action="reveal" style="display:${examMode ? "inline-flex":"none"}">Mark for reveal</button>
+      </div>
+
+      <div class="feedback" style="display:none"></div>
+      <div class="rationale" style="display:none"></div>
+    `;
+
+    // wire events
+    qEl.querySelectorAll('input').forEach(inp=>{
+      inp.addEventListener("change", ()=>onSelect(q.num));
+    });
+    qEl.querySelector('[data-action="submit"]').addEventListener("click", ()=>submitQ(q.num));
+    qEl.querySelector('[data-action="clear"]').addEventListener("click", ()=>clearQ(q.num));
+    const revealBtn = qEl.querySelector('[data-action="reveal"]');
+    if(revealBtn) revealBtn.addEventListener("click", ()=>toggleRevealFlag(q.num));
+
+    // show feedback if immediate mode and submitted
+    if(!examMode && r.submitted){
+      showFeedback(qEl, q, r);
+    }
+    // in exam mode, only show if global reveal happened OR per question revealed flag
+    if(examMode && state.revealAll && r.submitted){
+      showFeedback(qEl, q, r, true);
+    }
+    host.appendChild(qEl);
+  }
+}
+
+function onSelect(num){
+  if(!state.responses) state.responses={};
+  const container = document.getElementById("q"+num);
+  const inputs = Array.from(container.querySelectorAll('input'));
+  const selected = inputs.filter(i=>i.checked).map(i=>i.value.toUpperCase());
+  // for radio, keep 1
+  state.responses[num] = state.responses[num] || {selected:[], submitted:false};
+  state.responses[num].selected = selected;
+  saveState();
+}
+
+function submitQ(num){
+  if(!state.responses) state.responses={};
+  const q = QUIZ.find(x=>x.num===num);
+  const r = state.responses[num] || {selected:[]};
+  r.submitted = true;
+  state.responses[num] = r;
+  saveState();
+  setStatsUI();
+  if(!examMode){
+    const el = document.getElementById("q"+num);
+    showFeedback(el, q, r);
+  }
+}
+
+function clearQ(num){
+  if(!state.responses) state.responses={};
+  state.responses[num] = {selected:[], submitted:false};
+  saveState();
+  render();
+}
+
+function toggleRevealFlag(num){
+  if(!state.responses) state.responses={};
+  state.responses[num] = state.responses[num] || {selected:[], submitted:false};
+  state.responses[num].revealed = !state.responses[num].revealed;
+  saveState();
+}
+
+function showFeedback(qEl, q, r, force=false){
+  const fb = qEl.querySelector(".feedback");
+  const rat = qEl.querySelector(".rationale");
+  const got = normalizeLetters(r.selected);
+  const need = normalizeLetters(q.correct);
+  const ok = got===need;
+
+  fb.style.display = "block";
+  fb.className = "feedback " + (ok ? "good":"bad");
+  fb.innerHTML = ok
+    ? `<b>Correct.</b> Your answer: <b>${got}</b>`
+    : `<b>Not quite.</b> Your answer: <b>${got||"—"}</b> • Correct: <b>${need}</b>`;
+
+  rat.style.display = "grid";
+  rat.innerHTML = q.options.map(o=>{
+    const isCorrect = q.correct.includes(o.label);
+    const chosen = (r.selected||[]).includes(o.label);
+    const cls = isCorrect ? "good" : (chosen && !isCorrect ? "bad" : "");
+    const tag = isCorrect ? "Correct choice" : (chosen ? "Why this is wrong" : "Why this is not best");
+    return `<div class="rItem ${cls}">
+      <div><b>${o.label}.</b> ${escapeHtml(o.text)} <span class="small">— ${tag}</span></div>
+      <div class="small" style="margin-top:6px">${escapeHtml(q.explanations[o.label] || "")}</div>
+    </div>`;
+  }).join("");
+}
+
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g, m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]));
+}
+
+// top controls
+document.getElementById("modeBtn").addEventListener("click", ()=>{
+  examMode = !examMode;
+  state.examMode = examMode;
+  state.revealAll = false;
+  saveState();
+  render();
+});
+document.getElementById("missedBtn").addEventListener("click", ()=>{
+  practiceMode = (practiceMode==="missed") ? "all" : "missed";
+  state.practiceMode = practiceMode;
+  saveState();
+  render();
+});
+document.getElementById("resetBtn").addEventListener("click", ()=>{
+  if(confirm("Reset saved answers for this companion on this device?")){
+    state = {};
+    examMode = false;
+    practiceMode = "all";
+    localStorage.removeItem(KEY);
+    render();
+  }
+});
+document.getElementById("revealBtn").addEventListener("click", ()=>{
+  state.revealAll = true;
+  saveState();
+  render();
+});
+
+// init
+if(!state.responses) state.responses={};
+render();
+</script>
+</body>
+</html>
