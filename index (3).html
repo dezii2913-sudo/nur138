@@ -1,0 +1,3819 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NUR 138 Unit 1 – Interactive Study Guide</title>
+  <style>
+    :root {
+      --bg1:#f6f4fb; --bg2:#ece9f7;
+      --card:#ffffff;
+      --text:#1f2937; --muted:#5b6475;
+      --accent:#6d5dfc; --accent2:#9a7cff;
+      --good:#16a34a; --bad:#dc2626;
+      --gold:#b45309;
+      --line: rgba(48,43,114,.14);
+      --soft: rgba(255,255,255,.72);
+      --soft2: rgba(109,93,252,.10);
+    }
+    * { box-sizing:border-box; }
+    body {
+      margin:0; font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background: radial-gradient(1200px 700px at 20% 10%, rgba(109,93,252,.18), transparent 60%),
+                  radial-gradient(900px 600px at 90% 20%, rgba(154,124,255,.14), transparent 55%),
+                  linear-gradient(180deg,var(--bg1),var(--bg2));
+      color:var(--text);
+    }
+    a { color:var(--accent); text-decoration:none; }
+    .wrap { max-width:1100px; margin:0 auto; padding:18px; }
+    header { display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+    h1 { font-size:20px; margin:8px 0; }
+    h2 { margin:18px 0 8px; font-size:18px; }
+    .pill {
+      background: linear-gradient(90deg, rgba(122,162,255,.18), rgba(184,140,255,.14));
+      border:1px solid rgba(122,162,255,.22);
+      color:var(--muted); padding:8px 10px; border-radius:999px; font-size:13px;
+    }
+    .grid { display:grid; grid-template-columns: 320px 1fr; gap:14px; margin-top:12px; }
+    @media (max-width: 900px){ .grid{ grid-template-columns:1fr; } }
+
+    .card {
+      background: var(--soft);
+      border:1px solid var(--line);
+      border-radius:18px; padding:14px;
+      box-shadow: 0 18px 45px rgba(31,41,55,.12);
+      backdrop-filter: blur(8px);
+    }
+    .toc a {
+      display:block; padding:9px 10px; border-radius:14px; margin:6px 0;
+      background:rgba(255,255,255,.55); border:1px solid rgba(48,43,114,.10);
+    }
+    .toc a:hover { background:rgba(122,162,255,.12); border-color: rgba(122,162,255,.22); }
+    .search { display:flex; gap:8px; width:min(560px, 100%); }
+    input {
+      width:100%; padding:10px 12px; border-radius:14px;
+      border:1px solid rgba(109,93,252,.25);
+      background:rgba(255,255,255,.85); color:var(--text); outline:none;
+    }
+    button {
+      padding:10px 12px; border-radius:14px;
+      border:1px solid rgba(109,93,252,.25);
+      background: linear-gradient(180deg, rgba(109,93,252,.20), rgba(109,93,252,.12));
+      color:var(--text); cursor:pointer;
+    }
+    button:hover { background: linear-gradient(180deg, rgba(154,124,255,.22), rgba(109,93,252,.14)); }
+
+    .muted { color:var(--muted); }
+    .tiny { font-size:13px; }
+
+    details {
+      border-radius:16px; overflow:hidden;
+      border:1px solid rgba(48,43,114,.12);
+      background:rgba(255,255,255,.55);
+      margin:10px 0;
+    }
+    summary { padding:12px 12px; cursor:pointer; font-weight:700; }
+    .content { padding:0 12px 12px; }
+
+    .tag {
+      display:inline-block; padding:3px 9px; border-radius:999px;
+      font-size:12px; background:rgba(255,255,255,.06); margin-right:6px;
+      border:1px solid rgba(48,43,114,.12);
+    }
+    .tag.def{ border-color: rgba(122,162,255,.35); }
+    .tag.med{ border-color: rgba(184,140,255,.35); }
+    .tag.ex{ border-color: rgba(255,209,102,.35); }
+    .tag.nur{ border-color: rgba(65,211,158,.35); }
+    .tag.trapTag{ border-color: rgba(255,107,107,.40); }
+
+    .term {
+      padding:12px; border-radius:16px;
+      background:rgba(255,255,255,.55);
+      border:1px solid rgba(48,43,114,.12);
+      margin:10px 0;
+    }
+    .term h3 { margin:0 0 6px; font-size:16px; }
+    .reveal { margin-top:8px; }
+    .trap {
+      border-left:4px solid var(--bad);
+      padding:10px 10px; background:rgba(255,107,107,.08);
+      border-radius:14px; margin-top:10px;
+    }
+    .good {
+      border-left:4px solid var(--good);
+      padding:10px 10px; background:rgba(65,211,158,.08);
+      border-radius:14px; margin-top:10px;
+    }
+
+    .q {
+      padding:12px; border-radius:16px;
+      background:rgba(255,255,255,.55);
+      border:1px solid rgba(48,43,114,.12);
+      margin:10px 0;
+    }
+    .q h4 { margin:0 0 8px; font-size:15px; }
+    .opts { display:grid; gap:8px; }
+    .opt { text-align:left; width:100%; }
+    .feedback {
+      margin-top:10px; padding:10px; border-radius:14px;
+      background:rgba(255,255,255,.55); border:1px solid rgba(48,43,114,.12);
+      display:none;
+    }
+    .k { color:var(--good); font-weight:800; }
+    .x { color:var(--bad); font-weight:800; }
+    .top {
+      position:fixed; right:14px; bottom:14px;
+      padding:10px 12px; border-radius:999px; z-index:9;
+      background: linear-gradient(180deg, rgba(180,83,9,.16), rgba(109,93,252,.14));
+      border:1px solid rgba(180,83,9,.22);
+    }
+
+    .row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between; }
+    .btnrow { display:flex; gap:8px; flex-wrap:wrap; }
+    .switch { display:flex; gap:8px; align-items:center; }
+    .switch input { width:auto; }
+  
+    /* Added bright-accessibility tweaks + QA */
+    body { color: var(--text); }
+    .card { background: rgba(255,255,255,.92); }
+    details { background: rgba(255,255,255,.75); }
+    table { width:100%; border-collapse:collapse; }
+    th, td { padding:10px; border-bottom:1px solid rgba(31,41,55,.12); text-align:left; }
+    th { background: rgba(124,109,240,.10); }
+
+    /* Collapsible sections + exam divider */
+    details.section { background: rgba(255,255,255,.70); border-radius: 16px; padding: 10px 12px; }
+    details.section > summary { cursor: pointer; font-weight: 800; list-style: none; }
+    details.section > summary::-webkit-details-marker { display: none; }
+    details.section > summary::after { content: "▾"; float: right; color: rgba(47,43,114,.75); }
+    details.section[open] > summary::after { content: "▴"; }
+    .divider { border: 0; height: 1px; background: rgba(31,41,55,.12); margin: 18px 0; }
+    .exam-sub { margin-top: 6px; }
+
+    /* More color + visual components */
+    :root{
+      --accent2:#ff6fb1;
+      --accent3:#34d399;
+      --accent4:#60a5fa;
+      --accent5:#fbbf24;
+    }
+    .colorbar{
+      height:10px;
+      border-radius:999px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent5), var(--accent3), var(--accent4));
+      margin: 10px 0 14px 0;
+      opacity: .9;
+    }
+    .pill{
+      display:inline-block;
+      padding:4px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:700;
+      margin: 2px 6px 2px 0;
+      background: rgba(124,109,240,.12);
+      color:#2f2b72;
+      border: 1px solid rgba(124,109,240,.18);
+    }
+    .pill.pink{ background: rgba(255,111,177,.14); border-color: rgba(255,111,177,.22); color:#7a1f4e; }
+    .pill.green{ background: rgba(52,211,153,.14); border-color: rgba(52,211,153,.22); color:#0f5132; }
+    .pill.blue{ background: rgba(96,165,250,.14); border-color: rgba(96,165,250,.22); color:#0b3a75; }
+    .pill.gold{ background: rgba(251,191,36,.16); border-color: rgba(251,191,36,.24); color:#6b4f00; }
+
+    .vizWrap{ display:flex; flex-wrap:wrap; gap:14px; align-items:flex-start; }
+    .viz{
+      flex: 1 1 320px;
+      background: rgba(255,255,255,.88);
+      border: 2px solid rgba(124,109,240,.14);
+      border-radius: 18px;
+      padding: 14px;
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+    }
+    .svgBox{
+      width:100%;
+      overflow:auto;
+      background: rgba(124,109,240,.06);
+      border-radius: 16px;
+      padding: 10px;
+      border: 1px dashed rgba(124,109,240,.25);
+    }
+    .intTable tr:hover td{ background: rgba(255,111,177,.06); }
+    .intTable td small{ color: var(--muted); }
+    .callout{
+      border-radius:16px;
+      padding: 12px 14px;
+      margin: 10px 0;
+      background: rgba(96,165,250,.10);
+      border: 1px solid rgba(96,165,250,.25);
+    }
+    .callout.warn{ background: rgba(251,191,36,.14); border-color: rgba(251,191,36,.30); }
+    .callout.danger{ background: rgba(220,38,38,.10); border-color: rgba(220,38,38,.24); }
+
+    /* Stronger color + visual clarity */
+    body{
+      background:
+        radial-gradient(800px 400px at 10% 5%, rgba(109,94,252,.22), transparent 60%),
+        radial-gradient(700px 380px at 90% 15%, rgba(255,111,177,.20), transparent 60%),
+        radial-gradient(720px 420px at 40% 95%, rgba(52,211,153,.18), transparent 60%),
+        linear-gradient(180deg,#fbfaff,#f1effa);
+    }
+    h1{
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color: transparent;
+    }
+    .card{
+      border: 2px solid rgba(124,109,240,.16);
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:18px;
+      padding:2px;
+      background: linear-gradient(90deg, rgba(109,94,252,.50), rgba(255,111,177,.45), rgba(251,191,36,.40), rgba(52,211,153,.40), rgba(96,165,250,.40));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events:none;
+      opacity:.55;
+    }
+    details.section > summary{
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(109,94,252,.10);
+      border: 1px solid rgba(109,94,252,.16);
+    }
+    details.section[open] > summary{
+      background: rgba(255,111,177,.10);
+      border-color: rgba(255,111,177,.18);
+    }
+
+
+/* ---- Unit 1 Rework: interaction + seamless imagery ---- */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:980px){.grid2{grid-template-columns:1fr}}
+.panel{border:1px solid var(--border);border-radius:16px;background:rgba(255,255,255,.92);padding:12px}
+.checkGrid{display:grid;gap:8px;margin-top:10px}
+.checkItem{display:flex;gap:10px;align-items:flex-start;padding:10px;border:1px solid var(--border);border-radius:14px;background:rgba(255,255,255,.96)}
+.checkItem input{transform:translateY(2px)}
+.checkItem .lbl{font-weight:900}
+.checkItem .desc{font-size:12px;color:var(--muted);margin-top:2px;line-height:1.35}
+.templateBox{border:1px solid var(--border);border-radius:14px;padding:12px;background:rgba(255,255,255,.96);white-space:pre-wrap;line-height:1.45;overflow:auto}
+.bucketGame{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:980px){.bucketGame{grid-template-columns:1fr}}
+.bucket{border:1px solid var(--border);border-radius:16px;background:rgba(255,255,255,.96);padding:12px}
+.bucket h4{margin:0 0 8px;font-size:13px}
+.pillTag{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid var(--border);background:rgba(42,99,255,.08);font-size:12px;font-weight:900;margin:6px 6px 0 0;cursor:pointer}
+.pillTag.used{opacity:.45;cursor:default}
+.callout{border:1px dashed rgba(12,23,51,.25);background:rgba(255,211,106,.18);border-radius:16px;padding:10px 12px;margin-bottom:12px}
+.bullets{margin:8px 0 0 18px}
+.imgGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+@media (max-width:980px){.imgGrid{grid-template-columns:1fr}}
+.imgCard{border:1px solid var(--border);border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,.98), rgba(255,255,255,.90));box-shadow:var(--shadow);padding:10px;text-align:left;cursor:pointer}
+.imgCard img{width:100%;border-radius:14px;display:block}
+.imgCap{margin-top:8px;font-size:12px;color:var(--muted);font-weight:900}
+.flashGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+@media (max-width:980px){.flashGrid{grid-template-columns:1fr}}
+.flash{border:1px solid var(--border);border-radius:16px;background:rgba(255,255,255,.96);overflow:hidden}
+.flashQ{width:100%;text-align:left;padding:12px;background:rgba(42,99,255,.10);border:0;font-weight:900;cursor:pointer}
+.flashA{display:none;padding:12px;line-height:1.5}
+.flash.open .flashA{display:block}
+.toc a.sub{margin-left:10px;font-size:12px;opacity:.95}
+.modalOverlay{display:none;position:fixed;inset:0;background:rgba(12,23,51,.25);backdrop-filter:blur(3px);z-index:999;padding:18px}
+.modalOverlay.show{display:flex;align-items:center;justify-content:center}
+.modal{width:min(980px,100%);max-height:92vh;overflow:auto;background:rgba(255,255,255,.98);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow);padding:12px}
+.modalTop{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.modalTop .title{font-weight:900;font-size:13px}
+.modal img{width:100%;border-radius:14px;margin-top:10px}
+
+
+.medGrid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:10px;
+  margin-top:12px;
+}
+@media (max-width: 980px){ .medGrid{ grid-template-columns: 1fr; } }
+.medCard{
+  border:1px solid var(--border);
+  border-radius:18px;
+  background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,.86));
+  box-shadow: var(--shadow);
+  padding:12px;
+  text-align:left;
+  cursor:pointer;
+  min-height: 118px;
+}
+.medTop{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.medName{font-weight:900;font-size:14px}
+.medTag{font-size:11px;color:var(--muted);border:1px solid var(--border);padding:5px 8px;border-radius:999px;background:rgba(255,255,255,.9)}
+.medBody{margin-top:8px;font-size:12px;line-height:1.5;color:var(--text)}
+.medHint{margin-top:8px;font-size:11px;color:var(--muted)}
+
+
+.pdfWrap{
+  border:1px solid var(--border);
+  border-radius:18px;
+  background: rgba(255,255,255,.92);
+  padding:10px;
+  box-shadow: var(--shadow);
+}
+.pdfWrap object, .pdfWrap iframe{
+  width:100%;
+  height:640px;
+  border:0;
+  border-radius:14px;
+  background: #fff;
+}
+@media (max-width: 700px){
+  .pdfWrap object, .pdfWrap iframe{ height: 520px; }
+}
+
+
+.tableWrap{overflow:auto;border:1px solid var(--border);border-radius:16px;background:rgba(255,255,255,.92)}
+.tbl{width:100%;border-collapse:separate;border-spacing:0;min-width:820px}
+.tbl th,.tbl td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top;font-size:13px}
+.tbl th{position:sticky;top:0;background:rgba(255,255,255,.98);text-align:left}
+.qList{padding-left:18px}
+.opts{margin-top:6px;font-size:12px;color:var(--muted)}
+
+
+/* === Diagram & image alignment fixes === */
+img, .imgFluid { max-width:100%; height:auto; display:block; margin:12px auto; }
+figure { margin:14px auto; }
+figure img { margin:0 auto; }
+.figureCap { text-align:center; font-size:12px; color: var(--muted); margin-top:8px; }
+.embedWrap iframe, .embedWrap object, .embedWrap embed { width:100%; border:0; border-radius:16px; }
+.card .embedWrap { margin-top:10px; }
+
+
+/* === Interactive MCQ styling === */
+.question { padding:14px; border:1px solid var(--border); border-radius:16px; background: rgba(255,255,255,.92); margin:12px 0; }
+.question .qStem { font-weight:700; }
+.choices { display:grid; gap:10px; margin-top:10px; }
+.choiceBtn { width:100%; text-align:left; padding:10px 12px; border-radius:14px; border:1px solid var(--border); background: rgba(255,255,255,.9); cursor:pointer; }
+.choiceBtn[aria-pressed="true"] { outline: 2px solid rgba(0,0,0,.25); }
+.choiceBtn.correct { border-color: rgba(0,0,0,.45); }
+.choiceBtn.wrong { border-color: rgba(0,0,0,.45); opacity:.95; }
+.feedback { margin-top:10px; font-size:13px; }
+.feedback.good, .feedback.bad { font-weight:700; }
+.rationale { margin-top:8px; color: var(--muted); font-size:12.5px; line-height:1.35; }
+.quizTools { display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
+.smallBtn{ padding:8px 10px; border-radius:12px; border:1px solid var(--border); background: rgba(255,255,255,.9); cursor:pointer; font-size:12px; }
+.pill { display:inline-block; padding:4px 8px; border-radius:999px; border:1px solid var(--border); font-size:12px; }
+
+
+/* === Visual Hub diagram fixes (SVG + flow layout) === */
+.vizWrap{ display:grid; grid-template-columns: 1fr; gap:14px; }
+@media(min-width: 980px){ .vizWrap{ grid-template-columns: 1fr 1fr; } }
+.svgBox{ overflow-x:auto; }
+.svgBox svg{ max-width: 100%; height: auto; display:block; margin: 0 auto; }
+.viz .pill{ margin-right:6px; }
+
+
+.viz img, .viz svg, .viz canvas { display:block; margin-left:auto; margin-right:auto; }
+
+
+/* === Click-to-expand content fixes === */
+.moreContent{ display:none; margin-top:10px; }
+.moreContent.open{ display:block; }
+
+
+/* === Diagram zoom === */
+.zoomable{ cursor:zoom-in; }
+.zoomModal{ position:fixed; inset:0; background:rgba(0,0,0,.55); display:none; align-items:center; justify-content:center; padding:16px; z-index:9999; }
+.zoomModal.open{ display:flex; }
+.zoomInner{ max-width:min(1100px, 96vw); max-height:92vh; overflow:auto; background:white; border-radius:18px; padding:12px; }
+.zoomInner img, .zoomInner svg{ width:auto; max-width:100%; height:auto; display:block; margin:0 auto; }
+
+
+/* === Routes table + diagrams side-by-side (desktop) === */
+.routesGrid{ display:grid; gap:14px; }
+@media(min-width: 980px){ .routesGrid{ grid-template-columns: 420px 1fr; align-items:start; } }
+
+
+/* === Visual hub readability tweaks === */
+.svgBox{ overflow-x:auto; }
+.svgBox svg{ max-width:100%; height:auto; display:block; margin:0 auto; }
+
+
+.hidden{display:none;}
+
+/* === Visual Hub layout: wider routes table + larger diagrams below === */
+.vizWrap.routesFirst{ display:grid; grid-template-columns: 1fr; gap:16px; }
+.vizWrap.routesFirst .intTable{ width:100% !important; }
+.vizWrap.routesFirst .vizWide .svgBox svg{ width:100% !important; height:auto !important; }
+.vizWrap.routesFirst .vizWide .svgBox{ overflow-x:auto; }
+
+
+    .pillLink { text-decoration:none; display:inline-block; font-weight:700; color:var(--text); }
+    .pillLink:hover { filter: brightness(0.98); }
+    
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>NUR 138 Unit 1 – Interactive Study Guide</h1>
+        <div class="pill">Mobile-friendly • Tap answers for instant rationales • Tracks progress on this device</div>
+      </div>
+      <div class="search">
+        <input id="search" placeholder="Search (ex: half-life, atropine, peak level)..." />
+        <button onclick="runSearch()">Find</button>
+      </div>
+    </header>
+
+    <div class="grid">
+      <aside class="card toc">
+        <div class="muted tiny" style="margin-bottom:8px;">Tap to jump</div>
+        <a href="#studyMethod">0) How to Study Pharmacology</a>
+        <a href="#terms">1) Terminology</a>
+        <a href="#foundations">2) Foundations</a>
+        <a href="#safety">3) Safety + Lifespan + OTC/Herbal</a>
+        <a href="#analgesics">4) Analgesics</a>
+        <a href="#ans">5) ANS</a>
+        <a class="sub" href="#snsInfographic">• SNS Infographic (exam base)</a>
+        <a href="#lifespan">6) Lifespan (ADME + Safety)</a>
+        <a href="#interactions">7) Interactions (Synergy/Antagonism)</a>
+        <a href="#quickscan">8) Quick-Scan (Red Flags)</a><a href="#visualsHub">• Visual Hub (Diagrams + Tables)</a>
+        <a href="#blackbox">• Black Box Warning</a>
+        <a href="#recalls">• Drug Recall Classes</a>
+        <a href="#legal">• Legal Considerations</a>
+        <a href="#exam">10) Practice Exam</a>
+      </aside>
+
+      <main class="card">
+
+        
+
+
+<section id="instructorCompanion" class="section">
+  <details open>
+    <summary>⭐ Instructor Exam Companion (Teacher Questions)</summary>
+    <div class="content">
+      <p class="muted">Use this companion to drill your teacher’s Unit 1 ANS questions with instant feedback and rationales. Works best after you review the SNS/PNS sections.</p>
+      <div class="btnrow">
+        <a class="pill pillLink" href="unit1_exam_companion.html" target="_blank" rel="noopener">Open Instructor Exam Companion</a>
+      </div>
+      <p class="tiny muted" style="margin-top:8px;">GitHub setup: upload <b>unit1_exam_companion.html</b> in the same folder as <b>index.html</b>.</p>
+    </div>
+  </details>
+</section>
+
+<section id="studyMethod">
+  <details class="section" open>
+    <summary>0) How to Study Pharmacology (Interactive Framework)</summary>
+    <div class="content">
+      <p class="muted">Use this same “recipe” for every drug class. Hard exams test patterns: indications, contraindications, monitoring, and patient teaching.</p>
+
+      <div class="grid2">
+        <div class="panel">
+          <h3>Drug-Class Recipe Checklist (tap to track)</h3>
+          <p class="tiny muted">This checklist saves on your device so you can see what you’ve covered.</p>
+          <div id="studyChecklist" class="checkGrid"></div>
+        </div>
+
+        <div class="panel">
+          <h3>Fill‑In Template (copy & paste)</h3>
+          <p class="tiny muted">Tap “Copy Template,” paste into Notes/Google Doc, and fill it out for each class.</p>
+          <pre id="classTemplate" class="templateBox">DRUG CLASS:
+Prototype drug (example):
+MECHANISM (shared MOA):
+Exceptions (if any):
+WHY prescribed (diagnosis/indication):
+Desired therapeutic effect (what “success” looks like):
+Common side effects (expected):
+Adverse reactions (danger / call provider):
+Contraindications / cautious use (who should NOT get it + why):
+Nursing implications (before / during / after):
+Key labs/vitals to monitor:
+Patient education (what to teach):
+Naming patterns (suffixes/prefixes):
+Generic vs trade names (examples):</pre>
+          <button class="btn primary" id="copyTemplateBtn" type="button">Copy Template</button>
+          <div class="tiny muted" id="copyMsg" style="display:none; margin-top:8px;">Copied ✅</div>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top:14px;">
+        <h3>Mini Game: “Build the Class” (quick interaction)</h3>
+        <p class="tiny muted">Pick an item → tap the correct bucket. This trains your brain for application questions.</p>
+        <div id="bucketGame" class="bucketGame"></div>
+      </div>
+    </div>
+  </details>
+</section>
+
+<section id="terms">
+  <details class="section">
+    <summary>1) Terminology (Definition • Medical Sentence • Example • Nursing • Exam Trap)</summary>
+    <p class="muted tiny">Tap/scroll as needed. This section is designed to make test questions readable.</p>
+          
+    
+    <div class="term" data-keywords="pharmacology study drugs effects body science medication">
+      <h3>Pharmacology</h3>
+      <div><span class="tag def">Definition</span> The study of drugs and their effects on the body.</div>
+      <div class="reveal"><span class="tag med">Medical sentence</span> Pharmacology explains why the same medication can help one patient and harm another.</div>
+      <div class="reveal"><span class="tag ex">Example</span> Kidney disease can cause drug buildup, increasing toxicity risk.</div>
+      <div class="good"><span class="tag nur">Nursing</span> Use pharmacology to predict what to assess, what to monitor, and what teaching matters most.</div>
+      <div class="trap"><span class="tag trapTag">Exam trap</span> “Pharm” questions often test <b>thinking</b> (safety/monitoring), not memorizing.</div>
+    </div>
+
+    <div class="term" data-keywords="pharmacokinetics adme absorption distribution metabolism excretion body does to drug">
+      <h3>Pharmacokinetics (ADME)</h3>
+      <div><span class="tag def">Definition</span> What the <b>body does to the drug</b>: absorption, distribution, metabolism, excretion.</div>
+      <div class="reveal"><span class="tag med">Medical sentence</span> Renal impairment slows excretion and raises drug levels.</div>
+      <div class="reveal"><span class="tag ex">Example</span> A normal dose becomes toxic when kidneys can’t clear it.</div>
+      <div class="good"><span class="tag nur">Nursing</span> Think ADME anytime liver/kidneys are compromised or doses change.</div>
+      <div class="trap"><span class="tag trapTag">Exam trap</span> PK is movement/processing of the drug—not the desired effect.</div>
+    </div>
+
+    <div class="term" data-keywords="pharmacodynamics what drug does to body mechanism action receptor response">
+      <h3>Pharmacodynamics</h3>
+      <div><span class="tag def">Definition</span> What the <b>drug does to the body</b> (mechanism of action + response).</div>
+      <div class="reveal"><span class="tag med">Medical sentence</span> Beta blockers lower heart rate by blocking beta‑1 receptors.</div>
+      <div class="reveal"><span class="tag ex">Example</span> HR drops after metoprolol—this is the drug’s effect on the body.</div>
+      <div class="good"><span class="tag nur">Nursing</span> Use pharmacodynamics to predict side effects and what to monitor.</div>
+      <div class="trap"><span class="tag trapTag">Exam trap</span> PD ≠ ADME. PD = effect; PK = processing.</div>
+    </div>
+
+    <div class="term" data-keywords="pharmacotherapeutics pharmacotherapeutic use drugs treat prevent manage disease patient outcomes">
+      <h3>Pharmacotherapeutics</h3>
+      <div><span class="tag def">Definition</span> Using medications to <b>treat, prevent, or manage</b> disease and improve patient outcomes.</div>
+      <div class="reveal"><span class="tag med">Medical sentence</span> Pharmacotherapeutics connects the drug choice to the patient’s condition and goals.</div>
+      <div class="reveal"><span class="tag ex">Example</span> Choosing an analgesic plan that controls pain while protecting breathing.</div>
+      <div class="good"><span class="tag nur">Nursing</span> Ask: “What is the drug for? What outcome should improve? What will I reassess?”</div>
+      <div class="trap"><span class="tag trapTag">Exam trap</span> If you can state the <b>reason + expected outcome</b>, you can eliminate wrong answers fast.</div>
+    </div>
+
+    <div class="term" data-keywords="side effect predictable secondary effect common expected">
+      <h3>Side effect</h3>
+      <div><span class="tag def">Definition</span> A predictable, often unavoidable secondary effect of a medication.</div>
+      <div class="reveal"><span class="tag med">Medical sentence</span> Drowsiness is a common side effect of many antihistamines.</div>
+      <div class="reveal"><span class="tag ex">Example</span> A patient takes diphenhydramine and feels sleepy.</div>
+      <div class="good"><span class="tag nur">Nursing</span> Teach what to expect and when to call the provider.</div>
+      <div class="trap"><span class="tag trapTag">Exam trap</span> Side effect ≠ allergy. Nausea/drowsiness is usually not a true allergy.</div>
+    </div>
+
+    <div class="term" data-keywords="adverse drug reaction adr harmful unintended normal dose">
+      <h3>Adverse drug reaction (ADR)</h3>
+      <div><span class="tag def">Definition</span> An unintended, harmful reaction that occurs at normal doses.</div>
+      <div class="reveal"><span class="tag med">Medical sentence</span> A severe rash and swelling after a first dose may indicate an ADR.</div>
+      <div class="reveal"><span class="tag ex">Example</span> Hives and wheezing after an antibiotic.</div>
+      <div class="good"><span class="tag nur">Nursing</span> Stop the med (if indicated), assess airway/breathing, and notify provider.</div>
+      <div class="trap"><span class="tag trapTag">Exam trap</span> ADRs can be dose-related or allergic—look at symptoms.</div>
+    </div>
+
+    <div class="term" data-keywords="narrow therapeutic index nti small range therapeutic toxic requires monitoring">
+      <h3>Narrow therapeutic index (NTI)</h3>
+      <div><span class="tag def">Definition</span> Small margin between therapeutic and toxic levels—requires close monitoring.</div>
+      <div class="reveal"><span class="tag med">Medical sentence</span> Drugs with NTI often require lab levels and dose precision.</div>
+      <div class="reveal"><span class="tag ex">Example</span> Small dose changes can cause toxicity if the safe range is narrow.</div>
+      <div class="good"><span class="tag nur">Nursing</span> Verify dosing, check labs, and monitor for toxicity signs.</div>
+      <div class="trap"><span class="tag trapTag">Exam trap</span> “Monitor levels closely” is a clue for NTI concepts.</div>
+    </div>
+
+    <div class="term" data-keywords="steady state 4-5 half-lives drug level plateau loading dose">
+      <h3>Steady state</h3>
+      <div><span class="tag def">Definition</span> Point where drug intake equals drug elimination (blood levels plateau).</div>
+      <div class="reveal"><span class="tag med">Medical sentence</span> Many drugs reach steady state after about 4–5 half‑lives.</div>
+      <div class="reveal"><span class="tag ex">Example</span> A medication takes several days to reach full effect because steady state isn’t reached yet.</div>
+      <div class="good"><span class="tag nur">Nursing</span> Don’t expect full therapeutic effect immediately for long half‑life drugs.</div>
+      <div class="trap"><span class="tag trapTag">Exam trap</span> If a med “takes time,” think half‑life → steady state.</div>
+    </div>
+
+    <div class="term" data-keywords="loading dose quickly therapeutic level steady state faster">
+      <h3>Loading dose</h3>
+      <div><span class="tag def">Definition</span> A higher initial dose given to quickly achieve therapeutic levels.</div>
+      <div class="reveal"><span class="tag med">Medical sentence</span> Loading doses are used when waiting for steady state would take too long.</div>
+      <div class="reveal"><span class="tag ex">Example</span> A patient receives an initial larger dose, then smaller maintenance doses.</div>
+      <div class="good"><span class="tag nur">Nursing</span> Monitor closely—loading doses can increase adverse effects.</div>
+      <div class="trap"><span class="tag trapTag">Exam trap</span> Loading dose ≠ “double the dose.” It’s calculated and purposeful.</div>
+    </div>
+
+    <div class="term" data-keywords="medication reconciliation compare home meds new orders admission transfer discharge">
+      <h3>Medication reconciliation</h3>
+      <div><span class="tag def">Definition</span> Comparing a patient’s current/home meds with new orders to prevent errors.</div>
+      <div class="reveal"><span class="tag med">Medical sentence</span> Medication reconciliation is performed at admission, transfer, and discharge.</div>
+      <div class="reveal"><span class="tag ex">Example</span> Catching duplicate acetaminophen in two different OTC products.</div>
+      <div class="good"><span class="tag nur">Nursing</span> Ask about OTC, herbals, and “as needed” meds—patients forget these.</div>
+      <div class="trap"><span class="tag trapTag">Exam trap</span> Many med errors happen during transitions of care.</div>
+    </div>
+<div class="term" data-keywords="another receptor used that blocks overdose reverses effect drug suspected same opioid competing naloxone drug’s antagonist">
+      <h3>Antagonist</h3>
+      <div><span class="tag def">Definition</span> A drug that blocks or reverses another drug’s effect by competing at the same receptor.</div>
+      <div class="reveal"><span class="tag med">Medical sentence</span> Naloxone is an opioid antagonist used in suspected opioid overdose.</div>
+      <div class="reveal"><span class="tag ex">Example</span> Morphine slows breathing; naloxone is given and breathing improves.</div>
+      <div class="good"><span class="tag nur">Nursing</span> Know reversal/blocking drugs and when to give them; monitor response and recurrence.</div>
+      <div class="trap"><span class="tag trapTag">Exam trap</span> Antagonist ≠ universal antidote. It only works for specific receptor-drug pairs.</div>
+    </div>
+    
+
+    <div class="term" data-keywords="antagonize drugs blockers beta-agonist other when both bronchodilators effects beta each antagonistic reducing oppose">
+      <h3>Antagonistic effects</h3>
+      <div><span class="tag def">Definition</span> When two drugs oppose each other, reducing one or both effects.</div>
+      <div class="reveal"><span class="tag med">Medical sentence</span> Beta blockers may antagonize beta-agonist bronchodilators.</div>
+      <div class="reveal"><span class="tag ex">Example</span> A patient on metoprolol feels their albuterol works less well.</div>
+      <div class="good"><span class="tag nur">Nursing</span> Watch for decreased therapeutic effect and notify provider if control worsens.</div>
+      <div class="trap"><span class="tag trapTag">Exam trap</span> Not the same as side effects—this is drug vs drug opposition.</div>
+    </div>
+    
+
+    <div class="term" data-keywords="first-pass drugs oral bloodstream lower unchanged bioavailability have much metabolism drug reaches">
+      <h3>Bioavailability</h3>
+      <div><span class="tag def">Definition</span> How much of a drug reaches the bloodstream unchanged.</div>
+      <div class="reveal"><span class="tag med">Medical sentence</span> Oral drugs may have lower bioavailability due to first-pass metabolism.</div>
+      <div class="reveal"><span class="tag ex">Example</span> A smaller IV dose can work like a larger oral dose.</div>
+      <div class="good"><span class="tag nur">Nursing</span> If route changes (IV→PO), reassess effect; anticipate dose differences.</div>
+      <div class="trap"><span class="tag trapTag">Exam trap</span> Bioavailability isn’t absorption only—metabolism affects it too.</div>
+    </div>
+    
+
+    <div class="term" data-keywords="brain protective drugs more lipid‑soluble cross limits easily that blood–brain barrier from many entering">
+      <h3>Blood–brain barrier</h3>
+      <div><span class="tag def">Definition</span> A protective barrier that limits many drugs from entering the brain.</div>
+      <div class="reveal"><span class="tag med">Medical sentence</span> Lipid‑soluble drugs cross the blood–brain barrier more easily.</div>
+      <div class="reveal"><span class="tag ex">Example</span> Some antibiotics don’t treat meningitis well unless they cross the BBB.</div>
+      <div class="good"><span class="tag nur">Nursing</span> Monitor pediatrics/older adults for CNS effects (their BBB can be more permeable).</div>
+      <div class="trap"><span class="tag trapTag">Exam trap</span> BBB affects CNS access, not kidney excretion.</div>
+    </div>
+    
+
+    <div class="term" data-keywords="contraindication used patient specific contraindicated drug atropine angle‑closure reason should glaucoma">
+      <h3>Contraindication</h3>
+      <div><span class="tag def">Definition</span> A specific reason a drug should NOT be used for a patient.</div>
+      <div class="reveal"><span class="tag med">Medical sentence</span> Atropine is contraindicated in angle‑closure glaucoma.</div>
+      <div class="reveal"><span class="tag ex">Example</span> Atropine can raise eye pressure and worsen glaucoma.</div>
+      <div class="good"><span class="tag nur">Nursing</span> Check history first; hold and notify provider if contraindicated.</div>
+      <div class="trap"><span class="tag trapTag">Exam trap</span> Contraindication ≠ precaution. Contraindication = do not give.</div>
+    </div>
+    
+
+    <div class="term" data-keywords="lowers rate heart body actions produces effect drug beta‑1 blocking mechanism action receptors metoprolol">
+      <h3>Drug actions (mechanism of action)</h3>
+      <div><span class="tag def">Definition</span> How a drug produces an effect in the body.</div>
+      <div class="reveal"><span class="tag med">Medical sentence</span> Metoprolol lowers heart rate by blocking beta‑1 receptors.</div>
+      <div class="reveal"><span class="tag ex">Example</span> Blocking beta‑1 slows the heart.</div>
+      <div class="good"><span class="tag nur">Nursing</span> Use mechanism to predict effects, side effects, and what to monitor.</div>
+      <div class="trap"><span class="tag trapTag">Exam trap</span> Knowing the ‘why’ helps eliminate wrong answers.</div>
+    </div>
+    
+
+    <div class="term" data-keywords="drugs used they blocker hypertension grouping drug what work classification beta metoprolol">
+      <h3>Drug classification</h3>
+      <div><span class="tag def">Definition</span> Grouping drugs by what they do or how they work.</div>
+      <div class="reveal"><span class="tag med">Medical sentence</span> Metoprolol is a beta blocker used for hypertension.</div>
+      <div class="reveal"><span class="tag ex">Example</span> Most beta blockers slow heart rate and lower BP.</div>
+      <div class="good"><span class="tag nur">Nursing</span> If you know the class, you can predict class side effects/contraindications.</div>
+      <div class="trap"><span class="tag trapTag">Exam trap</span> Class effects apply across many drugs—don’t memorize one by one only.</div>
+    </div>
+    
+
+    <div class="term" data-keywords="reduce another changed when john’s food medications effect drug wort supplement many drug’s effectiveness interaction">
+      <h3>Drug interaction</h3>
+      <div><span class="tag def">Definition</span> When a drug’s effect is changed by another drug, food, or supplement.</div>
+      <div class="reveal"><span class="tag med">Medical sentence</span> St. John’s wort can reduce effectiveness of many medications.</div>
+      <div class="reveal"><span class="tag ex">Example</span> A patient’s antidepressant works less after starting St. John’s wort.</div>
+      <div class="good"><span class="tag nur">Nursing</span> Ask about OTC/herbals; monitor for reduced effect or toxicity.</div>
+      <div class="trap"><span class="tag trapTag">Exam trap</span> ‘Natural’ products can still interact strongly.</div>
+    </div>
+    
+
+    <div class="term" data-keywords="circulation first-pass before oral drugs that doses metabolism high effect drug need reaches with happens first‑pass higher liver">
+      <h3>First-pass effect</h3>
+      <div><span class="tag def">Definition</span> Liver metabolism that happens before an oral drug reaches circulation.</div>
+      <div class="reveal"><span class="tag med">Medical sentence</span> Drugs with high first‑pass metabolism need higher oral doses.</div>
+      <div class="reveal"><span class="tag ex">Example</span> Oral nitroglycerin is ineffective; it’s given sublingually instead.</div>
+      <div class="good"><span class="tag nur">Nursing</span> Explains why route matters and why some drugs aren’t given orally.</div>
+      <div class="trap"><span class="tag trapTag">Exam trap</span> Does not apply to IV dosing.</div>
+    </div>
+    
+
+    <div class="term" data-keywords="long drugs accumulate body takes eliminated drug from dosing frequent half‑life time half-life">
+      <h3>Half-life</h3>
+      <div><span class="tag def">Definition</span> Time it takes for 50% of a drug to be eliminated from the body.</div>
+      <div class="reveal"><span class="tag med">Medical sentence</span> Long half‑life drugs can accumulate if dosing is too frequent.</div>
+      <div class="reveal"><span class="tag ex">Example</span> A long half‑life med builds up over days, increasing toxicity risk.</div>
+      <div class="good"><span class="tag nur">Nursing</span> Guides dosing interval and when to watch for accumulation/toxicity.</div>
+      <div class="trap"><span class="tag trapTag">Exam trap</span> Half‑life ≠ onset. It’s about elimination, not start time.</div>
+    </div>
+    
+
+    <div class="term" data-keywords="intraarterial artery during into medication procedure injection administered intraarterially">
+      <h3>Intraarterial</h3>
+      <div><span class="tag def">Definition</span> Injection into an artery.</div>
+      <div class="reveal"><span class="tag med">Medical sentence</span> The medication was administered intraarterially during a procedure.</div>
+      <div class="reveal"><span class="tag ex">Example</span> Contrast dye may be delivered via an arterial line during imaging.</div>
+      <div class="good"><span class="tag nur">Nursing</span> High‑risk route; verify order/route carefully and monitor site/ischemia.</div>
+      <div class="trap"><span class="tag trapTag">Exam trap</span> Don’t confuse with IV (vein) administration.</div>
+    </div>
+    
+
+    <div class="term" data-keywords="into provider ordered injection corticosteroid intraarticular space joint">
+      <h3>Intraarticular</h3>
+      <div><span class="tag def">Definition</span> Injection into a joint space.</div>
+      <div class="reveal"><span class="tag med">Medical sentence</span> The provider ordered an intraarticular corticosteroid injection.</div>
+      <div class="reveal"><span class="tag ex">Example</span> Steroid injected into a knee to reduce inflammation.</div>
+      <div class="good"><span class="tag nur">Nursing</span> Assess pain/infection signs; educate about post‑procedure care.</div>
+      <div class="trap"><span class="tag trapTag">Exam trap</span> Intraarticular ≠ intramuscular.</div>
+    </div>
+    
+
+    <div class="term" data-keywords="intrathecally into intrathecal canal csf spinal injection administered chemotherapy">
+      <h3>Intrathecal</h3>
+      <div><span class="tag def">Definition</span> Injection into the spinal canal (CSF).</div>
+      <div class="reveal"><span class="tag med">Medical sentence</span> Chemotherapy may be administered intrathecally.</div>
+      <div class="reveal"><span class="tag ex">Example</span> Medication placed into CSF to reach brain/spinal cord.</div>
+      <div class="good"><span class="tag nur">Nursing</span> Very high‑risk; double‑check drug/dose/route; monitor neuro changes.</div>
+      <div class="trap"><span class="tag trapTag">Exam trap</span> Wrong route can be fatal—route is critical.</div>
+    </div>
+    
+
+    <div class="term" data-keywords="long rapid start takes medications usually have working drug action onset">
+      <h3>Onset of action</h3>
+      <div><span class="tag def">Definition</span> How long it takes for a drug to start working.</div>
+      <div class="reveal"><span class="tag med">Medical sentence</span> IV medications usually have a rapid onset of action.</div>
+      <div class="reveal"><span class="tag ex">Example</span> IV pain meds reduce pain faster than oral meds.</div>
+      <div class="good"><span class="tag nur">Nursing</span> Use onset to time reassessment and safety monitoring.</div>
+      <div class="trap"><span class="tag trapTag">Exam trap</span> Onset ≠ peak; onset is first effect, peak is strongest.</div>
+    </div>
+    
+
+    <div class="term" data-keywords="blood monitored toxicity avoid highest level levels drug concentration peak">
+      <h3>Peak level</h3>
+      <div><span class="tag def">Definition</span> The highest concentration of a drug in the blood.</div>
+      <div class="reveal"><span class="tag med">Medical sentence</span> Peak levels may be monitored to avoid toxicity.</div>
+      <div class="reveal"><span class="tag ex">Example</span> Too‑high peak can increase adverse effects/toxicity.</div>
+      <div class="good"><span class="tag nur">Nursing</span> Time labs correctly; assess for toxicity at peak times.</div>
+      <div class="trap"><span class="tag trapTag">Exam trap</span> Peak ≠ trough; peak is highest, trough is lowest.</div>
+    </div>
+    
+
+    <div class="term" data-keywords="stronger synergistic together drugs expected opioids breathing depress effect synergistically cause effects benzodiazepines than">
+      <h3>Synergistic effects</h3>
+      <div><span class="tag def">Definition</span> Two drugs together cause a stronger effect than expected.</div>
+      <div class="reveal"><span class="tag med">Medical sentence</span> Opioids and benzodiazepines can synergistically depress breathing.</div>
+      <div class="reveal"><span class="tag ex">Example</span> Morphine + lorazepam → excessive sedation/low RR.</div>
+      <div class="good"><span class="tag nur">Nursing</span> Prioritize respiratory assessment; hold meds and notify provider as needed.</div>
+      <div class="trap"><span class="tag trapTag">Exam trap</span> Synergistic ≠ additive; synergy is bigger-than-expected.</div>
+    </div>
+    
+
+    <div class="term" data-keywords="breathing intended medication improved therapeutic effect albuterol effects beneficial">
+      <h3>Therapeutic effects</h3>
+      <div><span class="tag def">Definition</span> The intended, beneficial effect of a medication.</div>
+      <div class="reveal"><span class="tag med">Medical sentence</span> The therapeutic effect of albuterol is improved breathing.</div>
+      <div class="reveal"><span class="tag ex">Example</span> Wheezing decreases after albuterol use.</div>
+      <div class="good"><span class="tag nur">Nursing</span> Evaluate whether the goal was met and document the response.</div>
+      <div class="trap"><span class="tag trapTag">Exam trap</span> Side effects can occur even when therapeutic effect is present.</div>
+    </div>
+    
+
+    <div class="term" data-keywords="adjustment doses requiring dose tolerance effect same opioid over response higher decreased time require">
+      <h3>Tolerance</h3>
+      <div><span class="tag def">Definition</span> Decreased response over time, requiring higher doses for the same effect.</div>
+      <div class="reveal"><span class="tag med">Medical sentence</span> Opioid tolerance may require dose adjustment over time.</div>
+      <div class="reveal"><span class="tag ex">Example</span> A patient needs a higher opioid dose to achieve the same pain relief.</div>
+      <div class="good"><span class="tag nur">Nursing</span> Differentiate tolerance from addiction; monitor for safety.</div>
+      <div class="trap"><span class="tag trapTag">Exam trap</span> Tolerance ≠ allergy or toxicity.</div>
+    </div>
+    
+
+    <div class="term" data-keywords="immediate signs toxicity level that lithium effect drug harmful/dangerous toxic action require">
+      <h3>Toxic</h3>
+      <div><span class="tag def">Definition</span> A drug level or effect that is harmful/dangerous.</div>
+      <div class="reveal"><span class="tag med">Medical sentence</span> Signs of lithium toxicity require immediate action.</div>
+      <div class="reveal"><span class="tag ex">Example</span> Confusion and tremors suggest toxic levels.</div>
+      <div class="good"><span class="tag nur">Nursing</span> Recognize early toxicity and intervene; check levels as ordered.</div>
+      <div class="trap"><span class="tag trapTag">Exam trap</span> Toxicity can happen from accumulation or interactions.</div>
+    </div>
+    
+
+    <div class="term" data-keywords="tylenol acetaminophen drug brand/manufacturer trade name">
+      <h3>Trade name</h3>
+      <div><span class="tag def">Definition</span> The brand/manufacturer name of a drug.</div>
+      <div class="reveal"><span class="tag med">Medical sentence</span> Tylenol is a trade name for acetaminophen.</div>
+      <div class="reveal"><span class="tag ex">Example</span> Two cold medicines may both contain acetaminophen under different brands.</div>
+      <div class="good"><span class="tag nur">Nursing</span> Prevent double dosing by checking ingredients and generic names.</div>
+      <div class="trap"><span class="tag trapTag">Exam trap</span> Exams usually use generic names more often.</div>
+    </div>
+    
+
+    <div class="term" data-keywords="blood next vancomycin level drawn dose lowest drug concentration trough just before">
+      <h3>Trough level</h3>
+      <div><span class="tag def">Definition</span> The lowest concentration of a drug in the blood, drawn before the next dose.</div>
+      <div class="reveal"><span class="tag med">Medical sentence</span> A vancomycin trough is drawn just before the next dose.</div>
+      <div class="reveal"><span class="tag ex">Example</span> Low trough → drug may be ineffective; high trough → toxicity risk.</div>
+      <div class="good"><span class="tag nur">Nursing</span> Time lab draws correctly and coordinate with dosing schedule.</div>
+      <div class="trap"><span class="tag trapTag">Exam trap</span> Trough is NOT drawn at peak effect.</div>
+    </div>
+  </details>
+</section>
+
+        <section id="foundations">
+  <details class="section">
+    <summary>2) Foundations</summary>
+    <details open>
+            <summary>Pharmacokinetics (ADME) — what the body does to the drug</summary>
+            <div class="content">
+              <ul>
+                <li><b>Absorption</b>: drug enters the bloodstream (route matters).</li>
+                <li><b>Distribution</b>: drug travels to tissues (protein binding, fat/water balance).</li>
+                <li><b>Metabolism</b>: drug is broken down (mostly liver).</li>
+                <li><b>Excretion</b>: drug leaves the body (mostly kidneys).</li>
+              </ul>
+              <div class="good"><span class="tag nur">Nursing</span> If liver/kidneys are impaired, drugs can build up → toxicity. Reassess often after dose changes.</div>
+            </div>
+          </details>
+
+
+          <details open>
+            <summary>Routes of Administration & First‑Pass Effect (Visual Table + Decision Map)</summary>
+            <div class="content">
+              <p class="muted tiny"><b>First‑pass effect</b> happens with many <b>oral</b> drugs (liver metabolism before reaching circulation). Routes below help you predict onset + safety.</p>
+
+              <div class="term">
+                <h3 style="margin:0 0 8px;">Routes quick table</h3>
+                <div style="overflow:auto;">
+                  <table style="width:100%; border-collapse:collapse; font-size:14px;">
+                    <thead>
+                      <tr>
+                        <th style="text-align:left; padding:10px; border-bottom:1px solid rgba(48,43,114,.16);">Route</th>
+                        <th style="text-align:left; padding:10px; border-bottom:1px solid rgba(48,43,114,.16);">Onset</th>
+                        <th style="text-align:left; padding:10px; border-bottom:1px solid rgba(48,43,114,.16);">Bypasses first‑pass?</th>
+                        <th style="text-align:left; padding:10px; border-bottom:1px solid rgba(48,43,114,.16);">Unit 1 nursing notes</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td style="padding:10px; border-bottom:1px solid rgba(48,43,114,.10);"><b>IV</b></td>
+                        <td style="padding:10px; border-bottom:1px solid rgba(48,43,114,.10);">Immediate</td>
+                        <td style="padding:10px; border-bottom:1px solid rgba(48,43,114,.10);"><b>Yes</b></td>
+                        <td style="padding:10px; border-bottom:1px solid rgba(48,43,114,.10);">Fastest + highest risk; monitor closely for reactions.</td>
+                      </tr>
+                      <tr>
+                        <td style="padding:10px; border-bottom:1px solid rgba(48,43,114,.10);"><b>IM / SubQ</b></td>
+                        <td style="padding:10px; border-bottom:1px solid rgba(48,43,114,.10);">Fast</td>
+                        <td style="padding:10px; border-bottom:1px solid rgba(48,43,114,.10);"><b>Yes</b></td>
+                        <td style="padding:10px; border-bottom:1px solid rgba(48,43,114,.10);">Absorption varies (perfusion, muscle mass, site).</td>
+                      </tr>
+                      <tr>
+                        <td style="padding:10px; border-bottom:1px solid rgba(48,43,114,.10);"><b>Sublingual / Buccal</b></td>
+                        <td style="padding:10px; border-bottom:1px solid rgba(48,43,114,.10);">Rapid</td>
+                        <td style="padding:10px; border-bottom:1px solid rgba(48,43,114,.10);"><b>Yes</b></td>
+                        <td style="padding:10px; border-bottom:1px solid rgba(48,43,114,.10);">Do not chew/swallow; allow to dissolve for effect.</td>
+                      </tr>
+                      <tr>
+                        <td style="padding:10px; border-bottom:1px solid rgba(48,43,114,.10);"><b>Inhalation</b></td>
+                        <td style="padding:10px; border-bottom:1px solid rgba(48,43,114,.10);">Rapid</td>
+                        <td style="padding:10px; border-bottom:1px solid rgba(48,43,114,.10);"><b>Yes</b></td>
+                        <td style="padding:10px; border-bottom:1px solid rgba(48,43,114,.10);">Large surface area; technique matters.</td>
+                      </tr>
+                      <tr>
+                        <td style="padding:10px; border-bottom:1px solid rgba(48,43,114,.10);"><b>Transdermal</b></td>
+                        <td style="padding:10px; border-bottom:1px solid rgba(48,43,114,.10);">Slow/steady</td>
+                        <td style="padding:10px; border-bottom:1px solid rgba(48,43,114,.10);"><b>Yes</b></td>
+                        <td style="padding:10px; border-bottom:1px solid rgba(48,43,114,.10);">Provides steady levels; remove old patch first.</td>
+                      </tr>
+                      <tr>
+                        <td style="padding:10px; border-bottom:1px solid rgba(48,43,114,.10);"><b>Rectal</b></td>
+                        <td style="padding:10px; border-bottom:1px solid rgba(48,43,114,.10);">Variable</td>
+                        <td style="padding:10px; border-bottom:1px solid rgba(48,43,114,.10);"><b>Partial</b></td>
+                        <td style="padding:10px; border-bottom:1px solid rgba(48,43,114,.10);">Some bypasses liver; useful if vomiting/can’t swallow.</td>
+                      </tr>
+                      <tr>
+                        <td style="padding:10px;"><b>Oral (PO)</b></td>
+                        <td style="padding:10px;">Slower</td>
+                        <td style="padding:10px;"><b>No</b> (often)</td>
+                        <td style="padding:10px;">Subject to first‑pass + food interactions.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="good" style="margin-top:10px;">
+                  <span class="tag nur">Must‑know list</span>
+                  <b>Routes that bypass first‑pass</b>: IV, IM, SubQ, Sublingual/Buccal, Inhalation, Transdermal, and Rectal (partial).
+                </div>
+              </div>
+
+              <div class="term">
+                <h3 style="margin:0 0 8px;">Decision map (tap to reveal)</h3>
+                <div class="btnrow">
+                  <button type="button" onclick="togglePanel('rt1')">Need immediate effect</button>
+                  <button type="button" onclick="togglePanel('rt2')">Need rapid but non‑invasive</button>
+                  <button type="button" onclick="togglePanel('rt3')">Need steady long‑term delivery</button>
+                  <button type="button" onclick="togglePanel('rt4')">Slow onset is OK</button>
+                </div>
+                <div id="rt1" class="feedback" style="display:block; margin-top:10px;">
+                  <b>Answer:</b> Think <b>IV</b> (fastest) — highest monitoring priority.
+                </div>
+                <div id="rt2" class="feedback" style="display:none; margin-top:10px;">
+                  <b>Answer:</b> Think <b>sublingual/buccal</b> or <b>inhalation</b> (rapid + bypass first‑pass).
+                </div>
+                <div id="rt3" class="feedback" style="display:none; margin-top:10px;">
+                  <b>Answer:</b> Think <b>transdermal</b> (steady levels).
+                </div>
+                <div id="rt4" class="feedback" style="display:none; margin-top:10px;">
+                  <b>Answer:</b> Think <b>oral (PO)</b> (slower + first‑pass common).
+                </div>
+              </div>
+            </div>
+          </details>
+
+
+                    <details>
+            <summary>Nursing Process & Medications (ADPIE)</summary>
+            <div class="content">
+              <ul>
+                <li><b>Assessment</b>: allergies (true allergy vs intolerance), complete med list (Rx/OTC/herbal), last dose times, vitals, pain score, weight (kg), pregnancy/breastfeeding, organ function (renal/hepatic), ability to swallow, IV/site assessment.</li>
+                <li><b>Diagnosis</b>: medication-related nursing diagnoses (examples): <i>Risk for injury</i>, <i>Risk for adverse drug reaction</i>, <i>Deficient knowledge</i>, <i>Ineffective health management</i>, <i>Acute pain</i>.</li>
+                <li><b>Planning</b>: set measurable goals tied to therapeutic effects + safety plan (hold parameters, lab timing, follow-up assessments, teaching plan).</li>
+                <li><b>Implementation</b>: apply all medication rights, prepare/administer correctly, patient teaching, use safety tech (bar-code scanning/smart pumps), document immediately.</li>
+                <li><b>Evaluation</b>: reassess for therapeutic response, side effects/ADRs, toxicity, patient understanding; decide if med should be continued, adjusted, or held.</li>
+              </ul>
+              <div class="good"><span class="tag nur">Exam focus</span> ADPIE always includes <b>D = Diagnosis</b>. If it’s missing, that’s the trick.</div>
+            </div>
+          </details>
+  </details>
+</section>
+
+        <section id="safety">
+  <details class="section">
+    <summary>3) Safety + Lifespan + OTC/Herbal</summary>
+    <details open>
+            <summary>Medication Error Prevention (what instructors love)</summary>
+            <div class="content">
+              <div class="term" style="margin-top:0;">
+                <h3 style="margin-top:0;">Expanded Medication Rights</h3>
+                <ul>
+                  <li><b>Right patient</b> (2 identifiers)</li>
+                  <li><b>Right medication</b> (generic vs trade; look-alike/sound-alike)</li>
+                  <li><b>Right dose</b> (weight-based, maximums, calculations)</li>
+                  <li><b>Right route</b> (never assume; verify formulation)</li>
+                  <li><b>Right time</b> (critical times; relation to meals; trough timing)</li>
+                  <li><b>Right documentation</b> (immediately after giving)</li>
+                  <li><b>Right reason</b> (indication matches patient condition)</li>
+                  <li><b>Right response</b> (reassess for effect + adverse effects)</li>
+                  <li><b>Right education</b> (purpose, side effects, when to call, how to take)</li>
+                  <li><b>Right assessment</b> (vitals, labs, allergies, contraindications before giving)</li>
+                  <li><b>Right to refuse</b> (respect + educate + document)</li>
+                </ul>
+              </div>
+
+              <div class="term">
+                <h3 style="margin-top:0;">Medication Error Types (Unit 1 must-know)</h3>
+                <ul>
+                  <li><b>Prescribing</b>: wrong drug/dose/route, illegible/incomplete order</li>
+                  <li><b>Transcription</b>: wrong entry into MAR/EHR</li>
+                  <li><b>Dispensing</b>: pharmacy supplies wrong drug/dose/label</li>
+                  <li><b>Administration</b> (most tested): wrong patient/dose/route/time, omitted dose</li>
+                  <li><b>Monitoring</b>: failure to assess vitals/labs/levels or recognize toxicity</li>
+                  <li><b>Documentation</b>: incorrect or missing documentation</li>
+                </ul>
+                <div class="trap"><span class="tag trapTag">Exam trap</span> “What should the nurse do first?” is usually <b>assessment/monitoring</b> or <b>hold + clarify</b>—not “just give it.”</div>
+              </div>
+
+              <div class="good"><span class="tag nur">Safety essentials</span>
+                Use <b>two identifiers</b>. Use <b>leading zero</b> (0.5 mg) and <b>no trailing zero</b> (1 mg, not 1.0 mg).
+                Clarify unclear orders—never guess. High-risk: pediatrics, pregnancy, older adults, renal/hepatic disease, polypharmacy.
+              </div>
+            </div>
+          </details>
+
+          <details>
+            <summary>OTC & Herbal</summary>
+            <div class="content">
+              <ul>
+                <li>OTC meds can <b>interact</b> and can <b>mask symptoms</b>, delaying diagnosis.</li>
+                <li>Herbals can vary in strength/purity and may not be regulated like Rx drugs.</li>
+                <li>Teach: “Natural” does not mean safe.</li>
+              </ul>
+            </div>
+          </details>
+  
+
+
+<div class="colorbar"></div>
+
+<div class="term" data-keywords="visuals imagery flow chart diagram concept map interactive table adme pharmacokinetics pharmacodynamics">
+  <h3 id="visualsHub">Visual Hub: Flowcharts, Diagrams & Interactive Tables (Unit 1)</h3>
+  <p class="muted">Tap the dropdowns and use the visuals to connect concepts fast. Everything is offline-safe.</p>
+
+  <div class="vizWrap routesFirst">
+<div class="viz">
+      <div class="pill pink">Interactive Table</div> <div class="pill">Routes & First-Pass</div>
+      <p class="muted">Tap a route row to expand key notes.</p>
+      <table class="intTable" style="width:100%">
+        <thead>
+          <tr>
+            <th>Route</th><th>Onset</th><th>First-pass?</th><th>Tap for notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr onclick="toggle('rt_iv')"><td><b>IV</b></td><td>Immediate</td><td>No</td><td><small>Click</small></td></tr>
+          <tr id="rt_iv" class="hidden"><td colspan="4"><div class="callout"><b>IV:</b> Fastest, highest risk. Requires IV patency & close monitoring.</div></td></tr>
+
+          <tr onclick="toggle('rt_sl')"><td><b>Sublingual</b></td><td>Rapid</td><td>No</td><td><small>Click</small></td></tr>
+          <tr id="rt_sl" class="hidden"><td colspan="4"><div class="callout"><b>Sublingual:</b> Avoids first-pass; do not swallow; allow to dissolve.</div></td></tr>
+
+          <tr onclick="toggle('rt_inh')"><td><b>Inhalation</b></td><td>Rapid</td><td>No</td><td><small>Click</small></td></tr>
+          <tr id="rt_inh" class="hidden"><td colspan="4"><div class="callout"><b>Inhalation:</b> Large surface area; rapid effect; technique matters.</div></td></tr>
+
+          <tr onclick="toggle('rt_td')"><td><b>Transdermal</b></td><td>Slow/steady</td><td>No</td><td><small>Click</small></td></tr>
+          <tr id="rt_td" class="hidden"><td colspan="4"><div class="callout"><b>Transdermal:</b> Consistent levels; rotate sites; remove old patch.</div></td></tr>
+
+          <tr onclick="toggle('rt_po')"><td><b>Oral</b></td><td>Slow</td><td>Yes</td><td><small>Click</small></td></tr>
+          <tr id="rt_po" class="hidden"><td colspan="4"><div class="callout warn"><b>Oral:</b> First-pass may reduce effect; food and GI motility change absorption.</div></td></tr>
+        </tbody>
+      </table>
+      <div class="good"><span class="tag nur">Bypasses first-pass</span> IV, IM, SubQ, sublingual, inhalation, transdermal; rectal = partial.</div>
+    </div>
+
+<div class="viz vizWide">
+      <div class="pill blue">Diagram</div> <div class="pill">ADME Concept Map</div>
+      <div class="svgBox">
+        <svg width="900" height="260" viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ADME flowchart">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1">
+              <stop offset="0" stop-color="#7d6df1"/><stop offset="1" stop-color="#ff6fb1"/>
+            </linearGradient>
+            <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <path d="M0,0 L10,3 L0,6 Z" fill="#2f2b72"/>
+            </marker>
+          </defs>
+
+          <rect x="10" y="20" width="210" height="70" rx="18" fill="url(#g1)" opacity="0.18" stroke="#7d6df1"/>
+          <text x="25" y="50" font-size="20" fill="#2f2b72" font-weight="700">Absorption</text>
+          <text x="25" y="75" font-size="14" fill="#4b5563">How drug enters bloodstream</text>
+
+          <rect x="240" y="20" width="210" height="70" rx="18" fill="#60a5fa" opacity="0.16" stroke="#60a5fa"/>
+          <text x="255" y="50" font-size="20" fill="#0b3a75" font-weight="700">Distribution</text>
+          <text x="255" y="75" font-size="14" fill="#4b5563">Where drug goes (protein, fat, water)</text>
+
+          <rect x="470" y="20" width="210" height="70" rx="18" fill="#34d399" opacity="0.16" stroke="#34d399"/>
+          <text x="485" y="50" font-size="20" fill="#0f5132" font-weight="700">Metabolism</text>
+          <text x="485" y="75" font-size="14" fill="#4b5563">Liver biotransformation (first-pass)</text>
+
+          <rect x="700" y="20" width="190" height="70" rx="18" fill="#fbbf24" opacity="0.18" stroke="#fbbf24"/>
+          <text x="715" y="50" font-size="20" fill="#6b4f00" font-weight="700">Excretion</text>
+          <text x="715" y="75" font-size="14" fill="#4b5563">Removal (kidneys most common)</text>
+
+          <path d="M220 55 L238 55" stroke="#2f2b72" stroke-width="3" marker-end="url(#arrow)"/>
+          <path d="M450 55 L468 55" stroke="#2f2b72" stroke-width="3" marker-end="url(#arrow)"/>
+          <path d="M680 55 L698 55" stroke="#2f2b72" stroke-width="3" marker-end="url(#arrow)"/>
+
+          <rect x="10" y="120" width="880" height="120" rx="18" fill="#ffffff" opacity="0.9" stroke="rgba(124,109,240,.25)"/>
+          <text x="28" y="150" font-size="16" fill="#2f2b72" font-weight="700">Quick Links (Exam Thinking)</text>
+          <text x="28" y="176" font-size="14" fill="#4b5563">• Faster onset: IV, inhalation, sublingual.  • First-pass affects many oral meds.  • Kidney/liver impairment → accumulation/toxicity.</text>
+          <text x="28" y="200" font-size="14" fill="#4b5563">• Older adults: ↓GFR, ↓albumin.  • Neonates: immature liver/kidneys.  • Children: weight-based dosing (kg).</text>
+        </svg>
+      </div>
+    </div>
+
+<div class="viz vizWide">
+      <div class="pill gold">Flowchart</div> <div class="pill">Medication Safety Workflow</div>
+      <div class="svgBox">
+        <svg width="900" height="240" viewBox="0 0 900 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Medication safety flow">
+          <defs>
+            <marker id="a2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <path d="M0,0 L10,3 L0,6 Z" fill="#2f2b72"/>
+            </marker>
+          </defs>
+
+          <rect x="20" y="30" width="250" height="60" rx="16" fill="#7d6df1" opacity="0.14" stroke="#7d6df1"/>
+          <text x="36" y="62" font-size="18" fill="#2f2b72" font-weight="700">1) Verify Order</text>
+          <text x="36" y="82" font-size="13" fill="#4b5563">clarify if unclear</text>
+
+          <rect x="320" y="30" width="250" height="60" rx="16" fill="#60a5fa" opacity="0.14" stroke="#60a5fa"/>
+          <text x="336" y="62" font-size="18" fill="#0b3a75" font-weight="700">2) Assess Patient</text>
+          <text x="336" y="82" font-size="13" fill="#4b5563">allergies, vitals, labs</text>
+
+          <rect x="620" y="30" width="260" height="60" rx="16" fill="#34d399" opacity="0.14" stroke="#34d399"/>
+          <text x="636" y="62" font-size="18" fill="#0f5132" font-weight="700">3) Rights + Admin</text>
+          <text x="636" y="82" font-size="13" fill="#4b5563">barcode, pump, double-check</text>
+
+          <rect x="20" y="130" width="420" height="70" rx="16" fill="#ff6fb1" opacity="0.14" stroke="#ff6fb1"/>
+          <text x="36" y="160" font-size="18" fill="#7a1f4e" font-weight="700">4) Evaluate Response</text>
+          <text x="36" y="182" font-size="13" fill="#4b5563">therapeutic effect + ADRs</text>
+
+          <rect x="470" y="130" width="410" height="70" rx="16" fill="#fbbf24" opacity="0.16" stroke="#fbbf24"/>
+          <text x="486" y="160" font-size="18" fill="#6b4f00" font-weight="700">5) Document + Teach</text>
+          <text x="486" y="182" font-size="13" fill="#4b5563">education, refusal, follow-up</text>
+
+          <path d="M270 60 L320 60" stroke="#2f2b72" stroke-width="3" marker-end="url(#a2)"/>
+          <path d="M570 60 L620 60" stroke="#2f2b72" stroke-width="3" marker-end="url(#a2)"/>
+          <path d="M750 90 L750 125" stroke="#2f2b72" stroke-width="3" marker-end="url(#a2)"/>
+          <path d="M440 165 L470 165" stroke="#2f2b72" stroke-width="3" marker-end="url(#a2)"/>
+        </svg>
+      </div>
+      <div class="callout"><span class="pill green">Key:</span> The “Right Response” is where many exam questions live—reassess after giving meds.</div>
+    </div>
+</div>
+</div>
+
+<div class="term" data-keywords="black box warning boxed warning fda safety highest risk">
+  <h3 id="blackbox">Black Box Warning (Boxed Warning)</h3>
+  <div class="callout danger"><b>Definition:</b> The FDA’s strongest warning for a prescription medication—signals a risk of <b>serious or life‑threatening adverse effects</b>.</div>
+  <ul>
+    <li><b>Nursing priority:</b> verify the warning, assess risk factors, teach what to report immediately, and monitor closely.</li>
+    <li><b>Test angle:</b> If a question mentions “boxed warning,” it’s usually a <b>priority/safety</b> question.</li>
+  </ul>
+</div>
+
+<div class="term" data-keywords="drug recall classes class i ii iii fda recall remove from market">
+  <h3 id="recalls">Drug Recall Classes (FDA)</h3>
+  <table class="intTable">
+    <thead><tr><th>Recall Class</th><th>Meaning</th><th>Tap for actions</th></tr></thead>
+    <tbody>
+      <tr onclick="toggle('rec1')"><td><b>Class I</b></td><td>Serious harm or death possible</td><td><small>Click</small></td></tr>
+      <tr id="rec1" class="hidden"><td colspan="3"><div class="callout danger"><b>Action:</b> Stop use immediately, follow policy, notify provider/pharmacy per protocol, monitor for harm.</div></td></tr>
+
+      <tr onclick="toggle('rec2')"><td><b>Class II</b></td><td>Temporary or medically reversible harm possible</td><td><small>Click</small></td></tr>
+      <tr id="rec2" class="hidden"><td colspan="3"><div class="callout warn"><b>Action:</b> Remove/return affected lots, assess exposure, teach symptoms to report.</div></td></tr>
+
+      <tr onclick="toggle('rec3')"><td><b>Class III</b></td><td>Not likely to cause harm, but violates labeling/manufacturing</td><td><small>Click</small></td></tr>
+      <tr id="rec3" class="hidden"><td colspan="3"><div class="callout"><b>Action:</b> Follow return/replace instructions; usually minimal clinical impact.</div></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="term" data-keywords="legal considerations nursing practice drug therapy informed consent documentation negligence malpractice scope of practice controlled substances">
+  <h3 id="legal">Legal Considerations in Drug Therapy (Nursing Practice)</h3>
+  <div class="callout"><b>Core legal themes:</b> safety, documentation, scope, and accountability.</div>
+  <ul>
+    <li><b>Scope of practice:</b> administer meds only with a valid order and within facility policy; question unsafe orders.</li>
+    <li><b>Informed consent & education:</b> ensure the patient understands purpose/risks; reinforce provider teaching; document education.</li>
+    <li><b>Documentation is legal protection:</b> chart medication, time, route, response, and any refusal or adverse effect.</li>
+    <li><b>Negligence/malpractice risk:</b> failing standards (wrong dose/route, failure to monitor, failure to respond).</li>
+    <li><b>Controlled substances:</b> follow chain-of-custody, wasting rules, counts, and secure storage.</li>
+    <li><b>Error reporting:</b> assess patient first, notify provider/charge nurse, follow reporting policy; chart facts (no blame).</li>
+  </ul>
+</div>
+
+</details>
+</section>
+
+        <section id="analgesics">
+  <details class="section">
+    <summary>4) Analgesics (Pain Basics)</summary>
+    <details open>
+            <summary>Opioids vs Non-opioids</summary>
+            <div class="content">
+              <ul>
+                <li><b>Opioids</b>: strongest pain relief, highest risk for <b>respiratory depression</b>.</li>
+                <li><b>NSAIDs</b>: pain/inflammation, risks GI bleed/kidney injury.</li>
+                <li><b>Acetaminophen</b>: pain/fever, risk liver injury at high doses.</li>
+              </ul>
+              <div class="trap"><span class="tag trapTag">Exam trap</span> Opioids + benzodiazepines = synergy → respiratory depression risk.</div>
+            </div>
+          </details>
+  </details>
+</section>
+
+        <section id="ans">
+
+<section id="snsInfographic">
+  <details class="section" open>
+    <summary>⭐ SNS Drugs Infographic (Instructor says this is the BASE of the exam)</summary>
+    <div class="content">
+      <div class="callout">
+        <b>How to use this:</b> Find the receptor (α1/α2/β1/β2) → say the body effect out loud → decide if the drug is an <b>agonist</b> or <b>blocker</b> → predict what changes → pick the nursing priority.
+      </div>
+
+      <div class="grid2">
+        <div class="panel">
+          <h3>4‑Step Exam Strategy</h3>
+          <ul class="bullets">
+            <li><b>Receptor:</b> identify α/β and where it acts.</li>
+            <li><b>Direction:</b> agonist = turns it on; blocker = turns it off.</li>
+            <li><b>Predict:</b> HR/BP/bronchi/glucose changes.</li>
+            <li><b>Nursing:</b> what to monitor + what is the red flag.</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>Micro‑Quiz (tap to reveal)</h3>
+          <div class="flashGrid">
+            <div class="flash"><button class="flashQ" type="button">α1 activation — what happens?</button><div class="flashA">Vasoconstriction → ↑SVR → ↑BP. Nursing: watch HTN, decreased peripheral perfusion.</div></div>
+            <div class="flash"><button class="flashQ" type="button">β1 activation — what happens?</button><div class="flashA">↑HR + ↑contractility → ↑CO. Nursing: watch tachycardia, chest pain, dysrhythmias.</div></div>
+            <div class="flash"><button class="flashQ" type="button">β2 activation — what happens?</button><div class="flashA">Bronchodilation (and smooth muscle relaxation). Nursing: albuterol can cause tremor + tachycardia.</div></div>
+            <div class="flash"><button class="flashQ" type="button">Adrenergic blockers — common test safety issue?</button><div class="flashA">Orthostatic hypotension → fall risk. Teach slow position changes; monitor dizziness/syncope.</div></div>
+          </div>
+        </div>
+      
+  <div class="card" style="margin-top:12px;" id="snsEmbeddedDoc">
+    <div class="cardTitle">Embedded SNS Drugs Infographic (PDF)</div>
+    <div class="muted tiny">Scroll inside the window. On iPhone you can pinch‑to‑zoom. If it doesn’t load, use the download link below.</div>
+
+    <div class="pdfWrap">
+      <object data="unit1_assets/SNS_Drugs_Infographic.pdf" data-alt="SNS_Drugs_Infographic.pdf" data-pdf="sns" type="application/pdf" width="100%" height="640">
+        <iframe id="snsPdfFrame" src="unit1_assets/SNS_Drugs_Infographic.pdf" data-alt="SNS_Drugs_Infographic.pdf" data-pdf="sns" width="100%" height="640" style="border:0;border-radius:14px;"></iframe>
+
+<div class="quizTools" style="margin-top:10px;">
+  <a class="smallBtn" href="unit1_assets/SNS_Drugs_Infographic.pdf" target="_blank" rel="noopener"
+     style="text-decoration:none; display:inline-flex; align-items:center;">
+    Open Infographic PDF
+  </a>
+</div>
+
+      </object>
+    </div>
+
+    <div class="tiny" style="margin-top:10px;">
+      <a href="unit1_assets/SNS_Drugs_Infographic.pdf" target="_blank" rel="noopener">Open/Download the SNS Infographic PDF</a>
+    </div>
+  </div>
+
+</div>
+
+      
+</section>
+
+
+
+<section id="pnsMap" class="section">
+  <div class="sectionHead">
+    <h2>PNS (Parasympathetic) + ACh Receptors — Body System Map</h2>
+    <p class="muted">You asked for <b>SNS vs PNS by body system</b>. Use this like a translation key for every question.</p>
+  </div>
+
+  <div class="card">
+    <div class="cardTitle">SNS vs PNS: What happens to each body system?</div>
+    <div class="tableWrap">
+      <table class="tbl">
+        <thead>
+          <tr><th>Body system</th><th>SNS (Epi / Norepi)</th><th>PNS (Cholinergic)</th><th>Anti‑cholinergic</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><b>Heart</b></td><td>↑HR, ↑contractility (β1)</td><td>↓HR (muscarinic)</td><td>↑HR (blocks muscarinic)</td></tr>
+          <tr><td><b>Lungs</b></td><td>Bronchodilation (β2)</td><td>Bronchoconstriction + ↑secretions</td><td>Bronchodilation + ↓secretions</td></tr>
+          <tr><td><b>GI</b></td><td>↓motility</td><td>↑motility + ↑secretions</td><td>↓motility (constipation risk)</td></tr>
+          <tr><td><b>GU</b></td><td>Urine retention</td><td>Urination (↑bladder contraction)</td><td>Urine retention (BPH risk)</td></tr>
+          <tr><td><b>Eyes</b></td><td>Pupil dilation</td><td>Pupil constriction</td><td>Pupil dilation (glaucoma risk)</td></tr>
+          <tr><td><b>Glands</b></td><td>Variable</td><td>↑saliva/tears/sweat</td><td>Dry mouth + ↓sweat (heat risk)</td></tr>
+          <tr><td><b>Brain</b></td><td>Alert/stress response</td><td>Calm/rest response</td><td>Confusion (esp. elderly) possible</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tiny muted" style="margin-top:10px;">Mnemonic: <b>Cholinergic = “WET”</b>. <b>Anticholinergic = “DRY + FAST”</b>.</div>
+  </div>
+
+  <div class="card">
+    <div class="cardTitle">Nicotinic vs Muscarinic receptors (what they DO)</div>
+    <div class="grid2">
+      <div>
+        <div class="lbl">Nicotinic</div>
+        <div class="txt"><b>Where:</b> neuromuscular junction (skeletal muscle), autonomic ganglia, adrenal medulla</div>
+        <div class="txt"><b>Does:</b> turns signals <b>ON</b> (neuromuscular contraction / autonomic relay)</div>
+        <div class="txt"><b>Exam clue:</b> higher-dose ACh effects can “spill” into nicotinic → twitching/weakness</div>
+      </div>
+      <div>
+        <div class="lbl">Muscarinic</div>
+        <div class="txt"><b>Where:</b> organs (heart, lungs, GI, bladder, eyes, glands)</div>
+        <div class="txt"><b>Does:</b> “rest & digest” actions (slow heart, tighten bronchi, move GI, urinate)</div>
+        <div class="txt"><b>Exam clue:</b> most nursing adverse effects are <b>muscarinic</b> (bradycardia, bronchospasm, diarrhea)</div>
+      </div>
+    </div>
+    
+    <div class="trap" style="margin-top:12px;">
+      <div class="lbl">EXAM FOCUS (Instructor highlights)</div>
+      <ul class="bullets"><li>Nicotinic receptors</li><li>Muscarinic receptors</li><li>Named nicotinic because they can be stimulated by the alkaloid nicotine</li><li>Key roles include neuromuscular contraction, autonomic regulation, cognitive functions like memory and attention, and they are implicated in nicotine addiction and Alzheimer’s disease.</li><li>Nicotinic Receptors</li><li>Named muscarinic because they can be stimulated by the alkaloid muscarine</li><li>involved in peristalsis, micturition, bronchoconstriction, and several other parasympathetic reactions</li><li>Muscarinic Receptors</li></ul>
+    </div>
+    
+  </div>
+</section>
+
+<section id="cholinergic" class="section">
+  <div class="sectionHead">
+    <h2>Cholinergic Drugs (Parasympathomimetics)</h2>
+    <p class="muted">These drugs <b>increase acetylcholine (ACh)</b> or <b>act like ACh</b> → your patient looks more “PNS‑dominant.”</p>
+  </div>
+
+  <div class="card">
+    <div class="cardTitle">Direct‑acting vs Indirect‑acting (must know)</div>
+    <div class="grid2">
+      <div>
+        <div class="lbl">Direct‑acting cholinergics</div>
+        <div class="txt"><b>MOA:</b> Bind directly to ACh receptors (usually muscarinic)</div>
+        <div class="txt"><b>Examples (generic → trade):</b><br>
+          Bethanechol → <b>Urecholine</b> (urinary retention)<br>
+          Pilocarpine → <b>Salagen / Isopto Carpine</b> (glaucoma, dry mouth)
+        </div>
+        <div class="trap"><div class="lbl">Mnemonic</div><div class="txt"><b>“Beth brings back the bladder.”</b></div></div>
+      </div>
+      <div>
+        <div class="lbl">Indirect‑acting cholinergics</div>
+        <div class="txt"><b>MOA:</b> Inhibit acetylcholinesterase → ACh builds up</div>
+        <div class="txt"><b>Examples (generic → trade):</b><br>
+          Pyridostigmine → <b>Mestinon</b> (MG maintenance)<br>
+          Donepezil → <b>Aricept</b> (Alzheimer’s)
+        </div>
+        <div class="trap"><div class="lbl">Exam clue</div><div class="txt">Indirect drugs can cause <b>cholinergic crisis</b> if overdosed.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="cardTitle">Cholinergic effects, adverse effects, contraindications</div>
+    <div class="grid2">
+      <div>
+        <div class="lbl">Drug effects</div>
+        <ul class="bullets">
+          <li>↓HR / ↓AV conduction</li>
+          <li>Bronchoconstriction + ↑secretions</li>
+          <li>↑GI motility + ↑secretions</li>
+          <li>Urination (↑bladder contraction)</li>
+          <li>Miosis (pupil constriction)</li>
+        </ul>
+      </div>
+      <div>
+        <div class="lbl">Adverse effects (“too much ACh”)</div>
+        <div class="txt"><b>DUMBBELSS</b>: Diarrhea, Urination, Miosis, Bradycardia, Bronchospasm, Emesis, Lacrimation, Sweating, Salivation.</div>
+        <div class="txt tiny muted">Translation: “wet + slow + tight lungs.”</div>
+      </div>
+    </div>
+
+    <div class="trap" style="margin-top:12px;">
+      <div class="lbl">Contraindications / When NOT to use (high yield)</div>
+      <ul class="bullets">
+        <li><b>Asthma/COPD</b></li>
+        <li><b>Bradycardia / hypotension</b></li>
+        <li><b>GI obstruction</b></li>
+        <li><b>Urinary obstruction</b></li>
+      </ul>
+    </div>
+
+    <div class="trap" style="margin-top:12px;">
+      <div class="lbl">Cholinergic crisis vs Myasthenic crisis</div>
+      <div class="txt"><b>Cholinergic crisis:</b> too much ACh → DUMBBELSS + weakness. Antidote often includes <b>atropine</b> (as ordered).</div>
+      <div class="txt"><b>Myasthenic crisis:</b> not enough ACh at NMJ → worsening weakness (often needs airway support).</div>
+    </div>
+  </div>
+</section>
+
+<section id="anticholinergic" class="section">
+  <div class="sectionHead">
+    <h2>Anticholinergic Drugs (Parasympatholytics)</h2>
+    <p class="muted">These drugs <b>block muscarinic receptors</b> → patient looks more “SNS‑dominant.” Think: <b>DRY + FAST</b>.</p>
+  </div>
+
+  <div class="card">
+    <div class="cardTitle">Core effects, adverse effects, contraindications</div>
+    <div class="grid2">
+      <div>
+        <div class="lbl">MOA + Effects</div>
+        <ul class="bullets">
+          <li>↑HR</li>
+          <li>Bronchodilation + ↓secretions</li>
+          <li>↓GI motility (constipation)</li>
+          <li>Urine retention</li>
+          <li>Mydriasis (pupil dilation)</li>
+          <li>↓Sweating (heat risk)</li>
+        </ul>
+        <div class="trap"><div class="lbl">Mnemonic</div><div class="txt"><b>“Hot, Dry, Blind, Fast, Constipated.”</b></div></div>
+      </div>
+      <div>
+        <div class="lbl">Examples (generic → trade)</div>
+        <div class="txt">
+          Scopolamine → (motion sickness)<br>
+          Ipratropium → <b>Atrovent</b><br>
+          Diphenhydramine → <b>Benadryl</b>
+        </div>
+        <div class="trap"><div class="lbl">Nursing focus</div><div class="txt">Monitor <b>urinary retention</b>, <b>confusion</b> (elderly), <b>overheating</b>.</div></div>
+      </div>
+    </div>
+
+    <div class="trap" style="margin-top:12px;">
+      <div class="lbl">Contraindications / When NOT to use (high yield)</div>
+      <ul class="bullets">
+        <li><b>Narrow‑angle glaucoma</b></li>
+        <li><b>BPH / urinary retention risk</b></li>
+        <li><b>Elderly / dementia risk</b></li>
+        <li><b>Heat exposure / fever</b></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="ansPractice" class="section">
+  <div class="sectionHead">
+    <h2>ANS Practice Questions (SNS + PNS)</h2>
+    <p class="muted">Hard-test style: safety first, contraindications, and predicting body-system effects.</p>
+  </div>
+
+  <div class="card">
+    <div class="cardTitle">SNS (Adrenergic) — 8 questions</div>
+    <ol class="qList" id="snsQ">
+      <li><b>A patient on propranolol reports wheezing.</b> Which explanation best fits?
+        <div class="opts">A) β1 blockade  B) β2 blockade  C) α1 blockade  D) Muscarinic stimulation</div>
+      </li>
+      <li><b>A patient receives norepinephrine via peripheral IV and the site turns pale/cool.</b> Priority action?
+        <div class="opts">A) Increase rate  B) Apply heat only  C) Stop infusion & prepare phentolamine  D) Give bethanechol</div>
+      </li>
+      <li><b>Which finding is expected with α1 stimulation?</b>
+        <div class="opts">A) Bronchoconstriction  B) Vasodilation  C) Vasoconstriction & ↑BP  D) Diarrhea</div>
+      </li>
+      <li><b>First-dose phenomenon is most associated with:</b>
+        <div class="opts">A) Alpha blockers  B) SABA inhalers  C) Anticholinergics  D) Loop diuretics</div>
+      </li>
+      <li><b>A diabetic on a beta blocker feels “fine” but is diaphoretic and confused.</b> Key concern?
+        <div class="opts">A) Hyperglycemia  B) Masked hypoglycemia signs  C) Cholinergic crisis  D) Opioid toxicity</div>
+      </li>
+      <li><b>Which beta blocker is most risky in asthma?</b>
+        <div class="opts">A) Metoprolol  B) Atenolol  C) Propranolol  D) Nebivolol</div>
+      </li>
+      <li><b>Teach a patient taking tamsulosin to:</b>
+        <div class="opts">A) Take first dose at bedtime  B) Avoid fluids  C) Stand quickly  D) Stop abruptly when better</div>
+      </li>
+      <li><b>Stopping a beta blocker abruptly can cause:</b>
+        <div class="opts">A) Rebound HTN/angina  B) Urinary retention  C) Miosis  D) Excessive salivation</div>
+      </li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <div class="cardTitle">PNS (Cholinergic + Anticholinergic) — 10 questions</div>
+    <ol class="qList" id="pnsQ">
+      <li><b>Bethanechol (Urecholine) is most appropriate for:</b>
+        <div class="opts">A) Bradycardia  B) Urinary retention  C) Asthma attack  D) Narrow-angle glaucoma</div>
+      </li>
+      <li><b>Which finding suggests cholinergic excess?</b>
+        <div class="opts">A) Dry mouth  B) Tachycardia  C) Bronchospasm + sweating  D) Constipation</div>
+      </li>
+      <li><b>Indirect-acting cholinergics work by:</b>
+        <div class="opts">A) Blocking muscarinic  B) Inhibiting acetylcholinesterase  C) Blocking β2  D) Stimulating α1</div>
+      </li>
+      <li><b>Which patient should NOT receive a cholinergic drug?</b>
+        <div class="opts">A) Post-op urinary retention  B) COPD with wheezing  C) Dry mouth  D) Glaucoma</div>
+      </li>
+      <li><b>An anticholinergic drug places the patient at greatest risk for:</b>
+        <div class="opts">A) Heat intolerance  B) Diarrhea  C) Excessive salivation  D) Bradycardia</div>
+      </li>
+      <li><b>Which is a contraindication for anticholinergics?</b>
+        <div class="opts">A) Narrow-angle glaucoma  B) Mild HTN  C) Hypothyroidism  D) Anemia</div>
+      </li>
+      <li><b>Older adult becomes confused after Benadryl.</b> This is most consistent with:
+        <div class="opts">A) Cholinergic crisis  B) Anticholinergic CNS effect  C) Alpha blockade  D) Beta-2 stimulation</div>
+      </li>
+      <li><b>Nicotinic receptors are most associated with:</b>
+        <div class="opts">A) Sweat glands  B) Neuromuscular junction  C) SA node slowing  D) Pupillary constriction</div>
+      </li>
+      <li><b>Muscarinic stimulation would cause:</b>
+        <div class="opts">A) Tachycardia  B) Bronchodilation  C) Urination  D) Mydriasis</div>
+      </li>
+      <li><b>Which finding is most urgent with anticholinergics?</b>
+        <div class="opts">A) Dry mouth  B) Urinary retention  C) Mild blurred vision  D) Mild constipation</div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section id="ansKey" class="section">
+  <div class="sectionHead">
+    <h2>Answer Key + Rationales (Why others are wrong)</h2>
+    <p class="muted">Use this section after you attempt the questions above.</p>
+  </div>
+
+  <div class="card">
+    <div class="cardTitle">SNS Key</div>
+    <ol class="bullets">
+      <li><b>Q1: B</b> — Propranolol blocks β2 → bronchoconstriction/wheezing. A is heart. C is vessels. D is PNS.</li>
+      <li><b>Q2: C</b> — Stop infusion + prepare <b>phentolamine (Regitine)</b>. A worsens. B alone is insufficient. D unrelated.</li>
+      <li><b>Q3: C</b> — α1 = vasoconstriction → ↑BP. A is PNS. B is α1 blocker effect. D is cholinergic.</li>
+      <li><b>Q4: A</b> — Alpha blockers → first-dose hypotension. Others not classic.</li>
+      <li><b>Q5: B</b> — Beta blockers mask hypoglycemia signs (tremor/tachycardia). C/D unrelated.</li>
+      <li><b>Q6: C</b> — Nonselective β blocker = highest asthma risk. A/B/D more β1-selective.</li>
+      <li><b>Q7: A</b> — First dose bedtime reduces fall risk (orthostatic). B/C/D unsafe.</li>
+      <li><b>Q8: A</b> — Abrupt stop → rebound HTN/angina. B/C/D are PNS.</li>
+    </ol>
+    
+    <div class="trap" style="margin-top:12px;">
+      <div class="lbl">EXAM FOCUS (Instructor highlights)</div>
+      <ul class="bullets"><li>Effect on receptors on prostate gland and bladder decreases resistance to urinary outflow, thus reducing urinary obstruction and relieving effects of benign prostatic hyperplasia (BPH).</li><li>Phentolamine</li><li>Quickly reverses the potent vasoconstrictive effects of extravasated vasopressors such as norepinephrine or epinephrine</li><li>When phentolamine is used to diagnose the presence of pheochromocytoma, the nurse will assess for what indicative finding?</li><li>To help establish a diagnosis of pheochromocytoma, a single intravenous dose of phentolamine is given to the hypertensive patient who is suspected of having the tumor. If the blood pressure declines rapidly, it is highly likely that the patient has a pheochromocytoma.</li><li>The primary adverse effects of alpha blockers are those related to their effects on the vasculature. First-dose phenomenon, which is a severe and sudden drop in blood pressure after the administration of the first dose of an alpha-adrenergic blocker, can cause patients to fall or pass out. All patients must be warned about this adverse effect before they take their first dose of an alpha blocker. Orthostatic hypotension can occur with any dose of an alpha blocker, and patients must be warned to get up slowly from a supine position.</li><li>Phentolamine (Regitine)</li><li>Prazosin (Minipress)</li></ul>
+    </div>
+    
+  </div>
+
+  <div class="card">
+    <div class="cardTitle">PNS Key</div>
+    <ol class="bullets">
+      <li><b>Q1: B</b> — Bethanechol stimulates bladder contraction. D is contraindication. C worsens asthma. A is treated with atropine.</li>
+      <li><b>Q2: C</b> — “Wet + tight lungs” = cholinergic. A/B/D are anticholinergic patterns.</li>
+      <li><b>Q3: B</b> — Indirect = inhibits acetylcholinesterase. A is anticholinergic. C/D SNS.</li>
+      <li><b>Q4: B</b> — COPD/asthma unsafe (bronchoconstriction + secretions).</li>
+      <li><b>Q5: A</b> — Anticholinergics ↓ sweating → heat intolerance. B/C/D are cholinergic.</li>
+      <li><b>Q6: A</b> — Glaucoma is contraindication. Others not primary.</li>
+      <li><b>Q7: B</b> — Benadryl has anticholinergic CNS effects (confusion). A opposite. C/D SNS.</li>
+      <li><b>Q8: B</b> — Nicotinic = NMJ/ganglia. Others muscarinic organ effects.</li>
+      <li><b>Q9: C</b> — Muscarinic stimulation → urination. A/B/D anticholinergic/SNS-like.</li>
+      <li><b>Q10: B</b> — Urinary retention is a safety issue. Others common but less urgent.</li>
+    </ol>
+  </div>
+</section>
+
+
+  <details class="section">
+    <summary>5) ANS (SNS vs PNS)</summary>
+    <details open>
+            <summary>Quick system map</summary>
+            <div class="content">
+              <p><b>SNS</b> (fight/flight): ↑HR, ↑BP, bronchodilation, ↓digestion</p>
+              <p><b>PNS</b> (rest/digest): ↓HR, ↑digestion, urination, secretions</p>
+              <div class="good"><span class="tag nur">Nursing</span> If a symptom is “wet” (salivation/diarrhea), think cholinergic. If “dry/hot/confused,” think anticholinergic.</div>
+            </div>
+          </details>
+  </details>
+</section>
+
+        
+      
+
+
+<section id="lifespan">
+  <details class="section">
+    <summary>6) Lifespan Pharmacology (ADME by Age Group)</summary>
+    <p class="muted tiny">Unit 1 high-yield: how age changes absorption, distribution, metabolism, and excretion—and what that means for safety.</p>
+  <div class="card">
+<h2>Why Lifespan Pharmacology Matters (Exam GOLD)</h2>
+<p>Medication absorption, distribution, metabolism, and excretion (<b>ADME</b>) change significantly across the lifespan. 
+These changes directly affect <b>dosing</b>, <b>drug response</b>, and <b>toxicity risk</b>.</p>
+<div class="good"><b>NCLEX Reality:</b> Many "priority" questions are really lifespan questions in disguise.</div>
+
+<div class="card">
+<h2>Neonates & Infants</h2>
+<table>
+<tr><th>ADME Component</th><th>Key Changes</th><th>Nursing Implication</th></tr>
+<tr><td>Absorption</td><td>Higher gastric pH, delayed gastric emptying</td><td>Oral meds absorb slower/unpredictably</td></tr>
+<tr><td>Distribution</td><td>High body water, low protein binding</td><td>Higher free drug levels → toxicity risk</td></tr>
+<tr><td>Metabolism</td><td>Immature liver enzymes</td><td>Prolonged half-life, accumulation</td></tr>
+<tr><td>Excretion</td><td>Immature kidneys</td><td>Slower clearance</td></tr>
+</table>
+<div class="warn">
+<b>High-Risk Meds:</b> Opioids, benzodiazepines, antibiotics with narrow therapeutic windows
+</div>
+
+<div class="card">
+<h2>Children (Pediatrics)</h2>
+<table>
+<tr><th>Focus</th><th>Key Points</th></tr>
+<tr><td>Dosing</td><td>Always weight-based (kg)</td></tr>
+<tr><td>Metabolism</td><td>Often faster than adults → may need higher mg/kg doses</td></tr>
+<tr><td>Safety</td><td>Liquid concentrations vary – double-check calculations</td></tr>
+</table>
+<div class="warn">
+<b>Problematic Meds:</b> Aspirin (Reye syndrome), tetracyclines, fluoroquinolones
+</div>
+
+<div class="card">
+<h2>Pregnant Patients</h2>
+<table>
+<tr><th>Consideration</th><th>Implication</th></tr>
+<tr><td>Placental transfer</td><td>Many drugs cross placenta</td></tr>
+<tr><td>Volume expansion</td><td>Lower serum drug concentrations</td></tr>
+<tr><td>Metabolism</td><td>Altered hepatic enzyme activity</td></tr>
+</table>
+<div class="warn">
+<b>High-Risk Categories:</b> Teratogens, NSAIDs late pregnancy, isotretinoin, ACE inhibitors
+</div>
+
+<div class="card">
+<h2>Older Adults (Geriatrics)</h2>
+<table>
+<tr><th>ADME</th><th>Age-Related Change</th><th>Clinical Effect</th></tr>
+<tr><td>Absorption</td><td>Slightly delayed</td><td>Usually minimal impact</td></tr>
+<tr><td>Distribution</td><td>Increased body fat, decreased albumin</td><td>Drug accumulation (fat-soluble meds)</td></tr>
+<tr><td>Metabolism</td><td>Reduced liver blood flow</td><td>Longer half-life</td></tr>
+<tr><td>Excretion</td><td>↓ GFR</td><td>Major ↑ toxicity risk</td></tr>
+</table>
+<div class="warn">
+<b>Problematic Meds:</b> Benzodiazepines, anticholinergics, opioids, NSAIDs
+</div>
+
+<div class="card">
+<h2>BIG Lifespan Takeaways (Exam Traps)</h2>
+<ul>
+<li>Renal function matters more than age alone</li>
+<li>Start low, go slow (geriatrics)</li>
+<li>Weight-based dosing is non-negotiable in pediatrics</li>
+<li>Fat-soluble drugs linger longer in older adults</li>
+<li>Immature organs = accumulation risk in neonates</li>
+</ul>
+<div class="good">
+<b>Clinical Judgment:</b> Many adverse drug reactions are predictable based on age-related ADME changes.
+</div>
+  </details>
+</section>
+
+
+
+<section id="interactions">
+  <details class="section">
+    <summary>7) Drug Interactions: Cancel-Outs vs Enhancers</summary>
+    <p class="muted tiny">Unit 1 foundation: synergistic, additive, and antagonistic effects + common OTC/herbal risks.</p>
+  <div class="card">
+<h2>Types of Drug Interactions (EXAM FOUNDATION)</h2>
+<ul>
+<li><b>Synergistic:</b> Combined effect is greater than expected</li>
+<li><b>Additive:</b> Combined effect equals the sum of each drug</li>
+<li><b>Antagonistic:</b> One drug reduces or blocks the effect of another</li>
+</ul>
+<div class="good">
+<b>NCLEX Tip:</b> Synergistic interactions are usually the most dangerous.
+</div>
+
+<div class="card">
+<h2>Common Synergistic (ENHANCING) Drug Combinations</h2>
+<table>
+<tr><th>Drug Combination</th><th>Effect</th><th>Nursing Concern</th></tr>
+<tr><td>Opioids + Benzodiazepines</td><td>Respiratory depression</td><td>Monitor RR, O₂ sat, LOC</td></tr>
+<tr><td>Opioids + Alcohol</td><td>Excessive CNS depression</td><td>High overdose risk</td></tr>
+<tr><td>ACE inhibitors + Diuretics</td><td>Enhanced BP lowering</td><td>Hypotension risk</td></tr>
+<tr><td>Anticoagulants + NSAIDs</td><td>↑ Bleeding risk</td><td>Monitor for bleeding</td></tr>
+<tr><td>Anticholinergics + Antihistamines</td><td>Dry mouth, retention, confusion</td><td>Anticholinergic burden</td></tr>
+</table>
+</div>
+
+
+<div class="card">
+<h2>Common Antagonistic (CANCELING) Drug Combinations</h2>
+<table>
+<tr><th>Drug Pair</th><th>What Happens</th><th>Exam Focus</th></tr>
+<tr><td>Beta blockers + Beta agonists</td><td>Reduced bronchodilation</td><td>Asthma/COPD risk</td></tr>
+<tr><td>Naloxone + Opioids</td><td>Opioid reversal</td><td>Know antidotes</td></tr>
+<tr><td>NSAIDs + Antihypertensives</td><td>Decreased BP control</td><td>BP elevation</td></tr>
+<tr><td>Antacids + Oral meds</td><td>Reduced absorption</td><td>Timing matters</td></tr>
+</table>
+
+<div class="info">
+<b>Exam Trap:</b> Antagonism does NOT mean side effects—it means reduced effectiveness.
+</div>
+
+<div class="card">
+<h2>Additive Effects (Often Confused with Synergy)</h2>
+<table>
+<tr><th>Example</th><th>Result</th></tr>
+<tr><td>Two antihypertensives</td><td>Predictable BP lowering</td></tr>
+<tr><td>NSAID + NSAID</td><td>No added benefit, ↑ toxicity</td></tr>
+</table>
+</div>
+
+
+<div class="card">
+<h2>OTC & Herbal Interactions (VERY HIGH YIELD)</h2>
+<table>
+<tr><th>Product</th><th>Interacts With</th><th>Result</th></tr>
+<tr><td>St. John’s Wort</td><td>Antidepressants, OCPs</td><td>↓ Drug effectiveness</td></tr>
+<tr><td>Ginkgo</td><td>Anticoagulants</td><td>Bleeding risk</td></tr>
+<tr><td>Ginseng</td><td>Antidiabetics</td><td>Hypoglycemia</td></tr>
+<tr><td>Alcohol</td><td>Many CNS meds</td><td>↑ CNS depression</td></tr>
+</table>
+<div class="warn">
+<b>NCLEX Truth:</b> “Natural” does NOT mean safe.
+</div>
+
+<div class="card">
+<h2>BIG Unit 1 Interaction Takeaways</h2>
+<ul>
+<li>Polypharmacy increases interaction risk exponentially</li>
+<li>Older adults are most vulnerable</li>
+<li>Always ask about OTC and herbal use</li>
+<li>Synergistic CNS depressants are life-threatening</li>
+<li>Antagonism often explains “med not working” complaints</li>
+</ul>
+</div>
+  </details>
+</section>
+
+
+
+<section id="quickscan">
+  <details class="section">
+    <summary>7) Quick-Scan: Interactions & Red Flags (Unit 1)</summary>
+    <div class="term" data-keywords="quick scan red flags interactions synergy antagonistic additive cns depression bleeding">
+    <h3>High-risk “Enhancers” (Synergy) — think: bigger-than-expected effect</h3>
+    <div class="good"><span class="tag nur">Priority danger</span> <b>CNS depressants together</b> (opioids + benzos + alcohol) → <b>respiratory depression</b>. Monitor RR, O₂ sat, LOC; hold/notify per protocol.</div>
+    <ul>
+      <li><b>Opioids + benzodiazepines</b> → respiratory depression</li>
+      <li><b>Opioids + alcohol</b> → severe sedation/overdose risk</li>
+      <li><b>Anticoagulants + NSAIDs</b> → bleeding risk</li>
+      <li><b>Anticholinergics + antihistamines</b> → confusion/urinary retention (especially older adults)</li>
+    </ul>
+  </div>
+
+  <div class="term" data-keywords="cancel out antagonistic beta blocker beta agonist antacids absorption naloxone">
+    <h3>Common “Cancel-Outs” (Antagonism)</h3>
+    <div class="trap"><span class="tag trapTag">Exam trap</span> Antagonism = <b>reduced therapeutic effect</b> (not “side effects”). Often shows up as “the med isn’t working.”</div>
+    <ul>
+      <li><b>Beta blockers + beta agonists</b> (e.g., metoprolol + albuterol) → reduced bronchodilation</li>
+      <li><b>Naloxone + opioids</b> → opioid reversal</li>
+      <li><b>Antacids</b> + some oral meds → reduced absorption (separate dosing when instructed)</li>
+      <li><b>NSAIDs</b> + some antihypertensives → less BP control</li>
+    </ul>
+  </div>
+
+  <div class="term" data-keywords="otc herbal st johns wort ginkgo ginseng interactions">
+    <h3>OTC/Herbal “Gotchas”</h3>
+    <ul>
+      <li><b>St. John’s wort</b> → can reduce effectiveness of several meds (ask every time)</li>
+      <li><b>Ginkgo</b> + anticoagulants → bleeding risk</li>
+      <li><b>Ginseng</b> + antidiabetics → hypoglycemia risk</li>
+    </ul>
+    <div class="good"><span class="tag nur">Nursing</span> Always ask: “What vitamins, supplements, teas, or herbs do you take?”</div>
+  </div>
+  </details>
+</section>
+
+
+
+
+
+
+<section id="exam">
+  <details class="section">
+    <summary>6) Practice Exam (65) — Interactive</summary>
+    <div class="card" style="margin:10px 0;">
+            <div class="row">
+              <div>
+                <div style="font-weight:800;">Learning Tracker</div>
+                <div class="muted tiny" id="statsLine">Loading progress…</div>
+              </div>
+              <div class="btnrow">
+                <button onclick="setMode('all')">All</button>
+                <button onclick="setMode('missed')">Missed Only</button>
+                <button onclick="setMode('unanswered')">Unanswered Only</button>
+                <button onclick="resetProgress()">Reset</button>
+              </div>
+            </div>
+
+            <div class="row" style="margin-top:10px;">
+              <div style="flex:1;min-width:240px;">
+                <div class="muted tiny" style="display:flex;justify-content:space-between;">
+                  <span id="progressLabel">Progress</span>
+                  <span id="progressPct">0%</span>
+                </div>
+                <div style="height:10px;border-radius:999px;background:rgba(255,255,255,.06);overflow:hidden;border:1px solid rgba(48,43,114,.12);">
+                  <div id="progressBar" style="height:100%;width:0%;background:rgba(65,211,158,.55);"></div>
+                </div>
+              </div>
+
+              <label class="switch tiny">
+                <input type="checkbox" id="masteryToggle" onchange="updateTrackerUI()" />
+                Track mastery (only correct counts)
+              </label>
+            </div>
+
+            <div class="muted tiny" id="modeMsg" style="margin-top:10px;"></div>
+          </div>
+
+          <p class="muted tiny">Tap an answer to see: why correct + why each other choice is wrong. Your progress saves automatically on this device.</p>
+
+          
+    <div class="q" data-qid="q1" data-keywords="best pharmacokinetics defined">
+      <h4>Pharmacokinetics is best defined as:</h4>
+      <div class="opts"><button class="opt" onclick="answer('q1','A')">A. The desired effect of a medication</button>
+<button class="opt" onclick="answer('q1','B')">B. How drugs are classified</button>
+<button class="opt" onclick="answer('q1','C')">C. What the body does to a drug</button>
+<button class="opt" onclick="answer('q1','D')">D. How drugs bind to receptors</button></div>
+      <div class="feedback" id="fb-q1"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q2" data-keywords="pharmacodynamics refers">
+      <h4>Pharmacodynamics refers to:</h4>
+      <div class="opts"><button class="opt" onclick="answer('q2','A')">A. Drug absorption and elimination</button>
+<button class="opt" onclick="answer('q2','B')">B. What the drug does to the body</button>
+<button class="opt" onclick="answer('q2','C')">C. Drug metabolism only</button>
+<button class="opt" onclick="answer('q2','D')">D. Half-life of medications</button></div>
+      <div class="feedback" id="fb-q2"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q3" data-keywords="onset administration action? results route most which rapid">
+      <h4>Which route of administration results in the most rapid onset of action?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q3','A')">A. Oral</button>
+<button class="opt" onclick="answer('q3','B')">B. Intramuscular</button>
+<button class="opt" onclick="answer('q3','C')">C. Subcutaneous</button>
+<button class="opt" onclick="answer('q3','D')">D. Intravenous</button></div>
+      <div class="feedback" id="fb-q3"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q4" data-keywords="first-pass will when characteristic have metabolism orally? drug given which with high">
+      <h4>A drug with high first-pass metabolism will have which characteristic when given orally?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q4','A')">A. Increased bioavailability</button>
+<button class="opt" onclick="answer('q4','B')">B. Decreased bioavailability</button>
+<button class="opt" onclick="answer('q4','C')">C. Faster peak</button>
+<button class="opt" onclick="answer('q4','D')">D. Longer duration</button></div>
+      <div class="feedback" id="fb-q4"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q5" data-keywords="nurse medication determine helps half-life">
+      <h4>The half-life of a medication helps the nurse determine:</h4>
+      <div class="opts"><button class="opt" onclick="answer('q5','A')">A. Onset of action</button>
+<button class="opt" onclick="answer('q5','B')">B. Dosing frequency</button>
+<button class="opt" onclick="answer('q5','C')">C. Route of administration</button>
+<button class="opt" onclick="answer('q5','D')">D. Drug classification</button></div>
+      <div class="feedback" id="fb-q5"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q6" data-keywords="drug level peak drawn">
+      <h4>A peak drug level is drawn to:</h4>
+      <div class="opts"><button class="opt" onclick="answer('q6','A')">A. Measure lowest concentration</button>
+<button class="opt" onclick="answer('q6','B')">B. Prevent toxicity</button>
+<button class="opt" onclick="answer('q6','C')">C. Assess absorption only</button>
+<button class="opt" onclick="answer('q6','D')">D. Evaluate renal function</button></div>
+      <div class="feedback" id="fb-q6"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q7" data-keywords="drawn level should trough">
+      <h4>A trough level should be drawn:</h4>
+      <div class="opts"><button class="opt" onclick="answer('q7','A')">A. At the strongest drug effect</button>
+<button class="opt" onclick="answer('q7','B')">B. Immediately after administration</button>
+<button class="opt" onclick="answer('q7','C')">C. Right before the next dose</button>
+<button class="opt" onclick="answer('q7','D')">D. Halfway through infusion</button></div>
+      <div class="feedback" id="fb-q7"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q8" data-keywords="contraindication means">
+      <h4>A contraindication means:</h4>
+      <div class="opts"><button class="opt" onclick="answer('q8','A')">A. The drug should be given cautiously</button>
+<button class="opt" onclick="answer('q8','B')">B. The drug dose should be increased</button>
+<button class="opt" onclick="answer('q8','C')">C. The drug should not be given</button>
+<button class="opt" onclick="answer('q8','D')">D. The drug has side effects</button></div>
+      <div class="feedback" id="fb-q8"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q9" data-keywords="situation demonstrates drug best which interaction?">
+      <h4>Which situation best demonstrates a drug interaction?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q9','A')">A. Drug causes nausea</button>
+<button class="opt" onclick="answer('q9','B')">B. Two drugs reduce each other’s effects</button>
+<button class="opt" onclick="answer('q9','C')">C. A drug produces its intended effect</button>
+<button class="opt" onclick="answer('q9','D')">D. A patient forgets a dose</button></div>
+      <div class="feedback" id="fb-q9"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q10" data-keywords="when occur synergistic effects">
+      <h4>Synergistic effects occur when:</h4>
+      <div class="opts"><button class="opt" onclick="answer('q10','A')">A. One drug blocks another</button>
+<button class="opt" onclick="answer('q10','B')">B. Two drugs cancel each other</button>
+<button class="opt" onclick="answer('q10','C')">C. Combined effect is greater than expected</button>
+<button class="opt" onclick="answer('q10','D')">D. Drugs have no interaction</button></div>
+      <div class="feedback" id="fb-q10"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q11" data-keywords="used most which often exams? name">
+      <h4>Which name is most often used on exams?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q11','A')">A. Trade name</button>
+<button class="opt" onclick="answer('q11','B')">B. Brand name</button>
+<button class="opt" onclick="answer('q11','C')">C. Generic name</button>
+<button class="opt" onclick="answer('q11','D')">D. Manufacturer name</button></div>
+      <div class="feedback" id="fb-q11"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q12" data-keywords="risk factor most drug which toxicity? increases">
+      <h4>Which factor most increases the risk of drug toxicity?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q12','A')">A. Adequate hydration</button>
+<button class="opt" onclick="answer('q12','B')">B. Young adult age</button>
+<button class="opt" onclick="answer('q12','C')">C. Impaired kidney function</button>
+<button class="opt" onclick="answer('q12','D')">D. Healthy liver</button></div>
+      <div class="feedback" id="fb-q12"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q13" data-keywords="blood–brain primarily affects barrier">
+      <h4>The blood–brain barrier primarily affects:</h4>
+      <div class="opts"><button class="opt" onclick="answer('q13','A')">A. Drug absorption</button>
+<button class="opt" onclick="answer('q13','B')">B. Drug entry into the brain</button>
+<button class="opt" onclick="answer('q13','C')">C. Drug elimination</button>
+<button class="opt" onclick="answer('q13','D')">D. Drug excretion</button></div>
+      <div class="feedback" id="fb-q13"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q14" data-keywords="loading given dose">
+      <h4>A loading dose is given to:</h4>
+      <div class="opts"><button class="opt" onclick="answer('q14','A')">A. Reduce side effects</button>
+<button class="opt" onclick="answer('q14','B')">B. Quickly achieve therapeutic levels</button>
+<button class="opt" onclick="answer('q14','C')">C. Prolong drug duration</button>
+<button class="opt" onclick="answer('q14','D')">D. Decrease absorption</button></div>
+      <div class="feedback" id="fb-q14"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q15" data-keywords="best which tolerance? describes">
+      <h4>Which best describes tolerance?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q15','A')">A. Allergic reaction to drug</button>
+<button class="opt" onclick="answer('q15','B')">B. Decreased response requiring higher doses</button>
+<button class="opt" onclick="answer('q15','C')">C. Drug toxicity</button>
+<button class="opt" onclick="answer('q15','D')">D. Enhanced drug response</button></div>
+      <div class="feedback" id="fb-q15"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q16" data-keywords="nursing reflects which process? action assessment">
+      <h4>Which nursing action reflects assessment in the nursing process?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q16','A')">A. Administering medication</button>
+<button class="opt" onclick="answer('q16','B')">B. Checking allergies</button>
+<button class="opt" onclick="answer('q16','C')">C. Providing teaching</button>
+<button class="opt" onclick="answer('q16','D')">D. Evaluating outcomes</button></div>
+      <div class="feedback" id="fb-q16"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q17" data-keywords="nursing met? process step focuses were which whether goals determining">
+      <h4>Which step of the nursing process focuses on determining whether goals were met?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q17','A')">A. Assessment</button>
+<button class="opt" onclick="answer('q17','B')">B. Planning</button>
+<button class="opt" onclick="answer('q17','C')">C. Implementation</button>
+<button class="opt" onclick="answer('q17','D')">D. Evaluation</button></div>
+      <div class="feedback" id="fb-q17"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q18" data-keywords="during occur stage? medication most errors which commonly">
+      <h4>Medication errors most commonly occur during which stage?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q18','A')">A. Administration</button>
+<button class="opt" onclick="answer('q18','B')">B. Monitoring</button>
+<button class="opt" onclick="answer('q18','C')">C. Prescribing</button>
+<button class="opt" onclick="answer('q18','D')">D. Documentation</button></div>
+      <div class="feedback" id="fb-q18"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q19" data-keywords="nurse question? which order should">
+      <h4>Which order should the nurse question?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q19','A')">A. 5 mg</button>
+<button class="opt" onclick="answer('q19','B')">B. 0.25 mg</button>
+<button class="opt" onclick="answer('q19','C')">C. .5 mg</button>
+<button class="opt" onclick="answer('q19','D')">D. 1 tablet</button></div>
+      <div class="feedback" id="fb-q19"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q20" data-keywords="errors? medication practice which helps prevent">
+      <h4>Which practice helps prevent medication errors?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q20','A')">A. Relying on memory</button>
+<button class="opt" onclick="answer('q20','B')">B. Using two patient identifiers</button>
+<button class="opt" onclick="answer('q20','C')">C. Preparing meds in advance</button>
+<button class="opt" onclick="answer('q20','D')">D. Skipping reassessment</button></div>
+      <div class="feedback" id="fb-q20"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q21" data-keywords="risk older adverse adults because drug effects higher">
+      <h4>Older adults are at higher risk for adverse drug effects because of:</h4>
+      <div class="opts"><button class="opt" onclick="answer('q21','A')">A. Increased absorption</button>
+<button class="opt" onclick="answer('q21','B')">B. Decreased renal and hepatic function</button>
+<button class="opt" onclick="answer('q21','C')">C. Faster metabolism</button>
+<button class="opt" onclick="answer('q21','D')">D. Improved circulation</button></div>
+      <div class="feedback" id="fb-q21"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q22" data-keywords="weight-based dosing? requires which population">
+      <h4>Which population requires weight-based dosing?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q22','A')">A. Older adults</button>
+<button class="opt" onclick="answer('q22','B')">B. Pediatric patients</button>
+<button class="opt" onclick="answer('q22','C')">C. Adolescents</button>
+<button class="opt" onclick="answer('q22','D')">D. Healthy adults</button></div>
+      <div class="feedback" id="fb-q22"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q23" data-keywords="nurse medications administering most which cautious patient? should">
+      <h4>A nurse should be most cautious administering medications to which patient?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q23','A')">A. Healthy 20-year-old</button>
+<button class="opt" onclick="answer('q23','B')">B. Pregnant patient</button>
+<button class="opt" onclick="answer('q23','C')">C. Middle-aged adult</button>
+<button class="opt" onclick="answer('q23','D')">D. Adolescent</button></div>
+      <div class="feedback" id="fb-q23"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q24" data-keywords="because they harmful medications">
+      <h4>OTC medications may be harmful because they:</h4>
+      <div class="opts"><button class="opt" onclick="answer('q24','A')">A. Are weaker than prescription drugs</button>
+<button class="opt" onclick="answer('q24','B')">B. Are always safe</button>
+<button class="opt" onclick="answer('q24','C')">C. Can delay diagnosis of serious disease</button>
+<button class="opt" onclick="answer('q24','D')">D. Are not effective</button></div>
+      <div class="feedback" id="fb-q24"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q25" data-keywords="supplements because concerning herbal">
+      <h4>Herbal supplements are concerning because:</h4>
+      <div class="opts"><button class="opt" onclick="answer('q25','A')">A. They are FDA approved</button>
+<button class="opt" onclick="answer('q25','B')">B. They rarely interact with drugs</button>
+<button class="opt" onclick="answer('q25','C')">C. They are unregulated for safety and efficacy</button>
+<button class="opt" onclick="answer('q25','D')">D. They contain no active ingredients</button></div>
+      <div class="feedback" id="fb-q25"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q26" data-keywords="wanting stop patient herb best response prescription nurse’s">
+      <h4>The nurse’s best response to a patient wanting to stop a prescription for an herb is:</h4>
+      <div class="opts"><button class="opt" onclick="answer('q26','A')">A. “That is your decision.”</button>
+<button class="opt" onclick="answer('q26','B')">B. “Herbs are safer.”</button>
+<button class="opt" onclick="answer('q26','C')">C. “You should never do that.”</button>
+<button class="opt" onclick="answer('q26','D')">D. “Let’s review evidence and risks together.”</button></div>
+      <div class="feedback" id="fb-q26"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q27" data-keywords="demonstrates which action implementation?">
+      <h4>Which action demonstrates implementation?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q27','A')">A. Monitoring BP response</button>
+<button class="opt" onclick="answer('q27','B')">B. Teaching medication timing</button>
+<button class="opt" onclick="answer('q27','C')">C. Reviewing lab values</button>
+<button class="opt" onclick="answer('q27','D')">D. Identifying allergies</button></div>
+      <div class="feedback" id="fb-q27"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q28" data-keywords="starting dizziness this patient medication after reports classified">
+      <h4>A patient reports dizziness after starting a new medication. This is classified as:</h4>
+      <div class="opts"><button class="opt" onclick="answer('q28','A')">A. Therapeutic effect</button>
+<button class="opt" onclick="answer('q28','B')">B. Side effect</button>
+<button class="opt" onclick="answer('q28','C')">C. Contraindication</button>
+<button class="opt" onclick="answer('q28','D')">D. Interaction</button></div>
+      <div class="feedback" id="fb-q28"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q29" data-keywords="for polypharmacy increases risk">
+      <h4>Polypharmacy increases risk for:</h4>
+      <div class="opts"><button class="opt" onclick="answer('q29','A')">A. Improved outcomes</button>
+<button class="opt" onclick="answer('q29','B')">B. Drug interactions</button>
+<button class="opt" onclick="answer('q29','C')">C. Faster onset</button>
+<button class="opt" onclick="answer('q29','D')">D. Decreased toxicity</button></div>
+      <div class="feedback" id="fb-q29"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q30" data-keywords="nephrotoxic administering most which drugs? important value before">
+      <h4>Which lab value is most important before administering nephrotoxic drugs?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q30','A')">A. Potassium</button>
+<button class="opt" onclick="answer('q30','B')">B. Creatinine</button>
+<button class="opt" onclick="answer('q30','C')">C. Glucose</button>
+<button class="opt" onclick="answer('q30','D')">D. Calcium</button></div>
+      <div class="feedback" id="fb-q30"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q31" data-keywords="immediate follow-up? requires which finding">
+      <h4>Which finding requires immediate follow-up?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q31','A')">A. Mild nausea</button>
+<button class="opt" onclick="answer('q31','B')">B. Rash with itching</button>
+<button class="opt" onclick="answer('q31','C')">C. Difficulty breathing</button>
+<button class="opt" onclick="answer('q31','D')">D. Fatigue</button></div>
+      <div class="feedback" id="fb-q31"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q32" data-keywords="for disease risk highest patient with liver">
+      <h4>A patient with liver disease is at highest risk for:</h4>
+      <div class="opts"><button class="opt" onclick="answer('q32','A')">A. Reduced absorption</button>
+<button class="opt" onclick="answer('q32','B')">B. Drug accumulation</button>
+<button class="opt" onclick="answer('q32','C')">C. Faster elimination</button>
+<button class="opt" onclick="answer('q32','D')">D. Increased excretion</button></div>
+      <div class="feedback" id="fb-q32"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q33" data-keywords="correct which regarding products? herbal teaching">
+      <h4>Which teaching is correct regarding herbal products?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q33','A')">A. “Natural means safe.”</button>
+<button class="opt" onclick="answer('q33','B')">B. “They replace prescriptions.”</button>
+<button class="opt" onclick="answer('q33','C')">C. “They can interact with medications.”</button>
+<button class="opt" onclick="answer('q33','D')">D. “They are FDA regulated.”</button></div>
+      <div class="feedback" id="fb-q33"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q34" data-keywords="statement patient teaching? indicates which need further">
+      <h4>Which patient statement indicates a need for further teaching?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q34','A')">A. “I’ll tell my nurse about supplements.”</button>
+<button class="opt" onclick="answer('q34','B')">B. “OTC meds can have side effects.”</button>
+<button class="opt" onclick="answer('q34','C')">C. “Herbal products are harmless.”</button>
+<button class="opt" onclick="answer('q34','D')">D. “More is not always better.”</button></div>
+      <div class="feedback" id="fb-q34"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q35" data-keywords="nurse medication effectiveness evaluates">
+      <h4>The nurse evaluates medication effectiveness by:</h4>
+      <div class="opts"><button class="opt" onclick="answer('q35','A')">A. Administering the drug</button>
+<button class="opt" onclick="answer('q35','B')">B. Documenting the dose</button>
+<button class="opt" onclick="answer('q35','C')">C. Assessing for therapeutic response</button>
+<button class="opt" onclick="answer('q35','D')">D. Checking the order</button></div>
+      <div class="feedback" id="fb-q35"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q36" data-keywords="reflects system activation? sympathetic nervous which finding">
+      <h4>Which finding reflects sympathetic nervous system activation?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q36','A')">A. Increased GI motility</button>
+<button class="opt" onclick="answer('q36','B')">B. Bradycardia</button>
+<button class="opt" onclick="answer('q36','C')">C. Elevated blood pressure</button>
+<button class="opt" onclick="answer('q36','D')">D. Urinary urgency</button></div>
+      <div class="feedback" id="fb-q36"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q37" data-keywords="agonist cholinergic effect would which produce?">
+      <h4>Which effect would a cholinergic agonist produce?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q37','A')">A. Dry mouth</button>
+<button class="opt" onclick="answer('q37','B')">B. Tachycardia</button>
+<button class="opt" onclick="answer('q37','C')">C. Increased urination</button>
+<button class="opt" onclick="answer('q37','D')">D. Dilated pupils</button></div>
+      <div class="feedback" id="fb-q37"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q38" data-keywords="associated with sludge">
+      <h4>SLUDGE is associated with:</h4>
+      <div class="opts"><button class="opt" onclick="answer('q38','A')">A. Anticholinergic toxicity</button>
+<button class="opt" onclick="answer('q38','B')">B. Cholinergic toxicity</button>
+<button class="opt" onclick="answer('q38','C')">C. Adrenergic blockade</button>
+<button class="opt" onclick="answer('q38','D')">D. Opioid overdose</button></div>
+      <div class="feedback" id="fb-q38"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q39" data-keywords="antidote toxicity cholinergic">
+      <h4>The antidote for cholinergic toxicity is:</h4>
+      <div class="opts"><button class="opt" onclick="answer('q39','A')">A. Naloxone</button>
+<button class="opt" onclick="answer('q39','B')">B. Epinephrine</button>
+<button class="opt" onclick="answer('q39','C')">C. Atropine</button>
+<button class="opt" onclick="answer('q39','D')">D. Physostigmine</button></div>
+      <div class="feedback" id="fb-q39"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q40" data-keywords="medications cause anticholinergic commonly">
+      <h4>Anticholinergic medications commonly cause:</h4>
+      <div class="opts"><button class="opt" onclick="answer('q40','A')">A. Diarrhea</button>
+<button class="opt" onclick="answer('q40','B')">B. Increased sweating</button>
+<button class="opt" onclick="answer('q40','C')">C. Urinary retention</button>
+<button class="opt" onclick="answer('q40','D')">D. Bradycardia</button></div>
+      <div class="feedback" id="fb-q40"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q41" data-keywords="anticholinergics? patient receive which should">
+      <h4>Which patient should NOT receive anticholinergics?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q41','A')">A. Post-op patient</button>
+<button class="opt" onclick="answer('q41','B')">B. Patient with BPH</button>
+<button class="opt" onclick="answer('q41','C')">C. Patient with bradycardia</button>
+<button class="opt" onclick="answer('q41','D')">D. Asthma patient</button></div>
+      <div class="feedback" id="fb-q41"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q42" data-keywords="nurse prescribed patient nonselective blocker asthma with beta should">
+      <h4>A patient with asthma is prescribed a nonselective beta blocker. The nurse should:</h4>
+      <div class="opts"><button class="opt" onclick="answer('q42','A')">A. Administer the drug</button>
+<button class="opt" onclick="answer('q42','B')">B. Monitor closely</button>
+<button class="opt" onclick="answer('q42','C')">C. Hold and notify provider</button>
+<button class="opt" onclick="answer('q42','D')">D. Increase dose</button></div>
+      <div class="feedback" id="fb-q42"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q43" data-keywords="when administering which benzodiazepines? with opioids priority action">
+      <h4>Which action is priority when administering opioids with benzodiazepines?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q43','A')">A. Monitor bowel sounds</button>
+<button class="opt" onclick="answer('q43','B')">B. Assess respiratory status</button>
+<button class="opt" onclick="answer('q43','C')">C. Check glucose</button>
+<button class="opt" onclick="answer('q43','D')">D. Measure urine output</button></div>
+      <div class="feedback" id="fb-q43"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q44" data-keywords="naloxone reverses">
+      <h4>Naloxone reverses:</h4>
+      <div class="opts"><button class="opt" onclick="answer('q44','A')">A. Benzodiazepines</button>
+<button class="opt" onclick="answer('q44','B')">B. NSAIDs</button>
+<button class="opt" onclick="answer('q44','C')">C. Opioids</button>
+<button class="opt" onclick="answer('q44','D')">D. Acetaminophen</button></div>
+      <div class="feedback" id="fb-q44"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q45" data-keywords="toxicity? indicates which opioid sign">
+      <h4>Which sign indicates opioid toxicity?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q45','A')">A. Dilated pupils</button>
+<button class="opt" onclick="answer('q45','B')">B. Decreased respiratory rate</button>
+<button class="opt" onclick="answer('q45','C')">C. Diarrhea</button>
+<button class="opt" onclick="answer('q45','D')">D. Tachycardia</button></div>
+      <div class="feedback" id="fb-q45"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q46" data-keywords="depression? analgesic carries risk highest which respiratory">
+      <h4>Which analgesic carries the highest risk for respiratory depression?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q46','A')">A. NSAIDs</button>
+<button class="opt" onclick="answer('q46','B')">B. Acetaminophen</button>
+<button class="opt" onclick="answer('q46','C')">C. Opioids</button>
+<button class="opt" onclick="answer('q46','D')">D. Aspirin</button></div>
+      <div class="feedback" id="fb-q46"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q47" data-keywords="tolerance means opioids">
+      <h4>Tolerance to opioids means:</h4>
+      <div class="opts"><button class="opt" onclick="answer('q47','A')">A. Addiction</button>
+<button class="opt" onclick="answer('q47','B')">B. Allergy</button>
+<button class="opt" onclick="answer('q47','C')">C. Higher doses needed over time</button>
+<button class="opt" onclick="answer('q47','D')">D. Toxicity</button></div>
+      <div class="feedback" id="fb-q47"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q48" data-keywords="blockers exam focus)? affect most primarily which beta receptors">
+      <h4>Beta blockers primarily affect which receptors (most exam focus)?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q48','A')">A. Alpha-1</button>
+<button class="opt" onclick="answer('q48','B')">B. Alpha-2</button>
+<button class="opt" onclick="answer('q48','C')">C. Beta-1</button>
+<button class="opt" onclick="answer('q48','D')">D. Beta-2</button></div>
+      <div class="feedback" id="fb-q48"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q49" data-keywords="typical requires which protocol)? holding finding metoprolol assessment">
+      <h4>Which assessment finding requires holding metoprolol (typical protocol)?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q49','A')">A. BP 130/80</button>
+<button class="opt" onclick="answer('q49','B')">B. HR 56 bpm</button>
+<button class="opt" onclick="answer('q49','C')">C. Fatigue</button>
+<button class="opt" onclick="answer('q49','D')">D. Mild dizziness</button></div>
+      <div class="feedback" id="fb-q49"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q50" data-keywords="expected effect which with epinephrine?">
+      <h4>Which SNS effect is expected with epinephrine?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q50','A')">A. Vasodilation</button>
+<button class="opt" onclick="answer('q50','B')">B. Bronchoconstriction</button>
+<button class="opt" onclick="answer('q50','C')">C. Increased heart rate</button>
+<button class="opt" onclick="answer('q50','D')">D. Decreased BP</button></div>
+      <div class="feedback" id="fb-q50"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q51" data-keywords="effect atropine? which blocked">
+      <h4>Which PNS effect is blocked by atropine?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q51','A')">A. Increased secretions</button>
+<button class="opt" onclick="answer('q51','B')">B. Increased HR</button>
+<button class="opt" onclick="answer('q51','C')">C. Vasoconstriction</button>
+<button class="opt" onclick="answer('q51','D')">D. Bronchodilation</button></div>
+      <div class="feedback" id="fb-q51"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q52" data-keywords="best described anticholinergic toxicity">
+      <h4>Anticholinergic toxicity is best described as:</h4>
+      <div class="opts"><button class="opt" onclick="answer('q52','A')">A. Cold, wet, slow</button>
+<button class="opt" onclick="answer('q52','B')">B. Hot, dry, confused</button>
+<button class="opt" onclick="answer('q52','C')">C. Warm, flushed, sedated</button>
+<button class="opt" onclick="answer('q52','D')">D. Cool, clammy, lethargic</button></div>
+      <div class="feedback" id="fb-q52"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q53" data-keywords="treat used retention? medication urinary which">
+      <h4>Which medication is used to treat urinary retention?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q53','A')">A. Atropine</button>
+<button class="opt" onclick="answer('q53','B')">B. Bethanechol</button>
+<button class="opt" onclick="answer('q53','C')">C. Metoprolol</button>
+<button class="opt" onclick="answer('q53','D')">D. Epinephrine</button></div>
+      <div class="feedback" id="fb-q53"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q54" data-keywords="analgesic effective outcome indicates which therapy?">
+      <h4>Which outcome indicates effective analgesic therapy?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q54','A')">A. RR 10/min</button>
+<button class="opt" onclick="answer('q54','B')">B. Pain score reduced from 8 to 3</button>
+<button class="opt" onclick="answer('q54','C')">C. Sedation</button>
+<button class="opt" onclick="answer('q54','D')">D. Nausea</button></div>
+      <div class="feedback" id="fb-q54"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q55" data-keywords="patient taught receiving should anticholinergics">
+      <h4>A patient receiving anticholinergics should be taught to:</h4>
+      <div class="opts"><button class="opt" onclick="answer('q55','A')">A. Increase heat exposure</button>
+<button class="opt" onclick="answer('q55','B')">B. Avoid fluids</button>
+<button class="opt" onclick="answer('q55','C')">C. Use strategies for dry mouth</button>
+<button class="opt" onclick="answer('q55','D')">D. Stop all OTC drugs</button></div>
+      <div class="feedback" id="fb-q55"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q56" data-keywords="after administering most which sign vital epinephrine? important">
+      <h4>Which vital sign is most important after administering epinephrine?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q56','A')">A. Temperature</button>
+<button class="opt" onclick="answer('q56','B')">B. Respiratory rate</button>
+<button class="opt" onclick="answer('q56','C')">C. Heart rate</button>
+<button class="opt" onclick="answer('q56','D')">D. Blood glucose</button></div>
+      <div class="feedback" id="fb-q56"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q57" data-keywords="statement understanding patient indicates which beta blockers?">
+      <h4>Which patient statement indicates understanding of beta blockers?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q57','A')">A. “I can stop suddenly.”</button>
+<button class="opt" onclick="answer('q57','B')">B. “I’ll check my pulse before taking it.”</button>
+<button class="opt" onclick="answer('q57','C')">C. “It will raise my heart rate.”</button>
+<button class="opt" onclick="answer('q57','D')">D. “It opens my airways.”</button></div>
+      <div class="feedback" id="fb-q57"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q58" data-keywords="stimulation? cholinergic indicates which finding">
+      <h4>Which finding indicates cholinergic stimulation?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q58','A')">A. Dry mouth</button>
+<button class="opt" onclick="answer('q58','B')">B. Constipation</button>
+<button class="opt" onclick="answer('q58','C')">C. Increased salivation</button>
+<button class="opt" onclick="answer('q58','D')">D. Tachycardia</button></div>
+      <div class="feedback" id="fb-q58"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q59" data-keywords="nurse question atropine which patient? should">
+      <h4>The nurse should question atropine use in which patient?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q59','A')">A. Bradycardia</button>
+<button class="opt" onclick="answer('q59','B')">B. Organophosphate poisoning</button>
+<button class="opt" onclick="answer('q59','C')">C. Angle-closure glaucoma</button>
+<button class="opt" onclick="answer('q59','D')">D. Preoperative patient</button></div>
+      <div class="feedback" id="fb-q59"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q60" data-keywords="nursing judgment? reflects which priority action">
+      <h4>Which action reflects priority nursing judgment?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q60','A')">A. Teaching after discharge</button>
+<button class="opt" onclick="answer('q60','B')">B. Addressing airway first</button>
+<button class="opt" onclick="answer('q60','C')">C. Documenting later</button>
+<button class="opt" onclick="answer('q60','D')">D. Reviewing chart</button></div>
+      <div class="feedback" id="fb-q60"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q61" data-keywords="for risk patient most multiple depressants">
+      <h4>A patient on multiple CNS depressants is most at risk for:</h4>
+      <div class="opts"><button class="opt" onclick="answer('q61','A')">A. Diarrhea</button>
+<button class="opt" onclick="answer('q61','B')">B. Respiratory depression</button>
+<button class="opt" onclick="answer('q61','C')">C. Hypertension</button>
+<button class="opt" onclick="answer('q61','D')">D. Tachypnea</button></div>
+      <div class="feedback" id="fb-q61"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q62" data-keywords="adverse therapeutic effect? effect rather which suggests finding than">
+      <h4>Which finding suggests an adverse effect rather than a therapeutic effect?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q62','A')">A. Pain relief</button>
+<button class="opt" onclick="answer('q62','B')">B. Bradycardia on beta blockers</button>
+<button class="opt" onclick="answer('q62','C')">C. Rash and wheezing</button>
+<button class="opt" onclick="answer('q62','D')">D. Improved urine output</button></div>
+      <div class="feedback" id="fb-q62"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q63" data-keywords="nurse safe recognizes when medication practice">
+      <h4>A nurse recognizes safe medication practice when the nurse:</h4>
+      <div class="opts"><button class="opt" onclick="answer('q63','A')">A. Assumes orders are correct</button>
+<button class="opt" onclick="answer('q63','B')">B. Questions unclear orders</button>
+<button class="opt" onclick="answer('q63','C')">C. Skips double-checks</button>
+<button class="opt" onclick="answer('q63','D')">D. Relies on experience</button></div>
+      <div class="feedback" id="fb-q63"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q64" data-keywords="nursing interactions? drug best which action helps prevent">
+      <h4>Which nursing action best helps prevent drug interactions?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q64','A')">A. Increasing dose</button>
+<button class="opt" onclick="answer('q64','B')">B. Encouraging herbal use</button>
+<button class="opt" onclick="answer('q64','C')">C. Obtaining complete medication history</button>
+<button class="opt" onclick="answer('q64','D')">D. Avoiding patient questions</button></div>
+      <div class="feedback" id="fb-q64"></div>
+    </div>
+    
+
+    <div class="q" data-qid="q65" data-keywords="explains doses? statement older lower adults best which often require">
+      <h4>Which statement best explains why older adults often require lower doses?</h4>
+      <div class="opts"><button class="opt" onclick="answer('q65','A')">A. Better absorption</button>
+<button class="opt" onclick="answer('q65','B')">B. Faster metabolism</button>
+<button class="opt" onclick="answer('q65','C')">C. Decreased clearance</button>
+<button class="opt" onclick="answer('q65','D')">D. Increased body fat only</button></div>
+      <div class="feedback" id="fb-q65"></div>
+    </div>
+    
+
+        
+  <hr class="divider" />
+  <h2 class="exam-sub">Practice Exam – Added Section: NCLEX-Style Self-Test (Unit 1)</h2>
+  <h2>8) NCLEX-Style Self-Test: Lifespan + ADME + Interactions (Unit 1)</h2>
+  <p class="muted tiny">Tap a question to reveal the answer + why. These are designed from Unit 1 foundations only.</p>
+
+  <details class="q">
+    <summary><b>Q1.</b> An older adult is prescribed a new medication. Which age-related change most increases the risk for drug toxicity?</summary>
+    <div class="content">
+      <div class="good"><span class="tag nur">Answer</span> <b>Decreased renal function (↓ GFR)</b> leading to slower excretion and drug accumulation.</div>
+      <div class="trap"><span class="tag trapTag">Why others are wrong</span> Absorption changes are usually minor; distribution changes matter but renal clearance is the biggest driver of toxicity risk.</div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><b>Q2.</b> A pediatric dose is ordered. What is the nurse’s priority before administration?</summary>
+    <div class="content">
+      <div class="good"><span class="tag nur">Answer</span> <b>Verify weight in kilograms</b> and calculate the dose using weight-based dosing.</div>
+      <div class="trap"><span class="tag trapTag">Exam trap</span> Pounds must be converted to kg; do not “estimate.”</div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><b>Q3.</b> Which route bypasses first-pass metabolism and is often used for rapid onset without IV access?</summary>
+    <div class="content">
+      <div class="good"><span class="tag nur">Answer</span> <b>Sublingual</b> (also inhalation and transdermal bypass first pass; rectal bypasses partially).</div>
+      <div class="trap"><span class="tag trapTag">Why oral is wrong</span> Oral medications commonly undergo first-pass metabolism.</div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><b>Q4.</b> A patient takes metoprolol and reports their rescue inhaler “doesn’t work as well.” What is the best explanation?</summary>
+    <div class="content">
+      <div class="good"><span class="tag nur">Answer</span> <b>Antagonistic interaction:</b> beta blockers can reduce beta-agonist bronchodilation.</div>
+      <div class="good"><span class="tag nur">Nursing</span> Assess breathing, notify provider if control is worsening.</div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><b>Q5.</b> A client is receiving an opioid and a benzodiazepine. What assessment is priority?</summary>
+    <div class="content">
+      <div class="good"><span class="tag nur">Answer</span> <b>Respiratory status</b> (RR, depth, O₂ sat, level of sedation).</div>
+      <div class="trap"><span class="tag trapTag">Why</span> This is a synergistic CNS depressant combination → respiratory depression risk.</div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><b>Q6.</b> A neonate receives a medication. Why are neonates at higher risk for drug accumulation?</summary>
+    <div class="content">
+      <div class="good"><span class="tag nur">Answer</span> <b>Immature liver enzymes and immature renal function</b> → slower metabolism and excretion.</div>
+    </div>
+  </details>
+
+  <details class="q">
+    <summary><b>Q7.</b> The client says, “I’m taking St. John’s wort so I stopped my prescription.” What is the nurse’s best response?</summary>
+    <div class="content">
+      <div class="good"><span class="tag nur">Answer</span> “<b>Let’s review the risks and evidence together</b>, including possible interactions, and involve your provider.”</div>
+      <div class="good"><span class="tag nur">Nursing</span> Herbs can interact and vary in strength/purity.</div>
+    </div>
+  </details>
+  </details>
+</section>
+
+</main>
+    </div>
+  </div>
+
+  <button class="top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+
+  <script>
+    const KEY = {
+      q1: {
+      correct: 'C',
+      whyCorrect: 'Pharmacokinetics = ADME: absorption, distribution, metabolism, excretion—what the body does to the drug.',
+      whyWrong: {
+        A: 'That’s pharmacodynamics/therapeutic outcome, not movement.',
+        B: 'Classification is grouping, not ADME.',
+        D: 'Binding is part of mechanism (pharmacodynamics), not kinetics.'
+      }
+    },
+    q2: {
+      correct: 'B',
+      whyCorrect: 'Pharmacodynamics = mechanism/effects: what the drug does to the body.',
+      whyWrong: {
+        A: 'That’s pharmacokinetics (ADME).',
+        C: 'Metabolism is only one part of kinetics.',
+        D: 'Half-life is a kinetics concept.'
+      }
+    },
+    q3: {
+      correct: 'D',
+      whyCorrect: 'IV goes directly into the bloodstream, so onset is fastest.',
+      whyWrong: {
+        A: 'Oral requires absorption and first-pass effects.',
+        B: 'IM still needs absorption from muscle.',
+        C: 'SQ is absorbed slower than IM/IV.'
+      }
+    },
+    q4: {
+      correct: 'B',
+      whyCorrect: 'First-pass liver metabolism reduces the amount reaching circulation, lowering bioavailability.',
+      whyWrong: {
+        A: 'Opposite—first-pass lowers, not raises.',
+        C: 'Peak timing isn’t guaranteed by first-pass.',
+        D: 'Duration depends on half-life, not first-pass alone.'
+      }
+    },
+    q5: {
+      correct: 'B',
+      whyCorrect: 'Half-life helps set dosing intervals and predict accumulation.',
+      whyWrong: {
+        A: 'Onset is about how fast it starts, not elimination.',
+        C: 'Route can change kinetics but isn’t determined by half-life.',
+        D: 'Classification is separate from kinetics.'
+      }
+    },
+    q6: {
+      correct: 'B',
+      whyCorrect: 'Peak levels help identify the highest concentration to avoid toxicity.',
+      whyWrong: {
+        A: 'Lowest is trough, not peak.',
+        C: 'Peaks reflect concentration, not just absorption.',
+        D: 'Renal function is assessed with labs (e.g., creatinine), not peaks alone.'
+      }
+    },
+    q7: {
+      correct: 'C',
+      whyCorrect: 'Trough = lowest level, measured just before the next dose.',
+      whyWrong: {
+        A: 'Strongest effect is peak.',
+        B: 'Too soon for trough; could approach peak.',
+        D: 'Not the definition of trough timing.'
+      }
+    },
+    q8: {
+      correct: 'C',
+      whyCorrect: 'Contraindication = do not give because harm risk outweighs benefit.',
+      whyWrong: {
+        A: 'That’s a precaution, not a contraindication.',
+        B: 'Increasing dose could worsen harm.',
+        D: 'Side effects can exist even when drug is appropriate.'
+      }
+    },
+    q9: {
+      correct: 'B',
+      whyCorrect: 'An interaction occurs when one drug changes another’s effect—opposition is a classic interaction.',
+      whyWrong: {
+        A: 'Nausea is a side effect, not an interaction.',
+        C: 'That’s therapeutic effect.',
+        D: 'Nonadherence is not an interaction.'
+      }
+    },
+    q10: {
+      correct: 'C',
+      whyCorrect: 'Synergy = amplified effect beyond additive expectations.',
+      whyWrong: {
+        A: 'That’s antagonism.',
+        B: 'That’s antagonistic/canceling effects.',
+        D: 'No interaction means no combined change.'
+      }
+    },
+    q11: {
+      correct: 'C',
+      whyCorrect: 'Most nursing exams prefer generic names to avoid brand confusion.',
+      whyWrong: {
+        A: 'Trade/brand vary by company.',
+        B: 'Brand name is the same idea as trade name.',
+        D: 'Manufacturer name isn’t used as the drug name.'
+      }
+    },
+    q12: {
+      correct: 'C',
+      whyCorrect: 'Kidneys excrete many drugs; impaired function increases accumulation/toxicity.',
+      whyWrong: {
+        A: 'Hydration can support kidney perfusion; not a risk factor.',
+        B: 'Young healthy adults usually clear drugs better.',
+        D: 'Healthy liver reduces (not increases) metabolism risk.'
+      }
+    },
+    q13: {
+      correct: 'B',
+      whyCorrect: 'BBB limits which drugs can reach CNS tissue.',
+      whyWrong: {
+        A: 'Absorption is gut/skin-to-blood.',
+        C: 'Elimination is liver/kidney pathways.',
+        D: 'Excretion is primarily kidney/bile.'
+      }
+    },
+    q14: {
+      correct: 'B',
+      whyCorrect: 'A loading dose gets blood levels into the therapeutic range faster.',
+      whyWrong: {
+        A: 'It can increase side effects if too high.',
+        C: 'Duration relates to half-life, not loading.',
+        D: 'It doesn’t decrease absorption; it increases amount given.'
+      }
+    },
+    q15: {
+      correct: 'B',
+      whyCorrect: 'Tolerance = reduced effect over time; higher doses may be needed.',
+      whyWrong: {
+        A: 'Allergy is immune-mediated (rash, hives, wheeze).',
+        C: 'Toxicity is harmful level, not adaptation.',
+        D: 'Opposite of tolerance.'
+      }
+    },
+    q16: {
+      correct: 'B',
+      whyCorrect: 'Allergy review is assessment (collecting patient data before action).',
+      whyWrong: {
+        A: 'That’s implementation.',
+        C: 'Teaching is implementation.',
+        D: 'Evaluation is checking outcomes after interventions.'
+      }
+    },
+    q17: {
+      correct: 'D',
+      whyCorrect: 'Evaluation determines if the therapeutic goal was achieved.',
+      whyWrong: {
+        A: 'Assessment gathers baseline/ongoing data.',
+        B: 'Planning sets goals/interventions.',
+        C: 'Implementation carries out interventions.'
+      }
+    },
+    q18: {
+      correct: 'C',
+      whyCorrect: 'Many errors originate at prescribing/ordering (wrong drug/dose).',
+      whyWrong: {
+        A: 'Administration errors occur but are not the most common overall.',
+        B: 'Monitoring catches problems; it’s not the highest origin point.',
+        D: 'Documentation issues matter but don’t lead overall.'
+      }
+    },
+    q19: {
+      correct: 'C',
+      whyCorrect: 'A missing leading zero (.5 mg) increases risk of a tenfold error (5 mg).',
+      whyWrong: {
+        A: 'Clear dose format.',
+        B: 'Clear, uses leading zero appropriately.',
+        D: 'May still need strength, but format itself isn’t a decimal safety issue.'
+      }
+    },
+    q20: {
+      correct: 'B',
+      whyCorrect: 'Two identifiers reduce wrong-patient errors (a major safety category).',
+      whyWrong: {
+        A: 'Memory increases error risk.',
+        C: 'Pre-prepping can increase mix-ups/contamination.',
+        D: 'Reassessment is required for safety/effectiveness.'
+      }
+    },
+    q21: {
+      correct: 'B',
+      whyCorrect: 'Reduced liver/kidney function lowers clearance, increasing accumulation.',
+      whyWrong: {
+        A: 'Absorption can change but isn’t the key driver.',
+        C: 'Metabolism is usually slower, not faster.',
+        D: 'Circulation may be reduced, not improved.'
+      }
+    },
+    q22: {
+      correct: 'B',
+      whyCorrect: 'Pediatrics commonly require mg/kg dosing due to size and metabolism differences.',
+      whyWrong: {
+        A: 'Geriatrics often need reduced doses but not primarily mg/kg.',
+        C: 'Sometimes weight-based, but pediatrics most consistently.',
+        D: 'Adults usually standardized dosing ranges.'
+      }
+    },
+    q23: {
+      correct: 'B',
+      whyCorrect: 'Pregnancy adds fetal safety considerations and altered pharmacokinetics.',
+      whyWrong: {
+        A: 'Lowest overall risk.',
+        C: 'Risk varies, but no automatic fetal concern.',
+        D: 'Adolescents generally metabolize closer to adults.'
+      }
+    },
+    q24: {
+      correct: 'C',
+      whyCorrect: 'OTCs can mask symptoms and delay evaluation/treatment.',
+      whyWrong: {
+        A: 'Some OTCs are potent.',
+        B: 'False—OTCs can cause harm/interactions.',
+        D: 'Many OTCs are effective for minor issues.'
+      }
+    },
+    q25: {
+      correct: 'C',
+      whyCorrect: 'Herbals vary in dose/purity and can interact—regulation is limited.',
+      whyWrong: {
+        A: 'Most are not FDA-approved like prescription drugs.',
+        B: 'They can interact significantly.',
+        D: 'Many contain active compounds.'
+      }
+    },
+    q26: {
+      correct: 'D',
+      whyCorrect: 'Collaborative education supports safe, informed decisions and adherence.',
+      whyWrong: {
+        A: 'Non-therapeutic; misses safety teaching.',
+        B: 'Incorrect; herbs can be risky.',
+        C: 'Judgmental; may shut down communication.'
+      }
+    },
+    q27: {
+      correct: 'B',
+      whyCorrect: 'Teaching is an intervention—implementation step.',
+      whyWrong: {
+        A: 'Monitoring is part of evaluation.',
+        C: 'Reviewing labs is assessment.',
+        D: 'Allergies are assessed.'
+      }
+    },
+    q28: {
+      correct: 'B',
+      whyCorrect: 'Dizziness is a common adverse/side effect for many medications.',
+      whyWrong: {
+        A: 'Therapeutic is intended benefit.',
+        C: 'Contraindication is a reason not to give the drug.',
+        D: 'Interaction requires another substance altering effect.'
+      }
+    },
+    q29: {
+      correct: 'B',
+      whyCorrect: 'More meds = higher chance of interactions and cumulative side effects.',
+      whyWrong: {
+        A: 'Not guaranteed; risk increases.',
+        C: 'Onset is route/kinetics related.',
+        D: 'Toxicity risk usually increases, not decreases.'
+      }
+    },
+    q30: {
+      correct: 'B',
+      whyCorrect: 'Creatinine reflects kidney function—key for nephrotoxic medication safety.',
+      whyWrong: {
+        A: 'Important for some meds but not primary kidney function marker.',
+        C: 'Relevant to diabetes meds, not nephrotoxic risk.',
+        D: 'Relevant to calcium-regulating meds.'
+      }
+    },
+    q31: {
+      correct: 'C',
+      whyCorrect: 'Breathing difficulty suggests anaphylaxis/airway compromise—priority.',
+      whyWrong: {
+        A: 'Often non-urgent; monitor/medicate as ordered.',
+        B: 'Could be allergy but airway is highest priority; assess severity.',
+        D: 'Common and usually non-urgent unless severe.'
+      }
+    },
+    q32: {
+      correct: 'B',
+      whyCorrect: 'Impaired metabolism can cause drug accumulation and toxicity.',
+      whyWrong: {
+        A: 'Absorption is not primarily liver-based.',
+        C: 'Elimination is usually slower, not faster.',
+        D: 'Excretion is kidney/bile—liver disease may reduce clearance.'
+      }
+    },
+    q33: {
+      correct: 'C',
+      whyCorrect: 'Herbs can interact and cause adverse effects; disclosure is essential.',
+      whyWrong: {
+        A: 'False—natural can still be harmful.',
+        B: 'Unsafe generalization—requires provider guidance.',
+        D: 'They are not regulated like prescription drugs.'
+      }
+    },
+    q34: {
+      correct: 'C',
+      whyCorrect: 'Saying herbs are harmless is incorrect and unsafe.',
+      whyWrong: {
+        A: 'Correct and safe behavior.',
+        B: 'True.',
+        D: 'Correct; dose matters.'
+      }
+    },
+    q35: {
+      correct: 'C',
+      whyCorrect: 'Evaluation = check whether the intended outcome occurred.',
+      whyWrong: {
+        A: 'Administration is implementation.',
+        B: 'Documentation is necessary but not evaluation of effect.',
+        D: 'Order verification is assessment/safety step.'
+      }
+    },
+    q36: {
+      correct: 'C',
+      whyCorrect: 'SNS increases HR/BP and decreases digestion.',
+      whyWrong: {
+        A: 'GI motility increases with PNS, not SNS.',
+        B: 'Bradycardia is more PNS/blocked SNS.',
+        D: 'Urinary urgency is more PNS; SNS tends to retain.'
+      }
+    },
+    q37: {
+      correct: 'C',
+      whyCorrect: 'Cholinergic (PNS on) increases urination and secretions and slows HR.',
+      whyWrong: {
+        A: 'Dry mouth is anticholinergic.',
+        B: 'Tachycardia is more anticholinergic/SNS.',
+        D: 'Dilated pupils are anticholinergic/SNS.'
+      }
+    },
+    q38: {
+      correct: 'B',
+      whyCorrect: 'SLUDGE = cholinergic excess (too much acetylcholine).',
+      whyWrong: {
+        A: 'Anticholinergic is ‘hot, dry, confused’.',
+        C: 'Adrenergic blockade lowers SNS effects but doesn’t cause SLUDGE.',
+        D: 'Opioid overdose causes respiratory depression and pinpoint pupils.'
+      }
+    },
+    q39: {
+      correct: 'C',
+      whyCorrect: 'Atropine blocks muscarinic receptors and treats cholinergic excess symptoms.',
+      whyWrong: {
+        A: 'Naloxone reverses opioids.',
+        B: 'Epinephrine is for anaphylaxis/cardiac arrest, not SLUDGE.',
+        D: 'Physostigmine treats anticholinergic toxicity (opposite problem).'
+      }
+    },
+    q40: {
+      correct: 'C',
+      whyCorrect: 'Blocking PNS causes urinary retention, dry mouth, tachycardia, dilated pupils.',
+      whyWrong: {
+        A: 'Diarrhea is cholinergic.',
+        B: 'Anticholinergic reduces sweating → hot/dry.',
+        D: 'They often cause tachycardia, not bradycardia.'
+      }
+    },
+    q41: {
+      correct: 'B',
+      whyCorrect: 'Anticholinergics worsen urinary retention; BPH increases risk.',
+      whyWrong: {
+        A: 'May be used perioperatively depending on goal.',
+        C: 'Atropine is used for symptomatic bradycardia (can be appropriate).',
+        D: 'Some anticholinergics are used for bronchodilation; asthma isn’t an absolute ‘never’ for the whole class.'
+      }
+    },
+    q42: {
+      correct: 'C',
+      whyCorrect: 'Nonselective beta blockers block beta‑2 → bronchoconstriction risk in asthma.',
+      whyWrong: {
+        A: 'Unsafe without clarification.',
+        B: 'Monitoring doesn’t prevent bronchospasm risk; needs provider review.',
+        D: 'Increasing dose worsens risk.'
+      }
+    },
+    q43: {
+      correct: 'B',
+      whyCorrect: 'Both depress CNS; priority is respiratory depression monitoring.',
+      whyWrong: {
+        A: 'Constipation matters but isn’t first priority.',
+        C: 'Not directly related.',
+        D: 'Not priority for immediate life threat.'
+      }
+    },
+    q44: {
+      correct: 'C',
+      whyCorrect: 'Naloxone is an opioid antagonist.',
+      whyWrong: {
+        A: 'Flumazenil reverses benzodiazepines.',
+        B: 'No reversal agent like this; manage supportively.',
+        D: 'Acetaminophen toxicity is treated with N‑acetylcysteine.'
+      }
+    },
+    q45: {
+      correct: 'B',
+      whyCorrect: 'Opioid overdose → respiratory depression (often with pinpoint pupils).',
+      whyWrong: {
+        A: 'Opioids usually cause pinpoint pupils.',
+        C: 'Diarrhea is more withdrawal/cholinergic.',
+        D: 'May occur but not the classic priority sign.'
+      }
+    },
+    q46: {
+      correct: 'C',
+      whyCorrect: 'Opioids directly depress the respiratory center.',
+      whyWrong: {
+        A: 'NSAIDs risk GI bleed/kidney injury, not respiratory depression.',
+        B: 'Primary risk is liver injury at high doses.',
+        D: 'Aspirin risks bleeding, Reye syndrome in kids.'
+      }
+    },
+    q47: {
+      correct: 'C',
+      whyCorrect: 'Tolerance is physiologic adaptation requiring higher doses for same effect.',
+      whyWrong: {
+        A: 'Addiction is behavioral/compulsive use.',
+        B: 'Allergy is immune reaction.',
+        D: 'Toxicity is harmful levels, not adaptation.'
+      }
+    },
+    q48: {
+      correct: 'C',
+      whyCorrect: 'Most exam-relevant beta blockers lower HR by blocking beta‑1 in the heart.',
+      whyWrong: {
+        A: 'Alpha-1 affects vasoconstriction.',
+        B: 'Alpha-2 affects neurotransmitter release.',
+        D: 'Beta-2 affects bronchodilation (nonselective blockers affect it but ‘primary’ HR effect is beta‑1).'
+      }
+    },
+    q49: {
+      correct: 'B',
+      whyCorrect: 'Many protocols hold beta blockers if HR &lt; 60 or SBP below threshold.',
+      whyWrong: {
+        A: 'BP is not low and may be desired.',
+        C: 'Fatigue can be expected; assess but not automatic hold.',
+        D: 'Mild dizziness needs assessment but HR criterion is clearer.'
+      }
+    },
+    q50: {
+      correct: 'C',
+      whyCorrect: 'Epinephrine stimulates beta‑1 → increased HR and alpha‑1 → increased BP.',
+      whyWrong: {
+        A: 'Alpha‑1 causes vasoconstriction, not dilation.',
+        B: 'Beta‑2 causes bronchodilation.',
+        D: 'BP usually increases (especially diastolic with alpha‑1).'
+      }
+    },
+    q51: {
+      correct: 'A',
+      whyCorrect: 'Atropine blocks muscarinic receptors → decreases secretions.',
+      whyWrong: {
+        B: 'Atropine actually increases HR (blocks vagal tone), not blocks increased HR.',
+        C: 'Vasoconstriction is SNS/alpha‑1.',
+        D: 'Bronchodilation is beta‑2 (SNS).'
+      }
+    },
+    q52: {
+      correct: 'B',
+      whyCorrect: 'Classic anticholinergic toxidrome: hot, dry skin; tachycardia; confusion.',
+      whyWrong: {
+        A: 'Cold/wet suggests different syndrome (e.g., cholinergic is wet).',
+        C: 'Sedation alone isn’t the key; dryness/confusion are.',
+        D: 'Cool/clammy is not anticholinergic.'
+      }
+    },
+    q53: {
+      correct: 'B',
+      whyCorrect: 'Bethanechol is a cholinergic agonist that promotes bladder emptying.',
+      whyWrong: {
+        A: 'Atropine worsens retention.',
+        C: 'Metoprolol affects HR/BP.',
+        D: 'Epinephrine is SNS stimulant, not urinary retention treatment.'
+      }
+    },
+    q54: {
+      correct: 'B',
+      whyCorrect: 'Therapeutic effect is improved pain with safe vitals.',
+      whyWrong: {
+        A: 'RR 10 is concerning respiratory depression.',
+        C: 'Sedation is side effect; not the goal.',
+        D: 'Nausea is side effect.'
+      }
+    },
+    q55: {
+      correct: 'C',
+      whyCorrect: 'Dry mouth is common; hydration, sugar-free candy, oral care help.',
+      whyWrong: {
+        A: 'Anticholinergics reduce sweating—heat increases overheating risk.',
+        B: 'Fluids are often helpful (unless restricted).',
+        D: 'They should discuss OTCs, not stop all without guidance.'
+      }
+    },
+    q56: {
+      correct: 'C',
+      whyCorrect: 'Epinephrine strongly affects HR and rhythm; monitor for tachycardia/arrhythmias.',
+      whyWrong: {
+        A: 'Not the primary immediate effect.',
+        B: 'Important in anaphylaxis, but the question asks vital sign most impacted broadly.',
+        D: 'Glucose can rise but is not priority.'
+      }
+    },
+    q57: {
+      correct: 'B',
+      whyCorrect: 'Checking pulse helps prevent bradycardia/hypotension complications.',
+      whyWrong: {
+        A: 'Abrupt stop can cause rebound tachycardia/HTN.',
+        C: 'It typically lowers HR.',
+        D: 'Beta blockers do not open airways; nonselective may worsen.'
+      }
+    },
+    q58: {
+      correct: 'C',
+      whyCorrect: 'Cholinergic = ‘wet’ (salivation, tears, diarrhea, urination).',
+      whyWrong: {
+        A: 'Dry mouth is anticholinergic.',
+        B: 'Constipation is anticholinergic.',
+        D: 'Tachycardia is anticholinergic/SNS.'
+      }
+    },
+    q59: {
+      correct: 'C',
+      whyCorrect: 'Atropine can increase intraocular pressure; glaucoma is a contraindication.',
+      whyWrong: {
+        A: 'Atropine can treat symptomatic bradycardia.',
+        B: 'Atropine is used to treat organophosphate (cholinergic) poisoning.',
+        D: 'Sometimes used to reduce secretions pre-op.'
+      }
+    },
+    q60: {
+      correct: 'B',
+      whyCorrect: 'Airway/breathing are life priorities (ABCs).',
+      whyWrong: {
+        A: 'Teaching is important but not first in emergencies.',
+        C: 'Documentation matters but after stabilizing patient.',
+        D: 'Reviewing chart is helpful but not before ABCs.'
+      }
+    },
+    q61: {
+      correct: 'B',
+      whyCorrect: 'CNS depressants (opioids/benzos) can synergistically suppress breathing.',
+      whyWrong: {
+        A: 'Not typical.',
+        C: 'Often the opposite (hypotension).',
+        D: 'Tachypnea is not expected with CNS depression.'
+      }
+    },
+    q62: {
+      correct: 'C',
+      whyCorrect: 'Rash + wheezing suggests allergic reaction/anaphylaxis—adverse effect.',
+      whyWrong: {
+        A: 'Pain relief is intended.',
+        B: 'Bradycardia can be expected/therapeutic within safe range.',
+        D: 'Improved urine output can be therapeutic for some meds/conditions.'
+      }
+    },
+    q63: {
+      correct: 'B',
+      whyCorrect: 'Clarifying unclear orders prevents errors and protects the patient.',
+      whyWrong: {
+        A: 'Orders can be wrong/unsafe; verify.',
+        C: 'Skipping checks increases errors.',
+        D: 'Experience helps but does not replace safety steps.'
+      }
+    },
+    q64: {
+      correct: 'C',
+      whyCorrect: 'Full med history (Rx, OTC, herbals) reveals interaction risks.',
+      whyWrong: {
+        A: 'Dose increase can worsen interactions.',
+        B: 'Herbals may add interactions.',
+        D: 'Asking questions is essential for safety.'
+      }
+    },
+    q65: {
+      correct: 'C',
+      whyCorrect: 'Lower renal/hepatic clearance increases drug levels; smaller doses reduce toxicity.',
+      whyWrong: {
+        A: 'Absorption varies but is not primary driver.',
+        B: 'Metabolism is often slower, not faster.',
+        D: 'Body fat can affect distribution, but clearance is the key broad reason.'
+      }
+    }
+    };
+
+    const STORAGE_KEY = "nur138_progress";
+    let MODE = "all"; // all | missed | unanswered
+
+    function loadProgress(){
+      return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+    }
+    function saveProgress(obj){
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(obj));
+    }
+    function qElements(){
+      return Array.from(document.querySelectorAll(".q[data-qid]"));
+    }
+
+    function computeStats(progress){
+      const mastery = document.getElementById("masteryToggle")?.checked || false;
+
+      let total = qElements().length;
+      let answered = 0, correct = 0, incorrect = 0, mastered = 0;
+
+      qElements().forEach(el => {
+        const id = el.getAttribute("data-qid");
+        const rec = progress[id];
+        if(rec){
+          answered++;
+          if(rec.correct){ correct++; mastered++; }
+          else { incorrect++; }
+        }
+      });
+
+      const progressCount = mastery ? mastered : answered;
+      return { total, answered, correct, incorrect, mastered, progressCount, mastery };
+    }
+
+    function updateTrackerUI(){
+      const progress = loadProgress();
+      const stats = computeStats(progress);
+
+      const denom = stats.total || 1;
+      const pct = Math.round((stats.progressCount / denom) * 100);
+
+      const modeLabel = MODE === "missed" ? "Missed Only" : (MODE === "unanswered" ? "Unanswered Only" : "All Questions");
+      const progLabel = stats.mastery ? "Mastery Progress" : "Answered Progress";
+
+      document.getElementById("statsLine").textContent =
+        `Answered: ${stats.answered}/${stats.total} • Correct: ${stats.correct} • Missed: ${stats.incorrect}`;
+
+      document.getElementById("progressLabel").textContent = `${progLabel} • Mode: ${modeLabel}`;
+      document.getElementById("progressPct").textContent = `${pct}%`;
+      document.getElementById("progressBar").style.width = `${pct}%`;
+
+      applyModeFilter();
+    }
+
+    function setMode(mode){
+      MODE = mode;
+      updateTrackerUI();
+    }
+
+    function applyModeFilter(){
+      const progress = loadProgress();
+      const els = qElements();
+      let shown = 0;
+
+      els.forEach(el => {
+        const id = el.getAttribute("data-qid");
+        const rec = progress[id];
+
+        if(MODE === "all"){ el.style.display = ""; shown++; return; }
+
+        if(MODE === "missed"){ 
+          if(rec && rec.correct === false){ el.style.display = ""; shown++; }
+          else { el.style.display = "none"; }
+          return;
+        }
+
+        if(MODE === "unanswered"){ 
+          if(!rec){ el.style.display = ""; shown++; }
+          else { el.style.display = "none"; }
+          return;
+        }
+      });
+
+      const msg = document.getElementById("modeMsg");
+      if(MODE === "missed" && shown === 0){
+        msg.textContent = "No missed questions right now 🎉 Switch to All to keep practicing.";
+      } else if (MODE === "unanswered" && shown === 0){
+        msg.textContent = "You’ve answered everything ✅ Switch to Missed Only or Reset to repeat.";
+      } else {
+        msg.textContent = "";
+      }
+    }
+
+    function resetProgress(){
+      localStorage.removeItem(STORAGE_KEY);
+      qElements().forEach(el => el.style.borderColor = "rgba(255,255,255,.08)");
+      document.querySelectorAll(".feedback").forEach(fb => fb.style.display = "none");
+      updateTrackerUI();
+    }
+
+    function answer(qid, choice){
+      const k = KEY[qid];
+      const box = document.getElementById("fb-" + qid);
+
+      if(!k){ box.style.display="block"; box.textContent="Answer key not loaded."; return; }
+
+      const isCorrect = choice === k.correct;
+      const status = isCorrect ? `<span class="k">Correct</span>` : `<span class="x">Not quite</span>`;
+      const whyC = `<div style="margin-top:6px;"><b>Why the correct answer is correct:</b> ${k.whyCorrect}</div>`;
+      const wrongs = Object.entries(k.whyWrong).map(([opt,txt]) =>
+        `<div class="tiny" style="margin-top:6px;"><b>Why ${opt} is wrong:</b> ${txt}</div>`
+      ).join("");
+
+      box.innerHTML = `${status} (You chose ${choice}; correct is ${k.correct}).` +
+                      `${whyC}<div style="margin-top:8px;"><b>Why the other choices are wrong:</b></div>${wrongs}`;
+      box.style.display="block";
+
+      const progress = loadProgress();
+      progress[qid] = { choice, correct: isCorrect, ts: Date.now() };
+      saveProgress(progress);
+
+      const qEl = document.querySelector(`.q[data-qid="${qid}"]`);
+      if(qEl) qEl.style.borderColor = isCorrect ? "rgba(65,211,158,.55)" : "rgba(255,107,107,.55)";
+
+      updateTrackerUI();
+    }
+
+    function runSearch(){
+      const q = (document.getElementById("search").value || "").trim().toLowerCase();
+      if(!q) return;
+
+      const candidates = Array.from(document.querySelectorAll("[data-keywords]"))
+        .filter(el => el.style.display !== "none");
+
+      for (const el of candidates){
+        const keys = (el.getAttribute("data-keywords") || "").toLowerCase();
+        if (keys.includes(q)){
+          el.scrollIntoView({behavior:"smooth", block:"start"});
+          el.style.outline = "2px solid rgba(255,209,102,.65)";
+          setTimeout(()=> el.style.outline="none", 1600);
+          return;
+        }
+      }
+      alert("Not found in current mode. Switch modes or try a different keyword.");
+    }
+
+    window.addEventListener("load", () => {
+      updateTrackerUI();
+    });
+  
+    // Simple toggle for custom panels (used in concept maps/decision trees)
+    function togglePanel(id){
+      const el = document.getElementById(id);
+      if(!el) return;
+      const isHidden = (el.style.display === 'none' || el.style.display === '');
+      // If this is part of the routes decision map, hide siblings
+      const groupIds = ['rt1','rt2','rt3','rt4'];
+      if(groupIds.includes(id)){
+        groupIds.forEach(g=>{
+          const e = document.getElementById(g);
+          if(e) e.style.display = (g === id) ? (isHidden ? 'block' : 'none') : 'none';
+        });
+        return;
+      }
+      el.style.display = isHidden ? 'block' : 'none';
+    }
+
+
+
+// ===== Unit 1 Rework Add‑ons (Study framework + SNS infographic) =====
+const STUDY_KEY = "NUR138_UNIT1_STUDY_RECIPE_V1";
+const studyItems = [
+  {key:"class", label:"Organize medications by class", desc:"Group meds by class first—exam questions follow class patterns."},
+  {key:"moa", label:"Write shared MOA (note exceptions)", desc:"One sentence MOA + highlight the weird exception."},
+  {key:"why", label:"Why prescribed (diagnosis)", desc:"Connect the med to the patient’s diagnosis."},
+  {key:"desired", label:"Desired therapeutic effect", desc:"What changes when the drug is working?"},
+  {key:"side", label:"Side effects vs adverse reactions", desc:"Expected vs dangerous red flags."},
+  {key:"contra", label:"Who should NOT receive it + why", desc:"Contraindications/cautious use are high-yield."},
+  {key:"nursing", label:"Nursing implications (before/during/after)", desc:"What must you assess/monitor/do as the nurse?"},
+  {key:"teach", label:"Patient education", desc:"What to teach, avoid, and report."},
+  {key:"names", label:"Naming patterns + trade vs generic", desc:"Suffixes (-lol, -pril) and matching names."},
+];
+
+function loadStudy(){ try{return JSON.parse(localStorage.getItem(STUDY_KEY)||"{}");}catch(e){return {}} }
+function saveStudy(o){ try{localStorage.setItem(STUDY_KEY, JSON.stringify(o));}catch(e){} }
+
+function renderStudyChecklist(){
+  const box = document.getElementById("studyChecklist");
+  if(!box) return;
+  const saved = loadStudy();
+  box.innerHTML = "";
+  studyItems.forEach(it=>{
+    const row = document.createElement("label");
+    row.className = "checkItem";
+    row.innerHTML = `
+      <input type="checkbox" ${saved[it.key] ? "checked":""}/>
+      <div>
+        <div class="lbl">${it.label}</div>
+        <div class="desc">${it.desc}</div>
+      </div>`;
+    row.querySelector("input").addEventListener("change", (e)=>{
+      const next = loadStudy();
+      next[it.key] = e.target.checked;
+      saveStudy(next);
+    });
+    box.appendChild(row);
+  });
+}
+
+document.getElementById("copyTemplateBtn")?.addEventListener("click", async ()=>{
+  const txt = document.getElementById("classTemplate")?.innerText || "";
+  try{
+    await navigator.clipboard.writeText(txt);
+    const msg = document.getElementById("copyMsg");
+    if(msg){ msg.style.display="block"; setTimeout(()=>msg.style.display="none", 1200); }
+  } catch(e){
+    alert("Copy failed. You can select the template text and copy manually.");
+  }
+});
+
+// Bucket game
+const bucketData = [
+  {text:"Prescribed for hypertension", bucket:"Why Prescribed"},
+  {text:"Therapeutic response (BP decreases)", bucket:"Desired Effect"},
+  {text:"Angioedema", bucket:"Adverse Reaction"},
+  {text:"Teach: rise slowly to prevent orthostatic hypotension", bucket:"Patient Education"},
+  {text:"Hold dose if HR is very low (per order/protocol)", bucket:"Nursing Implication"},
+  {text:"Contraindicated in pregnancy (ACE inhibitors)", bucket:"Contraindication"},
+  {text:"Tremor with albuterol", bucket:"Side Effect"},
+  {text:"Check BP before giving antihypertensive", bucket:"Nursing Implication"},
+];
+
+function renderBucketGame(){
+  const root = document.getElementById("bucketGame");
+  if(!root) return;
+  const buckets = ["Why Prescribed","Desired Effect","Side Effect","Adverse Reaction","Contraindication","Nursing Implication","Patient Education"];
+  root.innerHTML = "";
+  const pool = document.createElement("div");
+  pool.className = "bucket";
+  pool.innerHTML = `<h4>Pick an item (tap)</h4><div id="pool"></div><div class="tiny muted" style="margin-top:8px;">Goal: categorize info fast (like the exam).</div>`;
+  const poolBox = pool.querySelector("#pool");
+
+  const cols = document.createElement("div");
+  cols.style.display="grid";
+  cols.style.gridTemplateColumns="1fr 1fr";
+  cols.style.gap="12px";
+
+  const state = {active:null, used:new Set(), score:0};
+
+  function makePill(it, idx){
+    const b = document.createElement("button");
+    b.type="button";
+    b.className="pillTag";
+    b.textContent=it.text;
+    b.addEventListener("click", ()=>{
+      if(state.used.has(idx)) return;
+      state.active = {idx, it};
+      // visual cue
+      poolBox.querySelectorAll(".pillTag").forEach(x=>x.style.outline="none");
+      b.style.outline="2px solid rgba(42,99,255,.55)";
+    });
+    return b;
+  }
+
+  bucketData.forEach((it,idx)=> poolBox.appendChild(makePill(it, idx)));
+
+  buckets.forEach(name=>{
+    const box = document.createElement("div");
+    box.className="bucket";
+    box.innerHTML = `<h4>${name}</h4><div class="tiny muted">Tap to place selected item here.</div><div class="tiny" style="margin-top:8px" id="out_${name.replace(/\s/g,'_')}"></div>`;
+    box.addEventListener("click", ()=>{
+      if(!state.active) return;
+      const {idx, it} = state.active;
+      if(state.used.has(idx)) return;
+
+      const out = box.querySelector("div[id^='out_']");
+      const correct = it.bucket === name;
+      const line = document.createElement("div");
+      line.className="tiny";
+      line.style.marginTop="6px";
+      line.innerHTML = correct ? `✅ <b>${it.text}</b>` : `❌ <b>${it.text}</b> <span class="muted">(belongs in: ${it.bucket})</span>`;
+      out.appendChild(line);
+
+      state.used.add(idx);
+      state.active=null;
+      // dim pill
+      poolBox.children[idx].classList.add("used");
+      poolBox.children[idx].style.outline="none";
+      if(correct) state.score++;
+
+      if(state.used.size === bucketData.length){
+        const msg = document.createElement("div");
+        msg.className="callout";
+        msg.style.marginTop="10px";
+        msg.innerHTML = `<b>Score:</b> ${state.score}/${bucketData.length}. Re-do until it feels automatic.`;
+        pool.appendChild(msg);
+      }
+    });
+    cols.appendChild(box);
+  });
+
+  root.appendChild(pool);
+  root.appendChild(cols);
+}
+
+// Flashcards toggle
+document.querySelectorAll(".flashQ").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    btn.closest(".flash")?.classList.toggle("open");
+  });
+});
+
+// Infographic modal viewer
+const modal = document.getElementById("imgModal");
+const modalImg = document.getElementById("modalImg");
+const modalTitle = document.getElementById("modalTitle");
+function openImg(src, title){
+  if(!modal) return;
+  if(modalImg) modalImg.src = src;
+  if(modalTitle) modalTitle.textContent = title || "Image";
+  modal.classList.add("show");
+}
+function closeImg(){
+  modal?.classList.remove("show");
+  if(modalImg) modalImg.src = "";
+}
+document.getElementById("closeModal")?.addEventListener("click", closeImg);
+modal?.addEventListener("click", (e)=>{ if(e.target === modal) closeImg(); });
+
+document.querySelectorAll(".imgCard").forEach(b=>{
+  b.addEventListener("click", ()=>{
+    const src = b.getAttribute("data-img");
+    const cap = b.querySelector(".imgCap")?.textContent || "Infographic";
+    if(src) openImg(src, cap);
+  });
+});
+
+// Init
+renderStudyChecklist();
+renderBucketGame();
+
+
+
+// SNS Medication Bank (high-yield)
+const SNS_MEDS = [
+  {name:"Epinephrine (Adrenalin)", tag:"Mixed agonist", filter:["mixed","beta","alpha"], moa:"Stimulates α1, β1, β2 (dose-dependent).", uses:"Anaphylaxis, cardiac arrest, severe asthma/bronchospasm (per protocol).", nursing:"Monitor BP/HR, dysrhythmias, extravasation risk with IV; teach EpiPen use."},
+  {name:"Norepinephrine (Levophed)", tag:"α1 > β1 agonist", filter:["alpha","mixed"], moa:"Strong vasoconstriction (α1) with some β1.", uses:"Septic shock/acute hypotension (vasopressor).", nursing:"Continuous BP monitoring, central line preferred; watch for ischemia/extravasation."},
+  {name:"Dopamine (Intropin)", tag:"Dose-dependent", filter:["mixed","beta","alpha"], moa:"Low: dopaminergic; moderate: β1; high: α1.", uses:"Shock with low CO (per protocol).", nursing:"Monitor HR/BP; dysrhythmias; titrate carefully."},
+  {name:"Dobutamine (Dobutrex)", tag:"β1 agonist", filter:["beta"], moa:"Increases contractility and CO (β1).", uses:"Heart failure/cardiogenic shock with low CO.", nursing:"Monitor HR, chest pain, arrhythmias; assess perfusion."},
+  {name:"Phenylephrine (Neo‑Synephrine)", tag:"α1 agonist", filter:["alpha"], moa:"Vasoconstriction → ↑SVR → ↑BP.", uses:"Hypotension; nasal decongestant.", nursing:"Watch for reflex bradycardia; assess perfusion; caution HTN."},
+  {name:"Clonidine (Catapres)", tag:"α2 agonist", filter:["alpha"], moa:"Turns down sympathetic outflow from CNS.", uses:"Hypertension; sometimes ADHD (context dependent).", nursing:"Do NOT stop abruptly (rebound HTN); monitor sedation/dry mouth; patch teaching."},
+  {name:"Albuterol (Ventolin/ProAir)", tag:"β2 agonist (SABA)", filter:["beta"], moa:"Bronchodilation (β2).", uses:"Acute asthma/bronchospasm rescue.", nursing:"Teach proper inhaler use; monitor HR/tremor; reassess lungs/O2."},
+  {name:"Salmeterol (Serevent)", tag:"β2 agonist (LABA)", filter:["beta"], moa:"Long-acting bronchodilation.", uses:"Maintenance (NOT rescue) — often paired with ICS in asthma.", nursing:"Do not use for acute attack; reinforce controller plan."},
+  {name:"Propranolol (Inderal)", tag:"Nonselective β blocker", filter:["blocker","beta"], moa:"Blocks β1 and β2.", uses:"HTN, angina, tremor, migraine prevention.", nursing:"Caution asthma/COPD (β2 block); monitor HR/BP; do not stop abruptly."},
+  {name:"Metoprolol (Lopressor/Toprol XL)", tag:"β1 selective blocker", filter:["blocker","beta"], moa:"Blocks β1 (heart) more than β2.", uses:"HTN, angina, HF (some forms).", nursing:"Monitor HR/BP; teach slow position changes; caution masking hypoglycemia signs."},
+  {name:"Atenolol (Tenormin)", tag:"β1 selective blocker", filter:["blocker","beta"], moa:"Blocks β1.", uses:"HTN, angina.", nursing:"Monitor HR/BP; watch bradycardia/fatigue."},
+  {name:"Labetalol (Trandate)", tag:"α1 + β blocker", filter:["blocker","mixed","alpha","beta"], moa:"Blocks α1, β1, β2 → ↓BP.", uses:"Hypertensive emergencies, pregnancy HTN (per course).", nursing:"Monitor BP/HR; orthostatic risk; caution asthma."},
+  {name:"Carvedilol (Coreg)", tag:"α1 + β blocker", filter:["blocker","mixed","alpha","beta"], moa:"Blocks α1 + β receptors.", uses:"Heart failure, HTN.", nursing:"Monitor HR/BP; take with food; watch dizziness/weight gain (fluid)."},
+  {name:"Prazosin (Minipress)", tag:"α1 blocker", filter:["blocker","alpha"], moa:"Vasodilation by blocking α1.", uses:"HTN; PTSD nightmares (context).", nursing:"First-dose syncope — give at bedtime; teach slow position changes."},
+];
+
+let medFilter = "all";
+function renderMedBank(){
+  const grid = document.getElementById("medGrid");
+  if(!grid) return;
+  grid.innerHTML = "";
+  const show = SNS_MEDS.filter(m => medFilter==="all" || (m.filter||[]).includes(medFilter));
+  show.forEach(m=>{
+    const div = document.createElement("button");
+    div.className = "medCard";
+    div.setAttribute("data-face","front");
+    div.innerHTML = `
+      <div class="medTop">
+        <div class="medName">${m.name}</div>
+        <div class="medTag">${m.tag}</div>
+      </div>
+      <div class="medBody"><b>MOA:</b> ${m.moa}</div>
+      <div class="medHint">Tap to flip → uses + nursing</div>
+    `;
+    div.addEventListener("click", ()=>{
+      const face = div.getAttribute("data-face");
+      if(face==="front"){
+        div.setAttribute("data-face","back");
+        div.querySelector(".medBody").innerHTML = `<b>Uses:</b> ${m.uses}<br/><br/><b>Nursing:</b> ${m.nursing}`;
+        div.querySelector(".medHint").textContent = "Tap to flip back → MOA";
+      }else{
+        div.setAttribute("data-face","front");
+        div.querySelector(".medBody").innerHTML = `<b>MOA:</b> ${m.moa}`;
+        div.querySelector(".medHint").textContent = "Tap to flip → uses + nursing";
+      }
+    });
+    grid.appendChild(div);
+  });
+}
+
+// filter buttons
+document.querySelectorAll("[data-medfilter]").forEach(b=>{
+  b.addEventListener("click", ()=>{
+    medFilter = b.getAttribute("data-medfilter");
+    renderMedBank();
+  });
+});
+
+</script>
+
+<script>
+(function(){
+  function openDetailsForHash(){
+    const hash = window.location.hash;
+    if(!hash) return;
+    const target = document.querySelector(hash);
+    if(!target) return;
+    const details = target.closest('details.section');
+    if(details && !details.open){ details.open = true; }
+    // small highlight
+    target.style.scrollMarginTop = "90px";
+    target.animate([{backgroundColor:"rgba(251,191,36,.25)"},{backgroundColor:"transparent"}], {duration:900});
+  }
+  window.addEventListener('hashchange', openDetailsForHash);
+  window.addEventListener('DOMContentLoaded', openDetailsForHash);
+})();
+</script>
+
+<div class="modalOverlay" id="imgModal">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modalTop">
+      <div class="title" id="modalTitle">Infographic</div>
+      <button class="btn" id="closeModal" type="button">Close</button>
+    </div>
+    <img id="modalImg" alt="Expanded infographic"/>
+  </div>
+</div>
+
+
+<script>
+(function() {
+  const ANSWERS = {"snsQ": ["B", "C", "C", "A", "B", "C", "A", "A"], "pnsQ": ["B", "C", "B", "B", "A", "A", "B", "B", "C", "B"]};
+  const RATS = {"snsQ": ["Propranolol is nonselective (\u03b21+\u03b22). \u03b22 blockade can cause bronchoconstriction/wheezing.", "NE extravasation can cause tissue ischemia. Stop infusion and prepare phentolamine (Regitine) per protocol.", "\u03b11 stimulation causes vasoconstriction \u2192 \u2191BP.", "First-dose hypotension/syncope is classic for alpha blockers.", "Beta blockers can mask hypoglycemia signs like tremor/tachycardia; sweating may still occur.", "Nonselective beta blockers (like propranolol) increase asthma risk due to \u03b22 blockade.", "Take first dose at bedtime to reduce orthostatic hypotension/fall risk.", "Abrupt beta-blocker stop can cause rebound HTN/angina due to receptor up-regulation."], "pnsQ": ["Bethanechol (Urecholine) is a direct muscarinic agonist used for urinary retention.", "Bronchospasm + sweating suggests cholinergic excess (DUMBBELSS).", "Indirect cholinergics inhibit acetylcholinesterase \u2192 \u2191ACh.", "COPD/asthma is unsafe because cholinergics increase bronchoconstriction/secretions.", "Anticholinergics decrease sweating \u2192 heat intolerance/hyperthermia risk.", "Narrow-angle glaucoma is a key contraindication due to mydriasis \u2192 \u2191IOP.", "Benadryl can cause anticholinergic CNS effects (confusion), especially in older adults.", "Nicotinic receptors are at the neuromuscular junction and autonomic ganglia.", "Muscarinic stimulation increases urination (bladder contraction).", "Urinary retention is a safety issue (distention/obstruction risk)."]};
+
+  function parseOptions(optText) {
+    const parts = optText.split(/\s+(?=[A-D]\))/).map(s => s.trim()).filter(Boolean);
+    return parts.map(p => {
+      const m = p.match(/^([A-D])\)\s*(.*)$/);
+      return m ? { key: m[1], text: m[2] } : null;
+    }).filter(Boolean);
+  }
+
+  function getText(el) { return (el.textContent || "").replace(/\s+/g," ").trim(); }
+
+  function saveMissed(qid, isMissed) {
+    try {
+      const k = "nur138_unit1_missed";
+      const obj = JSON.parse(localStorage.getItem(k) || "{}");
+      if (isMissed) obj[qid] = true; else delete obj[qid];
+      localStorage.setItem(k, JSON.stringify(obj));
+    } catch(e) {}
+  }
+
+  function isMissed(qid) {
+    try {
+      const k = "nur138_unit1_missed";
+      const obj = JSON.parse(localStorage.getItem(k) || "{}");
+      return !!obj[qid];
+    } catch(e) { return false; }
+  }
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  function buildQuiz(listId) {
+    const ol = document.getElementById(listId);
+    if (!ol) return;
+
+    const items = Array.from(ol.querySelectorAll(":scope > li"));
+    if (!items.length) return;
+
+    const correct = ANSWERS[listId] || [];
+    const rats = RATS[listId] || [];
+
+    const container = document.createElement("div");
+    container.className = "quizContainer";
+
+    const tools = document.createElement("div");
+    tools.className = "quizTools";
+    const resetBtn = document.createElement("button");
+    resetBtn.className = "smallBtn"; resetBtn.type="button"; resetBtn.textContent="Reset this quiz";
+    const missedBtn = document.createElement("button");
+    missedBtn.className = "smallBtn"; missedBtn.type="button"; missedBtn.textContent="Practice missed only";
+    const showAllBtn = document.createElement("button");
+    showAllBtn.className = "smallBtn"; showAllBtn.type="button"; showAllBtn.textContent="Show all";
+    tools.append(resetBtn, missedBtn, showAllBtn);
+    container.appendChild(tools);
+
+    const blocks = [];
+
+    items.forEach((li, idx) => {
+      const b = li.querySelector("b");
+      const stemText = b ? b.textContent.trim() : getText(li).split("A)")[0].trim();
+      const optDiv = li.querySelector(".opts");
+      const optsText = optDiv ? getText(optDiv) : getText(li).replace(stemText,"");
+      const opts = parseOptions(optsText);
+      const corr = (correct[idx] || "").toUpperCase();
+      const rat = rats[idx] || "";
+
+      const qid = listId + "_" + (idx+1);
+
+      const q = document.createElement("div");
+      q.className = "question";
+      q.dataset.qid = qid;
+      if (isMissed(qid)) q.dataset.missed = "1";
+
+      const stem = document.createElement("div");
+      stem.className = "qStem";
+      stem.innerHTML = `<span class="pill">Q${idx+1}</span> ${esc(stemText)}`;
+
+      const choices = document.createElement("div");
+      choices.className = "choices";
+
+      let selected = null;
+
+      const fb = document.createElement("div");
+      fb.className = "feedback";
+
+      const ratDiv = document.createElement("div");
+      ratDiv.className = "rationale";
+
+      opts.forEach(o => {
+        const btn = document.createElement("button");
+        btn.type="button";
+        btn.className="choiceBtn";
+        btn.setAttribute("aria-pressed","false");
+        btn.dataset.key = o.key;
+        btn.innerHTML = `<b>${o.key})</b> ${esc(o.text)}`;
+        btn.addEventListener("click", () => {
+          selected = o.key;
+          Array.from(choices.querySelectorAll(".choiceBtn")).forEach(x => x.setAttribute("aria-pressed","false"));
+          btn.setAttribute("aria-pressed","true");
+          Array.from(choices.querySelectorAll(".choiceBtn")).forEach(x => x.classList.remove("correct","wrong"));
+          fb.textContent = "";
+          fb.className = "feedback";
+          ratDiv.textContent = "";
+        });
+        choices.appendChild(btn);
+      });
+
+      const actionRow = document.createElement("div");
+      actionRow.className = "quizTools";
+      const checkBtn = document.createElement("button");
+      checkBtn.type="button"; checkBtn.className="smallBtn"; checkBtn.textContent="Check answer";
+      const clearBtn = document.createElement("button");
+      clearBtn.type="button"; clearBtn.className="smallBtn"; clearBtn.textContent="Clear";
+      actionRow.append(checkBtn, clearBtn);
+
+      checkBtn.addEventListener("click", () => {
+        if (!selected) {
+          fb.textContent = "Select an answer first.";
+          fb.className = "feedback bad";
+          return;
+        }
+        const btns = Array.from(choices.querySelectorAll(".choiceBtn"));
+        btns.forEach(x => {
+          if (x.dataset.key === corr) x.classList.add("correct");
+          if (x.dataset.key === selected && selected !== corr) x.classList.add("wrong");
+        });
+
+        if (selected === corr) {
+          fb.textContent = "✅ Correct (" + corr + ")";
+          fb.className = "feedback good";
+          saveMissed(qid, false);
+          q.dataset.missed = "0";
+        } else {
+          fb.textContent = "❌ Incorrect. Correct answer: " + corr;
+          fb.className = "feedback bad";
+          saveMissed(qid, true);
+          q.dataset.missed = "1";
+        }
+        ratDiv.textContent = rat ? ("Why: " + rat) : "";
+      });
+
+      clearBtn.addEventListener("click", () => {
+        selected = null;
+        Array.from(choices.querySelectorAll(".choiceBtn")).forEach(x => {
+          x.setAttribute("aria-pressed","false");
+          x.classList.remove("correct","wrong");
+        });
+        fb.textContent = "";
+        fb.className = "feedback";
+        ratDiv.textContent = "";
+      });
+
+      q.append(stem, choices, actionRow, fb, ratDiv);
+      blocks.push(q);
+      container.appendChild(q);
+    });
+
+    ol.style.display = "none";
+    ol.parentElement.appendChild(container);
+
+    resetBtn.addEventListener("click", () => {
+      blocks.forEach(b => {
+        b.querySelectorAll(".choiceBtn").forEach(x => {
+          x.setAttribute("aria-pressed","false");
+          x.classList.remove("correct","wrong");
+        });
+        const fb = b.querySelector(".feedback");
+        const rat = b.querySelector(".rationale");
+        if (fb) { fb.textContent=""; fb.className="feedback"; }
+        if (rat) rat.textContent="";
+      });
+    });
+
+    missedBtn.addEventListener("click", () => {
+      blocks.forEach(b => {
+        const miss = (b.dataset.missed === "1") || isMissed(b.dataset.qid);
+        b.style.display = miss ? "" : "none";
+      });
+    });
+
+    showAllBtn.addEventListener("click", () => { blocks.forEach(b => b.style.display = ""); });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    buildQuiz("snsQ");
+    buildQuiz("pnsQ");
+  });
+})();
+</script>
+
+
+<script>
+(function(){
+  function onReady(fn){ if(document.readyState!=="loading") fn(); else document.addEventListener("DOMContentLoaded", fn); }
+  onReady(function(){
+    const selectors = ['[data-toggle="more"]', '.clickMore', '.moreBtn', 'button[aria-controls]'];
+    document.querySelectorAll(selectors.join(',')).forEach(function(btn){
+      btn.addEventListener('click', function(){
+        const tId = btn.getAttribute('data-target') || btn.getAttribute('aria-controls');
+        let panel = null;
+        if(tId) panel = document.getElementById(tId);
+        if(!panel){
+          // Try nearest .moreContent in the same card
+          const card = btn.closest('.card') || btn.parentElement;
+          if(card) panel = card.querySelector('.moreContent');
+        }
+        if(!panel){
+          // fallback: next sibling
+          panel = btn.nextElementSibling;
+        }
+        if(!panel) return;
+        panel.classList.toggle('open');
+        btn.setAttribute('aria-expanded', panel.classList.contains('open') ? 'true' : 'false');
+      });
+    });
+  });
+})();
+</script>
+
+
+<script>
+(function(){
+  function onReady(fn){ if(document.readyState!=="loading") fn(); else document.addEventListener("DOMContentLoaded", fn); }
+  onReady(function(){
+    const modal = document.createElement('div');
+    modal.className = 'zoomModal';
+    modal.innerHTML = '<div class="zoomInner" role="dialog" aria-label="Expanded diagram"></div>';
+    document.body.appendChild(modal);
+    const inner = modal.querySelector('.zoomInner');
+    function close(){ modal.classList.remove('open'); inner.innerHTML=''; }
+    modal.addEventListener('click', function(e){ if(e.target===modal) close(); });
+    document.addEventListener('keydown', function(e){ if(e.key==="Escape") close(); });
+
+    document.querySelectorAll('.svgBox svg, .viz img, .viz svg, img.zoomable').forEach(function(el){
+      el.classList.add('zoomable');
+      el.addEventListener('click', function(){
+        inner.innerHTML = '';
+        inner.appendChild(el.cloneNode(true));
+        modal.classList.add('open');
+      });
+    });
+  });
+})();
+</script>
+
+
+<script>
+/* Simple toggle used by interactive tables (Routes, Recalls, etc.) */
+function toggle(id){
+  var el = document.getElementById(id);
+  if(!el) return;
+  if(el.classList.contains('hidden')) el.classList.remove('hidden');
+  else el.classList.add('hidden');
+}
+</script>
+
+
+<script>
+(function(){
+  function tryFixPdf(){
+    const el = document.querySelector('iframe[data-pdf="sns"], object[data-pdf="sns"], embed[data-pdf="sns"]');
+    if(!el) return;
+    const primary = el.getAttribute('data') || el.getAttribute('src');
+    const alt = el.getAttribute('data-alt');
+    if(!alt) return;
+    // If primary 404s, swap to alt. Works best for iframe.
+    function swap(){
+      if(el.tagName.toLowerCase()==='object'){ el.setAttribute('data', alt); }
+      else { el.setAttribute('src', alt); }
+    }
+    // Add a manual button for iPhone cache weirdness
+    const btn = document.getElementById('snsPdfReloadBtn');
+    if(btn){
+      btn.addEventListener('click', function(){
+        // force reload by cache-busting
+        const cb = alt + (alt.includes('?')?'&':'?') + 'v=' + Date.now();
+        if(el.tagName.toLowerCase()==='object'){ el.setAttribute('data', cb); }
+        else { el.setAttribute('src', cb); }
+      });
+    }
+    // Attempt swap if it doesn't load within 1.5s (common when path wrong)
+    setTimeout(function(){
+      // If the primary path includes a folder but user put PDF in root, switch to root
+      if(primary && primary.includes('unit1_assets/') && alt.endsWith('.pdf')){
+        swap();
+      }
+    }, 1500);
+  }
+  document.addEventListener('DOMContentLoaded', tryFixPdf);
+})();
+</script>
+
+
+<script>
+</script>
+
+</body>
+</html>
