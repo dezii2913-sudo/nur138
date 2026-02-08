@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>NUR 138 Unit 2 – Master Guide (Enhanced)</title>
+<style>
+:root{--bg1:#667eea;--bg2:#764ba2;--card:#ffffff;--muted:#6b7280;--accent:#4f46e5;--accent2:#22c55e;--warn:#f59e0b;--danger:#ef4444;}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:linear-gradient(135deg,var(--bg1),var(--bg2));}
+body.exam-night{background:#000;}
+.master-container{max-width:1400px;margin:0 auto;background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+body.exam-night .master-container{background:#0b0f14;color:#e5e7eb}
+header{background:linear-gradient(135deg,#2c3e50,#34495e);color:#fff;padding:28px 22px;text-align:center}
+header h1{margin:0;font-size:2.0rem}
+header p{margin:.35rem 0;opacity:.95}
+.header-actions{margin-top:14px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn{border:none;border-radius:999px;padding:10px 14px;font-weight:700;cursor:pointer}
+.btn-night{background:#111827;color:#fff}
+.btn-quick{background:#eef2ff;color:#111827}
+body.exam-night header{background:#000}
+body.exam-night .btn-quick{background:#111827;color:#e5e7eb}
+.nav{display:flex;flex-wrap:wrap;background:#111827}
+.nav button{flex:1;min-width:160px;padding:14px 10px;border:none;background:transparent;color:#fff;font-weight:800;cursor:pointer}
+.nav button.active{background:#fff;color:#111827}
+body.exam-night .nav button.active{background:#0b0f14;color:#fff;box-shadow:inset 0 -4px 0 var(--accent)}
+.crosslinks{padding:10px 14px;background:#f3f4f6;color:#111827;font-weight:700;font-size:.92rem;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.crosslinks a{color:#111827;text-decoration:none;border-bottom:2px solid rgba(17,24,39,.25)}
+.crosslinks a:hover{border-bottom-color:#111827}
+body.exam-night .crosslinks{background:#0f172a;color:#e5e7eb}
+body.exam-night .crosslinks a{color:#e5e7eb;border-bottom-color:rgba(229,231,235,.35)}
+.panel{display:none}
+.panel.active{display:block}
+.iframeWrap{height:calc(100vh - 230px);min-height:680px}
+iframe{width:100%;height:100%;border:none;background:#fff}
+@media (max-width: 900px){
+  header h1{font-size:1.55rem}
+  .iframeWrap{height:calc(100vh - 270px);min-height:560px}
+  .nav button{min-width:140px}
+}
+.tools{padding:18px 16px}
+.grid{display:grid;grid-template-columns:1.2fr .8fr;gap:14px}
+@media(max-width:980px){.grid{grid-template-columns:1fr}}
+.card{background:rgba(255,255,255,.95);border-radius:14px;padding:14px 14px;box-shadow:0 6px 18px rgba(0,0,0,.08)}
+body.exam-night .card{background:#0f172a;color:#e5e7eb}
+.card h2{margin:0 0 10px 0;font-size:1.25rem}
+.small{color:var(--muted);font-size:.92rem}
+body.exam-night .small{color:#9ca3af}
+hr{border:none;border-top:1px solid rgba(0,0,0,.08);margin:12px 0}
+body.exam-night hr{border-top:1px solid rgba(255,255,255,.12)}
+.qTop{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.pill{display:inline-flex;gap:8px;align-items:center;background:#eef2ff;border-radius:999px;padding:8px 10px;font-weight:800}
+body.exam-night .pill{background:#111827}
+.opt{padding:10px;border-radius:12px;border:2px solid rgba(0,0,0,.12);margin:8px 0;cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+body.exam-night .opt{border-color:rgba(255,255,255,.15)}
+.opt.selected{border-color:var(--accent);background:rgba(79,70,229,.08)}
+.opt.correct{border-color:var(--accent2);background:rgba(34,197,94,.10)}
+.opt.wrong{border-color:var(--danger);background:rgba(239,68,68,.10)}
+.letter{min-width:30px;height:30px;border-radius:999px;background:#111827;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900}
+body.exam-night .letter{background:#0b0f14;border:1px solid rgba(255,255,255,.12)}
+.rationale{display:none;margin-top:10px;padding:10px;border-left:4px solid var(--warn);background:rgba(245,158,11,.10);border-radius:10px}
+.rationale.show{display:block}
+table{width:100%;border-collapse:collapse;overflow:hidden;border-radius:12px}
+th,td{padding:10px;border-bottom:1px solid rgba(0,0,0,.08);text-align:left}
+body.exam-night th, body.exam-night td{border-bottom:1px solid rgba(255,255,255,.12)}
+th{background:#111827;color:#fff}
+body.exam-night th{background:#0b0f14}
+.drawer{position:fixed;right:14px;bottom:14px;z-index:9999;max-width:360px}
+.drawer .btn{background:var(--accent);color:#fff}
+.drawer-panel{display:none;margin-top:10px;background:#fff;border-radius:16px;padding:12px;box-shadow:0 14px 40px rgba(0,0,0,.25)}
+.drawer-panel.show{display:block}
+body.exam-night .drawer-panel{background:#0f172a;color:#e5e7eb}
+</style>
+</head>
+<body>
+<div class="master-container">
+<header>
+  <h1>📚 NUR 138 Pharmacology — Unit 2 Master Guide</h1>
+  <p>Ch 22 • Ch 26 • Ch 37 + Exam Simulator + Labs Matrix + 24‑Hour Cram</p>
+  <div class="header-actions">
+    <button class="btn btn-night" onclick="toggleNight()">🌙 Exam‑Night Mode</button>
+    <button class="btn btn-quick" onclick="openPanel(3)">🧠 Exam Simulator</button>
+    <button class="btn btn-quick" onclick="openPanel(4)">🧪 Labs Matrix</button>
+    <button class="btn btn-quick" onclick="openPanel(5)">⏱️ 24‑Hour Cram</button>
+  </div>
+</header>
+
+<div class="crosslinks">
+  🔗 Cross‑Chapter Memory Links:
+  <a href="javascript:void(0)" onclick="goLink('ace')">ACE‑I → 🩸 Bleeding Risk → 🫁 ACE Cough</a>
+  <a href="javascript:void(0)" onclick="goLink('bb')">β‑Blockers → 🫁 Bronchospasm</a>
+  <a href="javascript:void(0)" onclick="goLink('alb')">Albuterol → ❤️ Tachycardia → K⁺ ↓</a>
+</div>
+
+<div class="nav">
+  <button class="active" onclick="openPanel(0)">🫀 Chapter 22</button>
+  <button onclick="openPanel(1)">🩸 Chapter 26</button>
+  <button onclick="openPanel(2)">🫁 Chapter 37</button>
+  <button onclick="openPanel(3)">🧠 Exam Simulator</button>
+  <button onclick="openPanel(4)">🧪 Labs Matrix</button>
+  <button onclick="openPanel(5)">⏱️ 24‑Hour Cram</button>
+</div>
+
+<div class="panel active" id="p0"><div class="iframeWrap"><iframe src="Chapter_22_COMPLETE_INTERACTIVE.html" title="Chapter 22"></iframe></div></div>
+<div class="panel" id="p1"><div class="iframeWrap"><iframe src="Chapter_26_Coagulation_Complete.html" title="Chapter 26"></iframe></div></div>
+<div class="panel" id="p2"><div class="iframeWrap"><iframe src="Chapter_37_Respiratory_Complete.html" title="Chapter 37"></iframe></div></div>
+
+<div class="panel" id="p3">
+  <div class="tools">
+    <div class="grid">
+      <div class="card">
+        <div class="qTop">
+          <div>
+            <h2>🧠 Adaptive NCLEX‑Style Simulator</h2>
+            <div class="small">Uses your Unit 2 exam‑prep questions. Tracks accuracy + streak. Adapts (concept‑level) as you improve.</div>
+          </div>
+          <div class="pill">Score: <span id="score">0</span>/<span id="total">0</span> • Streak: <span id="streak">0</span></div>
+        </div>
+        <hr/>
+        <div id="qBox"></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+          <button class="btn btn-quick" onclick="submitAnswer()">Submit</button>
+          <button class="btn btn-quick" onclick="nextQuestion()">Next</button>
+          <button class="btn btn-quick" onclick="resetProgress()">Reset Progress</button>
+        </div>
+        <div class="small" style="margin-top:10px">Your doc’s answer key shows one missing item; questions with no key still work as “practice only.” fileciteturn1file0</div>
+      </div>
+
+      <div class="card">
+        <h2>✅ SATA Logic Callouts (always-on)</h2>
+        <ul>
+          <li><strong>Read the stem first:</strong> priority vs teaching vs lab vs safety.</li>
+          <li><strong>SATA:</strong> each option must be true independently.</li>
+          <li><strong>Heparin:</strong> aPTT + verify infusion rate + platelets (HIT).</li>
+          <li><strong>Warfarin:</strong> PT/INR + vitamin K reversal + interactions (herbals).</li>
+          <li><strong>Resp:</strong> rescue vs controller; bronchodilator before steroid; rinse mouth after ICS.</li>
+          <li><strong>HTN:</strong> orthostatics + renal function + potassium shifts.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="p4">
+  <div class="tools">
+    <div class="card">
+      <h2>🧪 Labs ↔ Drugs ↔ Symptoms Matrix</h2>
+      <div class="small">Built directly from the style of your Unit 2 prep questions. fileciteturn1file0</div>
+      <hr/>
+      <div id="labsTable"></div>
+      <hr/>
+      <div class="small"><strong>Fast triggers:</strong> aPTT = heparin • INR = warfarin • platelets drop = HIT • K⁺ shifts = ACE/ARB/diuretics/albuterol • glucose ↑ = steroids</div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="p5">
+  <div class="tools">
+    <div class="card">
+      <h2>⏱️ 24‑Hour Exam Cram</h2>
+      <div class="small">Tap “Jump → Full Chapter” to instantly open the deep content.</div>
+      <hr/>
+      <div id="cram"></div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="drawer">
+  <button class="btn" onclick="toggleDrawer()">🧠 SATA / Priority Tips</button>
+  <div class="drawer-panel" id="drawerPanel">
+    <div style="font-weight:900;margin-bottom:6px">Quick Rules</div>
+    <ul style="margin:0;padding-left:18px">
+      <li><strong>Airway → Breathing → Circulation</strong> always wins.</li>
+      <li><strong>SATA:</strong> each option must be true alone.</li>
+      <li><strong>Heparin:</strong> aPTT + platelets (HIT).</li>
+      <li><strong>Warfarin:</strong> PT/INR + Vit K reversal.</li>
+      <li><strong>ICS:</strong> rinse mouth (thrush prevention).</li>
+      <li><strong>Albuterol:</strong> tremor/tachycardia + K⁺ ↓.</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+const DATA = {"questions": [{"id": 1, "stem": "During the intravenous administration of heparin for the treatment of pulmonary embolism, which nursing intervention will the nurse implement? (Select all that apply)", "options": ["Place Vit. K at bedside", "Verify IV infusion rate is correct", "Check aPTT results", "Monitor platelet counts daily", "Check PT results"], "multi": true, "answer_letters": "BCD", "answer_idx": [1, 2, 3]}, {"id": 2, "stem": "Which laboratory data should the nurse monitor when providing care for a postoperative client who is diagnosed with deep vein thrombosis (DVT) and prescribed heparin therapy?", "options": ["Complete blood cell count", "Hemoglobin and hematocrit", "Comprehensive metabolic panel", "Activated partial thromboplastin time (aPTT)"], "multi": false, "answer_letters": "D", "answer_idx": [3]}, {"id": 3, "stem": "The client’s diagnosis is end-stage renal disease and is prescribed intravenous (IV) heparin since admission 7 days ago for a deep vein thrombosis (DVT).In preparation for discharge the client is given warfarin. Which daily health care provider (HCP) prescription should the nurse question?", "options": ["Atenolol", "Erythropoietin alpha", "Menaquinone (Vit K)", "Vit E"], "multi": false, "answer_letters": "C", "answer_idx": [2]}, {"id": 4, "stem": "The nurse is caring for a client prescribed to receive a dose of warfarin. Which finding would indicate that the nurse should hold the dose of warfarin and contact the provider?", "options": ["PT of 12 seconds", "INR 4.2", "aPTT 48 seconds", "Platelets 180,000"], "multi": false, "answer_letters": "B", "answer_idx": [1]}, {"id": 5, "stem": "A client is admitted to the emergency department with manifestations of warfarin toxicity. Which finding noted during the assessment process requires immediate action by the nurse?", "options": ["INR 2.1", "Bp 110/70 mm Hg", "Diarrhea", "Coffee ground emesis"], "multi": false, "answer_letters": "D", "answer_idx": [3]}, {"id": 6, "stem": "A client who is prescribed warfarin tells the nurse that he has been feeling kind of down lately and wants to know if it is OK to start taking St. John’s Wort. Which response should the nurse make?", "options": ["“It is important to discuss this with your healthcare provider (HCP) before making any changes.”", "“It is not safe to combine any medications with warfarin because it can increase your risk for bleeding.”", "“It is important to ensure that any herbal supplements that you choose to take are FDA approved.”", "“Herbal supplements are a safe way to treat your depression if you want to avoid traditional antidepressants.”"], "multi": false, "answer_letters": "A", "answer_idx": [0]}, {"id": 7, "stem": "A client admitted to the hospital with emphysema is prescribed glucocorticoid therapy. After a few days of treatment, the client yells at the nurse, stating “Why is my blood sugar so high? I was not a diabetic before I was admitted!” Which response by the nurse is best?", "options": ["“You should know by now that steroids raise your blood sugar. Why are you yelling at me when your doctor is the one who prescribed the medication?”", "“Steroids cause blood sugars to be high. Tell me more about your concerns regarding your blood sugar.”", "“It’s ok. Just because your blood sugars are high right now, doesn’t mean you are a diabetic.”", "“I will ask the doctor to come talk to you about your hyperglycemia.”"], "multi": false, "answer_letters": "B", "answer_idx": [1]}, {"id": 8, "stem": "Long term use of steroids would prompt you to screen for:", "options": ["Lead", "Vision concerns", "Nutrition concerns", "Auditory concerns"], "multi": false, "answer_letters": "B", "answer_idx": [1]}, {"id": 9, "stem": "When assessing understanding of prednisone treatment, Which client statement indicates a need for additional teaching from the nurse?", "options": ["“This medication might cause me to develop facial hair.”", "“I will stop the medication if I experience adverse reactions.”", "“I will notify my doctor if I experience severe and sudden eye pain.”", "“This medication inhibits my immune response so I might get sick more often.”"], "multi": false, "answer_letters": "B", "answer_idx": [1]}, {"id": 10, "stem": "The nurse provides care for a client who is diagnosed with chronic obstructive pulmonary disease (COPD) and prescribed long-term glucocorticoid pharmacotherapy. Which diagnostic test should the nurse anticipate for this client based on the current clinical data?", "options": ["Bone marrow aspiration and biopsy.", "Magnetic resonance imaging (MRI).", "Bone density scan.", "Computed tomography (CT) scan."], "multi": false, "answer_letters": "C", "answer_idx": [2]}, {"id": 11, "stem": "Your client has a HR of 124 beats per min and labs show a serum potassium of 3.1 mEq/L. the client is reports feeling shaky. Which prescribed medication does the nurse suspect as being responsible for the client’s current symptoms?", "options": ["Guaifenesin", "Albuterol", "Montelukast", "Diphenhydramine"], "multi": false, "answer_letters": "B", "answer_idx": [1]}, {"id": 12, "stem": "A client who is diagnosed with asthma presents to the emergency department (ED) experiencing sleeplessness, nausea, vomiting, diarrhea, and restlessness. The client states, “My heart feels like it is jumping beats.” Which is the best question for the nurse to include when collecting health history data based on the current clinical data?", "options": ["“Do you have a history of sodium imbalance?”", "“Are you currently taking theophylline for your asthma?”", "“Have you ever been diagnosed with poor kidney function?”", "“When was the last time you used your rescue albuterol inhaler?”"], "multi": false, "answer_letters": "B", "answer_idx": [1]}, {"id": 13, "stem": "Mr. Johnson has three inhalers for his COPD/asthma. He administers them all at the same time in the morning. His inhalers include fluticasone, tiotropium, and albuterol. Which medication should be administered first?", "options": ["Fluticasone", "Tiotropium", "Albuterol", "It doesn't matter"], "multi": false, "answer_letters": "C", "answer_idx": [2]}, {"id": 14, "stem": "A patient states that formoterol works well for her asthma. It is typically the only thing she uses to manage symptoms. Why should you educate her not to do this?", "options": ["It should never be used alone in asthma due to black box warning for increased risk of death", "A short acting medication needs to be given first", "There is an increased risk of thrush when used alone", "The only indication for this medication is if it is used with montelukast"], "multi": false, "answer_letters": "B", "answer_idx": [1]}, {"id": 15, "stem": "The nurse should educate the patient about which of the following side effects when ipratropium is being used?", "options": ["Diarrhea", "Tachycardia", "Dry mouth", "Dry mouth"], "multi": false, "answer_letters": "C", "answer_idx": [2]}, {"id": 16, "stem": "Which of the following would be most concerning with the use of montelukast?", "options": ["Ringing in the ears", "Psychiatric changes", "Excessive fatigue", "Blood loss"], "multi": false, "answer_letters": "B", "answer_idx": [1]}, {"id": 17, "stem": "Your patient is taking budesonide (inhalation via nebulized formulation) for asthma. Which of the following education points is incorrect?", "options": ["Budesonide is an appropriate choice for reducing asthma attacks", "Budesonide can increase the risk for thrush", "Rinsing the mouth after administration is recommended", "It is long-acting beta-agonist"], "multi": false, "answer_letters": "D", "answer_idx": [3]}], "labs": [{"lab": "aPTT", "tracks": "Unfractionated heparin drip", "target_hint": "Therapeutic range per protocol (often ~1.5–2.5× control)", "watch_for": "Bleeding; too high aPTT = hold/adjust"}, {"lab": "PT/INR", "tracks": "Warfarin", "target_hint": "Therapeutic INR often 2–3 (some indications 2.5–3.5)", "watch_for": "High INR = bleeding risk; vitamin K reversal"}, {"lab": "Platelets", "tracks": "Heparin (HIT risk)", "target_hint": "Drop >50% from baseline or new thrombosis is concerning", "watch_for": "Stop heparin; notify provider"}, {"lab": "Hgb/Hct", "tracks": "Occult/active bleeding", "target_hint": "Trending down can signal bleeding", "watch_for": "Coffee-ground emesis, melena, hypotension"}, {"lab": "K⁺", "tracks": "ACE-I/ARBs (↑K⁺), diuretics (often ↓K⁺), albuterol (↓K⁺)", "target_hint": "Know hypo vs hyper K symptoms", "watch_for": "Palpitations, weakness, arrhythmias"}, {"lab": "Glucose", "tracks": "Systemic steroids (↑glucose)", "target_hint": "Monitor especially COPD/asthma on steroids", "watch_for": "Hyperglycemia even without diabetes"}], "cram": [{"title": "HTN Drugs (Ch 22) – what to know in 10 minutes", "bullets": ["BP = CO × SVR. Drugs lower CO (↓HR/↓SV) and/or ↓SVR.", "ACE inhibitors (-pril): cough/angioedema, ↑K⁺, monitor creatinine; avoid pregnancy.", "ARBs (-sartan): no cough but ↑K⁺; avoid pregnancy.", "Beta blockers: selective β1 safer in asthma; non-selective can cause bronchospasm.", "CCBs: diltiazem/verapamil can ↓HR/AV conduction; dihydropyridines cause edema.", "Diuretics: loop/thiazide often ↓K⁺; teach orthostasis, labs, dehydration signs."], "jump": "openPanel(0)"}, {"title": "Coagulation (Ch 26) – bleeding safety fast", "bullets": ["Heparin drip: monitor aPTT; antidote = protamine sulfate; HIT = check platelets.", "Warfarin: monitor PT/INR; antidote = vitamin K; many drug/herbal interactions.", "Antiplatelet vs anticoagulant: platelets (Plavix) vs clotting factors (heparin/warfarin).", "Alteplase (tPA): high bleeding risk—neuro checks + bleeding precautions."], "jump": "openPanel(1)"}, {"title": "Respiratory (Ch 37) – rescue vs control", "bullets": ["SABA (albuterol) = rescue. Causes tremor, tachycardia, ↓K⁺.", "LABA (formoterol/salmeterol) = control; not monotherapy in asthma.", "Inhaled steroids (fluticasone/budesonide): rinse mouth → prevent thrush; long-term risks.", "Montelukast: watch for psychiatric changes.", "MDI + spacer technique matters; bronchodilator before steroid."], "jump": "openPanel(2)"}]};
+
+let state = {order:[], idx:0, selected:[], score:0, totalGraded:0, streak:0};
+
+function save(){ localStorage.setItem('nur138_u2_state', JSON.stringify(state)); }
+function load(){ try{ const s=JSON.parse(localStorage.getItem('nur138_u2_state')||'null'); if(s&&Array.isArray(s.order)) state=s; }catch(e){} }
+
+function toggleNight(){ document.body.classList.toggle('exam-night'); }
+function openPanel(i){
+  document.querySelectorAll('.panel').forEach((p,idx)=>p.classList.toggle('active', idx===i));
+  document.querySelectorAll('.nav button').forEach((b,idx)=>b.classList.toggle('active', idx===i));
+  if(i===3) renderQuestion();
+  if(i===4) renderLabs();
+  if(i===5) renderCram();
+}
+function goLink(kind){ if(kind==='ace'||kind==='bb') openPanel(0); if(kind==='alb') openPanel(2); }
+function toggleDrawer(){ document.getElementById('drawerPanel').classList.toggle('show'); }
+
+function initOrder(){
+  state.order = DATA.questions.map(q=>q.id);
+  for(let i=state.order.length-1;i>0;i--){ const j = (i*7 + 3) % (i+1); [state.order[i],state.order[j]]=[state.order[j],state.order[i]]; }
+  state.idx=0; state.selected=[]; state.score=0; state.totalGraded=0; state.streak=0;
+}
+
+function getCurrentQ(){
+  const id = state.order[state.idx % state.order.length];
+  return DATA.questions.find(q=>q.id===id);
+}
+
+function renderQuestion(){
+  if(!state.order || state.order.length===0) initOrder();
+  const q=getCurrentQ();
+  const box=document.getElementById('qBox');
+  state.selected=[];
+  box.innerHTML = `
+    <div style="font-weight:900;font-size:1.05rem;margin-bottom:6px">Question ${q.id} ${q.multi ? '<span class="pill" style="margin-left:8px">SATA</span>' : ''}</div>
+    <div style="font-size:1.05rem;line-height:1.5">${escapeHtml(q.stem)}</div>
+    <div id="opts"></div>
+    <div class="rationale" id="rat"><div style="font-weight:900;margin-bottom:6px">Rationale / What to remember</div><div id="ratBody"></div></div>
+  `;
+  const opts=document.getElementById('opts');
+  q.options.forEach((t,idx)=>{
+    const letter='ABCD'[idx]||String(idx+1);
+    const div=document.createElement('div');
+    div.className='opt';
+    div.onclick=()=>toggleSelect(idx,div,q.multi);
+    div.innerHTML=`<div class="letter">${letter}</div><div>${escapeHtml(t)}</div>`;
+    opts.appendChild(div);
+  });
+  document.getElementById('score').textContent=state.score;
+  document.getElementById('total').textContent=state.totalGraded;
+  document.getElementById('streak').textContent=state.streak;
+  save();
+}
+
+function toggleSelect(idx,el,multi){
+  if(!multi){
+    document.querySelectorAll('.opt').forEach(o=>o.classList.remove('selected'));
+    state.selected=[idx];
+    el.classList.add('selected');
+  }else{
+    if(state.selected.includes(idx)){
+      state.selected=state.selected.filter(x=>x!==idx);
+      el.classList.remove('selected');
+    }else{
+      state.selected=[...state.selected, idx];
+      el.classList.add('selected');
+    }
+  }
+}
+
+function submitAnswer(){
+  const q=getCurrentQ();
+  const optsEls=Array.from(document.querySelectorAll('.opt'));
+  const chosen=[...state.selected].sort((a,b)=>a-b);
+  const correct=(q.answer_idx||[]).slice().sort((a,b)=>a-b);
+  const hasKey=correct.length>0;
+
+  optsEls.forEach(el=>el.style.pointerEvents='none');
+
+  if(hasKey){
+    const ok = JSON.stringify(chosen)===JSON.stringify(correct);
+    state.totalGraded += 1;
+    if(ok){ state.score += 1; state.streak += 1; } else { state.streak = 0; }
+    optsEls.forEach((el,idx)=>{
+      if(correct.includes(idx)) el.classList.add('correct');
+      if(chosen.includes(idx) && !correct.includes(idx)) el.classList.add('wrong');
+    });
+  }else{
+    document.getElementById('ratBody').innerHTML = `<div class="small">Practice-only item (missing key). Use your chapters + labs matrix to justify each option.</div>`;
+  }
+
+  const rat=document.getElementById('rat');
+  rat.classList.add('show');
+  document.getElementById('ratBody').innerHTML = buildRationale(q);
+
+  document.getElementById('score').textContent=state.score;
+  document.getElementById('total').textContent=state.totalGraded;
+  document.getElementById('streak').textContent=state.streak;
+
+  if(state.streak>=3){
+    const sataIds=DATA.questions.filter(x=>x.multi).map(x=>x.id);
+    state.order=[...new Set([...sataIds, ...state.order])];
+  }
+  save();
+}
+
+function nextQuestion(){ state.idx=(state.idx+1)%state.order.length; renderQuestion(); }
+function resetProgress(){ localStorage.removeItem('nur138_u2_state'); initOrder(); renderQuestion(); }
+
+function buildRationale(q){
+  const s=q.stem.toLowerCase();
+  if(s.includes('heparin')) return `<ul><li><strong>Heparin drip:</strong> verify rate, check aPTT, monitor platelets for HIT.</li><li><strong>Vitamin K is for warfarin</strong>, not heparin.</li></ul>`;
+  if(s.includes('warfarin')) return `<ul><li><strong>Warfarin:</strong> monitor PT/INR. High INR = bleeding risk.</li><li><strong>Herbals interact</strong>—always ask provider/pharmacist.</li></ul>`;
+  if(s.includes('steroids')||s.includes('prednisone')||s.includes('glucocorticoid')) return `<ul><li><strong>Steroids raise glucose.</strong> Monitor + teach.</li><li><strong>Long-term:</strong> bone density, infection risk, vision changes.</li></ul>`;
+  if(s.includes('albuterol')||s.includes('beta-2')) return `<ul><li><strong>β2 agonists:</strong> tremor, tachycardia, and <strong>lower K⁺</strong>.</li></ul>`;
+  if(s.includes('montelukast')) return `<ul><li><strong>Montelukast:</strong> watch for <strong>psychiatric changes</strong>.</li></ul>`;
+  if(s.includes('ipratropium')) return `<ul><li><strong>Ipratropium:</strong> anticholinergic → <strong>dry mouth</strong>.</li></ul>`;
+  if(s.includes('inhaler')) return `<ul><li><strong>Order:</strong> bronchodilator (albuterol) first, then steroid; rinse after steroid.</li></ul>`;
+  return `<div class="small">Use the chapters + labs matrix to justify each option.</div>`;
+}
+
+function renderLabs(){
+  const wrap=document.getElementById('labsTable');
+  const rows=DATA.labs.map(r=>`<tr><td><strong>${escapeHtml(r.lab)}</strong></td><td>${escapeHtml(r.tracks)}</td><td>${escapeHtml(r.target_hint)}</td><td>${escapeHtml(r.watch_for)}</td></tr>`).join('');
+  wrap.innerHTML = `<table><thead><tr><th>Lab</th><th>Tracks</th><th>Target / Hint</th><th>Watch For</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+function renderCram(){
+  const c=document.getElementById('cram');
+  c.innerHTML = DATA.cram.map(sec=>`
+    <div class="card" style="margin-bottom:12px">
+      <div style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap">
+        <div style="font-weight:900">${escapeHtml(sec.title)}</div>
+        <button class="btn btn-quick" onclick="${sec.jump}">Jump → Full Chapter</button>
+      </div>
+      <ul style="margin:10px 0 0 0;padding-left:18px">
+        ${sec.bullets.map(b=>`<li>${escapeHtml(b)}</li>`).join('')}
+      </ul>
+    </div>
+  `).join('');
+}
+function escapeHtml(s){ return String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;'); }
+
+load();
+if(!state.order || state.order.length===0) initOrder();
+renderLabs(); renderCram();
+</script>
+</body>
+</html>
