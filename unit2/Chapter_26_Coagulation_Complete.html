@@ -1,0 +1,2729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 26 - Coagulation Modifier Drugs | NUR 138 Pharmacology Unit 2</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            padding: 15px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.4);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+            margin: 8px 0;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            padding: 25px 20px;
+            background: linear-gradient(to bottom, #f8f9fa 0%, #e9ecef 100%);
+            border-bottom: 4px solid #dc3545;
+        }
+        
+        .tab-btn {
+            padding: 12px 24px;
+            background: white;
+            color: #dc3545;
+            border: 2px solid #dc3545;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .tab-btn:hover {
+            background: #dc3545;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(220,53,69,0.4);
+        }
+        
+        .tab-btn.active {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            color: white;
+            border-color: #c82333;
+            box-shadow: 0 4px 8px rgba(200,35,51,0.3);
+        }
+        
+        .content-area {
+            padding: 40px 35px;
+            min-height: 600px;
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.6s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h2 {
+            color: #dc3545;
+            font-size: 2.4em;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 4px solid #dc3545;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        h3 {
+            color: #c82333;
+            font-size: 1.8em;
+            margin-top: 30px;
+            margin-bottom: 18px;
+            padding-left: 12px;
+            border-left: 5px solid #c82333;
+        }
+        
+        h4 {
+            color: #495057;
+            font-size: 1.4em;
+            margin-top: 22px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-left: 6px solid #dc3545;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        
+        .alert-box {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border-left: 6px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(255,193,7,0.2);
+        }
+        
+        .danger-box {
+            background: linear-gradient(135deg, #f8d7da 0%, #ffcccc 100%);
+            border-left: 6px solid #dc3545;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(220,53,69,0.2);
+        }
+        
+        .success-box {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border-left: 6px solid #28a745;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(40,167,69,0.2);
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%);
+            border-left: 6px solid #17a2b8;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(23,162,184,0.2);
+        }
+        
+        .formula-box {
+            background: linear-gradient(135deg, #ffe0e0 0%, #ffcccc 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 25px 0;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #dc3545;
+            border: 4px solid #dc3545;
+            box-shadow: 0 6px 15px rgba(220,53,69,0.3);
+        }
+        
+        .drug-highlight {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            border: 3px solid #ff9800;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(255,152,0,0.2);
+        }
+        
+        .drug-name {
+            font-size: 1.4em;
+            color: #ff6f00;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            color: white;
+            padding: 18px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 1.05em;
+        }
+        
+        td {
+            padding: 15px 18px;
+            border-bottom: 1px solid #dee2e6;
+            background: white;
+        }
+        
+        tr:nth-child(even) td {
+            background: #f8f9fa;
+        }
+        
+        tr:hover td {
+            background: #ffe0e0;
+            transition: background 0.3s ease;
+        }
+        
+        ul, ol {
+            margin: 18px 0;
+            padding-left: 35px;
+        }
+        
+        li {
+            margin: 10px 0;
+            line-height: 1.8;
+        }
+        
+        .highlight {
+            background: #fff59d;
+            padding: 3px 7px;
+            border-radius: 4px;
+            font-weight: 700;
+            color: #f57f17;
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin: 25px 0;
+        }
+        
+        @media (max-width: 968px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            header h1 {
+                font-size: 2.2em;
+            }
+            .content-area {
+                padding: 25px 20px;
+            }
+        }
+        
+        strong {
+            color: #dc3545;
+            font-weight: 700;
+        }
+        
+        .mechanism-box {
+            background: #f0f4f8;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 5px solid #17a2b8;
+            margin: 15px 0;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+        }
+        
+        .badge-danger { background: #dc3545; color: white; }
+        .badge-warning { background: #ffc107; color: #333; }
+        .badge-success { background: #28a745; color: white; }
+        .badge-info { background: #17a2b8; color: white; }
+        .badge-primary { background: #dc3545; color: white; }
+        
+        .note-box {
+            background: #fff8e1;
+            border: 2px dashed #ffb300;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            font-style: italic;
+        }
+        
+        /* FLIP CARDS */
+        .flip-card {
+            background: transparent;
+            perspective: 1000px;
+            margin: 25px 0;
+            cursor: pointer;
+            min-height: 200px;
+        }
+        
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            min-height: 200px;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            min-height: 200px;
+            backface-visibility: hidden;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        
+        .flip-card-front {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            color: white;
+            font-size: 1.4em;
+            font-weight: bold;
+        }
+        
+        .flip-card-back {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: #2c3e50;
+            transform: rotateY(180deg);
+            padding: 25px;
+        }
+        
+        .flip-card-back h4 {
+            color: #dc3545 !important;
+            margin-bottom: 15px;
+        }
+        
+        /* INTERACTIVE CALLOUTS */
+        .interactive-callout {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border: 3px dashed #4caf50;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .interactive-callout:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(76,175,80,0.3);
+        }
+        
+        .callout-header {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+        
+        .callout-content {
+            display: none;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px dashed #4caf50;
+        }
+        
+        .callout-content.show {
+            display: block;
+            animation: slideDown 0.4s ease;
+        }
+        
+        @keyframes slideDown {
+            from { 
+                opacity: 0; 
+                max-height: 0;
+                transform: translateY(-10px);
+            }
+            to { 
+                opacity: 1; 
+                max-height: 2000px;
+                transform: translateY(0);
+            }
+        }
+        
+        /* MEMORY ANCHOR HIGHLIGHTS */
+        .memory-highlight {
+            background: linear-gradient(135deg, #fff59d 0%, #ffeb3b 100%);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 900;
+            color: #f57f17;
+            font-size: 1.15em;
+            border: 2px solid #fbc02d;
+            box-shadow: 0 2px 8px rgba(251,192,45,0.4);
+            display: inline-block;
+            margin: 5px 0;
+        }
+        
+        .memory-saying {
+            background: linear-gradient(135deg, #e1bee7 0%, #ce93d8 100%);
+            border-left: 6px solid #9c27b0;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #6a1b9a;
+            font-style: italic;
+        }
+        
+        .memory-anchor-table a {
+            color: #dc3545;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            background: #ffe0e0;
+            border-radius: 5px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .memory-anchor-table a:hover {
+            background: #dc3545;
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .memory-text {
+            font-size: 1.15em;
+            font-weight: 600;
+            color: #e74c3c;
+            font-style: italic;
+        }
+        
+        /* Quiz styling */
+        #quizContainer {
+            max-width: 900px;
+            margin: 30px auto;
+        }
+        
+        .quiz-question {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .question-number {
+            color: #dc3545;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+        
+        .question-text {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .quiz-option {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 2px solid #dee2e6;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .quiz-option:hover {
+            border-color: #dc3545;
+            background: #ffe0e0;
+            transform: translateX(5px);
+        }
+        
+        .quiz-option.selected {
+            border-color: #dc3545;
+            background: #ffcccc;
+        }
+        
+        .quiz-option.correct {
+            border-color: #28a745;
+            background: #d4edda;
+        }
+        
+        .quiz-option.incorrect {
+            border-color: #dc3545;
+            background: #f8d7da;
+        }
+        
+        .quiz-option.disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+        
+        .option-letter {
+            background: #dc3545;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .quiz-option.correct .option-letter {
+            background: #28a745;
+        }
+        
+        .quiz-option.incorrect .option-letter {
+            background: #dc3545;
+        }
+        
+        .quiz-rationale {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 5px solid #ffc107;
+            display: none;
+        }
+        
+        .quiz-rationale.show {
+            display: block;
+        }
+        
+        .rationale-title {
+            font-weight: bold;
+            color: #856404;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        
+        .quiz-score {
+            text-align: center;
+            font-size: 1.5em;
+            margin: 30px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            color: white;
+            border-radius: 12px;
+        }
+        
+        .quiz-btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .quiz-btn-primary {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .quiz-btn-primary:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(220,53,69,0.4);
+        }
+        
+        .quiz-btn-secondary {
+            background: #6c757d;
+            color: white;
+            margin: 10px;
+        }
+        
+        .quiz-btn-secondary:hover {
+            background: #5a6268;
+        }
+        
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+        
+        @media print {
+            body { background: white; }
+            .container { box-shadow: none; }
+            .nav-tabs { display: none; }
+            .tab-content { display: block !important; page-break-after: always; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>🩸 Chapter 26: Coagulation Modifier Drugs</h1>
+        <p>NUR 138 Pharmacology - Unit 2</p>
+        <p>📚 Interactive Study Guide with Memory Anchors</p>
+    </header>
+
+    <div class="nav-tabs">
+        <button class="tab-btn active" onclick="showTab(0)">📍 Overview</button>
+        <button class="tab-btn" onclick="showTab(1)">🌊 Coagulation Cascade</button>
+        <button class="tab-btn" onclick="showTab(2)">💊 Thrombin Inhibitors</button>
+        <button class="tab-btn" onclick="showTab(3)">🎯 Factor Xa Inhibitors</button>
+        <button class="tab-btn" onclick="showTab(4)">⚖️ Drug Comparisons</button>
+        <button class="tab-btn" onclick="showTab(5)">🩸 Side Effects</button>
+        <button class="tab-btn" onclick="showTab(6)">🔄 Antidotes</button>
+        <button class="tab-btn" onclick="showTab(7)">⚠️ Contraindications</button>
+        <button class="tab-btn" onclick="showTab(8)">👩‍⚕️ Nursing Care</button>
+        <button class="tab-btn" onclick="showTab(9)">📝 Quiz</button>
+    </div>
+
+    <div class="content-area">
+        <!-- TAB 0: Overview & Indications -->
+        <div class="tab-content active" id="tab-0">
+            <h2>🏠 Overview & Indications for Anticoagulants</h2>
+
+            <div class="memory-saying">
+                🩸 MEMORY ANCHOR: "Keep the blood flowing, prevent the clotting" - Anticoagulants prevent thromboembolic events
+            </div>
+
+            <div class="card">
+                <h3>🎯 Quick Navigation - Memory Anchors</h3>
+                <div class="memory-anchor-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 40%;">Topic</th>
+                                <th style="width: 60%;">Jump To</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="memory-text">Coagulation Cascade</span></td>
+                                <td><a href="javascript:void(0)" onclick="showTab(1)">🌊 The Three Streams</a></td>
+                            </tr>
+                            <tr>
+                                <td><span class="memory-text">-gatran drugs</span></td>
+                                <td><a href="javascript:void(0)" onclick="showTab(2)">💊 Gate-keeping Thrombin</a></td>
+                            </tr>
+                            <tr>
+                                <td><span class="memory-text">-xaban drugs</span></td>
+                                <td><a href="javascript:void(0)" onclick="showTab(3)">🎯 X-out Factor Xa</a></td>
+                            </tr>
+                            <tr>
+                                <td><span class="memory-text">DTI vs Xa Inhibitors</span></td>
+                                <td><a href="javascript:void(0)" onclick="showTab(4)">⚖️ Drug Comparisons</a></td>
+                            </tr>
+                            <tr>
+                                <td><span class="memory-text">Black = High, Red = Low</span></td>
+                                <td><a href="javascript:void(0)" onclick="showTab(5)">🩸 Bleeding Recognition</a></td>
+                            </tr>
+                            <tr>
+                                <td><span class="memory-text">Reversal Agents</span></td>
+                                <td><a href="javascript:void(0)" onclick="showTab(6)">🔄 Antidotes</a></td>
+                            </tr>
+                            <tr>
+                                <td><span class="memory-text">CYP3A4 = 3 Always watch For</span></td>
+                                <td><a href="javascript:void(0)" onclick="showTab(7)">⚠️ Drug Interactions</a></td>
+                            </tr>
+                            <tr>
+                                <td><span class="memory-text">ABC - Always Be Careful</span></td>
+                                <td><a href="javascript:void(0)" onclick="showTab(8)">👩‍⚕️ Nursing Care</a></td>
+                            </tr>
+                            <tr>
+                                <td><span class="memory-text">NCLEX Practice</span></td>
+                                <td><a href="javascript:void(0)" onclick="showTab(9)">📝 Test Yourself</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <h3>What are Anticoagulants?</h3>
+            <div class="card">
+                <p><strong>Anticoagulants</strong> are medications that <strong>prevent blood clot formation</strong> by interfering with the coagulation cascade.</p>
+                <p><strong>Key Point:</strong> They do NOT dissolve existing clots - they PREVENT new ones from forming!</p>
+                
+                <div class="alert-box" style="margin-top: 15px;">
+                    <p><strong>⚡ Important Distinction:</strong></p>
+                    <ul>
+                        <li><strong>Anticoagulants:</strong> PREVENT clot formation (proactive)</li>
+                        <li><strong>Thrombolytics:</strong> DISSOLVE existing clots (reactive)</li>
+                        <li><strong>Antiplatelet drugs:</strong> Prevent platelet aggregation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>📋 Who Needs Anticoagulants?</h3>
+            <div class="success-box">
+                <h4>🎯 PREVENT Thromboembolic Events</h4>
+                <p><strong>Thromboembolic events</strong> occur when a blood clot (thrombus) forms and either blocks a vessel or breaks off and travels (embolism).</p>
+            </div>
+
+            <div class="two-column">
+                <div class="drug-highlight">
+                    <div class="drug-name">🦵 Deep Vein Thrombosis (DVT)</div>
+                    <p><strong>What:</strong> Blood clot in deep veins (usually legs)</p>
+                    <p><strong>Risk:</strong> Can break off → pulmonary embolism</p>
+                    <p><strong>Signs:</strong> Leg pain, swelling, warmth, redness</p>
+                </div>
+
+                <div class="drug-highlight">
+                    <div class="drug-name">🫁 Pulmonary Embolism (PE)</div>
+                    <p><strong>What:</strong> Clot travels to lungs</p>
+                    <p><strong>Risk:</strong> LIFE-THREATENING - blocks pulmonary artery</p>
+                    <p><strong>Signs:</strong> Sudden dyspnea, chest pain, tachycardia</p>
+                </div>
+
+                <div class="drug-highlight">
+                    <div class="drug-name">🧠 Ischemic Stroke</div>
+                    <p><strong>What:</strong> Clot blocks blood flow to brain</p>
+                    <p><strong>Risk:</strong> Brain tissue death</p>
+                    <p><strong>Signs:</strong> FAST - Face drooping, Arm weakness, Speech difficulty</p>
+                </div>
+
+                <div class="drug-highlight">
+                    <div class="drug-name">⚡ Transient Ischemic Attack (TIA)</div>
+                    <p><strong>What:</strong> "Mini-stroke" - temporary blockage</p>
+                    <p><strong>Risk:</strong> Warning sign for future stroke</p>
+                    <p><strong>Signs:</strong> Same as stroke but resolves quickly</p>
+                </div>
+
+                <div class="drug-highlight">
+                    <div class="drug-name">❤️ Coronary Artery Disease (CAD)</div>
+                    <p><strong>What:</strong> Plaque buildup in heart arteries</p>
+                    <p><strong>Risk:</strong> Clot formation on plaque → MI</p>
+                    <p><strong>Prevention:</strong> Anticoagulants reduce clot risk</p>
+                </div>
+
+                <div class="drug-highlight">
+                    <div class="drug-name">💔 Myocardial Infarction (MI)</div>
+                    <p><strong>What:</strong> Heart attack from blocked coronary artery</p>
+                    <p><strong>Risk:</strong> Heart muscle death</p>
+                    <p><strong>Signs:</strong> Chest pain, SOB, diaphoresis</p>
+                </div>
+            </div>
+
+            <h3>🏥 When Are Anticoagulants Needed?</h3>
+            <div class="info-box">
+                <h4>Clients with Coagulation Disorders:</h4>
+                <ul>
+                    <li><strong>Antiphospholipid Syndrome:</strong> Autoimmune disorder causing excessive clotting</li>
+                    <li><strong>Disseminated Intravascular Coagulation (DIC):</strong> Widespread clotting and bleeding</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h4>During Surgical Procedures:</h4>
+                <ul>
+                    <li><strong>CABG (Coronary Artery Bypass Graft):</strong> Open heart surgery</li>
+                    <li><strong>PCI (Percutaneous Coronary Intervention):</strong> Cardiac catheterization</li>
+                    <li><strong>ECMO (Extracorporeal Membrane Oxygenation):</strong> Life support machine</li>
+                    <li><strong>Dialysis:</strong> Blood filtration requires anticoagulation in circuit</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h4>Cardiac Conditions:</h4>
+                <ul>
+                    <li><strong>Atrial Fibrillation (AFib):</strong> Irregular heartbeat → blood pools → clots form</li>
+                    <li><strong>Cardiac Valve Replacement:</strong> Mechanical valves are thrombogenic</li>
+                    <li><strong>Coronary Angioplasty:</strong> After stent placement</li>
+                </ul>
+            </div>
+
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <p>🔄 Click to Learn:<br><br>Why does Atrial Fibrillation<br>cause clots?</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h4 style="color: #dc3545;">Atrial Fibrillation → Clot Risk</h4>
+                        <p><strong>Normal Heart:</strong> Atria contract, push blood into ventricles</p>
+                        <p><strong>AFib Heart:</strong> Atria quiver instead of contracting properly</p>
+                        <br>
+                        <p><strong>The Problem:</strong></p>
+                        <ul style="text-align: left;">
+                            <li>Blood pools in atria (stagnant)</li>
+                            <li>Stagnant blood = clot formation</li>
+                            <li>Clot can travel to brain → stroke</li>
+                        </ul>
+                        <br>
+                        <p><strong>Solution:</strong> Anticoagulate to prevent clot formation!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="danger-box">
+                <h4>🚨 High-Risk Situations for Clots:</h4>
+                <ul>
+                    <li><strong>Prolonged immobility:</strong> Long flights, bed rest, paralysis</li>
+                    <li><strong>Recent surgery:</strong> Especially orthopedic (hip/knee)</li>
+                    <li><strong>Cancer patients:</strong> Many cancers increase clotting risk</li>
+                    <li><strong>Pregnancy/postpartum:</strong> Hypercoagulable state</li>
+                    <li><strong>Obesity:</strong> Increases venous stasis</li>
+                    <li><strong>Smoking:</strong> Damages blood vessels, increases clotting</li>
+                </ul>
+            </div>
+
+        </div>
+        <!-- TAB 1: Coagulation Cascade -->
+        <div class="tab-content" id="tab-1">
+            <h2>🌊 The Coagulation Cascade</h2>
+
+            <div class="memory-saying">
+                🌊 MEMORY ANCHOR: "The Cascade Falls in 3 Streams" - Intrinsic, Extrinsic, and Common pathways
+            </div>
+
+            <h3>Understanding the Coagulation Cascade</h3>
+            <div class="card">
+                <p>The <strong>coagulation cascade</strong> is a series of enzymatic reactions that convert <strong>fibrinogen</strong> (soluble) into <strong>fibrin</strong> (insoluble mesh) to form a stable blood clot.</p>
+                
+                <div class="formula-box" style="margin-top: 20px;">
+                    Fibrinogen (Factor I) → Fibrin (Factor Ia)
+                </div>
+
+                <p style="margin-top: 15px;"><strong>Think of it like a waterfall:</strong> Each step activates the next, creating a cascade effect that amplifies the response!</p>
+            </div>
+
+            <h3>The Three Pathways</h3>
+            
+            <div class="two-column">
+                <div class="drug-highlight" style="border-color: #17a2b8;">
+                    <div class="drug-name" style="color: #17a2b8;">1️⃣ INTRINSIC Pathway</div>
+                    <p><strong>Trigger:</strong> Damage to blood vessel lining (endothelium)</p>
+                    <p><strong>Memory:</strong> "IN-trinsic = IN-side the vessel"</p>
+                    <p><strong>Key Factors:</strong> XII, XI, IX, VIII</p>
+                    <p><strong>Monitored by:</strong> aPTT (activated Partial Thromboplastin Time)</p>
+                </div>
+
+                <div class="drug-highlight" style="border-color: #28a745;">
+                    <div class="drug-name" style="color: #28a745;">2️⃣ EXTRINSIC Pathway</div>
+                    <p><strong>Trigger:</strong> Tissue damage (trauma)</p>
+                    <p><strong>Memory:</strong> "EX-trinsic = EX-ternal injury"</p>
+                    <p><strong>Key Factor:</strong> VII (+ Tissue Factor)</p>
+                    <p><strong>Monitored by:</strong> PT/INR (Prothrombin Time)</p>
+                </div>
+            </div>
+
+            <div class="drug-highlight" style="border-color: #ff9800;">
+                <div class="drug-name" style="color: #ff9800;">3️⃣ COMMON Pathway</div>
+                <p><strong>Where the streams merge!</strong> Both intrinsic and extrinsic pathways converge here</p>
+                <p><strong>Key Factors:</strong> X, V, II (Prothrombin), I (Fibrinogen)</p>
+                <p><strong>Final Products:</strong> Thrombin (IIa) and Fibrin (Ia)</p>
+            </div>
+
+            <h3>Key Factors & Cofactors</h3>
+            
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <p>🔄 Click to Review:<br><br>Essential Coagulation Factors</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h4 style="color: #dc3545;">Key Coagulation Factors</h4>
+                        <table style="font-size: 0.9em; text-align: left;">
+                            <tr><td><strong>Factor I</strong></td><td>Fibrinogen → Fibrin</td></tr>
+                            <tr><td><strong>Factor II</strong></td><td>Prothrombin → Thrombin</td></tr>
+                            <tr><td><strong>Factor V</strong></td><td>Cofactor for Factor X</td></tr>
+                            <tr><td><strong>Factor VII</strong></td><td>Extrinsic pathway</td></tr>
+                            <tr><td><strong>Factor VIII</strong></td><td>Cofactor for Factor IX (Hemophilia A if deficient)</td></tr>
+                            <tr><td><strong>Factor IX</strong></td><td>Intrinsic pathway (Hemophilia B if deficient)</td></tr>
+                            <tr><td><strong>Factor X</strong></td><td>Common pathway (Xa → activates prothrombin)</td></tr>
+                            <tr><td><strong>Factor XIII</strong></td><td>Stabilizes fibrin (cross-links)</td></tr>
+                        </table>
+                        <p style="margin-top: 15px; font-size: 0.9em;"><em>💡 Click again to flip back</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="interactive-callout" onclick="toggleCallout(this)">
+                <div class="callout-header">
+                    💡 Click to Expand: The Role of Thrombin (Factor IIa)
+                </div>
+                <div class="callout-content">
+                    <h4 style="color: #2e7d32;">Thrombin is the POWERHOUSE enzyme!</h4>
+                    <p><strong>What Thrombin Does:</strong></p>
+                    <ul>
+                        <li><strong>Converts Fibrinogen → Fibrin:</strong> Creates the mesh that stabilizes the clot</li>
+                        <li><strong>Activates platelets:</strong> Amplifies the clotting response</li>
+                        <li><strong>Activates Factor XIII:</strong> Cross-links fibrin for stability</li>
+                        <li><strong>Positive feedback loop:</strong> Activates more factors to accelerate clotting</li>
+                    </ul>
+                    <br>
+                    <p><strong>🎯 This is why Direct Thrombin Inhibitors are so effective!</strong></p>
+                    <p>By blocking thrombin, you stop:</p>
+                    <ul>
+                        <li>✗ Fibrin formation</li>
+                        <li>✗ Platelet activation</li>
+                        <li>✗ Clot stabilization</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>From Fibrinogen to Fibrin: The Final Step</h3>
+            
+            <div class="mechanism-box">
+                <p><strong>Step 1:</strong> Thrombin (Factor IIa) cleaves fibrinogen (Factor I)</p>
+                <p style="margin: 10px 0;">↓</p>
+                <p><strong>Step 2:</strong> Fibrinogen breaks into fibrin monomers</p>
+                <p style="margin: 10px 0;">↓</p>
+                <p><strong>Step 3:</strong> Fibrin monomers spontaneously polymerize</p>
+                <p style="margin: 10px 0;">↓</p>
+                <p><strong>Step 4:</strong> Factor XIII cross-links fibrin strands</p>
+                <p style="margin: 10px 0;">↓</p>
+                <p><strong>Result:</strong> Stable fibrin mesh = BLOOD CLOT!</p>
+            </div>
+
+            <div class="formula-box">
+                Fibrinogen (soluble) → Fibrin (insoluble mesh)
+            </div>
+
+            <h3>🩸 The Role of Platelets</h3>
+            
+            <div class="card">
+                <h4>Platelet Function in Hemostasis</h4>
+                <p><strong>Platelets are NOT part of the coagulation cascade, but they work WITH it!</strong></p>
+
+                <div class="success-box" style="margin-top: 15px;">
+                    <p><strong>Step 1: ADHESION</strong></p>
+                    <p>Platelets stick to damaged vessel wall (exposed collagen)</p>
+                </div>
+
+                <div class="success-box">
+                    <p><strong>Step 2: ACTIVATION</strong></p>
+                    <p>Platelets change shape, release granules (ADP, serotonin, thromboxane A2)</p>
+                </div>
+
+                <div class="success-box">
+                    <p><strong>Step 3: AGGREGATION</strong></p>
+                    <p>Platelets clump together forming a "platelet plug"</p>
+                </div>
+
+                <div class="success-box">
+                    <p><strong>Step 4: STABILIZATION</strong></p>
+                    <p>Fibrin mesh wraps around platelet plug → stable clot</p>
+                </div>
+            </div>
+
+            <div class="memory-saying">
+                🩹 MEMORY: "Platelets PLUG the leak, Fibrin makes it STRONG" - Platelets provide the temporary plug, fibrin provides the permanent seal
+            </div>
+
+            <h3>Bringing It All Together</h3>
+            
+            <div class="danger-box">
+                <h4>🎯 Why Understanding the Cascade Matters:</h4>
+                <ol>
+                    <li><strong>Different drugs target different points:</strong>
+                        <ul>
+                            <li>Direct Thrombin Inhibitors → Block Factor IIa</li>
+                            <li>Direct Factor Xa Inhibitors → Block Factor X</li>
+                            <li>Warfarin → Blocks synthesis of Factors II, VII, IX, X</li>
+                        </ul>
+                    </li>
+                    <li><strong>Lab monitoring targets different pathways:</strong>
+                        <ul>
+                            <li>PT/INR → Monitors extrinsic pathway (Warfarin)</li>
+                            <li>aPTT → Monitors intrinsic pathway (Heparin)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Bleeding disorders affect specific factors:</strong>
+                        <ul>
+                            <li>Hemophilia A → Factor VIII deficiency</li>
+                            <li>Hemophilia B → Factor IX deficiency</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+        </div>
+        <!-- TAB 2: Direct Thrombin Inhibitors -->
+        <div class="tab-content" id="tab-2">
+            <h2>💊 Direct Thrombin Inhibitors (DTIs)</h2>
+
+            <div class="memory-saying">
+                🔒 MEMORY ANCHOR: "-gatran = Gate-keeping thrombin" - These drugs block thrombin directly
+            </div>
+
+            <h3>What Are Direct Thrombin Inhibitors?</h3>
+            <div class="card">
+                <p><strong>Direct Thrombin Inhibitors (DTIs)</strong> are anticoagulants that <strong>directly and reversibly bind to thrombin (Factor IIa)</strong>, preventing it from converting fibrinogen to fibrin.</p>
+                
+                <div class="info-box" style="margin-top: 15px;">
+                    <p><strong>Key Advantage:</strong> They work DIRECTLY - no need for antithrombin III (unlike heparin)</p>
+                    <p><strong>Result:</strong> More predictable anticoagulation</p>
+                </div>
+            </div>
+
+            <h3>🎯 Drug Examples</h3>
+            
+            <div class="drug-highlight">
+                <div class="drug-name">1. Dabigatran (Pradaxa) - ORAL</div>
+                <p><strong>Recognition:</strong> Ends in <span class="memory-highlight">-gatran</span></p>
+                <p><strong>Route:</strong> PO (oral) - taken twice daily</p>
+                <p><strong>Indication:</strong> Atrial fibrillation, DVT/PE prevention</p>
+                <p><strong>Special Note:</strong> First oral direct thrombin inhibitor!</p>
+                <p><strong>Antidote:</strong> Idarucizumab (Praxbind) - specific reversal agent</p>
+            </div>
+
+            <div class="drug-highlight">
+                <div class="drug-name">2. Argatroban - IV</div>
+                <p><strong>Recognition:</strong> Ends in <span class="memory-highlight">-gatroban</span></p>
+                <p><strong>Route:</strong> IV infusion only</p>
+                <p><strong>Indication:</strong> HIT (Heparin-Induced Thrombocytopenia)</p>
+                <p><strong>Special Note:</strong> Used when patient can't tolerate heparin</p>
+            </div>
+
+            <div class="drug-highlight">
+                <div class="drug-name">3. Bivalirudin (Angiomax) - IV</div>
+                <p><strong>Recognition:</strong> Ends in <span class="memory-highlight">-rudin</span></p>
+                <p><strong>Route:</strong> IV infusion</p>
+                <p><strong>Indication:</strong> PCI (Percutaneous Coronary Intervention), HIT</p>
+                <p><strong>Special Note:</strong> Short half-life, used during cardiac procedures</p>
+            </div>
+
+            <div class="drug-highlight">
+                <div class="drug-name">4. Desirudin (Iprivask) - Subcutaneous</div>
+                <p><strong>Recognition:</strong> Ends in <span class="memory-highlight">-rudin</span></p>
+                <p><strong>Route:</strong> Subcutaneous injection</p>
+                <p><strong>Indication:</strong> DVT prophylaxis after hip surgery</p>
+            </div>
+
+            <div class="alert-box">
+                <p><strong>💡 IMPORTANT NOTE:</strong> Direct Thrombin Inhibitors are especially useful in clients with <strong>adverse reactions to heparin</strong> or who have <strong>Heparin-Induced Thrombocytopenia (HIT)</strong>.</p>
+            </div>
+
+            <h3>Mechanism of Action</h3>
+            
+            <div class="mechanism-box">
+                <h4 style="color: #17a2b8;">How DTIs Work:</h4>
+                <p><strong>Step 1:</strong> DTI directly binds to thrombin (Factor IIa)</p>
+                <p style="margin: 10px 0;">↓</p>
+                <p><strong>Step 2:</strong> Thrombin is BLOCKED and cannot function</p>
+                <p style="margin: 10px 0;">↓</p>
+                <p><strong>Step 3:</strong> Without active thrombin:</p>
+                <ul>
+                    <li>✗ Fibrinogen CANNOT be converted to fibrin</li>
+                    <li>✗ Platelets CANNOT be activated</li>
+                    <li>✗ Factor XIII CANNOT cross-link fibrin</li>
+                    <li>✗ Positive feedback loops STOP</li>
+                </ul>
+                <p style="margin: 10px 0;">↓</p>
+                <p><strong>RESULT:</strong> Coagulation cascade HALTED!</p>
+            </div>
+
+            <div class="interactive-callout" onclick="toggleCallout(this)">
+                <div class="callout-header">
+                    💡 Click to Expand: Why "Direct" Matters
+                </div>
+                <div class="callout-content">
+                    <h4 style="color: #2e7d32;">DTIs vs Traditional Anticoagulants</h4>
+                    
+                    <p><strong>Traditional (Heparin):</strong></p>
+                    <ul>
+                        <li>Requires antithrombin III as a cofactor</li>
+                        <li>If patient has low antithrombin III → heparin doesn't work well</li>
+                        <li>Variable response between patients</li>
+                        <li>Requires frequent monitoring (aPTT)</li>
+                    </ul>
+                    
+                    <br>
+                    
+                    <p><strong>Direct Thrombin Inhibitors:</strong></p>
+                    <ul>
+                        <li>✓ Work INDEPENDENTLY - no cofactor needed</li>
+                        <li>✓ More predictable response</li>
+                        <li>✓ Less monitoring required (except IV forms)</li>
+                        <li>✓ Can inhibit clot-bound thrombin (heparin cannot)</li>
+                    </ul>
+                    
+                    <p style="margin-top: 15px;"><strong>🎯 Bottom Line:</strong> DTIs are more reliable and work in situations where heparin fails!</p>
+                </div>
+            </div>
+
+            <h3>Clinical Uses</h3>
+            
+            <div class="card">
+                <h4>When to Use DTIs:</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Indication</th>
+                            <th>Preferred DTI</th>
+                            <th>Why?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Atrial Fibrillation</strong></td>
+                            <td>Dabigatran (Pradaxa)</td>
+                            <td>Oral, convenient, effective stroke prevention</td>
+                        </tr>
+                        <tr>
+                            <td><strong>HIT (Heparin-Induced Thrombocytopenia)</strong></td>
+                            <td>Argatroban or Bivalirudin</td>
+                            <td>Patient cannot receive heparin</td>
+                        </tr>
+                        <tr>
+                            <td><strong>PCI (Cardiac catheterization)</strong></td>
+                            <td>Bivalirudin</td>
+                            <td>Short half-life, used during procedure</td>
+                        </tr>
+                        <tr>
+                            <td><strong>DVT/PE Treatment</strong></td>
+                            <td>Dabigatran</td>
+                            <td>After initial heparin bridge</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Post-Hip Surgery DVT Prevention</strong></td>
+                            <td>Desirudin</td>
+                            <td>Subcutaneous, effective prophylaxis</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="memory-saying">
+                💉 MEMORY: "DTI for HIT" - Direct Thrombin Inhibitors are the alternative when Heparin causes problems
+            </div>
+
+        </div>
+
+        <!-- TAB 3: Direct Factor Xa Inhibitors -->
+        <div class="tab-content" id="tab-3">
+            <h2>🎯 Direct Factor Xa Inhibitors</h2>
+
+            <div class="memory-saying">
+                ❌ MEMORY ANCHOR: "-xaban = X-out Factor Xa" - These drugs block Factor X (ten)
+            </div>
+
+            <h3>What Are Direct Factor Xa Inhibitors?</h3>
+            <div class="card">
+                <p><strong>Direct Factor Xa Inhibitors</strong> are anticoagulants that <strong>directly and reversibly bind to Factor Xa</strong>, preventing it from converting prothrombin (Factor II) to thrombin (Factor IIa).</p>
+                
+                <div class="info-box" style="margin-top: 15px;">
+                    <p><strong>Key Point:</strong> By blocking Factor Xa, you stop thrombin formation BEFORE it even starts!</p>
+                    <p><strong>Result:</strong> Powerful anticoagulation effect</p>
+                </div>
+            </div>
+
+            <h3>🎯 Drug Examples</h3>
+            
+            <div class="drug-highlight">
+                <div class="drug-name">1. Rivaroxaban (Xarelto)</div>
+                <p><strong>Recognition:</strong> Ends in <span class="memory-highlight">-xaban</span></p>
+                <p><strong>Route:</strong> PO (oral) - once or twice daily depending on indication</p>
+                <p><strong>Indication:</strong> AFib, DVT/PE treatment & prevention, post-op prophylaxis</p>
+                <p><strong>Special Note:</strong> Most widely used oral Factor Xa inhibitor</p>
+                <p><strong>Food:</strong> Take with food for better absorption (especially 15-20mg doses)</p>
+            </div>
+
+            <div class="drug-highlight">
+                <div class="drug-name">2. Apixaban (Eliquis)</div>
+                <p><strong>Recognition:</strong> Ends in <span class="memory-highlight">-xaban</span></p>
+                <p><strong>Route:</strong> PO (oral) - twice daily</p>
+                <p><strong>Indication:</strong> AFib, DVT/PE treatment & prevention</p>
+                <p><strong>Special Note:</strong> Lower bleeding risk compared to others</p>
+                <p><strong>Food:</strong> Can take with or without food</p>
+            </div>
+
+            <div class="drug-highlight">
+                <div class="drug-name">3. Edoxaban (Savaysa)</div>
+                <p><strong>Recognition:</strong> Ends in <span class="memory-highlight">-xaban</span></p>
+                <p><strong>Route:</strong> PO (oral) - once daily</p>
+                <p><strong>Indication:</strong> AFib, DVT/PE treatment (after 5-10 days of parenteral anticoagulation)</p>
+                <p><strong>Special Note:</strong> Once-daily dosing = better compliance</p>
+            </div>
+
+            <div class="drug-highlight">
+                <div class="drug-name">4. Betrixaban (Bevyxxa)</div>
+                <p><strong>Recognition:</strong> Ends in <span class="memory-highlight">-xaban</span></p>
+                <p><strong>Route:</strong> PO (oral)</p>
+                <p><strong>Indication:</strong> VTE prophylaxis in hospitalized patients with restricted mobility</p>
+                <p><strong>Special Note:</strong> Extended duration prophylaxis</p>
+            </div>
+
+            <div class="drug-highlight">
+                <div class="drug-name">5. Fondaparinux (Arixtra) - Injectable</div>
+                <p><strong>Recognition:</strong> Doesn't end in -xaban (it's a synthetic pentasaccharide)</p>
+                <p><strong>Route:</strong> Subcutaneous injection once daily</p>
+                <p><strong>Indication:</strong> DVT/PE treatment, HIT alternative</p>
+                <p><strong>Special Note:</strong> Also used in acute coronary syndromes</p>
+            </div>
+
+            <div class="success-box">
+                <p><strong>✅ BENEFIT:</strong> Factor Xa inhibitors have a <strong>MORE POTENT anticoagulant effect</strong> than Direct Thrombin Inhibitors because they block an EARLIER step in the cascade!</p>
+            </div>
+
+            <h3>Mechanism of Action</h3>
+            
+            <div class="mechanism-box">
+                <h4 style="color: #17a2b8;">How Factor Xa Inhibitors Work:</h4>
+                <p><strong>Step 1:</strong> Drug directly binds to Factor Xa (activated Factor X)</p>
+                <p style="margin: 10px 0;">↓</p>
+                <p><strong>Step 2:</strong> Factor Xa is BLOCKED and cannot activate prothrombin</p>
+                <p style="margin: 10px 0;">↓</p>
+                <p><strong>Step 3:</strong> Without Factor Xa activity:</p>
+                <ul>
+                    <li>✗ Prothrombin (Factor II) CANNOT be converted to thrombin (Factor IIa)</li>
+                    <li>✗ No thrombin = no fibrinogen → fibrin conversion</li>
+                    <li>✗ Coagulation cascade STOPS at an earlier point</li>
+                </ul>
+                <p style="margin: 10px 0;">↓</p>
+                <p><strong>RESULT:</strong> Blood clot formation PREVENTED!</p>
+            </div>
+
+            <div class="formula-box">
+                Factor Xa ➝ Prothrombin → Thrombin ➝ Fibrinogen → Fibrin
+                <br><br>
+                <span style="font-size: 0.8em;">Factor Xa inhibitors block the FIRST arrow!</span>
+            </div>
+
+            <div class="interactive-callout" onclick="toggleCallout(this)">
+                <div class="callout-header">
+                    💡 Click to Expand: Why Block Factor Xa Instead of Thrombin?
+                </div>
+                <div class="callout-content">
+                    <h4 style="color: #2e7d32;">Factor Xa = Earlier Intervention Point</h4>
+                    
+                    <p><strong>Think About It This Way:</strong></p>
+                    <p>Imagine the coagulation cascade as a production line:</p>
+                    <ul>
+                        <li><strong>Factor Xa</strong> = The worker who activates thrombin</li>
+                        <li><strong>Thrombin</strong> = The worker who creates fibrin</li>
+                    </ul>
+                    
+                    <br>
+                    
+                    <p><strong>Blocking Factor Xa (earlier):</strong></p>
+                    <ul>
+                        <li>✓ Stops production BEFORE thrombin is even made</li>
+                        <li>✓ One molecule of Factor Xa activates MANY thrombin molecules</li>
+                        <li>✓ Blocking it has an amplified effect</li>
+                    </ul>
+                    
+                    <br>
+                    
+                    <p><strong>Blocking Thrombin (later):</strong></p>
+                    <ul>
+                        <li>Can only block thrombin that's already been made</li>
+                        <li>Some damage may already be done</li>
+                    </ul>
+                    
+                    <br>
+                    
+                    <p><strong>🎯 Analogy:</strong> It's like stopping a flood by plugging the dam (Factor Xa) vs trying to mop up the water after it's already flowing (Thrombin)!</p>
+                </div>
+            </div>
+
+            <h3>Clinical Uses</h3>
+            
+            <div class="card">
+                <h4>When to Use Factor Xa Inhibitors:</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Indication</th>
+                            <th>Preferred Drug</th>
+                            <th>Dosing</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Atrial Fibrillation (stroke prevention)</strong></td>
+                            <td>Apixaban or Rivaroxaban</td>
+                            <td>Apixaban: 5mg BID<br>Rivaroxaban: 20mg daily</td>
+                        </tr>
+                        <tr>
+                            <td><strong>DVT/PE Treatment</strong></td>
+                            <td>Any -xaban drug</td>
+                            <td>Higher dose initially, then maintenance</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Post-op DVT Prevention</strong></td>
+                            <td>Rivaroxaban or Apixaban</td>
+                            <td>Lower prophylactic doses</td>
+                        </tr>
+                        <tr>
+                            <td><strong>HIT (when heparin contraindicated)</strong></td>
+                            <td>Fondaparinux</td>
+                            <td>SC injection based on weight</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="memory-saying">
+                📊 MEMORY: "Xa comes before IIa" - Factor Xa inhibitors block an earlier step than thrombin inhibitors, making them more potent
+            </div>
+
+            <h3>Advantages of Factor Xa Inhibitors</h3>
+            
+            <div class="success-box">
+                <p><strong>✅ Predictable pharmacokinetics</strong> - consistent absorption and effect</p>
+                <p><strong>✅ No routine monitoring required</strong> - unlike warfarin (INR) or heparin (aPTT)</p>
+                <p><strong>✅ Rapid onset</strong> - work within hours</p>
+                <p><strong>✅ Fixed dosing</strong> - no need for constant adjustment</p>
+                <p><strong>✅ Fewer drug-food interactions</strong> - compared to warfarin</p>
+                <p><strong>✅ Oral administration</strong> - patient convenience</p>
+            </div>
+
+        </div>
+        <!-- TAB 4: Drug Comparisons -->
+        <div class="tab-content" id="tab-4">
+            <h2>⚖️ Direct Thrombin Inhibitors vs Factor Xa Inhibitors</h2>
+
+            <div class="memory-saying">
+                🔄 MEMORY ANCHOR: "Early block = Xa, Late block = Thrombin" - Factor Xa inhibitors act earlier in the cascade
+            </div>
+
+            <h3>Side-by-Side Comparison</h3>
+            
+            <div class="card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Direct Thrombin Inhibitors (DTIs)</th>
+                            <th>Direct Factor Xa Inhibitors</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Target</strong></td>
+                            <td>Factor IIa (Thrombin)</td>
+                            <td>Factor Xa</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Point in Cascade</strong></td>
+                            <td>Later (common pathway)</td>
+                            <td>Earlier (common pathway)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Drug Name Endings</strong></td>
+                            <td><span class="memory-highlight">-gatran, -rudin</span></td>
+                            <td><span class="memory-highlight">-xaban</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Oral Examples</strong></td>
+                            <td>Dabigatran (Pradaxa)</td>
+                            <td>Rivaroxaban, Apixaban, Edoxaban</td>
+                        </tr>
+                        <tr>
+                            <td><strong>IV Examples</strong></td>
+                            <td>Argatroban, Bivalirudin</td>
+                            <td>None (Fondaparinux is SubQ)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Specific Reversal Agent</strong></td>
+                            <td>✅ Idarucizumab (Praxbind) - for Dabigatran only</td>
+                            <td>✅ Andexanet alfa (Andexxa) - for -xabans</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Monitoring Required</strong></td>
+                            <td>Minimal (except IV forms)</td>
+                            <td>Minimal to none</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Potency</strong></td>
+                            <td>Good</td>
+                            <td>Higher (earlier cascade blockade)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Best For</strong></td>
+                            <td>HIT, PCI procedures</td>
+                            <td>AFib, DVT/PE, post-op prophylaxis</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Duration of Action Comparison</h3>
+            
+            <div class="two-column">
+                <div class="info-box">
+                    <h4>Direct Thrombin Inhibitors</h4>
+                    <ul>
+                        <li><strong>Dabigatran:</strong> 12-17 hour half-life (BID dosing)</li>
+                        <li><strong>Argatroban:</strong> 40-50 minutes (IV infusion)</li>
+                        <li><strong>Bivalirudin:</strong> 25 minutes (IV infusion)</li>
+                        <li><strong>Desirudin:</strong> 2-3 hours (SubQ injection)</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>Factor Xa Inhibitors</h4>
+                    <ul>
+                        <li><strong>Rivaroxaban:</strong> 5-9 hours (once or twice daily)</li>
+                        <li><strong>Apixaban:</strong> 12 hours (BID dosing)</li>
+                        <li><strong>Edoxaban:</strong> 10-14 hours (once daily)</li>
+                        <li><strong>Fondaparinux:</strong> 17-21 hours (once daily SubQ)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="interactive-callout" onclick="toggleCallout(this)">
+                <div class="callout-header">
+                    💡 Click to Expand: Which Drug Class Should You Choose?
+                </div>
+                <div class="callout-content">
+                    <h4 style="color: #2e7d32;">Clinical Decision Making</h4>
+                    
+                    <p><strong>Choose Direct Thrombin Inhibitors When:</strong></p>
+                    <ul>
+                        <li>✓ Patient has HIT (Heparin-Induced Thrombocytopenia)</li>
+                        <li>✓ Patient is undergoing PCI (need short-acting IV during procedure)</li>
+                        <li>✓ Patient had adverse reaction to heparin</li>
+                        <li>✓ Need for reversibility (Dabigatran has specific antidote)</li>
+                    </ul>
+                    
+                    <br>
+                    
+                    <p><strong>Choose Factor Xa Inhibitors When:</strong></p>
+                    <ul>
+                        <li>✓ Patient has atrial fibrillation (most commonly used)</li>
+                        <li>✓ Need once-daily dosing for compliance</li>
+                        <li>✓ Treating or preventing DVT/PE</li>
+                        <li>✓ Post-operative VTE prophylaxis</li>
+                        <li>✓ Want lower bleeding risk (Apixaban has lowest)</li>
+                    </ul>
+                    
+                    <p style="margin-top: 15px;"><strong>🎯 Bottom Line:</strong> Factor Xa inhibitors are more commonly prescribed for general anticoagulation, while DTIs have more specialized uses!</p>
+                </div>
+            </div>
+
+            <h3>Monitoring Requirements</h3>
+            
+            <div class="card">
+                <h4>Lab Monitoring Comparison</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Drug Type</th>
+                            <th>Routine Monitoring?</th>
+                            <th>Lab Test (if needed)</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Warfarin</strong><br>(for comparison)</td>
+                            <td>✅ YES - Required</td>
+                            <td>PT/INR (target 2-3)</td>
+                            <td>Frequent monitoring essential</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dabigatran (oral DTI)</strong></td>
+                            <td>❌ NO</td>
+                            <td>aPTT, dTT (dilute thrombin time) if needed</td>
+                            <td>Only check if bleeding or surgery</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Argatroban/Bivalirudin (IV DTI)</strong></td>
+                            <td>✅ YES - During infusion</td>
+                            <td>aPTT (target 1.5-3x baseline)</td>
+                            <td>Monitor during IV therapy</td>
+                        </tr>
+                        <tr>
+                            <td><strong>-xaban drugs</strong></td>
+                            <td>❌ NO</td>
+                            <td>Anti-Xa assay if needed</td>
+                            <td>Predictable dosing, no routine monitoring</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="memory-saying">
+                📊 MEMORY: "Oral DOACs = No monitoring, IV infusions = Monitor" - Direct Oral AntiCoagulants don't need routine labs
+            </div>
+
+            <h3>Advantages & Disadvantages</h3>
+            
+            <div class="two-column">
+                <div class="success-box">
+                    <h4>✅ Advantages of Both Classes</h4>
+                    <ul>
+                        <li>Predictable pharmacokinetics</li>
+                        <li>Rapid onset (hours vs days for warfarin)</li>
+                        <li>Fewer drug-food interactions than warfarin</li>
+                        <li>No need for INR monitoring (oral forms)</li>
+                        <li>Fixed dosing (no constant adjustment)</li>
+                        <li>Reversibility with specific antidotes</li>
+                    </ul>
+                </div>
+
+                <div class="danger-box">
+                    <h4>❌ Disadvantages of Both Classes</h4>
+                    <ul>
+                        <li>More expensive than warfarin</li>
+                        <li>Renal clearance (dose adjust in kidney disease)</li>
+                        <li>No established "routine" monitoring test</li>
+                        <li>Shorter half-life = missing dose = risk</li>
+                        <li>Some drug interactions still exist</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- TAB 5: Side Effects & Bleeding -->
+        <div class="tab-content" id="tab-5">
+            <h2>🩸 Side Effects & Bleeding Recognition</h2>
+
+            <div class="memory-saying">
+                🩸 MEMORY ANCHOR: "Black = Bleed high, Red = Bleed low" - Melena (black stool) = upper GI bleed, bright red = lower GI bleed
+            </div>
+
+            <h3>⚠️ Primary Side Effect: BLEEDING</h3>
+            
+            <div class="danger-box">
+                <p><strong>🚨 CRITICAL CONCEPT:</strong> The main side effect of ALL anticoagulants is <strong>UNDUE BLEEDING</strong>. This occurs because the drugs prevent normal clot formation!</p>
+                
+                <p style="margin-top: 15px;"><strong>Risk Factors for Bleeding:</strong></p>
+                <ul>
+                    <li>Advanced age (>75 years)</li>
+                    <li>Renal or hepatic impairment</li>
+                    <li>Low body weight</li>
+                    <li>Concomitant antiplatelet drugs (aspirin, clopidogrel)</li>
+                    <li>NSAIDs use</li>
+                    <li>History of GI ulcers or bleeding</li>
+                    <li>Recent surgery or trauma</li>
+                </ul>
+            </div>
+
+            <h3>Types of Bleeding & Recognition</h3>
+            
+            <div class="card">
+                <h4>1️⃣ Minor Bleeding</h4>
+                <div class="alert-box">
+                    <p><strong>Signs & Symptoms:</strong></p>
+                    <ul>
+                        <li><strong>Epistaxis (nosebleeds):</strong> Frequent or prolonged</li>
+                        <li><strong>Gum bleeding:</strong> When brushing teeth</li>
+                        <li><strong>Easy bruising:</strong> Bruises from minor bumps</li>
+                        <li><strong>Petechiae:</strong> Small red/purple spots on skin</li>
+                        <li><strong>Prolonged bleeding from cuts:</strong> Takes longer to stop</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <h4>2️⃣ Major Bleeding</h4>
+                <div class="danger-box">
+                    <p><strong>🚨 MEDICAL EMERGENCY - Requires immediate intervention!</strong></p>
+                    
+                    <p><strong>Signs & Symptoms:</strong></p>
+                    <ul>
+                        <li><strong>Hematemesis:</strong> Vomiting blood (bright red or coffee-ground)</li>
+                        <li><strong>Melena:</strong> Black, tarry, foul-smelling stools (upper GI bleed)</li>
+                        <li><strong>Hematochezia:</strong> Bright red blood in stool (lower GI bleed)</li>
+                        <li><strong>Hematuria:</strong> Blood in urine (pink, red, or tea-colored)</li>
+                        <li><strong>Hemoptysis:</strong> Coughing up blood</li>
+                        <li><strong>Intracranial bleeding:</strong> Severe headache, confusion, seizures, stroke symptoms</li>
+                        <li><strong>Intra-abdominal bleeding:</strong> Severe abdominal pain, distension, hypotension</li>
+                        <li><strong>Joint bleeding (hemarthrosis):</strong> Painful, swollen joints</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <p>🔄 Click to Learn:<br><br>Upper GI Bleed vs Lower GI Bleed<br>How to Tell the Difference?</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h4 style="color: #dc3545;">GI Bleeding Recognition</h4>
+                        
+                        <p><strong>UPPER GI Bleed (Melena):</strong></p>
+                        <ul style="text-align: left; font-size: 0.9em;">
+                            <li><strong>Appearance:</strong> BLACK, tarry, sticky, foul-smelling</li>
+                            <li><strong>Why black?</strong> Blood digested by stomach acid</li>
+                            <li><strong>Source:</strong> Stomach, duodenum, esophagus</li>
+                            <li><strong>Common causes:</strong> Ulcers, gastritis, esophageal varices</li>
+                        </ul>
+                        
+                        <br>
+                        
+                        <p><strong>LOWER GI Bleed (Hematochezia):</strong></p>
+                        <ul style="text-align: left; font-size: 0.9em;">
+                            <li><strong>Appearance:</strong> BRIGHT RED or maroon blood</li>
+                            <li><strong>Why red?</strong> Fresh blood, not digested</li>
+                            <li><strong>Source:</strong> Colon, rectum, anus</li>
+                            <li><strong>Common causes:</strong> Hemorrhoids, diverticulosis, polyps</li>
+                        </ul>
+                        
+                        <p style="margin-top: 15px; font-style: italic; font-size: 0.85em;">💡 Memory: "Black = Been digested = Bleed high"</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="memory-saying">
+                🩺 MEMORY: "Coffee grounds = Upper, Bright red = Lower" - Hematemesis that looks like coffee grounds indicates upper GI bleeding
+            </div>
+
+            <h3>Specific Side Effects by Drug Class</h3>
+            
+            <div class="two-column">
+                <div class="drug-highlight">
+                    <div class="drug-name">Direct Thrombin Inhibitors</div>
+                    <p><strong>Common Side Effects:</strong></p>
+                    <ul>
+                        <li>Bleeding (most common)</li>
+                        <li>Dyspepsia (especially Dabigatran)</li>
+                        <li>Nausea</li>
+                        <li>Headache</li>
+                    </ul>
+                    <p><strong>Dabigatran-Specific:</strong></p>
+                    <ul>
+                        <li><strong>GI upset:</strong> Take with food, keep in original bottle (moisture-sensitive)</li>
+                    </ul>
+                </div>
+
+                <div class="drug-highlight">
+                    <div class="drug-name">Factor Xa Inhibitors</div>
+                    <p><strong>Common Side Effects:</strong></p>
+                    <ul>
+                        <li>Bleeding (most common)</li>
+                        <li>Nausea</li>
+                        <li>Anemia (from chronic low-level bleeding)</li>
+                        <li>Fatigue</li>
+                    </ul>
+                    <p><strong>Rivaroxaban-Specific:</strong></p>
+                    <ul>
+                        <li>Take 15mg and 20mg doses WITH FOOD for absorption</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>⚠️ Sudden Discontinuation Risks</h3>
+            
+            <div class="danger-box">
+                <h4>🚨 DO NOT Abruptly Stop Anticoagulants!</h4>
+                <p><strong>Risk of Discontinuation:</strong></p>
+                <ul>
+                    <li><strong>Rebound Hypercoagulability:</strong> Blood becomes MORE likely to clot</li>
+                    <li><strong>Increased Thrombotic Events:</strong> Risk of stroke, DVT, PE, MI</li>
+                    <li><strong>Especially Dangerous in:</strong>
+                        <ul>
+                            <li>Atrial fibrillation patients (stroke risk)</li>
+                            <li>Patients with mechanical heart valves</li>
+                            <li>Recent DVT/PE patients</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <p style="margin-top: 15px;"><strong>💡 NURSING ACTION:</strong> If patient needs to stop anticoagulant (e.g., for surgery), work with physician to plan "bridging therapy" - usually switch to short-acting heparin temporarily!</p>
+            </div>
+
+            <div class="memory-saying">
+                🛑 MEMORY: "Don't stop the flow too fast!" - Abrupt discontinuation can cause rebound clotting
+            </div>
+
+            <h3>Signs of Internal Bleeding</h3>
+            
+            <div class="danger-box">
+                <p><strong>🩺 Assess for These Signs:</strong></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Body System</th>
+                            <th>Signs of Bleeding</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Neurological</strong></td>
+                            <td>Severe headache, dizziness, confusion, vision changes, weakness, seizures</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cardiovascular</strong></td>
+                            <td>Tachycardia, hypotension, syncope, chest pain</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Respiratory</strong></td>
+                            <td>Dyspnea, hemoptysis, decreased O2 saturation</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Gastrointestinal</strong></td>
+                            <td>Abdominal pain/distension, melena, hematemesis, hematochezia</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Genitourinary</strong></td>
+                            <td>Hematuria, flank pain, decreased urine output</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Musculoskeletal</strong></td>
+                            <td>Joint pain/swelling (hemarthrosis), back pain (retroperitoneal bleed)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Skin</strong></td>
+                            <td>Extensive bruising, petechiae, purpura, pallor</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert-box">
+                <p><strong>⚡ CRITICAL LAB VALUES:</strong></p>
+                <ul>
+                    <li><strong>Hemoglobin/Hematocrit:</strong> Dropping values indicate bleeding</li>
+                    <li><strong>Platelet Count:</strong> Monitor for thrombocytopenia</li>
+                    <li><strong>Signs of anemia:</strong> Fatigue, pallor, tachycardia</li>
+                </ul>
+            </div>
+
+        </div>
+        <!-- TAB 6: Antidotes & Reversal Agents -->
+        <div class="tab-content" id="tab-6">
+            <h2>🔄 Antidotes & Reversal Agents</h2>
+
+            <div class="memory-saying">
+                💉 MEMORY ANCHOR: "Reverse the bleeding, save the patient" - Know your reversal agents!
+            </div>
+
+            <h3>Why Reversal Agents Matter</h3>
+            
+            <div class="danger-box">
+                <p><strong>🚨 CRITICAL SITUATIONS requiring reversal:</strong></p>
+                <ul>
+                    <li><strong>Life-threatening bleeding:</strong> Intracranial, GI, intra-abdominal</li>
+                    <li><strong>Emergency surgery:</strong> Need immediate hemostasis</li>
+                    <li><strong>Trauma:</strong> Uncontrolled bleeding from injury</li>
+                    <li><strong>Overdose:</strong> Excessive anticoagulation</li>
+                </ul>
+            </div>
+
+            <h3>Specific Reversal Agents</h3>
+            
+            <div class="drug-highlight">
+                <div class="drug-name">1️⃣ Idarucizumab (Praxbind)</div>
+                <p><strong>Reverses:</strong> Dabigatran (Pradaxa) ONLY</p>
+                <p><strong>Mechanism:</strong> Monoclonal antibody fragment that binds dabigatran with HIGH affinity</p>
+                <p><strong>Route:</strong> IV push (two 2.5g doses)</p>
+                <p><strong>Onset:</strong> Within MINUTES</p>
+                <p><strong>Duration:</strong> 24 hours</p>
+                <p><strong>Use:</strong> Emergency reversal for life-threatening bleeding or urgent surgery</p>
+            </div>
+
+            <div class="drug-highlight">
+                <div class="drug-name">2️⃣ Andexanet Alfa (Andexxa)</div>
+                <p><strong>Reverses:</strong> Factor Xa inhibitors (-xabans): Rivaroxaban, Apixaban, Edoxaban</p>
+                <p><strong>Mechanism:</strong> Recombinant Factor Xa decoy - binds to the inhibitor drugs</p>
+                <p><strong>Route:</strong> IV bolus followed by infusion</p>
+                <p><strong>Onset:</strong> Within 2-5 minutes</p>
+                <p><strong>Duration:</strong> ~2 hours (may need repeat dosing)</p>
+                <p><strong>Use:</strong> Life-threatening or uncontrolled bleeding</p>
+            </div>
+
+            <div class="drug-highlight">
+                <div class="drug-name">3️⃣ Prothrombin Complex Concentrate (PCC)</div>
+                <p><strong>Reverses:</strong> Warfarin, and can be used for DOACs when specific agents unavailable</p>
+                <p><strong>Contains:</strong> Factors II, VII, IX, X (the vitamin K-dependent factors)</p>
+                <p><strong>Types:</strong>
+                    <ul>
+                        <li><strong>3-Factor PCC:</strong> Factors II, IX, X</li>
+                        <li><strong>4-Factor PCC:</strong> Factors II, VII, IX, X (preferred)</li>
+                    </ul>
+                </p>
+                <p><strong>Route:</strong> IV infusion</p>
+                <p><strong>Onset:</strong> Rapid (within 10-30 minutes)</p>
+                <p><strong>Brand Names:</strong> Kcentra, Bebulin, Profilnine</p>
+            </div>
+
+            <div class="drug-highlight">
+                <div class="drug-name">4️⃣ Fresh Frozen Plasma (FFP)</div>
+                <p><strong>Contains:</strong> ALL coagulation factors, fibrinogen, and proteins</p>
+                <p><strong>Use:</strong> General reversal when specific agents unavailable</p>
+                <p><strong>Route:</strong> IV infusion</p>
+                <p><strong>Onset:</strong> Slower than PCC (need to thaw, type/cross-match)</p>
+                <p><strong>Disadvantage:</strong> Large volume required, slower onset, TACO risk (transfusion-associated circulatory overload)</p>
+            </div>
+
+            <div class="drug-highlight">
+                <div class="drug-name">5️⃣ Vitamin K (Phytonadione)</div>
+                <p><strong>Reverses:</strong> Warfarin (Coumadin) - NOT for DOACs!</p>
+                <p><strong>Mechanism:</strong> Allows synthesis of vitamin K-dependent clotting factors</p>
+                <p><strong>Route:</strong> PO, IV, SubQ</p>
+                <p><strong>Onset:</strong> SLOW - takes 12-24 hours for full effect</p>
+                <p><strong>Use:</strong> Non-emergent warfarin reversal or overdose</p>
+            </div>
+
+            <div class="memory-saying">
+                🎯 MEMORY: "I-P-A = Idarucizumab for Pradaxa, Andexanet for Apixaban/rivaroxaban"
+            </div>
+
+            <h3>Quick Reference: Reversal Agent Matching</h3>
+            
+            <div class="card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Anticoagulant</th>
+                            <th>Specific Reversal Agent</th>
+                            <th>Alternative/Backup</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Dabigatran</strong></td>
+                            <td>✅ Idarucizumab (Praxbind)</td>
+                            <td>PCC, hemodialysis</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Rivaroxaban</strong></td>
+                            <td>✅ Andexanet alfa (Andexxa)</td>
+                            <td>4-Factor PCC</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Apixaban</strong></td>
+                            <td>✅ Andexanet alfa (Andexxa)</td>
+                            <td>4-Factor PCC</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Edoxaban</strong></td>
+                            <td>✅ Andexanet alfa (Andexxa)</td>
+                            <td>4-Factor PCC</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Warfarin</strong></td>
+                            <td>✅ Vitamin K + 4-Factor PCC</td>
+                            <td>FFP</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Heparin (Unfractionated)</strong></td>
+                            <td>✅ Protamine sulfate</td>
+                            <td>Stop infusion (short half-life)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Enoxaparin (LMWH)</strong></td>
+                            <td>✅ Protamine sulfate (partial reversal)</td>
+                            <td>Factor VIIa, PCC</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="interactive-callout" onclick="toggleCallout(this)">
+                <div class="callout-header">
+                    💡 Click to Expand: Why We Need Specific Reversal Agents
+                </div>
+                <div class="callout-content">
+                    <h4 style="color: #2e7d32;">The Evolution of Reversal Agents</h4>
+                    
+                    <p><strong>The Problem:</strong></p>
+                    <p>When DOACs (Direct Oral AntiCoagulants) first came out, there were NO specific reversal agents. If a patient had life-threatening bleeding, we could only use:</p>
+                    <ul>
+                        <li>Supportive care (fluids, blood transfusions)</li>
+                        <li>PCC (non-specific)</li>
+                        <li>Wait for drug to wear off (risky!)</li>
+                    </ul>
+                    
+                    <br>
+                    
+                    <p><strong>The Breakthrough:</strong></p>
+                    <ul>
+                        <li><strong>2015:</strong> Idarucizumab (Praxbind) approved - first DOAC reversal agent</li>
+                        <li><strong>2018:</strong> Andexanet alfa (Andexxa) approved for Factor Xa inhibitors</li>
+                    </ul>
+                    
+                    <br>
+                    
+                    <p><strong>Why This Matters:</strong></p>
+                    <p>Now physicians are more comfortable prescribing DOACs because if something goes wrong, they have a way to quickly reverse the anticoagulation!</p>
+                    
+                    <p style="margin-top: 15px;"><strong>🎯 Impact:</strong> These specific reversal agents have made DOACs SAFER and increased their use!</p>
+                </div>
+            </div>
+
+            <h3>General Supportive Measures</h3>
+            
+            <div class="success-box">
+                <h4>In Addition to Reversal Agents:</h4>
+                <ul>
+                    <li><strong>Stop the anticoagulant:</strong> Discontinue immediately</li>
+                    <li><strong>IV fluids:</strong> Maintain hemodynamic stability</li>
+                    <li><strong>Blood transfusions:</strong> PRBCs for hemorrhage, platelets if needed</li>
+                    <li><strong>Mechanical hemostasis:</strong> Direct pressure, surgical intervention if needed</li>
+                    <li><strong>Monitor labs:</strong> CBC, coagulation studies, repeat frequently</li>
+                    <li><strong>Monitor vitals:</strong> BP, HR, O2 sat, neuro status</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- TAB 7: Contraindications & Drug Interactions -->
+        <div class="tab-content" id="tab-7">
+            <h2>⚠️ Contraindications & Drug Interactions</h2>
+
+            <div class="memory-saying">
+                🚫 MEMORY ANCHOR: "3A4 = 3 Always watch For interactions" - CYP3A4 is the key enzyme
+            </div>
+
+            <h3>Absolute Contraindications (ALL Anticoagulants)</h3>
+            
+            <div class="danger-box">
+                <p><strong>🚨 Do NOT give anticoagulants if patient has:</strong></p>
+                <ul>
+                    <li><strong>Active bleeding:</strong> Current hemorrhage from any site</li>
+                    <li><strong>Severe bleeding risk:</strong>
+                        <ul>
+                            <li>Recent major surgery or trauma</li>
+                            <li>Recent intracranial bleeding or stroke (hemorrhagic)</li>
+                            <li>Active GI ulcers or bleeding</li>
+                            <li>Severe thrombocytopenia (platelet count <50,000)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Hypersensitivity:</strong> Known allergy to the drug</li>
+                    <li><strong>Spinal/epidural procedures:</strong> Risk of epidural hematoma</li>
+                </ul>
+            </div>
+
+            <h3>Specific Contraindications</h3>
+            
+            <div class="two-column">
+                <div class="alert-box">
+                    <h4>Direct Thrombin Inhibitors</h4>
+                    <p><strong>Dabigatran:</strong></p>
+                    <ul>
+                        <li>Mechanical heart valves (increased clotting risk)</li>
+                        <li>Severe renal impairment (CrCl <30 mL/min)</li>
+                    </ul>
+                </div>
+
+                <div class="alert-box">
+                    <h4>Factor Xa Inhibitors</h4>
+                    <p><strong>All -xabans:</strong></p>
+                    <ul>
+                        <li>Severe renal impairment</li>
+                        <li>Severe hepatic impairment</li>
+                        <li>Pregnancy (most are Category C or X)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Use with Caution In:</h3>
+            
+            <div class="alert-box">
+                <ul>
+                    <li><strong>Elderly patients (>75 years):</strong> Increased bleeding risk</li>
+                    <li><strong>Low body weight (<60 kg):</strong> May need dose adjustment</li>
+                    <li><strong>Renal impairment:</strong> Most DOACs are renally cleared - dose adjust</li>
+                    <li><strong>Hepatic impairment:</strong> Affects drug metabolism</li>
+                    <li><strong>History of GI bleeding:</strong> Higher risk of recurrence</li>
+                    <li><strong>Concomitant antiplatelet therapy:</strong> Aspirin, clopidogrel increase bleeding risk</li>
+                    <li><strong>NSAIDs use:</strong> Increases bleeding risk</li>
+                    <li><strong>Fall risk:</strong> Patients at high risk for trauma</li>
+                </ul>
+            </div>
+
+            <h3>🧬 CYP3A4 Drug Interactions</h3>
+            
+            <div class="card">
+                <p><strong>Most DOACs are metabolized by CYP3A4</strong>, an enzyme in the liver. Drugs that affect this enzyme can significantly alter DOAC levels!</p>
+            </div>
+
+            <div class="two-column">
+                <div class="danger-box">
+                    <h4>⬆️ CYP3A4 INHIBITORS</h4>
+                    <p><strong>Effect:</strong> INCREASE anticoagulant levels → <strong>HIGHER bleeding risk</strong></p>
+                    
+                    <p><strong>Common Inhibitors:</strong></p>
+                    <ul>
+                        <li><strong>Antifungals:</strong> Ketoconazole, itraconazole</li>
+                        <li><strong>Antibiotics:</strong> Clarithromycin, erythromycin</li>
+                        <li><strong>Antivirals:</strong> Ritonavir, indinavir (HIV drugs)</li>
+                        <li><strong>Calcium Channel Blockers:</strong> Diltiazem, verapamil</li>
+                        <li><strong>Other:</strong> Grapefruit juice, amiodarone</li>
+                    </ul>
+                    
+                    <p><strong>🎯 Action:</strong> May need to REDUCE DOAC dose or avoid combination</p>
+                </div>
+
+                <div class="alert-box">
+                    <h4>⬇️ CYP3A4 INDUCERS</h4>
+                    <p><strong>Effect:</strong> DECREASE anticoagulant levels → <strong>LOWER efficacy, HIGHER clot risk</strong></p>
+                    
+                    <p><strong>Common Inducers:</strong></p>
+                    <ul>
+                        <li><strong>Anticonvulsants:</strong> Phenytoin, carbamazepine, phenobarbital</li>
+                        <li><strong>Antibiotics:</strong> Rifampin</li>
+                        <li><strong>Herbal:</strong> St. John's Wort</li>
+                    </ul>
+                    
+                    <p><strong>🎯 Action:</strong> May need to INCREASE DOAC dose or use alternative anticoagulant</p>
+                </div>
+            </div>
+
+            <div class="memory-saying">
+                🧬 MEMORY: "Inhibit = Increase bleed, Induce = Increase clot" - CYP3A4 inhibitors increase drug levels (more bleeding), inducers decrease drug levels (more clots)
+            </div>
+
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <p>🔄 Click to Learn:<br><br>Why CYP3A4 Matters</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h4 style="color: #dc3545;">CYP3A4: The Body's Drug Processor</h4>
+                        
+                        <p style="font-size: 0.9em; text-align: left;"><strong>What is CYP3A4?</strong></p>
+                        <p style="font-size: 0.85em; text-align: left;">CYP3A4 is an enzyme in the liver that breaks down (metabolizes) many drugs, including most DOACs.</p>
+                        
+                        <br>
+                        
+                        <p style="font-size: 0.9em; text-align: left;"><strong>When another drug INHIBITS CYP3A4:</strong></p>
+                        <ul style="font-size: 0.85em; text-align: left;">
+                            <li>CYP3A4 can't break down the DOAC as fast</li>
+                            <li>DOAC levels build up in the blood</li>
+                            <li>Higher drug levels = Higher bleeding risk</li>
+                        </ul>
+                        
+                        <br>
+                        
+                        <p style="font-size: 0.9em; text-align: left;"><strong>When another drug INDUCES CYP3A4:</strong></p>
+                        <ul style="font-size: 0.85em; text-align: left;">
+                            <li>CYP3A4 works FASTER, breaks down DOAC quickly</li>
+                            <li>DOAC levels drop</li>
+                            <li>Lower drug levels = Higher clot risk</li>
+                        </ul>
+                        
+                        <p style="margin-top: 15px; font-size: 0.85em; font-style: italic;">💡 Always check drug interactions before starting anticoagulants!</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Other Important Drug Interactions</h3>
+            
+            <div class="card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Drug Class</th>
+                            <th>Effect with Anticoagulants</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Antiplatelet drugs</strong><br>(Aspirin, Clopidogrel)</td>
+                            <td>↑↑ Bleeding risk</td>
+                            <td>Use together ONLY when specifically indicated (e.g., post-stent)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>NSAIDs</strong><br>(Ibuprofen, Naproxen)</td>
+                            <td>↑ Bleeding risk (inhibit platelet function)</td>
+                            <td>Use acetaminophen instead for pain</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SSRIs</strong><br>(Fluoxetine, Sertraline)</td>
+                            <td>↑ Bleeding risk (affect platelet serotonin)</td>
+                            <td>Monitor closely, may need dose adjustment</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Corticosteroids</strong></td>
+                            <td>↑ GI bleeding risk</td>
+                            <td>Monitor for GI symptoms</td>
+                        </tr>
+                        <tr>
+                            <td><strong>P-glycoprotein inhibitors</strong><br>(Amiodarone, Verapamil)</td>
+                            <td>↑ DOAC levels</td>
+                            <td>May need dose reduction</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box">
+                <h4>💊 Medications That Should NOT Be Combined:</h4>
+                <ul>
+                    <li><strong>Two anticoagulants together:</strong> (e.g., DOAC + warfarin) → Extreme bleeding risk</li>
+                    <li><strong>Strong CYP3A4 inhibitors + DOACs:</strong> Avoid ketoconazole, clarithromycin with most DOACs</li>
+                    <li><strong>Strong CYP3A4 inducers + DOACs:</strong> Avoid rifampin, St. John's Wort</li>
+                </ul>
+            </div>
+
+        </div>
+        <!-- TAB 8: Nursing Care & Patient Education -->
+        <div class="tab-content" id="tab-8">
+            <h2>👩‍⚕️ Nursing Care & Patient Education</h2>
+
+            <div class="memory-saying">
+                👩‍⚕️ MEMORY ANCHOR: "ABC - Always Be Careful with bleeding" - Vigilant monitoring is key!
+            </div>
+
+            <h3>Focused Baseline Assessment</h3>
+            
+            <div class="card">
+                <h4>BEFORE Starting Anticoagulation:</h4>
+                <p><strong>🩺 Comprehensive History:</strong></p>
+                <ul>
+                    <li><strong>Bleeding history:</strong> Any history of GI bleeds, easy bruising, prolonged bleeding</li>
+                    <li><strong>Recent procedures:</strong> Surgery, biopsies, dental work in past 2 weeks</li>
+                    <li><strong>Current medications:</strong> Especially antiplatelet, NSAIDs, herbal supplements</li>
+                    <li><strong>Allergies:</strong> Document all drug allergies</li>
+                    <li><strong>Fall risk assessment:</strong> Balance, gait, environmental hazards</li>
+                    <li><strong>Cognitive status:</strong> Can patient manage complex medication regimen?</li>
+                    <li><strong>Social support:</strong> Who helps with medications, monitoring?</li>
+                </ul>
+            </div>
+
+            <h3>Essential Lab Work</h3>
+            
+            <div class="info-box">
+                <h4>📋 Required Labs BEFORE Starting:</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Lab Test</th>
+                            <th>Why It Matters</th>
+                            <th>Normal Values</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>CBC</strong></td>
+                            <td>Baseline Hgb/Hct (detect bleeding), platelets</td>
+                            <td>Hgb: 12-16 g/dL (F), 14-18 g/dL (M)<br>Platelets: 150,000-400,000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>PT/INR</strong></td>
+                            <td>Baseline coagulation status</td>
+                            <td>PT: 11-13.5 sec<br>INR: 0.8-1.1</td>
+                        </tr>
+                        <tr>
+                            <td><strong>aPTT</strong></td>
+                            <td>Intrinsic pathway function</td>
+                            <td>25-35 seconds</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Renal Function</strong><br>(BUN, Creatinine, GFR)</td>
+                            <td>Most DOACs renally cleared - need dose adjustment</td>
+                            <td>BUN: 7-20 mg/dL<br>Creatinine: 0.6-1.2 mg/dL<br>GFR: >60 mL/min</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Liver Function Tests</strong><br>(AST, ALT, Bilirubin)</td>
+                            <td>Hepatic metabolism of drugs</td>
+                            <td>AST: 10-40 U/L<br>ALT: 7-56 U/L</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="memory-saying">
+                🩺 MEMORY: "CBC, Kidney, Clot" - The three essential lab categories before anticoagulation
+            </div>
+
+            <h3>Special Population: Atrial Fibrillation</h3>
+            
+            <div class="success-box">
+                <h4>💓 AFib Patients on Anticoagulants:</h4>
+                <p><strong>Why Anticoagulate?</strong></p>
+                <ul>
+                    <li>AFib causes blood pooling in atria → clot formation → stroke risk</li>
+                    <li>5x increased stroke risk with untreated AFib</li>
+                </ul>
+                
+                <p style="margin-top: 15px;"><strong>Nursing Considerations:</strong></p>
+                <ul>
+                    <li>Assess for stroke symptoms at EVERY visit (FAST assessment)</li>
+                    <li>Monitor heart rate and rhythm</li>
+                    <li>Educate on importance of STRICT ADHERENCE - missing doses = stroke risk</li>
+                    <li>Screen for falls - AFib patients often elderly</li>
+                    <li>Coordinate with cardiology for rate/rhythm control</li>
+                </ul>
+            </div>
+
+            <h3>🩸 Bleeding Precautions</h3>
+            
+            <div class="danger-box">
+                <h4>TEACH Patients to:</h4>
+                <ul>
+                    <li><strong>Use soft toothbrush:</strong> Prevent gum bleeding</li>
+                    <li><strong>Use electric razor:</strong> Avoid razor cuts</li>
+                    <li><strong>Avoid contact sports:</strong> Risk of trauma and bleeding</li>
+                    <li><strong>Wear sturdy shoes:</strong> Prevent falls and injuries</li>
+                    <li><strong>Remove trip hazards:</strong> Throw rugs, clutter, poor lighting</li>
+                    <li><strong>Avoid NSAIDs:</strong> Use acetaminophen for pain instead</li>
+                    <li><strong>Inform ALL providers:</strong> Dentist, surgeons, other doctors</li>
+                    <li><strong>Apply prolonged pressure to cuts:</strong> 10-15 minutes minimum</li>
+                    <li><strong>Avoid IM injections:</strong> Risk of hematoma formation</li>
+                </ul>
+            </div>
+
+            <div class="interactive-callout" onclick="toggleCallout(this)">
+                <div class="callout-header">
+                    💡 Click to Expand: Teaching Points for Dental Procedures
+                </div>
+                <div class="callout-content">
+                    <h4 style="color: #2e7d32;">Going to the Dentist on Anticoagulants</h4>
+                    
+                    <p><strong>Critical Patient Education:</strong></p>
+                    <ul>
+                        <li>✓ ALWAYS tell dentist you're on anticoagulants</li>
+                        <li>✓ Bring medication list to appointment</li>
+                        <li>✓ For minor procedures (cleaning, fillings): Usually can continue anticoagulant</li>
+                        <li>✓ For major procedures (extractions, surgery): Dentist will coordinate with prescriber</li>
+                        <li>✓ May need to temporarily stop anticoagulant 1-2 days before</li>
+                        <li>✓ May need bridging therapy for high-risk patients</li>
+                    </ul>
+                    
+                    <br>
+                    
+                    <p><strong>Why This Matters:</strong></p>
+                    <p>Dental procedures can cause significant bleeding in anticoagulated patients. However, stopping anticoagulants also carries stroke/clot risk. The dentist and prescriber must weigh these risks together!</p>
+                    
+                    <p style="margin-top: 15px;"><strong>🎯 Nurse's Role:</strong> Ensure patient knows to inform dentist and provide contact info for prescriber</p>
+                </div>
+            </div>
+
+            <h3>🆔 Medical Alert Identification</h3>
+            
+            <div class="alert-box">
+                <p><strong>⚠️ EVERY patient on anticoagulants should wear:</strong></p>
+                <ul>
+                    <li><strong>Medical alert bracelet or necklace</strong></li>
+                    <li><strong>Should state:</strong>
+                        <ul>
+                            <li>Patient name</li>
+                            <li>Taking anticoagulant (specific drug name)</li>
+                            <li>Emergency contact</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <p style="margin-top: 15px;"><strong>Why?</strong> In an emergency, EMS/ER staff need to know immediately that patient is anticoagulated!</p>
+            </div>
+
+            <h3>Medication Administration & Storage</h3>
+            
+            <div class="card">
+                <h4>📋 Important Administration Points:</h4>
+                
+                <p><strong>Dabigatran (Pradaxa) Special Instructions:</strong></p>
+                <ul>
+                    <li>✓ Keep in ORIGINAL BOTTLE (moisture-sensitive capsules)</li>
+                    <li>✓ Do NOT put in pill organizer</li>
+                    <li>✓ Take with full glass of water</li>
+                    <li>✓ Can take with food to reduce dyspepsia</li>
+                    <li>✓ Swallow capsules whole - DO NOT open or crush</li>
+                    <li>✓ Use within 4 months of opening bottle</li>
+                </ul>
+                
+                <p style="margin-top: 15px;"><strong>Rivaroxaban (Xarelto) Special Instructions:</strong></p>
+                <ul>
+                    <li>✓ 15mg and 20mg doses MUST be taken with food</li>
+                    <li>✓ Lower doses (2.5mg, 10mg) can be taken with or without food</li>
+                    <li>✓ Taking with food increases absorption significantly</li>
+                </ul>
+                
+                <p style="margin-top: 15px;"><strong>Apixaban (Eliquis):</strong></p>
+                <ul>
+                    <li>✓ Can take with or without food</li>
+                    <li>✓ Most flexible dosing</li>
+                </ul>
+            </div>
+
+            <div class="memory-saying">
+                💊 MEMORY: "Pradaxa in bottle, Xarelto with food" - Key administration points
+            </div>
+
+            <h3>Patient Education: When to Seek Help</h3>
+            
+            <div class="danger-box">
+                <h4>🚨 Call 911 or Go to ER IMMEDIATELY if:</h4>
+                <ul>
+                    <li><strong>Severe headache:</strong> Sudden, worst headache of life (intracranial bleed)</li>
+                    <li><strong>Stroke symptoms:</strong> Face drooping, arm weakness, speech difficulty</li>
+                    <li><strong>Vomiting blood:</strong> Bright red or coffee-ground appearance</li>
+                    <li><strong>Black, tarry stools:</strong> Melena (upper GI bleed)</li>
+                    <li><strong>Bright red blood in stool:</strong> Large amounts</li>
+                    <li><strong>Coughing up blood:</strong> Hemoptysis</li>
+                    <li><strong>Severe abdominal pain:</strong> Especially with distension</li>
+                    <li><strong>Fall with head injury:</strong> Even if feeling okay initially</li>
+                    <li><strong>Uncontrolled bleeding:</strong> Won't stop with pressure</li>
+                </ul>
+            </div>
+
+            <div class="alert-box">
+                <h4>☎️ Call Healthcare Provider if:</h4>
+                <ul>
+                    <li>Unusual bruising or bleeding</li>
+                    <li>Nosebleeds that recur frequently</li>
+                    <li>Gum bleeding that doesn't stop</li>
+                    <li>Pink or red urine</li>
+                    <li>Unusually heavy menstrual bleeding</li>
+                    <li>Dizziness or weakness</li>
+                    <li>Planning any procedures (even minor)</li>
+                    <li>Starting any new medications</li>
+                </ul>
+            </div>
+
+            <h3>Missed Dose Instructions</h3>
+            
+            <div class="card">
+                <h4>What to Tell Patients:</h4>
+                <p><strong>General Rule for Most DOACs:</strong></p>
+                <ul>
+                    <li>If remembered within <strong>6 hours</strong> of scheduled time → Take it</li>
+                    <li>If more than <strong>6 hours</strong> late → Skip dose, take next dose at regular time</li>
+                    <li><strong>NEVER double up</strong> to make up for missed dose</li>
+                </ul>
+                
+                <p style="margin-top: 15px;"><strong>💡 Prevention Strategy:</strong></p>
+                <ul>
+                    <li>Set phone alarms</li>
+                    <li>Use medication reminder apps</li>
+                    <li>Tie to daily routine (e.g., with breakfast, before bed)</li>
+                    <li>Use pill organizer (except Dabigatran!)</li>
+                </ul>
+            </div>
+
+            <h3>Lifestyle Modifications</h3>
+            
+            <div class="success-box">
+                <h4>Encourage Patients to:</h4>
+                <ul>
+                    <li><strong>Maintain consistent routine:</strong> Same time daily for medications</li>
+                    <li><strong>Stay hydrated:</strong> Helps maintain kidney function</li>
+                    <li><strong>Moderate alcohol:</strong> Limit to 1-2 drinks/day (increases bleeding risk)</li>
+                    <li><strong>Avoid smoking:</strong> Damages blood vessels</li>
+                    <li><strong>Maintain healthy weight:</strong> Reduces cardiovascular risk</li>
+                    <li><strong>Exercise regularly:</strong> Low-impact activities (walking, swimming)</li>
+                    <li><strong>Monitor for signs of bleeding:</strong> Daily skin checks</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h4>📱 Recommended Resources for Patients:</h4>
+                <ul>
+                    <li>American Heart Association (heart.org)</li>
+                    <li>National Blood Clot Alliance (stoptheclot.org)</li>
+                    <li>Medication reminder apps</li>
+                    <li>Support groups for AFib, DVT, PE survivors</li>
+                </ul>
+            </div>
+
+        </div>
+        <!-- TAB 9: NCLEX Practice Quiz -->
+        <div class="tab-content" id="tab-9">
+            <h2>📝 NCLEX Practice Quiz: Coagulation Modifiers</h2>
+
+            <div class="memory-saying">
+                🎯 Test Your Knowledge! 15 questions covering all key concepts
+            </div>
+
+            <div id="quizContainer">
+                <!-- Quiz will be dynamically generated by JavaScript -->
+            </div>
+
+            <div style="text-align: center; margin: 30px 0;">
+                <button class="quiz-btn quiz-btn-primary" onclick="checkAllAnswers()">Submit All Answers</button>
+                <button class="quiz-btn quiz-btn-secondary" onclick="resetQuiz()">Reset Quiz</button>
+            </div>
+
+            <div id="quizScore" style="display: none;"></div>
+
+        </div>
+
+    </div> <!-- End content-area -->
+
+    <div class="footer">
+        <p>© 2026 NUR 138 Pharmacology Study Guide</p>
+        <p>Chapter 26: Coagulation Modifier Drugs | Created for Des</p>
+        <p>🩸 Remember: Safety First - Monitor for Bleeding!</p>
+    </div>
+
+</div> <!-- End container -->
+
+<script>
+// ==========================================
+// Toggle interactive callout
+// ==========================================
+function toggleCallout(element) {
+    const content = element.querySelector('.callout-content');
+    content.classList.toggle('show');
+}
+
+// ==========================================
+// TAB NAVIGATION
+// ==========================================
+function showTab(tabIndex) {
+    // Hide all tabs
+    const tabs = document.querySelectorAll('.tab-content');
+    tabs.forEach(tab => tab.classList.remove('active'));
+    
+    // Remove active class from all buttons
+    const buttons = document.querySelectorAll('.tab-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    
+    // Show selected tab
+    document.getElementById(`tab-${tabIndex}`).classList.add('active');
+    
+    // Add active class to clicked button
+    buttons[tabIndex].classList.add('active');
+    
+    // Scroll to top
+    window.scrollTo(0, 0);
+}
+
+// ==========================================
+// QUIZ DATA & FUNCTIONALITY
+// ==========================================
+const quizData = [
+    {
+        question: "A nurse is caring for a client with atrial fibrillation who is prescribed dabigatran (Pradaxa). Which instruction should the nurse include in patient teaching?",
+        options: [
+            "A) Take the medication with grapefruit juice for better absorption",
+            "B) Store capsules in a weekly pill organizer",
+            "C) Keep medication in the original bottle",
+            "D) Crush capsules if you have difficulty swallowing"
+        ],
+        correct: 2,
+        rationale: "Dabigatran capsules are MOISTURE-SENSITIVE and must be kept in the original bottle with the desiccant. They should NOT be transferred to pill organizers, and capsules must NOT be opened or crushed. Grapefruit juice is not recommended."
+    },
+    {
+        question: "Which lab value is MOST important for the nurse to monitor before administering a direct oral anticoagulant (DOAC)?",
+        options: [
+            "A) Serum potassium",
+            "B) Blood glucose",
+            "C) Creatinine clearance (CrCl)",
+            "D) Serum albumin"
+        ],
+        correct: 2,
+        rationale: "Most DOACs are RENALLY CLEARED, making creatinine clearance the most critical lab to assess kidney function. Impaired renal function requires dose adjustment or may contraindicate DOAC use. CrCl <30 mL/min is often a contraindication."
+    },
+    {
+        question: "A client taking rivaroxaban (Xarelto) 20mg daily asks about the best time to take it. What should the nurse respond?",
+        options: [
+            "A) On an empty stomach in the morning",
+            "B) With the largest meal of the day",
+            "C) At bedtime with a snack",
+            "D) At any time, food doesn't matter"
+        ],
+        correct: 1,
+        rationale: "Rivaroxaban 15mg and 20mg doses MUST be taken WITH FOOD to ensure adequate absorption. Food significantly increases bioavailability. Lower doses (2.5mg, 10mg) can be taken with or without food."
+    },
+    {
+        question: "Which patient finding would prompt the nurse to hold a scheduled dose of apixaban (Eliquis) and notify the provider?",
+        options: [
+            "A) Blood pressure 128/82 mmHg",
+            "B) Hemoglobin 7.2 g/dL",
+            "C) Heart rate 88 beats/min",
+            "D) Temperature 98.6°F"
+        ],
+        correct: 1,
+        rationale: "A hemoglobin of 7.2 g/dL indicates SIGNIFICANT ANEMIA, likely from bleeding. This critically low value requires holding the anticoagulant and immediate provider notification. Normal Hgb is 12-16 g/dL (female) or 14-18 g/dL (male)."
+    },
+    {
+        question: "A client on dabigatran experiences life-threatening bleeding. Which reversal agent should the nurse prepare to administer?",
+        options: [
+            "A) Vitamin K (Phytonadione)",
+            "B) Protamine sulfate",
+            "C) Idarucizumab (Praxbind)",
+            "D) Andexanet alfa (Andexxa)"
+        ],
+        correct: 2,
+        rationale: "Idarucizumab (Praxbind) is the SPECIFIC reversal agent for dabigatran. Andexanet alfa reverses Factor Xa inhibitors. Vitamin K reverses warfarin. Protamine reverses heparin."
+    },
+    {
+        question: "The nurse is teaching a client about Factor Xa inhibitors. Which statement indicates the client understands the mechanism of action?",
+        options: [
+            "A) \"This medication will dissolve blood clots that already formed\"",
+            "B) \"The drug blocks an enzyme that helps make thrombin\"",
+            "C) \"It works by thinning my blood and making it more watery\"",
+            "D) \"The medication increases the number of platelets in my blood\""
+        ],
+        correct: 1,
+        rationale: "Factor Xa inhibitors block Factor X, which prevents conversion of prothrombin to thrombin. This stops clot formation BEFORE it starts. They don't dissolve existing clots (that's thrombolytics), don't actually 'thin' blood, and don't affect platelet count."
+    },
+    {
+        question: "A client reports black, tarry stools while taking an anticoagulant. What is the nurse's PRIORITY action?",
+        options: [
+            "A) Document the finding and reassess in 4 hours",
+            "B) Encourage increased fluid intake",
+            "C) Notify the healthcare provider immediately",
+            "D) Advise the client to take stool softeners"
+        ],
+        correct: 2,
+        rationale: "Black, tarry stools (MELENA) indicate UPPER GI BLEEDING - a medical emergency. This is a sign of significant bleeding requiring immediate provider notification, possible endoscopy, and potential reversal of anticoagulation."
+    },
+    {
+        question: "Which CYP3A4 inhibitor would the nurse expect to INCREASE the bleeding risk in a client taking a DOAC?",
+        options: [
+            "A) Phenytoin",
+            "B) St. John's Wort",
+            "C) Ketoconazole",
+            "D) Rifampin"
+        ],
+        correct: 2,
+        rationale: "Ketoconazole is a strong CYP3A4 INHIBITOR, which DECREASES drug metabolism → INCREASES DOAC levels → INCREASES bleeding risk. Phenytoin, St. John's Wort, and rifampin are CYP3A4 INDUCERS (increase metabolism, decrease drug levels)."
+    },
+    {
+        question: "The nurse is caring for a client with atrial fibrillation. Why is anticoagulation critical for this patient?",
+        options: [
+            "A) AFib increases platelet production",
+            "B) Blood pools in atria and can form clots",
+            "C) The irregular rhythm damages heart valves",
+            "D) AFib causes the blood to become thicker"
+        ],
+        correct: 1,
+        rationale: "In atrial fibrillation, the atria QUIVER instead of contracting effectively. This causes blood to POOL and STAGNATE, creating a perfect environment for CLOT formation. These clots can travel to the brain causing stroke (5x increased risk)."
+    },
+    {
+        question: "A client taking edoxaban (Savaysa) asks why they need to wear a medical alert bracelet. What is the nurse's BEST response?",
+        options: [
+            "A) \"It helps track your medication compliance\"",
+            "B) \"Emergency responders need to know you're anticoagulated\"",
+            "C) \"It reminds you to take your medication on time\"",
+            "D) \"Insurance companies require it for coverage\""
+        ],
+        correct: 1,
+        rationale: "In an EMERGENCY, EMS and ER staff must know IMMEDIATELY that the patient is anticoagulated. This affects treatment decisions for trauma, surgery, and bleeding management. Quick identification can be life-saving."
+    },
+    {
+        question: "Which finding in a client taking a direct thrombin inhibitor should the nurse report to the provider?",
+        options: [
+            "A) INR of 1.0",
+            "B) Blood pressure 110/70 mmHg",
+            "C) Sudden severe headache with confusion",
+            "D) Temperature 98.4°F"
+        ],
+        correct: 2,
+        rationale: "Sudden severe headache with confusion suggests INTRACRANIAL BLEEDING - a life-threatening emergency requiring immediate intervention. INR monitoring is not used for DOACs. The other vitals are normal."
+    },
+    {
+        question: "The nurse teaches a client on anticoagulants to avoid which over-the-counter medication?",
+        options: [
+            "A) Acetaminophen (Tylenol)",
+            "B) Ibuprofen (Advil)",
+            "C) Calcium supplements",
+            "D) Vitamin C"
+        ],
+        correct: 1,
+        rationale: "NSAIDs like ibuprofen INCREASE bleeding risk by inhibiting platelet function. Acetaminophen (Tylenol) is the SAFE choice for pain relief in anticoagulated patients. Calcium and Vitamin C don't significantly affect bleeding."
+    },
+    {
+        question: "A client taking apixaban misses a morning dose. What instruction should the nurse provide?",
+        options: [
+            "A) Take two doses at the next scheduled time",
+            "B) Skip the dose if more than 6 hours late",
+            "C) Take half the dose as soon as remembered",
+            "D) Stop the medication and call the provider"
+        ],
+        correct: 1,
+        rationale: "If MORE than 6 hours late, SKIP the missed dose and resume at the next scheduled time. NEVER double up doses as this increases bleeding risk. If within 6 hours, take the missed dose."
+    },
+    {
+        question: "Which patient is at HIGHEST risk for bleeding complications while on anticoagulation therapy?",
+        options: [
+            "A) 45-year-old with BMI 32, no other medications",
+            "B) 78-year-old with history of falls, taking aspirin",
+            "C) 55-year-old post-op day 3, stable vital signs",
+            "D) 62-year-old with controlled hypertension"
+        ],
+        correct: 1,
+        rationale: "The 78-year-old has MULTIPLE risk factors: advanced age (>75), fall risk (trauma potential), and concurrent aspirin use (antiplatelet increases bleeding). This combination creates the HIGHEST bleeding risk."
+    },
+    {
+        question: "A client asks why Factor Xa inhibitors are considered more potent than direct thrombin inhibitors. What is the nurse's BEST explanation?",
+        options: [
+            "A) They are absorbed better in the gastrointestinal tract",
+            "B) They block the cascade at an earlier step before thrombin forms",
+            "C) They have fewer side effects than thrombin inhibitors",
+            "D) They work faster and last longer in the body"
+        ],
+        correct: 1,
+        rationale: "Factor Xa inhibitors block an EARLIER step in the coagulation cascade. One Factor Xa molecule activates MANY thrombin molecules, so blocking Xa has an AMPLIFIED effect compared to blocking thrombin after it's already formed."
+    }
+];
+
+// ==========================================
+// QUIZ GENERATION & SCORING
+// ==========================================
+function generateQuiz() {
+    const container = document.getElementById('quizContainer');
+    container.innerHTML = '';
+    
+    quizData.forEach((q, index) => {
+        const questionDiv = document.createElement('div');
+        questionDiv.className = 'quiz-question';
+        questionDiv.innerHTML = `
+            <div class="question-number">Question ${index + 1} of ${quizData.length}</div>
+            <div class="question-text">${q.question}</div>
+            <div class="options-container">
+                ${q.options.map((opt, optIndex) => `
+                    <div class="quiz-option" onclick="selectOption(${index}, ${optIndex}, this)">
+                        <span class="option-letter">${String.fromCharCode(65 + optIndex)}</span>
+                        <span>${opt.substring(3)}</span>
+                    </div>
+                `).join('')}
+            </div>
+            <div class="quiz-rationale" id="rationale-${index}">
+                <div class="rationale-title">📚 Rationale:</div>
+                <div>${q.rationale}</div>
+            </div>
+        `;
+        container.appendChild(questionDiv);
+    });
+}
+
+function selectOption(questionIndex, optionIndex, element) {
+    // Remove selected class from all options in this question
+    const questionDiv = element.closest('.quiz-question');
+    const options = questionDiv.querySelectorAll('.quiz-option');
+    options.forEach(opt => opt.classList.remove('selected'));
+    
+    // Add selected class to clicked option
+    element.classList.add('selected');
+    
+    // Store answer
+    if (!window.quizAnswers) window.quizAnswers = {};
+    window.quizAnswers[questionIndex] = optionIndex;
+}
+
+function checkAllAnswers() {
+    if (!window.quizAnswers || Object.keys(window.quizAnswers).length === 0) {
+        alert('Please answer at least one question before submitting!');
+        return;
+    }
+    
+    let correct = 0;
+    let answered = Object.keys(window.quizAnswers).length;
+    
+    quizData.forEach((q, index) => {
+        const questionDiv = document.querySelectorAll('.quiz-question')[index];
+        const options = questionDiv.querySelectorAll('.quiz-option');
+        const rationale = document.getElementById(`rationale-${index}`);
+        
+        // Disable all options
+        options.forEach(opt => opt.classList.add('disabled'));
+        
+        if (window.quizAnswers[index] !== undefined) {
+            const userAnswer = window.quizAnswers[index];
+            
+            // Mark correct answer
+            options[q.correct].classList.add('correct');
+            
+            // Mark user's answer if incorrect
+            if (userAnswer !== q.correct) {
+                options[userAnswer].classList.add('incorrect');
+            } else {
+                correct++;
+            }
+            
+            // Show rationale
+            rationale.classList.add('show');
+        }
+    });
+    
+    // Show score
+    const percentage = Math.round((correct / quizData.length) * 100);
+    const scoreDiv = document.getElementById('quizScore');
+    scoreDiv.style.display = 'block';
+    scoreDiv.className = 'quiz-score';
+    
+    let feedback = '';
+    if (percentage >= 90) feedback = '🌟 Excellent! You\'re ready for the NCLEX!';
+    else if (percentage >= 80) feedback = '💪 Great job! Review the rationales for questions you missed.';
+    else if (percentage >= 70) feedback = '👍 Good effort! Study the content areas where you struggled.';
+    else feedback = '📚 Keep studying! Review all tabs and try again.';
+    
+    scoreDiv.innerHTML = `
+        <h3>Quiz Results</h3>
+        <p style="font-size: 2em; margin: 15px 0;">${correct} / ${quizData.length} Correct</p>
+        <p style="font-size: 1.3em;">${percentage}%</p>
+        <p style="margin-top: 15px;">${feedback}</p>
+        <p style="margin-top: 10px; font-size: 0.9em;">Answered: ${answered} of ${quizData.length} questions</p>
+    `;
+    
+    // Scroll to score
+    scoreDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function resetQuiz() {
+    window.quizAnswers = {};
+    const scoreDiv = document.getElementById('quizScore');
+    scoreDiv.style.display = 'none';
+    generateQuiz();
+    window.scrollTo(0, 0);
+}
+
+// Initialize quiz when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    generateQuiz();
+});
+
+</script>
+
+</body>
+</html>
