@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NUR 138 — Unit 4 Study Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAFAF8;
+  --surface: #FFFFFF;
+  --surface2: #F5F3EF;
+  --surface3: #EDE9E3;
+  --text: #2D2A26;
+  --text2: #5C5650;
+  --text3: #9B938A;
+  --border: #E5E0DA;
+  --purple: #7C5CFC;
+  --purple-soft: #F0ECFF;
+  --pink: #F25C84;
+  --pink-soft: #FFF0F3;
+  --teal: #0CBABA;
+  --teal-soft: #E6FAF8;
+  --gold: #E8A317;
+  --gold-soft: #FFF8E6;
+  --red: #E84855;
+  --red-soft: #FFF0F0;
+  --green: #36B37E;
+  --green-soft: #E6F9F0;
+  --blue: #4C9AFF;
+  --blue-soft: #EBF3FF;
+  --radius: 16px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,0.08);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:var(--bg); color:var(--text); line-height:1.65; }
+
+/* ===== NAV ===== */
+.topbar { position:sticky; top:0; z-index:100; background:rgba(250,250,248,0.92); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); padding:10px 16px; }
+.topbar-inner { max-width:900px; margin:0 auto; }
+.topbar h1 { font-size:1rem; font-weight:900; color:var(--purple); letter-spacing:-0.5px; margin-bottom:6px; }
+.nav-row { display:flex; gap:6px; overflow-x:auto; padding-bottom:4px; scrollbar-width:none; }
+.nav-row::-webkit-scrollbar { display:none; }
+.nav-pill { padding:6px 14px; border-radius:30px; border:2px solid var(--border); background:var(--surface); font-family:'Nunito',sans-serif; font-size:0.78rem; font-weight:700; color:var(--text2); cursor:pointer; white-space:nowrap; transition:all 0.2s; }
+.nav-pill:hover { border-color:var(--purple); color:var(--purple); transform:translateY(-1px); }
+.nav-pill.active { background:var(--purple); border-color:var(--purple); color:#fff; box-shadow:0 3px 12px rgba(124,92,252,0.3); }
+
+/* ===== PROGRESS BAR ===== */
+.progress-wrap { max-width:900px; margin:0 auto; padding:12px 16px 0; }
+.progress-bar-outer { background:var(--surface3); border-radius:20px; height:10px; overflow:hidden; }
+.progress-bar-fill { height:100%; background:linear-gradient(90deg,var(--purple),var(--teal),var(--gold)); border-radius:20px; transition:width 0.6s ease; width:0%; }
+.progress-label { font-size:0.72rem; font-weight:700; color:var(--text3); margin-top:4px; text-align:right; }
+
+/* ===== CONTAINER ===== */
+.container { max-width:900px; margin:0 auto; padding:16px; }
+.section { display:none; }
+.section.active { display:block; animation:fadeUp 0.3s ease; }
+@keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+
+/* ===== CARDS ===== */
+.card { background:var(--surface); border-radius:var(--radius); border:1px solid var(--border); padding:24px; margin-bottom:16px; box-shadow:var(--shadow); }
+.card h3 { font-size:1.1rem; font-weight:900; margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+.card h4 { font-size:0.92rem; font-weight:800; margin:16px 0 8px; color:var(--text); }
+.card p { font-size:0.88rem; color:var(--text2); margin-bottom:8px; }
+.card ul { padding-left:20px; margin-bottom:10px; }
+.card li { font-size:0.86rem; color:var(--text2); margin-bottom:4px; }
+
+/* ===== EXAM CALLOUTS ===== */
+.callout { border-radius:12px; padding:14px 16px; margin:10px 0; font-size:0.86rem; font-weight:700; border-left:5px solid; position:relative; }
+.callout::before { content:'⭐'; position:absolute; top:-8px; right:10px; font-size:1.1rem; }
+.callout.purple { background:var(--purple-soft); border-color:var(--purple); color:var(--purple); }
+.callout.pink { background:var(--pink-soft); border-color:var(--pink); color:var(--pink); }
+.callout.teal { background:var(--teal-soft); border-color:var(--teal); color:var(--teal); }
+.callout.gold { background:var(--gold-soft); border-color:var(--gold); color:#8B6914; }
+.callout.red { background:var(--red-soft); border-color:var(--red); color:var(--red); }
+
+/* ===== WHY BOX ===== */
+.why-box { background:var(--blue-soft); border:2px dashed var(--blue); border-radius:12px; padding:12px 16px; margin:8px 0; font-size:0.84rem; color:#2D5FA0; }
+.why-box::before { content:'💡 WHY? '; font-weight:900; }
+
+/* ===== TABLES ===== */
+table { width:100%; border-collapse:collapse; margin:10px 0; font-size:0.84rem; }
+th { background:var(--surface2); padding:10px 12px; text-align:left; font-weight:800; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.5px; color:var(--text2); border-bottom:2px solid var(--border); }
+td { padding:10px 12px; border-bottom:1px solid var(--border); color:var(--text2); }
+tr:hover td { background:var(--surface2); }
+
+/* ===== ACCORDION ===== */
+.acc { border:1px solid var(--border); border-radius:12px; margin:8px 0; overflow:hidden; }
+.acc-btn { width:100%; padding:12px 16px; background:var(--surface2); border:none; font-family:'Nunito',sans-serif; font-size:0.86rem; font-weight:700; color:var(--text); cursor:pointer; text-align:left; display:flex; justify-content:space-between; align-items:center; transition:background 0.2s; }
+.acc-btn:hover { background:var(--surface3); }
+.acc-body { max-height:0; overflow:hidden; transition:max-height 0.35s ease; }
+.acc.open .acc-body { max-height:2000px; }
+.acc.open .acc-btn .arrow { transform:rotate(180deg); }
+.acc-content { padding:16px; }
+.arrow { transition:transform 0.3s; font-size:0.8rem; }
+
+/* ===== QUIZ ===== */
+.quiz-q { background:var(--surface); border:2px solid var(--border); border-radius:var(--radius); padding:20px; margin-bottom:14px; transition:border-color 0.3s; }
+.quiz-q.correct-border { border-color:var(--green); }
+.quiz-q.wrong-border { border-color:var(--red); }
+.quiz-q .q-label { font-size:0.72rem; font-weight:800; text-transform:uppercase; letter-spacing:1px; color:var(--text3); margin-bottom:6px; }
+.quiz-q .q-text { font-size:0.9rem; font-weight:700; color:var(--text); margin-bottom:12px; line-height:1.5; }
+.quiz-opt { display:block; width:100%; padding:10px 14px; margin:5px 0; border-radius:10px; border:2px solid var(--border); background:var(--surface); font-family:'Nunito',sans-serif; font-size:0.84rem; font-weight:600; color:var(--text2); cursor:pointer; text-align:left; transition:all 0.2s; }
+.quiz-opt:hover:not(.locked) { border-color:var(--purple); background:var(--purple-soft); color:var(--purple); transform:translateX(4px); }
+.quiz-opt.right { border-color:var(--green); background:var(--green-soft); color:#1B7A4A; }
+.quiz-opt.wrong { border-color:var(--red); background:var(--red-soft); color:var(--red); }
+.quiz-opt.dim { opacity:0.4; }
+.quiz-opt.locked { cursor:default; }
+.quiz-rat { display:none; background:var(--surface2); border-radius:10px; padding:12px 14px; margin-top:10px; font-size:0.82rem; color:var(--text2); line-height:1.5; }
+.quiz-rat.show { display:block; animation:fadeUp 0.3s ease; }
+.hint-btn { display:inline-block; padding:4px 12px; border-radius:20px; border:1px solid var(--gold); background:var(--gold-soft); font-family:'Nunito',sans-serif; font-size:0.72rem; font-weight:700; color:var(--gold); cursor:pointer; margin-bottom:8px; transition:all 0.2s; }
+.hint-btn:hover { background:var(--gold); color:#fff; }
+.hint-text { display:none; font-size:0.8rem; color:#8B6914; background:var(--gold-soft); border-radius:8px; padding:8px 12px; margin-bottom:8px; }
+.hint-text.show { display:block; animation:fadeUp 0.2s ease; }
+
+/* ===== SCORE PANEL ===== */
+.score-panel { background:var(--surface); border:2px solid var(--border); border-radius:var(--radius); padding:16px 20px; margin-bottom:16px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.score-big { font-size:2rem; font-weight:900; color:var(--purple); font-family:'Fira Code',monospace; }
+.score-detail { font-size:0.82rem; color:var(--text3); font-weight:600; }
+
+/* ===== FLASHCARD ===== */
+.fc-wrap { perspective:1000px; cursor:pointer; height:200px; margin:12px 0; }
+.fc-inner { position:relative; width:100%; height:100%; transition:transform 0.5s; transform-style:preserve-3d; }
+.fc-wrap.flipped .fc-inner { transform:rotateY(180deg); }
+.fc-front, .fc-back { position:absolute; inset:0; backface-visibility:hidden; border-radius:var(--radius); display:flex; flex-direction:column; justify-content:center; align-items:center; padding:24px; text-align:center; border:2px solid var(--border); }
+.fc-front { background:linear-gradient(135deg,var(--surface),var(--surface2)); }
+.fc-back { background:linear-gradient(135deg,var(--purple-soft),var(--surface)); border-color:var(--purple); transform:rotateY(180deg); }
+.fc-tag { font-size:0.68rem; font-weight:800; text-transform:uppercase; letter-spacing:1.5px; color:var(--purple); margin-bottom:8px; }
+.fc-q { font-size:0.95rem; font-weight:700; color:var(--text); line-height:1.5; }
+.fc-a { font-size:0.9rem; font-weight:700; color:var(--purple); line-height:1.5; }
+.fc-d { font-size:0.78rem; color:var(--text3); margin-top:6px; }
+.fc-hint { font-size:0.72rem; color:var(--text3); margin-top:10px; }
+.fc-nav { display:flex; justify-content:center; align-items:center; gap:14px; margin-top:8px; }
+.fc-btn { padding:8px 20px; border-radius:30px; border:2px solid var(--border); background:var(--surface); font-family:'Nunito',sans-serif; font-size:0.8rem; font-weight:700; color:var(--text2); cursor:pointer; transition:all 0.2s; }
+.fc-btn:hover { border-color:var(--purple); color:var(--purple); transform:translateY(-1px); }
+.fc-counter { font-size:0.78rem; font-weight:700; color:var(--text3); font-family:'Fira Code',monospace; }
+
+/* ===== FILTER PILLS ===== */
+.filters { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:14px; }
+.fpill { padding:5px 12px; border-radius:20px; border:2px solid var(--border); background:transparent; font-family:'Nunito',sans-serif; font-size:0.74rem; font-weight:700; color:var(--text3); cursor:pointer; transition:all 0.2s; }
+.fpill:hover { border-color:var(--teal); color:var(--teal); }
+.fpill.active { background:var(--teal); border-color:var(--teal); color:#fff; }
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:600px) {
+  .card { padding:16px; }
+  .score-panel { flex-direction:column; text-align:center; }
+  .nav-pill { font-size:0.72rem; padding:5px 10px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <h1>🧬 NUR 138 — Unit 4 Study Hub</h1>
+    <div class="nav-row">
+      <button class="nav-pill active" onclick="go('home')">🏠 Home</button>
+      <button class="nav-pill" onclick="go('ch45')">Ch 45</button>
+      <button class="nav-pill" onclick="go('ch46')">Ch 46</button>
+      <button class="nav-pill" onclick="go('ch50')">Ch 50</button>
+      <button class="nav-pill" onclick="go('ch32')">Ch 32</button>
+      <button class="nav-pill" onclick="go('fc')">🃏 Cards</button>
+      <button class="nav-pill" onclick="go('final')">📝 Final Exam</button>
+      <button class="nav-pill" onclick="go('cheat')">⚡ Cheat Sheet</button>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-wrap">
+  <div class="progress-bar-outer"><div class="progress-bar-fill" id="progFill"></div></div>
+  <div class="progress-label" id="progLabel">0 / 4 chapters · 0 / 4 quizzes passed</div>
+</div>
+
+<div class="container">
+
+<!-- ==================== HOME ==================== -->
+<div class="section active" id="s-home">
+  <div class="card" style="text-align:center;border:2px solid var(--purple);background:linear-gradient(135deg,var(--purple-soft),var(--surface))">
+    <h3 style="font-size:1.4rem;justify-content:center">Welcome to Your Study Hub ✨</h3>
+    <p style="font-size:0.92rem;max-width:600px;margin:8px auto">Each chapter has its own mini-quiz at the end. Pass all 4 to unlock your progress. Then crush the 60-question Final Exam. You've got this!</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px">
+      <button class="nav-pill" onclick="go('ch45')" style="font-size:0.85rem;padding:10px 20px">🧬 Ch 45 — CCS Drugs</button>
+      <button class="nav-pill" onclick="go('ch46')" style="font-size:0.85rem;padding:10px 20px">💊 Ch 46 — CCNS Drugs</button>
+      <button class="nav-pill" onclick="go('ch50')" style="font-size:0.85rem;padding:10px 20px">🫁 Ch 50 — Acid Drugs</button>
+      <button class="nav-pill" onclick="go('ch32')" style="font-size:0.85rem;padding:10px 20px">💉 Ch 32 — Diabetes</button>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:10px">
+      <button class="nav-pill" onclick="go('fc')" style="font-size:0.85rem;padding:10px 20px">🃏 Flashcards</button>
+      <button class="nav-pill" onclick="go('final')" style="font-size:0.85rem;padding:10px 20px">📝 60-Q Final Exam</button>
+      <button class="nav-pill" onclick="go('cheat')" style="font-size:0.85rem;padding:10px 20px">⚡ Cheat Sheet</button>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px">
+    <div class="card" style="text-align:center;cursor:pointer;border-color:var(--purple)" onclick="go('ch45')">
+      <div style="font-size:2rem">🧬</div>
+      <h4 style="color:var(--purple)">Ch 45 — CCS</h4>
+      <p>Antimetabolites, mitotic inhibitors, chemo basics</p>
+      <div class="ch-status" id="st-ch45" style="font-size:0.72rem;font-weight:800;color:var(--text3);margin-top:6px">NOT STARTED</div>
+    </div>
+    <div class="card" style="text-align:center;cursor:pointer;border-color:var(--pink)" onclick="go('ch46')">
+      <div style="font-size:2rem">💊</div>
+      <h4 style="color:var(--pink)">Ch 46 — CCNS</h4>
+      <p>Alkylating, cytotoxic antibiotics, hormonal</p>
+      <div class="ch-status" id="st-ch46" style="font-size:0.72rem;font-weight:800;color:var(--text3);margin-top:6px">NOT STARTED</div>
+    </div>
+    <div class="card" style="text-align:center;cursor:pointer;border-color:var(--teal)" onclick="go('ch50')">
+      <div style="font-size:2rem">🫁</div>
+      <h4 style="color:var(--teal)">Ch 50 — Acid Drugs</h4>
+      <p>Antacids, H2 blockers, PPIs, sucralfate</p>
+      <div class="ch-status" id="st-ch50" style="font-size:0.72rem;font-weight:800;color:var(--text3);margin-top:6px">NOT STARTED</div>
+    </div>
+    <div class="card" style="text-align:center;cursor:pointer;border-color:var(--gold)" onclick="go('ch32')">
+      <div style="font-size:2rem">💉</div>
+      <h4 style="color:var(--gold)">Ch 32 — Diabetes</h4>
+      <p>Insulins, oral agents, hypo/hyperglycemia</p>
+      <div class="ch-status" id="st-ch32" style="font-size:0.72rem;font-weight:800;color:var(--text3);margin-top:6px">NOT STARTED</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CH 45 ==================== -->
+<div class="section" id="s-ch45">
+  <div class="card" style="border-left:5px solid var(--purple)">
+    <h3>🧬 Chapter 45 — Cell Cycle–Specific Drugs</h3>
+
+    <div class="callout purple">CHEMO HAS A THIN THERAPEUTIC INDEX — tiny gap between the dose that treats and the dose that harms. That's why almost every patient gets side effects.</div>
+
+    <h4>What Is Cancer?</h4>
+    <p><strong>Malignant</strong> = cancerous, invades tissue, metastasizes. <strong>Benign</strong> = not cancerous, stays put.</p>
+    <p><strong>Carcinoma</strong> = epithelial (most common). <strong>Sarcoma</strong> = connective/bone. <strong>Leukemia</strong> = blood/bone marrow.</p>
+    <p><strong>Paraneoplastic syndrome</strong> = symptoms NOT from the cancer itself — from substances the tumor releases. Cachexia (fatigue, fever, weight loss) is most common. Can be the first sign of cancer.</p>
+
+    <div class="callout red">CHEMO HITS ALL RAPIDLY DIVIDING CELLS — not just cancer. Bone marrow → low blood counts. GI mucosa → nausea/stomatitis. Hair follicles → alopecia.</div>
+
+    <h4>CCS vs CCNS</h4>
+    <p><strong>CCS (Cell Cycle–Specific)</strong> = only works during ONE specific phase of division. Best against fast-growing tumors.</p>
+    <p><strong>CCNS (Cell Cycle–Nonspecific)</strong> = works in ALL phases, even resting cells. Good for slow tumors too.</p>
+    <div class="why-box">We use MULTIPLE chemo drugs because we're attacking from all sides — different phases, different mechanisms. Reduces resistance, better kill rate.</div>
+
+    <h4>Antimetabolites (S Phase)</h4>
+    <div class="callout purple">METHOTREXATE (MTX) — Folic acid antagonist. Also treats rheumatoid arthritis and psoriasis. Major risk = bone marrow suppression (BMS). High doses NEED leucovorin rescue to protect bone marrow.</div>
+    <div class="callout purple">5-FU (Fluorouracil) — Pyrimidine antagonist. Causes palmar-plantar dysesthesia (hand-foot syndrome) = redness, swelling, pain on palms/soles.</div>
+    <div class="callout purple">TAMOXIFEN — Selective estrogen receptor modulator (SERM) for breast cancer. Blocks estrogen receptors. HIGH RISK for ovarian + endometrial cancer.</div>
+
+    <h4>Mitotic Inhibitors (M Phase)</h4>
+    <div class="callout red">VINCRISTINE — #1 neurotoxin. Intravenous (IV) ONLY. FATAL if given intrathecally. Has less bone marrow suppression than others (which is why it's still used).</div>
+    <div class="why-box">Vincristine kills cells during M phase (mitosis) by preventing cell division. It's kept despite neurotoxicity because it doesn't suppress bone marrow as much.</div>
+
+    <h4>CCS vs CCNS Drug Examples</h4>
+    <table>
+      <thead><tr><th>Category</th><th>Phase</th><th>Drug Examples</th></tr></thead>
+      <tbody>
+        <tr><td><strong>CCS — Antimetabolites</strong></td><td>S phase</td><td>Methotrexate, 5-FU, cytarabine, gemcitabine</td></tr>
+        <tr><td><strong>CCS — Mitotic Inhibitors</strong></td><td>M phase</td><td>Vincristine, vinblastine, paclitaxel, docetaxel</td></tr>
+        <tr><td><strong>CCS — Topoisomerase Inhibitors</strong></td><td>S phase</td><td>Irinotecan, topotecan, etoposide</td></tr>
+        <tr><td><strong>CCNS — Alkylating Drugs</strong></td><td>All phases</td><td>Cisplatin, carboplatin, cyclophosphamide, nitrogen mustard</td></tr>
+        <tr><td><strong>CCNS — Cytotoxic Antibiotics</strong></td><td>All phases</td><td>Doxorubicin, bleomycin, daunorubicin, mitomycin</td></tr>
+        <tr><td><strong>CCNS — Nitrosoureas</strong></td><td>All phases</td><td>Carmustine, lomustine (cross blood-brain barrier)</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Nadir</h4>
+    <div class="callout red">NADIR = lowest blood cell counts after chemo. Happens 10–28 DAYS post-treatment. Most dangerous window for infection + bleeding.</div>
+
+    <h4>Side Effects — The Why + The Fix</h4>
+    <table>
+      <thead><tr><th>Problem</th><th>Why?</th><th>Normal Values</th><th>Fix</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Anemia → Fatigue</strong></td><td>↓ RBCs = less O₂ to tissues</td><td>RBC: varies</td><td><strong>Epoetin alfa (Epogen)</strong></td></tr>
+        <tr><td><strong>Neutropenia → Infection</strong></td><td>↓ WBCs = no immune defense</td><td>WBC: 4,500–10,000. ANC &lt;500 = severe</td><td><strong>G-CSF (filgrastim/Neupogen)</strong></td></tr>
+        <tr><td><strong>Thrombocytopenia → Bleeding</strong></td><td>↓ Platelets = can't clot</td><td>Platelets: 150,000–400,000</td><td><strong>Oprelvekin (Neumega)</strong></td></tr>
+      </tbody>
+    </table>
+    <div class="callout gold">SIGNS OF INFECTION: #1 = Fever. BUT severely immunocompromised patients may NOT mount a fever. Watch for ANY change — chills, sore throat, cough, redness, new pain.</div>
+    <div class="callout teal">ANTIEMETICS work best 30–60 min BEFORE chemo. Prevention > treatment. Once vomiting starts, it's harder to control.</div>
+
+    <h4>Tumor Lysis Syndrome</h4>
+    <p>Chemo kills tons of cells fast → they dump their insides into blood:</p>
+    <p style="font-weight:900;font-size:1rem;text-align:center;color:var(--purple);margin:8px 0">↑K⁺ · ↑Phosphate · ↑Uric Acid · ↓Calcium</p>
+    <div class="why-box">Dead cancer cells release potassium, phosphate, and uric acid. High phosphate binds calcium → calcium drops. High K⁺ = cardiac risk. High uric acid = kidney damage.</div>
+    <p><strong>Treatment:</strong> IV hydration, diuretics, IV calcium, allopurinol (uric acid), aluminum hydroxide (binds phosphate). Severe → dialysis.</p>
+  </div>
+
+  <!-- CH 45 MINI QUIZ -->
+  <div class="card" style="border:2px solid var(--purple)">
+    <h3>🧠 Ch 45 Quiz — Test Yourself</h3>
+    <div class="score-panel"><div><span class="score-big" id="sc45">0%</span></div><div class="score-detail" id="sd45">0 / 12 answered</div><div><button class="nav-pill" onclick="resetQuiz('q45','sc45','sd45',q45,'ch45')" style="border-color:var(--red);color:var(--red)">🔄 Reset Quiz</button></div></div>
+    <div id="q45"></div>
+    <button class="nav-pill" onclick="go('ch46')" style="margin-top:12px;display:block;width:100%;text-align:center;padding:12px">Next → Chapter 46 CCNS Drugs</button>
+  </div>
+</div>
+
+<!-- ==================== CH 46 ==================== -->
+<div class="section" id="s-ch46">
+  <div class="card" style="border-left:5px solid var(--pink)">
+    <h3>💊 Chapter 46 — Cell Cycle–Nonspecific Drugs</h3>
+
+    <h4>Alkylating Drugs</h4>
+    <div class="callout red">CISPLATIN — NEPHROTOXIC (damages the kidneys). WHY? Damages kidney tubules. FIX: Aggressive intravenous hydration before, during, and after. Also causes ototoxicity (tinnitus) + peripheral neuropathy (tingling).</div>
+    <div class="why-box">Cisplatin's metabolites are excreted by the kidneys and directly damage renal tubular cells. Flooding the kidneys with IV fluid dilutes the drug and protects them.</div>
+
+    <h4>Cytotoxic Antibiotics</h4>
+    <div class="callout red">BLEOMYCIN → PULMONARY FIBROSIS. The ONLY one that does NOT cause bone marrow suppression. WHY unique? Its toxicity targets lung tissue instead of bone marrow.</div>
+    <div class="callout red">DOXORUBICIN → CARDIOMYOPATHY (heart muscle damage). Monitor with MUGA scans (measures ejection fraction). Protect with DEXRAZOXANE. Has cumulative dose limits. WHY? Generates free radicals that damage heart muscle.</div>
+
+    <h4>Hormone Therapy</h4>
+    <p><strong>Androgens</strong> = male hormones. <strong>Estrogens</strong> = female hormones.</p>
+    <p><strong>Female cancers:</strong> Block estrogen (tamoxifen, aromatase inhibitors). Giving androgens to female → deep voice, facial hair.</p>
+    <p><strong>Male cancers (prostate):</strong> Block androgens. Giving estrogen to male → <strong>gynecomastia, impotence.</strong></p>
+    <div class="callout pink">BONE CANCER → BRITTLE BONES. Calcium leaks from destroyed bone → HYPERCALCEMIA (normal Ca: 8.5–10.5). Signs: confusion, nausea, arrhythmias.</div>
+
+    <h4>Extravasation</h4>
+    <div class="callout red">IV chemo leaks into tissue → PERMANENT damage (nerve, tendon, muscle). May need amputation.</div>
+    <p><strong>STOP infusion → LEAVE IV in → Aspirate → Call MD → Packs per protocol → Elevate → Document.</strong> All hospitals have different guidelines.</p>
+
+    <h4>Cytoprotective Pairings</h4>
+    <table>
+      <thead><tr><th>Drug</th><th>Protects</th><th>From What</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Leucovorin</strong></td><td>Bone marrow</td><td>High-dose methotrexate</td></tr>
+        <tr><td><strong>Dexrazoxane</strong></td><td>Heart</td><td>Doxorubicin</td></tr>
+        <tr><td><strong>Amifostine</strong></td><td>Kidneys</td><td>Cisplatin</td></tr>
+        <tr><td><strong>Allopurinol</strong></td><td>Uric acid levels</td><td>Tumor lysis syndrome</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Oncologic Emergencies — Know the Signs</h4>
+    <p><strong>Renal:</strong> ↓ urine, ↑ blood urea nitrogen (BUN)/creatinine, edema. <strong>Liver:</strong> Jaundice, ↑ enzymes, right upper quadrant (RUQ) pain. <strong>Cardiac:</strong> Shortness of breath, edema, arrhythmias, ↓ ejection fraction.</p>
+  </div>
+
+  <!-- CH 46 MINI QUIZ -->
+  <div class="card" style="border:2px solid var(--pink)">
+    <h3>🧠 Ch 46 Quiz — Test Yourself</h3>
+    <div class="score-panel"><div><span class="score-big" id="sc46">0%</span></div><div class="score-detail" id="sd46">0 / 12 answered</div><div><button class="nav-pill" onclick="resetQuiz('q46','sc46','sd46',q46,'ch46')" style="border-color:var(--red);color:var(--red)">🔄 Reset Quiz</button></div></div>
+    <div id="q46"></div>
+    <button class="nav-pill" onclick="go('ch50')" style="margin-top:12px;display:block;width:100%;text-align:center;padding:12px">Next → Chapter 50 Acid Drugs</button>
+  </div>
+</div>
+
+<!-- ==================== CH 50 ==================== -->
+<div class="section" id="s-ch50">
+  <div class="card" style="border-left:5px solid var(--teal)">
+    <h3>🫁 Chapter 50 — Acid-Controlling Drugs</h3>
+
+    <h4>Stomach Cells & Secretions</h4>
+    <table>
+      <thead><tr><th>Cell</th><th>Secretes</th><th>Why It Matters</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Parietal</strong></td><td>HCl</td><td>Drug target. pH 1–4. Stimulated by food, stress, fatty meals</td></tr>
+        <tr><td><strong>Chief</strong></td><td>Pepsinogen</td><td>→ Becomes pepsin in acid → breaks down protein</td></tr>
+        <tr><td><strong>Mucous</strong></td><td>Mucus</td><td>Protective coat against self-digestion</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Also:</strong> Intrinsic factor (needed for B12 absorption), Prostaglandins (protect mucosa, prevent proton pump activation), Bicarbonate (buffers acid).</p>
+
+    <div class="callout teal">H. PYLORI = 90% duodenal ulcers, 70% gastric ulcers. FIRST-LINE: PPI + clarithromycin + (amoxicillin OR metronidazole) × 10–14 days.</div>
+
+    <h4>Stress Ulcers in Hospital</h4>
+    <div class="callout teal">ICU patients → stress ulcers within 24 hrs from ↓ blood flow + mucosal ischemia + hypoperfusion/reperfusion injury. PREVENT with H2 blocker or PPI. Stop when leaving ICU.</div>
+
+    <h4>Antacids</h4>
+    <p><strong>Mechanism of action (MOA):</strong> Neutralize existing acid (don't prevent it). Also stimulate mucus, bicarbonate, prostaglandins. Many contain <strong>simethicone</strong> (anti-gas).</p>
+    <table>
+      <thead><tr><th>Type</th><th>GI Effect</th><th>Renal Safe?</th><th>Watch For</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Aluminum</strong></td><td>Constipation</td><td style="color:var(--green)"><strong>✅ BEST for renal failure</strong></td><td>Combine with Mg</td></tr>
+        <tr><td><strong>Magnesium</strong></td><td>Diarrhea</td><td style="color:var(--red)"><strong>❌ AVOID in renal</strong></td><td>Accumulates to toxic levels</td></tr>
+        <tr><td><strong>Calcium</strong></td><td>Constipation</td><td style="color:var(--red)"><strong>❌ AVOID in renal</strong></td><td>Kidney stones + rebound hyperacidity</td></tr>
+        <tr><td><strong>Sodium bicarb</strong></td><td>—</td><td>Caution</td><td>Quick onset, short acting</td></tr>
+      </tbody>
+    </table>
+    <div class="callout red">HIGH AMOUNTS OF SODIUM BICARBONATE → METABOLIC ALKALOSIS. Blood becomes too alkaline → confusion, muscle twitching, arrhythmias. Also bad for heart failure/hypertension (high sodium).</div>
+    <p><strong>Drug interactions:</strong> <strong>Adsorption</strong> = antacids physically bind other drugs. <strong>Chelation</strong> = chemical binding → insoluble. Give other meds <strong>1–2 hrs AFTER antacids.</strong></p>
+
+    <h4>H2 Blockers</h4>
+    <p><strong>Mechanism of action:</strong> Block H2 receptors on parietal cells → ↓ acid. <strong>Indications:</strong> Gastroesophageal reflux disease (GERD), peptic ulcer disease (PUD), erosive esophagitis.</p>
+    <div class="callout pink">CIMETIDINE → IMPOTENCE + GYNECOMASTIA + inhibits P-450 (tons of drug interactions). Usually REPLACED WITH FAMOTIDINE.</div>
+    <div class="callout teal">H2 BLOCKERS CAN CAUSE PERNICIOUS ANEMIA — reduced acid impairs B12 absorption over time → B12 deficiency → anemia. Also causes peptic ulcer disease.</div>
+    <p><strong>Elderly:</strong> confusion/disorientation. <strong>Don't smoke</strong> — decreases effectiveness.</p>
+
+    <h4>PPIs (-prazole)</h4>
+    <p><strong>Mechanism of action:</strong> Irreversibly block proton pump → <strong>achlorhydria</strong> (no acid at all). Cell must make new enzyme to resume. Most potent acid suppressors.</p>
+    <div class="callout red">PPIs: EMPTY STOMACH 30–60 MIN BEFORE FOOD. Food ↓ absorption. DO NOT SMOKE. Long-term → C. diff + osteoporosis/fractures + Mg depletion.</div>
+    <p><strong>Interactions:</strong> Sucralfate delays PPI absorption. Clopidogrel interaction (↓ antiplatelet effect).</p>
+
+    <h4>Sucralfate (Carafate)</h4>
+    <div class="callout teal">WHY USE IT? Forms a "liquid bandage" over ulcers. Acts LOCALLY not systemically. Also BINDS PHOSPHATE → used in chronic renal failure. Give other drugs 2 HRS BEFORE sucralfate.</div>
+  </div>
+
+  <!-- CH 50 MINI QUIZ -->
+  <div class="card" style="border:2px solid var(--teal)">
+    <h3>🧠 Ch 50 Quiz — Test Yourself</h3>
+    <div class="score-panel"><div><span class="score-big" id="sc50">0%</span></div><div class="score-detail" id="sd50">0 / 12 answered</div><div><button class="nav-pill" onclick="resetQuiz('q50','sc50','sd50',q50,'ch50')" style="border-color:var(--red);color:var(--red)">🔄 Reset Quiz</button></div></div>
+    <div id="q50"></div>
+    <button class="nav-pill" onclick="go('ch32')" style="margin-top:12px;display:block;width:100%;text-align:center;padding:12px">Next → Chapter 32 Diabetes</button>
+  </div>
+</div>
+
+<!-- ==================== CH 32 ==================== -->
+<div class="section" id="s-ch32">
+  <div class="card" style="border-left:5px solid var(--gold)">
+    <h3>💉 Chapter 32 — Diabetes Drugs</h3>
+
+    <h4>Pancreas & Blood Sugar</h4>
+    <p><strong>Pancreas = exocrine (digestive enzymes) + endocrine (hormones).</strong> Beta cells → insulin (↓ glucose). Alpha cells → glucagon (↑ glucose). <strong>Normal blood glucose: 70–100 mg/dL.</strong></p>
+    <div class="callout gold">INSULIN: Restores the body's ability to use + store glucose. Stimulates lipogenesis (fat storage), inhibits lipolysis (fat breakdown), PUSHES K⁺ INTO CELLS → used for hyperkalemia (high potassium) treatment.</div>
+
+    <h4>Type 1 versus Type 2</h4>
+    <p><strong>Diagnosis:</strong> Fasting blood glucose &gt;126 mg/dL OR hemoglobin A1C (HbA1C) ≥6.5%. <strong>Goal: HbA1C &lt;7%.</strong></p>
+    <p><strong>Symptoms + WHY:</strong> Polyuria (glucose pulls water into urine). Polydipsia (dehydrated). Polyphagia (cells starving). Glycosuria. Weight loss. Fatigue. Blurred vision.</p>
+    <div class="callout red">BUBBLY/FOAMY URINE = PROTEINURIA = KIDNEY DAMAGE. Not good.</div>
+    <p><strong>Type 2 = 90% of cases.</strong> Insulin deficiency + resistance (receptors less responsive). Multifactorial. <strong>Metabolic syndrome:</strong> obesity, ↑ clots, abnormal HDL/LDL cholesterol, hypertension.</p>
+    <p><strong>Acute complications:</strong> Type 1 → diabetic ketoacidosis (DKA). Type 2 → hyperosmolar hyperglycemic syndrome (HHS). <strong>Long-term:</strong> Macrovascular (myocardial infarction, stroke, peripheral artery disease). Microvascular (retinopathy, neuropathy, nephropathy). <strong>Gestational diabetes mellitus → insulin only.</strong></p>
+
+    <h4>ALL Insulin Types</h4>
+    <table>
+      <thead><tr><th>Type</th><th>Name</th><th>Onset</th><th>Peak</th><th>Duration</th><th>Key</th></tr></thead>
+      <tbody>
+        <tr style="background:var(--pink-soft)"><td><strong>Rapid</strong></td><td><strong>Lispro, Aspart, Glulisine</strong></td><td><strong>5–15 min</strong></td><td><strong>1–2 hr</strong></td><td><strong>3–5 hr</strong></td><td><strong>FEED IMMEDIATELY</strong></td></tr>
+        <tr style="background:var(--purple-soft)"><td><strong>Short</strong></td><td><strong>Regular (Humulin R)</strong></td><td><strong>30–60 min</strong></td><td><strong>2.5 hr</strong></td><td><strong>6–10 hr</strong></td><td><strong>ONLY IV INSULIN</strong></td></tr>
+        <tr style="background:var(--teal-soft)"><td><strong>Intermediate</strong></td><td><strong>NPH (isophane)</strong></td><td><strong>1–2 hr</strong></td><td><strong>4–8 hr</strong></td><td><strong>10–18 hr</strong></td><td><strong>CLOUDY. Mix w/ regular</strong></td></tr>
+        <tr style="background:var(--gold-soft)"><td><strong>Long (Basal)</strong></td><td><strong>Glargine (Lantus)</strong></td><td><strong>1–2 hr</strong></td><td><strong>None</strong></td><td><strong>24 hr</strong></td><td><strong>Clear. Once daily. Never mix.</strong></td></tr>
+        <tr><td>Long</td><td>Detemir (Levemir)</td><td>1–2 hr</td><td>Dose-dep</td><td>Dose-dep</td><td>Low dose = twice daily, high = once daily</td></tr>
+        <tr><td>Ultra-Long</td><td>Degludec (Tresiba)</td><td>—</td><td>—</td><td>Ultra-long</td><td>Once daily. U100/U200</td></tr>
+      </tbody>
+    </table>
+    <div class="callout gold">CLEAR BEFORE CLOUDY. Insulin syringes ONLY. Roll never shake. Always double-check with another nurse.</div>
+    <p><strong>Fixed combos:</strong> Humulin 70/30, Humalog 75/25, NovoLog 70/30. One shot = basal + mealtime.</p>
+    <p><strong>Sliding scale</strong> = reactive, catch-up, blood glucose swings (disadvantage). <strong>Basal-bolus</strong> = mimics healthy pancreas, preferred.</p>
+
+    <h4>Non-Insulin Drugs (Type 2 Only)</h4>
+    <div class="callout gold">METFORMIN = FIRST-LINE for new onset Type 2 when diet/exercise failed. Hinders glucose production. NO hypoglycemia. Primary adverse effects = gastrointestinal (nausea, diarrhea, bloating). CONTRAINDICATED: renal + hepatic disease (lactic acidosis — rare but lethal). HOLD for contrast dye.</div>
+    <p><strong>Sulfonylureas</strong> (glipizide) = stimulate beta cells. CAUSE hypoglycemia.</p>
+    <p><strong>Glitazones</strong> (pioglitazone) = insulin sensitizers. <strong>WORSEN HEART FAILURE.</strong></p>
+    <p><strong>Alpha-glucosidase inhibitors</strong> (acarbose) = take with FIRST BITE. Gas.</p>
+    <p><strong>GLP-1 agonists</strong> (Ozempic) = <strong>Black box: thyroid C-cell tumors.</strong> Weight loss includes muscle loss with protein loss.</p>
+    <p><strong>SGLT2 inhibitors</strong> (Jardiance) = glucose in urine. <strong>FDA: Fournier's gangrene.</strong></p>
+
+    <h4>Hypoglycemia (&lt;70 mg/dL)</h4>
+    <p><strong>Early:</strong> confusion, tremor, sweating, irritability. <strong>Late:</strong> seizures → coma → death.</p>
+    <table>
+      <thead><tr><th>Conscious</th><th>Unconscious + IV</th><th>Unconscious, no IV</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Oral:</strong> juice, crackers, glucose tabs</td><td><strong>IV D50W</strong></td><td><strong>SUBQ Glucagon</strong> (roll to side!)</td></tr>
+      </tbody>
+    </table>
+    <div class="callout red">NEVER GIVE ORAL ANYTHING TO AN UNCONSCIOUS PATIENT.</div>
+    <p><strong>Corticosteroids antagonize insulin → ↑ blood glucose.</strong> Common exam scenario.</p>
+  </div>
+
+  <!-- CH 32 MINI QUIZ -->
+  <div class="card" style="border:2px solid var(--gold)">
+    <h3>🧠 Ch 32 Quiz — Test Yourself</h3>
+    <div class="score-panel"><div><span class="score-big" id="sc32">0%</span></div><div class="score-detail" id="sd32">0 / 12 answered</div><div><button class="nav-pill" onclick="resetQuiz('q32','sc32','sd32',q32,'ch32')" style="border-color:var(--red);color:var(--red)">🔄 Reset Quiz</button></div></div>
+    <div id="q32"></div>
+    <button class="nav-pill" onclick="go('final')" style="margin-top:12px;display:block;width:100%;text-align:center;padding:12px">Ready? → 60-Question Final Exam</button>
+  </div>
+</div>
+
+<!-- ==================== FLASHCARDS ==================== -->
+<div class="section" id="s-fc">
+  <div class="card">
+    <h3>🃏 Flashcard Review</h3>
+    <p>Tap to flip. Arrows to navigate. Filter by chapter.</p>
+    <div class="filters">
+      <button class="fpill active" onclick="filterFC('all',this)">All</button>
+      <button class="fpill" onclick="filterFC('ch45',this)">Ch 45</button>
+      <button class="fpill" onclick="filterFC('ch46',this)">Ch 46</button>
+      <button class="fpill" onclick="filterFC('ch50',this)">Ch 50</button>
+      <button class="fpill" onclick="filterFC('ch32',this)">Ch 32</button>
+    </div>
+    <div class="fc-wrap" onclick="this.classList.toggle('flipped')" id="fcWrap">
+      <div class="fc-inner">
+        <div class="fc-front"><div class="fc-tag" id="fcTag">CH 45</div><div class="fc-q" id="fcQ">Loading...</div><div class="fc-hint">tap to flip</div></div>
+        <div class="fc-back"><div class="fc-a" id="fcA">Loading...</div><div class="fc-d" id="fcD"></div></div>
+      </div>
+    </div>
+    <div class="fc-nav">
+      <button class="fc-btn" onclick="prevFC()">← Prev</button>
+      <span class="fc-counter" id="fcCount">1 / 35</span>
+      <button class="fc-btn" onclick="nextFC()">Next →</button>
+    </div>
+    <div style="text-align:center;margin-top:8px"><button class="fc-btn" onclick="shuffleFC()" style="border-color:var(--gold);color:var(--gold)">🔀 Shuffle</button></div>
+  </div>
+</div>
+
+<!-- ==================== CHEAT SHEET ==================== -->
+<div class="section" id="s-cheat">
+  <div class="card" style="border:2px solid var(--purple)">
+    <h3>⚡ Cheat Sheet — Antineoplastics (45/46)</h3>
+    <div class="callout purple">Thin therapeutic index = tiny margin between helpful and harmful dose</div>
+    <div class="callout red">Chemo hits ALL rapidly dividing cells: bone marrow, GI mucosa, hair follicles</div>
+    <p><strong>CCS</strong> = works in one phase (S phase = antimetabolites, M phase = mitotic inhibitors). <strong>CCNS</strong> = works in all phases. <strong>Combo chemo</strong> = attacking from all sides.</p>
+    <p><strong>MTX</strong> → BMS → leucovorin rescue. <strong>5-FU</strong> → hand-foot syndrome. <strong>Tamoxifen</strong> → SERM, ↑ ovarian cancer risk.</p>
+    <p><strong>Vincristine</strong> → neurotoxin, IV ONLY, fatal intrathecal. <strong>Bleomycin</strong> → lungs, NO BMS. <strong>Doxorubicin</strong> → heart, MUGA, dexrazoxane. <strong>Cisplatin</strong> → kidneys, HYDRATE.</p>
+    <p><strong>Nadir 10–28 days.</strong> ANC &lt;500 = severe neutropenia. Fever = #1 sign but not always present.</p>
+    <p><strong>Tumor lysis:</strong> ↑K, ↑Phos, ↑Uric, ↓Ca. Caused by rapid cell death. Tx: hydration, allopurinol.</p>
+    <p><strong>Bone cancer</strong> → brittle bones → hypercalcemia (Ca normal: 8.5–10.5).</p>
+    <p><strong>CSFs:</strong> Epoetin→RBC. Filgrastim→WBC. Oprelvekin→Platelets.</p>
+    <p><strong>Hormones:</strong> Androgen to female → masculine effects. Estrogen to male → gynecomastia/impotence.</p>
+    <p><strong>Extravasation:</strong> Stop → leave IV → aspirate → call MD → protocol → document. Every hospital different.</p>
+  </div>
+
+  <div class="card" style="border:2px solid var(--teal)">
+    <h3>⚡ Cheat Sheet — Acid Drugs (50)</h3>
+    <p><strong>Parietal</strong> = HCl (drug target). <strong>Chief</strong> = pepsinogen→pepsin. <strong>Mucous</strong> = protective mucus. Also: intrinsic factor (B12), prostaglandins (protect), bicarbonate (buffer).</p>
+    <div class="callout teal">H. pylori triple therapy: PPI + clarithromycin + amoxicillin/metronidazole × 10–14 days</div>
+    <p><strong>Stress ulcers:</strong> ICU patients within 24 hrs. Prevent with H2 blocker or PPI. Stop at ICU discharge.</p>
+    <p><strong>Al</strong> = constipation, best for renal. <strong>Mg</strong> = diarrhea, avoid renal. <strong>Ca</strong> = constipation + kidney stones. <strong>NaHCO₃</strong> = quick onset → metabolic alkalosis if too much.</p>
+    <p><strong>Antacid interactions:</strong> Adsorption + chelation. Give other meds 1–2 hrs AFTER.</p>
+    <div class="callout pink">Cimetidine → impotence + gynecomastia + P-450 interactions → replaced by FAMOTIDINE</div>
+    <p><strong>H2 blockers:</strong> Can cause pernicious anemia (↓ B12 absorption). Elderly = confusion. Don't smoke.</p>
+    <div class="callout red">PPIs: Empty stomach 30–60 min before food. DON'T SMOKE. Long-term = C. diff + osteoporosis.</div>
+    <p><strong>Sucralfate:</strong> "Liquid bandage." Binds phosphate (renal failure use). Other drugs 2 hrs BEFORE.</p>
+  </div>
+
+  <div class="card" style="border:2px solid var(--gold)">
+    <h3>⚡ Cheat Sheet — Diabetes (32)</h3>
+    <p><strong>Pancreas</strong> = exocrine + endocrine. Insulin (↓ BG) + glucagon (↑ BG). <strong>Normal BG: 70–100.</strong></p>
+    <p><strong>Insulin:</strong> pushes K⁺ into cells (hyperkalemia tx), lipogenesis, inhibits lipolysis.</p>
+    <p><strong>Dx:</strong> FBG &gt;126 or A1C ≥6.5%. Goal A1C &lt;7%. Bubbly urine = kidney damage.</p>
+    <p><strong>T2</strong> = 90%, insulin resistance, metabolic syndrome. T1→DKA. T2→HHS.</p>
+    <div class="callout gold">Rapid (lispro) 5–15 min → FEED NOW. Short (regular) 30–60 min → ONLY IV. Intermediate (NPH) CLOUDY. Long (glargine) no peak, 24 hr, never mix. CLEAR BEFORE CLOUDY.</div>
+    <p><strong>Sliding scale</strong> = reactive, BG swings. <strong>Basal-bolus</strong> = mimics pancreas, preferred.</p>
+    <div class="callout gold">METFORMIN = first-line T2 when lifestyle failed. No hypo. GI effects. Lactic acidosis if renal/hepatic. Hold for contrast dye.</div>
+    <p><strong>GLP-1</strong> → thyroid C-cell tumors + muscle loss. <strong>SGLT2</strong> → Fournier's gangrene. <strong>Glitazones</strong> → ↑ heart failure.</p>
+    <p><strong>Hypo &lt;70:</strong> Conscious→oral glucose. Unconscious→IV D50W or SUBQ glucagon (side-lying). Never oral to unconscious.</p>
+    <p><strong>Corticosteroids → ↑ BG.</strong> Gestational DM → insulin only.</p>
+  </div>
+
+  <div class="card" style="border:2px solid var(--green)">
+    <h3>📊 Lab Values</h3>
+    <table>
+      <thead><tr><th>Lab</th><th>Normal</th><th>Low =</th><th>High =</th></tr></thead>
+      <tbody>
+        <tr><td><strong>WBC</strong></td><td>4,500–10,000</td><td>Infection risk</td><td>Infection/inflammation</td></tr>
+        <tr><td><strong>ANC</strong></td><td>&gt;1,500</td><td>&lt;500 = severe neutropenia</td><td>—</td></tr>
+        <tr><td><strong>Platelets</strong></td><td>150,000–400,000</td><td>Bleeding risk</td><td>Clotting risk</td></tr>
+        <tr><td><strong>Fasting BG</strong></td><td>70–100</td><td>&lt;70 = hypoglycemia</td><td>&gt;126 = diabetes</td></tr>
+        <tr><td><strong>HbA1C</strong></td><td>&lt;5.7%</td><td>—</td><td>≥6.5% = DM. Goal &lt;7%</td></tr>
+        <tr><td><strong>Calcium</strong></td><td>8.5–10.5</td><td>Tumor lysis</td><td>Bone cancer</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ==================== FINAL EXAM ==================== -->
+<div class="section" id="s-final">
+  <div class="card" style="border:2px solid var(--purple);background:linear-gradient(135deg,var(--purple-soft),var(--surface))">
+    <h3 style="justify-content:center">📝 60-Question Final Exam</h3>
+    <p style="text-align:center">Critical thinking, teacher-style. Hints available. Good luck!</p>
+    <div class="score-panel"><div><span class="score-big" id="scF">0%</span></div><div class="score-detail" id="sdF">0 / 60 answered</div><div><button class="nav-pill" onclick="resetQuiz('qFinal','scF','sdF',qF,null)" style="border-color:var(--red);color:var(--red)">🔄 Reset Exam</button></div></div>
+  </div>
+  <div id="qFinal"></div>
+</div>
+
+</div><!-- end container -->
+<script>
+// ===== NAVIGATION + PROGRESS =====
+const visited=new Set(), quizPassed=new Set();
+function go(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-pill').forEach(b=>b.classList.remove('active'));
+  const s=document.getElementById('s-'+id);
+  if(s)s.classList.add('active');
+  document.querySelectorAll('.nav-pill').forEach(b=>{const t=b.textContent.toLowerCase();if((id==='home'&&t.includes('home'))||(id==='ch45'&&t.includes('ch 45'))||(id==='ch46'&&t.includes('ch 46'))||(id==='ch50'&&t.includes('ch 50'))||(id==='ch32'&&t.includes('ch 32'))||(id==='fc'&&t.includes('card'))||(id==='final'&&t.includes('final'))||(id==='cheat'&&t.includes('cheat')))b.classList.add('active');});
+  if(['ch45','ch46','ch50','ch32'].includes(id)){visited.add(id);const el=document.getElementById('st-'+id);if(el)el.textContent=quizPassed.has(id)?'✅ QUIZ PASSED':'📖 READING';}
+  updateProg();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function updateProg(){
+  const total=visited.size*12.5+quizPassed.size*12.5;
+  document.getElementById('progFill').style.width=total+'%';
+  document.getElementById('progLabel').textContent=visited.size+' / 4 chapters · '+quizPassed.size+' / 4 quizzes passed';
+}
+
+// ===== QUIZ ENGINE =====
+function resetQuiz(containerId,scoreId,detailId,questions,chapterId){
+  const c=document.getElementById(containerId);
+  c.innerHTML='';
+  document.getElementById(scoreId).textContent='0%';
+  const total=questions.length;
+  document.getElementById(detailId).textContent='0 / '+total+' answered';
+  if(chapterId){quizPassed.delete(chapterId);const el=document.getElementById('st-'+chapterId);if(el)el.textContent='📖 READING';updateProg();}
+  buildQuiz(containerId,questions,scoreId,detailId,chapterId);
+  c.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function buildQuiz(containerId,questions,scoreId,detailId,chapterId){
+  const c=document.getElementById(containerId);
+  let score=0,answered=0;
+  questions.forEach((q,i)=>{
+    const div=document.createElement('div');div.className='quiz-q';
+    let hintHtml=q.hint?`<button class="hint-btn" onclick="this.nextElementSibling.classList.toggle('show');this.textContent=this.textContent==='💡 Show Hint'?'💡 Hide Hint':'💡 Show Hint'">💡 Show Hint</button><div class="hint-text">${q.hint}</div>`:'';
+    let optsHtml=q.opts.map((o,oi)=>`<button class="quiz-opt" data-idx="${oi}">${o}</button>`).join('');
+    div.innerHTML=`<div class="q-label">Question ${i+1} of ${questions.length}</div><div class="q-text">${q.q}</div>${hintHtml}${optsHtml}<div class="quiz-rat">${q.rat}</div>`;
+    div.querySelectorAll('.quiz-opt').forEach((btn,oi)=>{
+      btn.addEventListener('click',()=>{
+        if(div.classList.contains('done'))return;
+        div.classList.add('done');
+        div.querySelectorAll('.quiz-opt').forEach((b,j)=>{b.classList.add('locked');if(j===q.ans)b.classList.add('right');else if(j===oi&&j!==q.ans)b.classList.add('wrong');else b.classList.add('dim');});
+        if(oi===q.ans){score++;div.classList.add('correct-border');}else div.classList.add('wrong-border');
+        answered++;
+        const pct=Math.round(score/answered*100);
+        document.getElementById(scoreId).textContent=pct+'%';
+        document.getElementById(detailId).textContent=score+' / '+answered+' answered';
+        div.querySelector('.quiz-rat').classList.add('show');
+        if(chapterId&&answered===questions.length&&pct>=60){quizPassed.add(chapterId);const el=document.getElementById('st-'+chapterId);if(el)el.textContent='✅ QUIZ PASSED';updateProg();}
+      });
+    });
+    c.appendChild(div);
+  });
+}
+
+// ===== CHAPTER 45 QUIZ (8 questions) =====
+const q45=[
+{q:'What does "thin therapeutic index" mean for chemotherapy?',opts:['The drug only works for thin patients','Small margin between helpful and toxic dose','The drug is very dilute','It only works in small doses'],ans:1,hint:'Think about how close the treatment dose is to the dangerous dose.',rat:'Thin therapeutic index = tiny gap between the dose that treats cancer and the dose that causes serious toxicity. This is why nearly all chemo patients experience side effects.'},
+{q:'CCS drugs work during which part of the cell cycle?',opts:['All phases including rest','Only during resting phase','One specific phase of division','Only after the cell dies'],ans:2,hint:'CCS = Cell Cycle SPECIFIC. What does specific mean?',rat:'CCS drugs only work during ONE specific phase (S phase for antimetabolites, M phase for mitotic inhibitors). They are best against fast-growing tumors because more cells are actively dividing.'},
+{q:'A patient on high-dose methotrexate needs what to protect their bone marrow?',opts:['Dexrazoxane','Amifostine','Leucovorin rescue','Allopurinol'],ans:2,hint:'This "rescue" drug provides reduced folate to normal cells.',rat:'Leucovorin rescue is given with high-dose methotrexate. Methotrexate is a folic acid antagonist that suppresses bone marrow — leucovorin provides the folate that normal cells need to survive.'},
+{q:'Tumor lysis syndrome causes which electrolyte pattern?',opts:['↑K, ↑Phos, ↑Uric Acid, ↓Calcium','↓K, ↓Phos, ↓Uric Acid, ↑Calcium','Everything goes up','Everything goes down'],ans:0,hint:'Dead cells dump their INSIDE contents out. Cells have lots of K and phosphate inside them.',rat:'Rapid cancer cell death releases intracellular contents: ↑K⁺, ↑phosphate, ↑uric acid. High phosphate binds calcium → ↓calcium.'},
+{q:'Nadir occurs how many days after chemotherapy?',opts:['1–3 days','5–7 days','10–28 days','30–60 days'],ans:2,hint:'It takes time for bone marrow suppression to show up in blood counts.',rat:'Nadir (lowest blood cell counts) occurs 10–28 days post-chemo. This is the most dangerous window for infection and bleeding.'},
+{q:'Why do we use MULTIPLE chemo drugs at once?',opts:['It is cheaper than single drugs','Attacking cancer from all sides reduces resistance','The drugs cancel each other\'s side effects','Patients prefer fewer appointments'],ans:1,hint:'Think about what happens if cancer becomes resistant to just one drug.',rat:'Combination chemo attacks different cell cycle phases and mechanisms simultaneously → better kill rate, reduced drug resistance, potentially lower individual doses.'},
+{q:'Vincristine is fatal if given by which route?',opts:['Intravenous','Oral','Intrathecal (spinal)','Subcutaneous'],ans:2,hint:'This drug is a neurotoxin — imagine it directly touching the spinal cord.',rat:'Vincristine is the #1 neurotoxin of cytotoxic drugs. It must ONLY be given IV — intrathecal administration is FATAL.'},
+{q:'A severely immunocompromised patient may NOT show which expected sign of infection?',opts:['Pain','Redness','Fever','Fatigue'],ans:2,hint:'The immune system creates this response, but what if the immune system is too weak?',rat:'Fever is the #1 sign of infection, BUT severely immunocompromised patients may NOT be able to mount a fever response because their immune system is too suppressed. Watch for ANY change.'},
+{q:'A patient at nadir has a white blood cell count of 2,100 and an absolute neutrophil count of 420. The nurse should prioritize:',opts:['Increasing oral fluids','Administering an antiemetic','Strict neutropenic precautions and monitoring for any sign of infection','Ordering a MUGA scan'],ans:2,hint:'ANC below 500 = severe neutropenia. What is the biggest risk?',rat:'ANC <500 = severe neutropenia = critical infection risk. Priority is neutropenic precautions: hand hygiene, private room, no raw fruits/vegetables, monitor for fever or ANY change in condition.'},
+{q:'A nurse is teaching a patient about 5-fluorouracil (5-FU). The patient asks "Why do my hands hurt and look red?" The best response is:',opts:['"You may be having an allergic reaction, let me call the doctor."','"This is hand-foot syndrome, a known side effect. We need to monitor and protect your skin."','"That is unrelated to your chemotherapy."','"You need to wear gloves at all times."'],ans:1,hint:'5-FU is known for this specific adverse effect on the palms and soles.',rat:'Palmar-plantar dysesthesia (hand-foot syndrome) is a characteristic adverse effect of 5-FU. The nurse should acknowledge it, educate the patient, and implement skin care measures.'},
+{q:'A patient receives methotrexate for rheumatoid arthritis and also takes folic acid supplements. The nurse understands this is because:',opts:['Folic acid increases methotrexate absorption','Methotrexate depletes folate, causing mouth sores, hair loss, and bone marrow suppression','Folic acid prevents kidney damage','All rheumatoid arthritis patients need vitamins'],ans:1,hint:'Methotrexate is a FOLIC ACID antagonist. What happens when folate is depleted?',rat:'Methotrexate is a folic acid antagonist — it blocks folate metabolism. Low-dose folic acid supplementation helps prevent mucositis, alopecia, and bone marrow suppression without reducing the drug\'s effectiveness against RA.'},
+{q:'The oncology nurse knows that the PRIMARY reason antiemetics are given 30–60 minutes before chemotherapy rather than after is:',opts:['Insurance requires it','It is easier to schedule that way','Preventing nausea is far more effective than treating it once the vomiting center is activated','Antiemetics take 30 minutes to be absorbed'],ans:2,hint:'Once the brain\'s vomiting center fires, it is much harder to shut off.',rat:'Prophylactic antiemetic administration is critical because once the chemoreceptor trigger zone and vomiting center in the brain are activated, the nausea cascade is very difficult to control. Prevention > treatment.'},
+];
+
+// ===== CHAPTER 46 QUIZ (8 questions) =====
+const q46=[
+{q:'Cisplatin is nephrotoxic. What is the primary nursing intervention?',opts:['Give dexrazoxane','Aggressive intravenous hydration','Administer leucovorin','Reduce the dose by half'],ans:1,hint:'If a drug damages kidneys, flooding them with fluid does what?',rat:'Aggressive hydration before, during, and after cisplatin dilutes the drug in the kidneys and helps flush toxic metabolites, protecting renal tubular cells.'},
+{q:'Which cytotoxic antibiotic does NOT cause bone marrow suppression?',opts:['Doxorubicin','Daunorubicin','Mitomycin','Bleomycin'],ans:3,hint:'This drug hits the LUNGS instead of bone marrow.',rat:'Bleomycin causes pulmonary fibrosis but is the ONLY cytotoxic antibiotic that does NOT cause bone marrow suppression. Its toxicity targets lung tissue instead.'},
+{q:'Doxorubicin causes damage to which organ?',opts:['Lungs','Kidneys','Heart','Liver'],ans:2,hint:'Monitor with MUGA scans. Protect with dexrazoxane.',rat:'Doxorubicin causes cardiomyopathy (heart muscle damage). Free radicals generated by the drug damage cardiac cells. Monitor with MUGA scans, protect with dexrazoxane.'},
+{q:'What is the first action when extravasation is suspected?',opts:['Remove the IV immediately','Apply warm compresses','Stop infusion but LEAVE IV in place','Call a rapid response'],ans:2,hint:'You need to aspirate the drug — you can\'t do that if you remove the catheter.',rat:'Stop the infusion but leave the IV catheter in place so you can aspirate residual drug. Then contact the prescriber, apply packs per protocol, and document.'},
+{q:'A male patient receiving estrogen therapy for prostate cancer may develop:',opts:['Deepening voice','Facial hair','Gynecomastia and impotence','Increased muscle mass'],ans:2,hint:'Estrogen is a female hormone being given to a male. What feminizing effects would occur?',rat:'Giving estrogen to a male causes feminizing effects: gynecomastia (breast tissue enlargement), impotence, and decreased libido.'},
+{q:'Which cytoprotective drug protects the heart from doxorubicin damage?',opts:['Leucovorin','Amifostine','Allopurinol','Dexrazoxane'],ans:3,hint:'Match: Leuco→methotrexate, Ami→cisplatin, Allo→uric acid. What\'s left for the heart?',rat:'Dexrazoxane protects against doxorubicin cardiomyopathy. Leucovorin→methotrexate, Amifostine→cisplatin, Allopurinol→hyperuricemia.'},
+{q:'Cancer that spreads to bone causes what serum calcium change?',opts:['Hypocalcemia (low calcium)','No change','Hypercalcemia (high calcium)','Fluctuating calcium'],ans:2,hint:'If bone is being destroyed, where does the calcium from those bones go?',rat:'Bone destruction releases calcium into the blood → hypercalcemia. Normal calcium: 8.5–10.5. Signs: confusion, lethargy, nausea, arrhythmias.'},
+{q:'Normal platelet count is:',opts:['4,500–10,000','70–100','150,000–400,000','8.5–10.5'],ans:2,hint:'Platelets are measured in the hundred-thousands.',rat:'Normal platelets: 150,000–400,000/mm³. Below 150,000 = thrombocytopenia (bleeding risk). Below 20,000 = emergency.'},
+{q:'A patient on doxorubicin reports new shortness of breath with exertion and ankle swelling. The nurse suspects:',opts:['Pulmonary fibrosis from bleomycin','Nephrotoxicity from cisplatin','Cardiomyopathy — a known adverse effect of doxorubicin','Normal fatigue from chemotherapy'],ans:2,hint:'Shortness of breath + edema = which organ is struggling?',rat:'Shortness of breath with exertion + peripheral edema are classic signs of heart failure. Doxorubicin causes cardiomyopathy. This patient needs immediate assessment — MUGA scan, cardiology consult.'},
+{q:'A patient with bone metastases has a serum calcium of 12.8 mg/dL. The nurse expects to see:',opts:['Muscle spasms and tetany','Confusion, constipation, and cardiac arrhythmias','Hyperactive reflexes','Tingling in extremities'],ans:1,hint:'Normal calcium is 8.5–10.5. This patient is HIGH. Think about what excess calcium does to the nervous system and heart.',rat:'Hypercalcemia (>10.5) causes CNS depression: confusion, lethargy, constipation, nausea, and cardiac arrhythmias. Muscle spasms and tetany are signs of LOW calcium.'},
+{q:'The nurse is caring for a patient receiving cisplatin. Which assessment finding should be reported immediately?',opts:['Hair loss beginning on day 10','Nausea 2 hours after infusion','Patient reports new ringing in their ears','Mild fatigue in the afternoon'],ans:2,hint:'Cisplatin causes ototoxicity. What is the early warning sign?',rat:'Tinnitus (ringing in the ears) is an early sign of ototoxicity from cisplatin and must be reported immediately. Hearing loss may be irreversible if the drug is not adjusted. Hair loss and nausea are expected.'},
+{q:'A patient with a platelet count of 18,000 should have which intervention?',opts:['Encourage vigorous exercise to improve circulation','Administer intramuscular injections as scheduled','Implement bleeding precautions: soft toothbrush, electric razor, no rectal temperatures','Increase dietary calcium intake'],ans:2,hint:'Below 20,000 = emergency bleeding risk. What activities could cause bleeding?',rat:'Platelet count <20,000 is a medical emergency. Bleeding precautions are critical: soft toothbrush, electric razor only, no IM injections, no rectal temps, hold pressure on puncture sites, avoid aspirin/NSAIDs.'},
+];
+
+// ===== CHAPTER 50 QUIZ (8 questions) =====
+const q50=[
+{q:'Which antacid is BEST for a patient with chronic renal failure?',opts:['Magnesium-based','Calcium-based','Aluminum-based','Sodium bicarbonate'],ans:2,hint:'Which salt is most easily excreted by damaged kidneys?',rat:'Aluminum-based antacids are safest in renal failure — more easily excreted. Magnesium and calcium accumulate to toxic levels in renal disease.'},
+{q:'High amounts of sodium bicarbonate antacid can cause:',opts:['Metabolic acidosis','Metabolic alkalosis','Respiratory acidosis','No significant effect'],ans:1,hint:'If you add too much BASE (bicarbonate) to the blood, what happens to pH?',rat:'Excess sodium bicarbonate makes the blood too alkaline → metabolic alkalosis. Signs: confusion, muscle twitching, arrhythmias.'},
+{q:'Cimetidine is usually replaced by which drug and why?',opts:['Omeprazole — stronger acid suppression','Famotidine — fewer drug interactions and side effects','Sucralfate — better ulcer healing','Misoprostol — fewer gastrointestinal effects'],ans:1,hint:'Cimetidine causes impotence, gynecomastia, and inhibits P-450...',rat:'Famotidine replaced cimetidine because it does NOT inhibit P-450 (fewer drug interactions) and does NOT cause impotence or gynecomastia.'},
+{q:'Proton pump inhibitors should be taken:',opts:['With a full meal','On an empty stomach 30–60 minutes before food','At bedtime with a snack','Only when heartburn occurs'],ans:1,hint:'Food DECREASES PPI absorption.',rat:'PPIs must be taken on an empty stomach 30–60 minutes before eating. Food decreases absorption. Taken daily, NOT as needed.'},
+{q:'Why do we use sucralfate for ulcers?',opts:['It reduces acid production','It blocks H2 receptors','It forms a protective barrier directly over the ulcer','It kills H. pylori bacteria'],ans:2,hint:'Think "liquid bandage."',rat:'Sucralfate forms a protective "liquid bandage" over the ulcer, shielding it from acid and pepsin. It acts locally, not systemically. Also binds phosphate (used in renal failure).'},
+{q:'H2 blockers can cause what type of anemia over time?',opts:['Iron-deficiency anemia','Sickle cell anemia','Pernicious anemia (vitamin B12 deficiency)','Aplastic anemia'],ans:2,hint:'Stomach acid + intrinsic factor are needed for B12 absorption...',rat:'H2 blockers reduce acid, which impairs B12 absorption over time → B12 deficiency → pernicious anemia.'},
+{q:'Intensive care unit patients develop stress ulcers because of:',opts:['Eating too much hospital food','Decreased blood flow + mucosal ischemia + reperfusion injury','Taking too many antacids','Allergic reaction to intravenous fluids'],ans:1,hint:'Think about what happens to the stomach lining when blood flow drops.',rat:'Stress ulcers form from decreased blood flow to the stomach, mucosal ischemia, and hypoperfusion/reperfusion injury. Prevent with H2 blocker or PPI.'},
+{q:'A patient on proton pump inhibitors should be told to NOT:',opts:['Drink water','Exercise','Smoke','Take vitamins'],ans:2,hint:'This habit stimulates acid production and counteracts the drug.',rat:'Do NOT smoke on PPIs (or H2 blockers). Smoking stimulates gastric acid secretion and directly counteracts the drug\'s effect.'},
+{q:'A patient takes omeprazole at 0730 with breakfast. The nurse should teach:',opts:['"That is the correct way to take it."','"Take it on an empty stomach 30–60 minutes BEFORE breakfast, not with it."','"Take it at bedtime instead."','"Take it only when you have heartburn."'],ans:1,hint:'Food decreases PPI absorption. Timing matters.',rat:'PPIs must be taken on an empty stomach 30–60 minutes before the first meal of the day. Taking it WITH food significantly reduces absorption and effectiveness.'},
+{q:'A nurse is giving medications at 0800. The patient also takes sucralfate at 1000. Which action is correct?',opts:['Give all medications together at 0800','Hold the 0800 medications until 1000','Give the 0800 medications now — they are already 2 hours before sucralfate','Crush the sucralfate and mix it with the other drugs'],ans:2,hint:'Other drugs need to be given at least 2 hours BEFORE sucralfate.',rat:'Other medications should be given at least 2 hours before sucralfate because sucralfate can bind to other drugs and impair their absorption. 0800 medications are appropriately timed before 1000 sucralfate.'},
+{q:'An 82-year-old patient started on famotidine 3 days ago is now confused and disoriented. The nurse\'s first consideration is:',opts:['The patient is developing dementia','H2 blockers cause CNS effects in elderly patients — report to the provider','The patient needs more sleep','This is a normal adjustment period'],ans:1,hint:'H2 antagonists have a specific adverse effect in the elderly population.',rat:'H2 receptor antagonists cause CNS effects (confusion, disorientation) in elderly patients. This is a known adverse effect and must be reported. The medication may need to be changed.'},
+{q:'A patient with a gastric ulcer asks why they need THREE medications for H. pylori. The best response is:',opts:['"It is hospital policy to use three drugs."','"The bacteria requires a strong antibiotic combination plus acid suppression to be eradicated effectively."','"Two of the drugs treat the ulcer and one is a vitamin."','"Only one drug is actually necessary but we use three for extra safety."'],ans:1,hint:'H. pylori triple therapy: PPI + two antibiotics. Each has a purpose.',rat:'Triple therapy uses a PPI (suppress acid to help the ulcer heal and improve antibiotic effectiveness) + two antibiotics (to eradicate H. pylori from different angles). The combination is needed because H. pylori is resistant to single-drug therapy.'},
+];
+
+// ===== CHAPTER 32 QUIZ (8 questions) =====
+const q32=[
+{q:'The pancreas is what type of gland?',opts:['Only exocrine','Only endocrine','Both exocrine AND endocrine','Neither'],ans:2,hint:'It makes digestive enzymes (exo) AND hormones like insulin (endo).',rat:'The pancreas is both exocrine (digestive enzymes) and endocrine (insulin from beta cells, glucagon from alpha cells).'},
+{q:'Insulin pushes potassium into cells. Why is this clinically important?',opts:['It prevents diabetes','It treats hypokalemia','It is used as emergency treatment for hyperkalemia','It helps with digestion'],ans:2,hint:'If K⁺ is dangerously HIGH in the blood, pushing it INTO cells would...',rat:'Insulin drives K⁺ from blood into cells, rapidly lowering serum potassium. This makes insulin a key emergency treatment for hyperkalemia.'},
+{q:'A nurse gives lispro insulin at 0730 but the meal tray is delayed until 0830. What is the priority?',opts:['Document the delay','Check blood glucose in 30 minutes','Get food to the patient NOW','Call the physician'],ans:2,hint:'Lispro onset = 5–15 minutes. The patient will be hypoglycemic without food.',rat:'Lispro is rapid-acting (onset 5–15 min). Without food, the patient will become hypoglycemic. Give any available carbohydrates immediately — crackers, juice, cereal.'},
+{q:'Which is the ONLY insulin that can be given intravenously?',opts:['Lispro (Humalog)','NPH','Glargine (Lantus)','Regular (Humulin R)'],ans:3,hint:'This is the short-acting insulin that\'s also given intramuscularly and subcutaneously.',rat:'Regular insulin (Humulin R) is the ONLY insulin that can be given IV. It can also be given IM and SUBQ.'},
+{q:'Metformin is contraindicated in renal and hepatic disease because of the risk of:',opts:['Hypoglycemia','Hyperglycemia','Lactic acidosis','Liver cancer'],ans:2,hint:'This rare but lethal adverse effect involves acid building up in the blood.',rat:'Lactic acidosis is rare but potentially fatal. Metformin is contraindicated in renal/hepatic disease because impaired clearance increases the risk. Must also be held before contrast dye.'},
+{q:'NPH insulin has what unique physical characteristic?',opts:['It is bright yellow','It is clear like water','It is CLOUDY','It comes in pills'],ans:2,hint:'"Clear before CLOUDY" — which insulin is the cloudy one?',rat:'NPH is the intermediate-acting insulin and has a CLOUDY appearance. When mixing with regular/rapid insulin: draw CLEAR before CLOUDY. Roll, never shake.'},
+{q:'An unconscious patient has a blood glucose of 42 mg/dL. What is the priority action?',opts:['Place glucose gel in their cheek','Give orange juice','Roll to side and give subcutaneous glucagon or intravenous D50W','Start CPR'],ans:2,hint:'NEVER give oral anything to an unconscious patient. What injection options exist?',rat:'For unconscious hypoglycemia: IV D50W or SUBQ glucagon. Roll patient to side before glucagon (may cause vomiting → aspiration risk). NEVER give oral to unconscious.'},
+{q:'GLP-1 agonists carry a black box warning for:',opts:['Heart failure','Liver damage','Thyroid C-cell tumors','Kidney stones'],ans:2,hint:'These drugs (Ozempic, Victoza) have a thyroid-related warning.',rat:'GLP-1 receptor agonists (semaglutide/Ozempic, liraglutide/Victoza) carry a black box warning for thyroid C-cell tumors. Also: pancreatitis risk, muscle loss with protein loss.'},
+{q:'A diabetic patient is scheduled for a CT scan with contrast dye. The patient takes metformin. The nurse should:',opts:['Give metformin as usual — contrast dye is not a concern','Hold metformin the day of the procedure and for 48 hours after, with renal function check before restarting','Increase the metformin dose to prevent hyperglycemia from stress','Switch to insulin permanently'],ans:1,hint:'Metformin + contrast dye + kidneys = dangerous combination.',rat:'Metformin must be held before contrast dye procedures because the dye can impair renal function, and metformin in a patient with reduced renal function → lactic acidosis risk. Restart 48 hours post-procedure once renal function is confirmed.'},
+{q:'A nurse is preparing to give insulin. After checking the order, the NEXT step should be:',opts:['Administer the insulin immediately','Ask the patient about allergies','Have another nurse independently verify the type, dose, and route','Draw up the insulin and label the syringe'],ans:2,hint:'Insulin is a HIGH-ALERT medication. What safety check is required?',rat:'Insulin is a high-alert medication — errors can be fatal. ALWAYS have a second nurse independently verify the correct insulin type, dose, route, and timing before administration.'},
+{q:'A patient on sliding scale insulin has wide blood glucose swings between 45 and 320 mg/dL. The nurse anticipates the provider will likely order:',opts:['Higher sliding scale doses','Basal-bolus insulin dosing','Discontinuing all insulin','Oral metformin instead'],ans:1,hint:'What method mimics a healthy pancreas rather than playing catch-up?',rat:'Basal-bolus insulin (constant basal glargine + rapid bolus with meals) mimics normal pancreatic function and prevents the wide swings seen with reactive sliding scale dosing. It is the preferred method for hospitalized patients.'},
+{q:'A patient with Type 2 diabetes asks why their doctor wants to start insulin. They say "I thought pills are enough." The best response is:',opts:['"Your diabetes has gotten worse and you failed at managing it."','"Type 2 diabetes is progressive — over time, oral medications may not be enough to control blood sugar, and adding insulin helps achieve better control."','"Insulin is easier than pills."','"Everyone with diabetes eventually needs insulin."'],ans:1,hint:'Type 2 is progressive. How should you explain this without blame?',rat:'Type 2 diabetes is a progressive disease where beta cell function declines over time. It is not the patient\'s failure — it is the nature of the disease. Adding insulin when oral agents are no longer sufficient is a normal and expected part of disease management.'},
+];
+
+// ===== 60-QUESTION FINAL EXAM =====
+const qF=[
+// Ch45 (15)
+{q:'Paraneoplastic syndrome is best described as:',opts:['Cancer spreading to lymph nodes','Symptoms NOT directly caused by the cancer itself','An allergic reaction to chemo','Bone marrow failure'],ans:1,hint:'Think: symptoms from substances the tumor releases, not the tumor itself.',rat:'Paraneoplastic syndrome = symptoms not directly connected to the cancer — caused by substances released by the tumor. Cachexia (fatigue, fever, weight loss) is most common.'},
+{q:'Why do chemo patients lose their hair?',opts:['The drugs are applied to the scalp','Hair follicles are rapidly dividing cells','Stress from diagnosis','Poor nutrition'],ans:1,hint:'Chemo targets ALL rapidly dividing cells. Hair follicles divide fast.',rat:'Chemotherapy cannot distinguish between cancer cells and normal rapidly dividing cells. Hair follicles divide rapidly → chemo damages them → alopecia.'},
+{q:'A chemo patient is at nadir (day 14). ANC is 400. The nurse should:',opts:['Continue routine care','Implement strict neutropenic precautions','Discharge the patient','Increase oral intake'],ans:1,hint:'ANC <500 = severe neutropenia. What precautions are needed?',rat:'ANC <500 = severe neutropenia. At nadir, the patient needs strict infection prevention: hand hygiene, no fresh flowers/fruits, private room, monitor for ANY signs of infection.'},
+{q:'G-CSF (filgrastim) stimulates production of:',opts:['Red blood cells','Platelets','White blood cells/neutrophils','Calcium'],ans:2,hint:'G-CSF = Granulocyte Colony Stimulating Factor. Granulocytes are a type of WBC.',rat:'G-CSF stimulates WBC/neutrophil production to combat leukopenia/neutropenia from chemo. Epoetin→RBC. Oprelvekin→Platelets.'},
+{q:'5-FU causes a distinctive adverse effect called:',opts:['Ototoxicity','Cardiomyopathy','Palmar-plantar dysesthesia (hand-foot syndrome)','Pulmonary fibrosis'],ans:2,hint:'Redness, swelling, and pain on the palms and soles.',rat:'5-FU (fluorouracil) causes hand-foot syndrome — redness, swelling, blistering, and pain on the palms and soles of the feet.'},
+{q:'Tamoxifen is a SERM used for breast cancer. What increased risk must patients be monitored for?',opts:['Renal failure','Pulmonary fibrosis','Ovarian and endometrial cancer','Bone marrow suppression'],ans:2,hint:'Tamoxifen blocks estrogen at the breast but can stimulate it elsewhere.',rat:'Tamoxifen blocks estrogen receptors on breast cancer cells but can stimulate estrogen receptors in the uterus → increased risk of ovarian and endometrial cancer.'},
+{q:'The cancer type that arises from connective tissue (bone, muscle) is called:',opts:['Carcinoma','Leukemia','Sarcoma','Lymphoma'],ans:2,hint:'Sarco- relates to flesh/connective tissue.',rat:'Sarcoma = connective tissue (bone, cartilage, muscle, fat). Carcinoma = epithelial. Leukemia = blood-forming tissue.'},
+{q:'Antiemetics for chemo patients should be given:',opts:['After vomiting starts','30–60 minutes BEFORE chemo','Only if the patient requests them','At bedtime after chemo'],ans:1,hint:'Prevention works better than treatment once nausea begins.',rat:'Give antiemetics 30–60 min BEFORE chemo. Prophylaxis is far more effective — once the vomiting center is activated, it is harder to control.'},
+{q:'Which cell cycle phase do antimetabolites primarily target?',opts:['G₁ phase','G₂ phase','S phase (DNA synthesis)','M phase (mitosis)'],ans:2,hint:'Antimetabolites interfere with DNA building blocks during synthesis.',rat:'Antimetabolites work in the S phase when DNA is being synthesized. They mimic normal building blocks but are defective → disrupting DNA production.'},
+{q:'Leucovorin is given with high-dose MTX to:',opts:['Increase MTX effectiveness','Kill more cancer cells','Protect normal bone marrow cells from MTX toxicity','Prevent allergic reactions'],ans:2,hint:'Leucovorin "rescues" normal cells by providing what MTX blocks.',rat:'MTX blocks folic acid. Leucovorin provides reduced folate to NORMAL cells so they can survive while cancer cells (which take up MTX preferentially) are killed.'},
+{q:'Normal WBC count is:',opts:['70–100','150,000–400,000','4,500–10,000','8.5–10.5'],ans:2,hint:'WBCs are counted in the thousands.',rat:'Normal WBC: 4,500–10,000/mm³. Below 4,500 = leukopenia. ANC <500 = severe neutropenia = critical infection risk.'},
+{q:'A patient with tumor lysis syndrome would have which calcium level?',opts:['High (hypercalcemia)','Normal','Low (hypocalcemia)','Fluctuating'],ans:2,hint:'High phosphate from dead cells binds to calcium, pulling it down.',rat:'Tumor lysis: ↑K, ↑Phos, ↑Uric, ↓Ca. High phosphate binds calcium → hypocalcemia.'},
+{q:'Why do we combine multiple chemo drugs?',opts:['It is less expensive','To attack cancer from multiple angles and reduce resistance','Patients tolerate combinations better','FDA requires it'],ans:1,hint:'Different drugs hit different phases and mechanisms.',rat:'Combination chemo attacks different cell cycle phases simultaneously → better cancer cell kill, reduced drug resistance, potentially lower individual doses.'},
+{q:'What cells does chemotherapy directly damage?',opts:['Only cancer cells','Only bone marrow cells','All rapidly dividing cells','Only GI cells'],ans:2,hint:'Chemo cannot tell the difference between cancer cells and normal fast-dividing cells.',rat:'Chemo targets ALL rapidly dividing cells — cancer AND normal. This includes bone marrow (→ low blood counts), GI mucosa (→ nausea/stomatitis), and hair follicles (→ alopecia).'},
+{q:'Oprelvekin (Neumega) stimulates production of:',opts:['WBCs','RBCs','Platelets','Calcium'],ans:2,hint:'Thrombocytopenia = low platelets. Which CSF fixes this?',rat:'Oprelvekin stimulates platelet production for thrombocytopenia. G-CSF→WBCs. Epoetin→RBCs.'},
+// Ch46 (15)
+{q:'Bleomycin is unique because it:',opts:['Causes cardiomyopathy','Does NOT cause bone marrow suppression','Is given intrathecally','Works only in the M phase'],ans:1,hint:'It targets the LUNGS, not the bone marrow.',rat:'Bleomycin causes pulmonary fibrosis but does NOT cause BMS — the only cytotoxic antibiotic with this distinction.'},
+{q:'The cytoprotective drug paired with cisplatin is:',opts:['Leucovorin','Dexrazoxane','Amifostine','Allopurinol'],ans:2,hint:'Cisplatin damages kidneys. Which drug protects kidneys?',rat:'Amifostine protects kidneys from cisplatin nephrotoxicity. Leucovorin→MTX. Dexrazoxane→doxo/heart. Allopurinol→uric acid.'},
+{q:'A patient on doxorubicin needs cardiac monitoring with:',opts:['EKG only','Chest X-ray','MUGA scans','Lung function tests'],ans:2,hint:'MUGA measures ejection fraction to track heart damage.',rat:'MUGA scans monitor cardiac ejection fraction to detect doxorubicin-related cardiomyopathy. Dexrazoxane is given to prevent it. Cumulative dose limits apply.'},
+{q:'During chemo infusion, the nurse notices swelling and burning at the IV site. This is:',opts:['A normal finding','Phlebitis','Extravasation','An allergic reaction'],ans:2,hint:'Chemo leaking into tissue = permanent damage risk.',rat:'Swelling + burning + redness at IV site during chemo = extravasation. Stop infusion, leave IV in, aspirate, call MD, follow protocol.'},
+{q:'If androgens are given to a female cancer patient, she may develop:',opts:['Gynecomastia','Deepening voice and facial hair','Decreased muscle mass','No side effects'],ans:1,hint:'Androgens = male hormones given to a female.',rat:'Androgens are male hormones. Given to females → masculinizing effects: deepening voice, facial hair, acne.'},
+{q:'Alkylating drugs are classified as:',opts:['Cell cycle-specific','Cell cycle-nonspecific','Hormonal agents','Colony stimulating factors'],ans:1,hint:'CCNS = works in ALL phases. Alkylating drugs fit here.',rat:'Alkylating drugs are CCNS — they work in all phases of the cell cycle, including resting cells. They cross-link DNA strands to prevent replication.'},
+{q:'Signs of cardiac toxicity from chemo include all EXCEPT:',opts:['Shortness of breath','Tinnitus','Edema','Decreased ejection fraction'],ans:1,hint:'Tinnitus is related to a different organ toxicity.',rat:'Tinnitus = ototoxicity (cisplatin). Cardiac toxicity signs: SOB, edema, chest pain, arrhythmias, decreased ejection fraction.'},
+{q:'Normal serum calcium range is:',opts:['4,500–10,000','70–100','150,000–400,000','8.5–10.5 mg/dL'],ans:3,hint:'Calcium is measured in single digits with a decimal.',rat:'Normal Ca: 8.5–10.5 mg/dL. Low = hypocalcemia (tumor lysis). High = hypercalcemia (bone cancer, brittle bones).'},
+{q:'Daunorubicin may cause which expected finding patients should know about?',opts:['Green stool','Reddish urine','Blue skin','Orange saliva'],ans:1,hint:'This is cosmetic and expected — not harmful.',rat:'Daunorubicin may turn urine reddish. This is expected and patients should be informed so they don\'t panic.'},
+{q:'After extravasation, the IV catheter should be:',opts:['Removed immediately','Left in place to aspirate drug','Flushed with saline','Repositioned in the same vein'],ans:1,hint:'You need to suction out remaining drug through the catheter.',rat:'Leave the IV in place after stopping infusion so you can aspirate residual drug. Removing it first means you lose the ability to retrieve the drug.'},
+{q:'Liver toxicity from chemo presents with:',opts:['Tinnitus and dizziness','Jaundice, elevated liver enzymes, RUQ pain','Decreased urine output','Pulmonary crackles'],ans:1,hint:'Think about what the liver does and where it is located.',rat:'Hepatotoxicity signs: jaundice (yellowing), ↑ AST/ALT, right upper quadrant pain, dark urine, clay-colored stools.'},
+{q:'A female patient on tamoxifen should be monitored for:',opts:['Nephrotoxicity','Pulmonary fibrosis','Endometrial and ovarian cancer','Cardiomyopathy'],ans:2,hint:'Tamoxifen blocks estrogen in breast but stimulates it in the uterus.',rat:'Tamoxifen blocks estrogen at breast receptors but stimulates estrogen receptors in the uterus → increased risk for endometrial and ovarian cancer.'},
+{q:'The standard for preventing infection in neutropenic patients is:',opts:['Prophylactic antibiotics','Isolation in a sterile room','HAND HYGIENE','Wearing a mask at all times'],ans:2,hint:'The single most effective measure — simple but critical.',rat:'Hand hygiene is the #1 most effective infection prevention measure for neutropenic patients.'},
+{q:'Vincristine causes relatively less BMS than other drugs. Why is this important?',opts:['It means there are no side effects','It means it can be used when other drugs cause too much bone marrow damage','It is cheaper','It works faster'],ans:1,hint:'If a patient already has low blood counts, you need a drug that won\'t suppress marrow further.',rat:'Vincristine\'s reduced BMS makes it valuable in combo regimens — it provides cancer-killing effect with less impact on blood counts than other agents.'},
+{q:'Epoetin alfa (Epogen) treats chemo-induced anemia by:',opts:['Directly replacing red blood cells','Stimulating the bone marrow to produce more RBCs','Increasing iron absorption','Stopping the bleeding'],ans:1,hint:'It\'s a colony stimulating factor — it stimulates bone marrow.',rat:'Epoetin alfa stimulates the bone marrow to increase red blood cell production, treating anemia and reducing fatigue from low RBC counts.'},
+// Ch50 (15)
+{q:'Chief cells secrete pepsinogen. What does pepsinogen become?',opts:['HCl','Intrinsic factor','Pepsin (protein-digesting enzyme)','Mucus'],ans:2,hint:'Pepsinogen is activated by acid to become this proteolytic enzyme.',rat:'Pepsinogen becomes pepsin when exposed to acid. Pepsin is a proteolytic enzyme that breaks down protein.'},
+{q:'Prostaglandins in the stomach do what?',opts:['Increase acid secretion','Protect the mucosa and prevent proton pump activation','Digest proteins','Absorb vitamins'],ans:1,hint:'They are CYTOprotective — they protect cells.',rat:'Prostaglandins are cytoprotective: they protect the gastric mucosa, enhance mucus and bicarbonate production, prevent proton pump activation, and maintain mucosal blood flow.'},
+{q:'Magnesium antacids must be AVOIDED in which patients?',opts:['Patients with constipation','Patients with renal failure','Patients with diarrhea','Patients with headaches'],ans:1,hint:'Damaged kidneys can\'t excrete excess magnesium.',rat:'Magnesium accumulates to toxic levels in renal failure because the kidneys can\'t excrete it. Aluminum-based antacids are the safest choice for renal patients.'},
+{q:'The first-line treatment for H. pylori is:',opts:['Antacids alone for 30 days','PPI + clarithromycin + amoxicillin or metronidazole','H2 blocker + sucralfate','Misoprostol + simethicone'],ans:1,hint:'Triple therapy: acid suppressor + two antibiotics.',rat:'Triple therapy: PPI + clarithromycin + (amoxicillin OR metronidazole) × 10–14 days. H. pylori is found in 90% of duodenal ulcers.'},
+{q:'Sucralfate binds phosphate. This makes it useful in:',opts:['Heart failure','Chronic renal failure','Diabetes','Liver disease'],ans:1,hint:'Renal failure patients have high phosphate. Binding it lowers levels.',rat:'Sucralfate binds phosphate → used in chronic renal failure to reduce dangerously high phosphate levels. It also forms a protective barrier over ulcers.'},
+{q:'An elderly patient on famotidine becomes confused on day 3. The nurse suspects:',opts:['Allergic reaction','CNS effects from H2 blockers','PPI overdose','Antacid toxicity'],ans:1,hint:'H2 blockers cause this specific effect in elderly patients.',rat:'H2 antagonists cause CNS effects in the elderly: confusion and disorientation. Monitor mental status and report changes.'},
+{q:'PPIs produce achlorhydria. This means:',opts:['Increased acid production','Complete absence of HCl in the stomach','Normal acid levels','Alkaline stomach contents'],ans:1,hint:'A- = absence. Chlor- = chloride/HCl. -hydria = relating to fluid.',rat:'Achlorhydria = complete absence of HCl in gastric secretions. PPIs irreversibly block the proton pump, and the cell must synthesize a new enzyme to resume acid production.'},
+{q:'Long-term PPI use increases risk of:',opts:['Liver failure and hepatitis','C. diff infections and osteoporosis/fractures','Kidney stones and gout','Heart failure and edema'],ans:1,hint:'Think about what happens when you suppress ALL stomach acid for years.',rat:'Long-term PPI use → C. difficile (reduced acid allows bacteria to survive), osteoporosis/fractures, magnesium depletion, possible dementia link.'},
+{q:'How do antacids interact with other drugs? (Select the mechanisms)',opts:['Adsorption and chelation','Enzyme induction','Receptor blocking','Protein binding'],ans:0,hint:'One is physical binding, the other is chemical binding.',rat:'Adsorption = antacids physically bind other drugs on their surface. Chelation = chemical binding creates insoluble complexes. Both reduce absorption of other drugs.'},
+{q:'Stress ulcers in ICU patients are caused by:',opts:['Eating hospital food','Decreased blood flow, mucosal ischemia, reperfusion injury','Overuse of antacids','Antibiotic reactions'],ans:1,hint:'Think about what happens to the stomach lining when blood flow drops.',rat:'Stress ulcers from decreased blood flow + mucosal ischemia + hypoperfusion/reperfusion injury. Prevent with H2 blocker or PPI. Stop when leaving ICU.'},
+{q:'Calcium-based antacids can cause all EXCEPT:',opts:['Constipation','Kidney stones','Rebound hyperacidity','Diarrhea'],ans:3,hint:'DIARRHEA is caused by which antacid type instead?',rat:'Calcium causes constipation (not diarrhea), kidney stones, and rebound hyperacidity. MAGNESIUM causes diarrhea.'},
+{q:'Cimetidine inhibits P-450 enzymes. What is the clinical consequence?',opts:['It cures ulcers faster','Other drugs are metabolized MORE SLOWLY → levels rise → toxicity risk','It reduces acid more effectively','Patients need higher doses'],ans:1,hint:'P-450 enzymes break down drugs. If you inhibit them...',rat:'P-450 breaks down many drugs. If cimetidine inhibits P-450 → drugs metabolized slower → drug levels rise → increased risk of toxicity.'},
+{q:'A patient asks why they can\'t smoke while on PPIs. The best response is:',opts:['Smoking causes lung cancer','Smoking stimulates acid production and counteracts the drug','Smoking interacts with the PPI chemically','There is no real reason'],ans:1,hint:'The drug suppresses acid, but smoking does the opposite.',rat:'Smoking stimulates gastric acid secretion, directly counteracting the PPI\'s ability to suppress acid. Same applies to H2 blockers.'},
+{q:'When should other medications be given relative to sucralfate?',opts:['At the same time','30 minutes after','At least 2 hours BEFORE sucralfate','Only at bedtime'],ans:2,hint:'Sucralfate coats everything — including other drugs if taken together.',rat:'Sucralfate impairs absorption of many drugs by binding to them. Give other medications at least 2 hours before sucralfate.'},
+{q:'Raising gastric pH by just 1 point neutralizes what percentage of acid?',opts:['10%','50%','90%','100%'],ans:2,hint:'Even a small pH change has a huge effect on acid levels.',rat:'Raising pH from 1.3 to 2.3 (just 1 point) neutralizes 90% of gastric acid. This is why even mild antacids can provide significant relief.'},
+// Ch32 (15)
+{q:'Normal fasting blood glucose is:',opts:['40–60 mg/dL','70–100 mg/dL','100–150 mg/dL','150–200 mg/dL'],ans:1,hint:'Below 70 = hypoglycemia. Above 126 = diabetes.',rat:'Normal fasting BG: 70–100 mg/dL. <70 = hypoglycemia. >126 on two occasions = diabetes.'},
+{q:'HbA1C of 7.2% in a diabetic patient indicates:',opts:['Excellent control','Above the goal of <7% — needs improvement','Normal, non-diabetic level','Dangerously low blood sugar'],ans:1,hint:'Goal for diabetic patients is <7%.',rat:'HbA1C goal is <7%. 7.2% is above goal — indicates average blood glucose has been too high over the past 2–3 months. Needs adjustment.'},
+{q:'A diabetic patient starts IV corticosteroids. The nurse expects:',opts:['Decreased blood glucose','No change in glucose','Elevated blood glucose','Immediate hypoglycemia'],ans:2,hint:'Corticosteroids ANTAGONIZE insulin.',rat:'Corticosteroids antagonize insulin → elevated blood glucose. This is a very common exam and clinical scenario. May need insulin dose adjustment.'},
+{q:'Type 2 DM is associated with metabolic syndrome. This includes:',opts:['Anemia, leukopenia, and thrombocytopenia','Obesity, dyslipidemia, HTN, and increased clot risk','Pulmonary fibrosis and renal failure','Hypocalcemia and osteoporosis'],ans:1,hint:'Think about cardiovascular risk factors that cluster together.',rat:'Metabolic syndrome: obesity, CHD, abnormal HDL/LDL, HTN, increased clot risk. All associated with Type 2 insulin resistance.'},
+{q:'Foamy or bubbly urine in a diabetic patient suggests:',opts:['Normal finding','Dehydration','Proteinuria indicating kidney damage','Urinary tract infection'],ans:2,hint:'Protein in the urine creates bubbles. Kidneys shouldn\'t leak protein.',rat:'Foamy/bubbly urine = proteinuria = kidney damage (diabetic nephropathy). This is a microvascular complication of diabetes.'},
+{q:'When mixing NPH and regular insulin, the nurse draws:',opts:['NPH (cloudy) first','Regular (clear) first','Either can go first','They cannot be mixed'],ans:1,hint:'CLEAR before CLOUDY.',rat:'"Clear before cloudy" — always draw the clear insulin (regular/rapid) first, then the cloudy (NPH). This prevents contamination of the clear vial.'},
+{q:'Sliding scale insulin\'s main disadvantage is:',opts:['It requires too many injections','It is reactive — given AFTER hyperglycemia occurs, causing BG swings','It is too expensive','It only works for Type 1'],ans:1,hint:'Sliding scale plays catch-up instead of preventing the problem.',rat:'Sliding scale is reactive — waits for high BG then corrects it → large BG swings. Basal-bolus is preferred because it mimics normal pancreatic function.'},
+{q:'Metformin is used in Type 2 when:',opts:['It is always the very first intervention','Diet and exercise have failed to control blood sugar','The patient has Type 1 diabetes','The patient has renal failure'],ans:1,hint:'Lifestyle modifications come first, then medication.',rat:'Metformin is first-line drug therapy for T2 DM when lifestyle interventions (diet, exercise, weight loss) haven\'t achieved adequate glucose control. CI in renal/hepatic disease.'},
+{q:'SGLT2 inhibitors carry an FDA warning for:',opts:['Thyroid C-cell tumors','Lactic acidosis','Fournier\'s gangrene','Cardiomyopathy'],ans:2,hint:'This is a necrotizing fasciitis of the perineum.',rat:'SGLT2 inhibitors (Jardiance, Invokana) have an FDA warning for Fournier\'s gangrene (necrotizing fasciitis of the perineum). Also: UTIs, yeast infections, DKA risk.'},
+{q:'Glitazones (pioglitazone) are contraindicated in patients with:',opts:['Renal failure','Heart failure','Liver disease','Thyroid disease'],ans:1,hint:'These drugs cause fluid retention and edema.',rat:'Glitazones can cause or worsen heart failure due to fluid retention and edema. Contraindicated if HF is present. Also: weight gain, fracture risk.'},
+{q:'A pregnant patient with diabetes should be treated with:',opts:['Metformin','Any oral antidiabetic','Insulin only','No treatment needed'],ans:2,hint:'Oral agents lack safety data in pregnancy.',rat:'Gestational DM → treat with insulin only. Oral antidiabetics are generally NOT recommended in pregnancy due to lack of safety data.'},
+{q:'The patient asks what fixed-combination insulins do. The best response is:',opts:['They cure diabetes','They combine intermediate + rapid/short insulin in one injection for basal + mealtime coverage','They replace oral medications','They are only for Type 1'],ans:1,hint:'One shot provides TWO types of coverage.',rat:'Fixed combos (Humulin 70/30, Humalog 75/25) combine intermediate + rapid/short acting insulin → one injection provides both basal and mealtime coverage.'},
+{q:'GLP-1 agonists cause weight loss that may include:',opts:['Only fat loss','Only water weight','Muscle loss with protein loss','No actual weight change'],ans:2,hint:'Incretin mimetics affect protein metabolism too.',rat:'GLP-1 agonist weight loss can include muscle mass loss with protein loss, not just fat. Important counseling point — patients should maintain protein intake and exercise.'},
+{q:'A diabetic patient is NPO for a procedure. The nurse should:',opts:['Give insulin as scheduled anyway','Skip all medications without telling anyone','Consult the PCP and clarify orders','Give half the dose'],ans:2,hint:'NPO + antidiabetic = hypoglycemia risk. Don\'t just guess.',rat:'If NPO → consult PCP and clarify orders. Do NOT just give antidiabetic medications — the patient can\'t eat to counteract the glucose-lowering effect → hypoglycemia risk.'},
+{q:'The nurse should always do what before giving insulin?',opts:['Check the patient\'s weight','Double-check the dose with another nurse','Assess lung sounds','Check liver enzymes'],ans:1,hint:'Insulin errors can be fatal. A second pair of eyes catches mistakes.',rat:'ALWAYS second-check insulin with another nurse — verify correct type, dose, route, and timing. Insulin errors can cause fatal hypoglycemia.'},
+];
+
+// ===== BUILD ALL QUIZZES =====
+buildQuiz('q45',q45,'sc45','sd45','ch45');
+buildQuiz('q46',q46,'sc46','sd46','ch46');
+buildQuiz('q50',q50,'sc50','sd50','ch50');
+buildQuiz('q32',q32,'sc32','sd32','ch32');
+buildQuiz('qFinal',qF,'scF','sdF',null);
+
+// ===== FLASHCARDS =====
+const allFC=[
+{ch:'ch45',q:'CCS vs CCNS?',a:'CCS = one specific phase. CCNS = all phases.',d:'CCS: S phase, M phase. CCNS: even resting cells.'},
+{ch:'ch45',q:'Thin therapeutic index means?',a:'Tiny margin between helpful and toxic dose.',d:'Why chemo causes so many side effects.'},
+{ch:'ch45',q:'Nadir = ?',a:'Lowest blood counts, 10–28 days post-chemo.',d:'Most dangerous window for infection + bleeding.'},
+{ch:'ch45',q:'Tumor lysis electrolytes?',a:'↑K, ↑Phos, ↑Uric Acid, ↓Calcium',d:'Caused by rapid cancer cell death.'},
+{ch:'ch45',q:'Leucovorin rescue — what and why?',a:'Given with high-dose MTX to protect bone marrow.',d:'Provides reduced folate to normal cells.'},
+{ch:'ch45',q:'5-FU distinctive AE?',a:'Hand-foot syndrome (palmar-plantar dysesthesia)',d:'Redness, swelling, pain on palms/soles.'},
+{ch:'ch45',q:'Vincristine — critical safety?',a:'IV ONLY. Fatal if intrathecal. #1 neurotoxin.',d:'Less BMS than others.'},
+{ch:'ch45',q:'ANC <500 means?',a:'Severe neutropenia — critical infection risk.',d:'Normal WBC: 4,500–10,000.'},
+{ch:'ch46',q:'Bleomycin unique fact?',a:'Pulmonary fibrosis. Does NOT cause BMS.',d:'Only cytotoxic antibiotic without BMS.'},
+{ch:'ch46',q:'Doxorubicin → what organ?',a:'HEART (cardiomyopathy). MUGA scans + dexrazoxane.',d:'Cumulative dose limits apply.'},
+{ch:'ch46',q:'Cisplatin → what organ?',a:'KIDNEYS (nephrotoxic). HYDRATE aggressively.',d:'Also ototoxicity + neuropathy.'},
+{ch:'ch46',q:'Cytoprotective pairings?',a:'Leuco→MTX. Dex→Doxo. Ami→Cis. Allo→Uric.',d:'Memorize these pairings!'},
+{ch:'ch46',q:'Bone cancer → calcium?',a:'HYPERCALCEMIA (Ca leaks from destroyed bone).',d:'Normal Ca: 8.5–10.5. Brittle bones.'},
+{ch:'ch46',q:'Extravasation first action?',a:'STOP infusion → LEAVE IV in → aspirate.',d:'Then call MD, packs, elevate, document.'},
+{ch:'ch50',q:'Parietal cells secrete?',a:'HCl. Primary drug target.',d:'Stimulated by food, stress, fatty meals.'},
+{ch:'ch50',q:'Al antacid GI effect?',a:'Constipation. Best for renal failure.',d:'Often combined with Mg.'},
+{ch:'ch50',q:'Mg antacid GI effect?',a:'Diarrhea. AVOID in renal failure.',d:'Accumulates to toxic levels.'},
+{ch:'ch50',q:'NaHCO₃ risk if too much?',a:'Metabolic alkalosis.',d:'Quick onset, short duration.'},
+{ch:'ch50',q:'Cimetidine problems?',a:'Impotence + gynecomastia + P-450 inhibition.',d:'Replaced by famotidine.'},
+{ch:'ch50',q:'PPI timing?',a:'Empty stomach 30–60 min BEFORE food.',d:'Food ↓ absorption. Don\'t smoke.'},
+{ch:'ch50',q:'Why use sucralfate?',a:'"Liquid bandage" over ulcer. Also binds phosphate.',d:'Other drugs 2 hrs BEFORE. Acts locally.'},
+{ch:'ch50',q:'H. pylori triple therapy?',a:'PPI + clarithromycin + amox/metro × 10–14 days.',d:'90% duodenal ulcers, 70% gastric.'},
+{ch:'ch50',q:'H2 blockers → what anemia?',a:'Pernicious anemia (↓ B12 absorption).',d:'Reduced acid impairs B12 uptake over time.'},
+{ch:'ch32',q:'Pancreas type?',a:'Both exocrine AND endocrine.',d:'Exo=enzymes. Endo=insulin+glucagon.'},
+{ch:'ch32',q:'Insulin pushes K⁺ where?',a:'INTO cells → treats hyperkalemia.',d:'Emergency treatment for high potassium.'},
+{ch:'ch32',q:'Normal BG?',a:'70–100 mg/dL (fasting).',d:'<70=hypo. >126=diabetes.'},
+{ch:'ch32',q:'Only insulin given IV?',a:'Regular (Humulin R).',d:'Short-acting. Also IM + SUBQ.'},
+{ch:'ch32',q:'NPH appearance?',a:'CLOUDY. Intermediate-acting.',d:'Clear before cloudy when mixing.'},
+{ch:'ch32',q:'Metformin CI?',a:'Renal + hepatic disease (lactic acidosis).',d:'Hold for contrast dye. No hypoglycemia.'},
+{ch:'ch32',q:'Rapid insulin + no food = ?',a:'HYPOGLYCEMIA. Feed immediately.',d:'Lispro onset: 5–15 min.'},
+{ch:'ch32',q:'Hypo treatment unconscious?',a:'IV D50W or SUBQ glucagon (side-lying).',d:'NEVER oral to unconscious.'},
+{ch:'ch32',q:'Bubbly urine means?',a:'Proteinuria = kidney damage.',d:'Microvascular complication.'},
+{ch:'ch32',q:'GLP-1 black box?',a:'Thyroid C-cell tumors. Also muscle/protein loss.',d:'Ozempic, Victoza, Trulicity.'},
+{ch:'ch32',q:'Corticosteroids + DM?',a:'Antagonize insulin → ↑ blood glucose.',d:'Common exam scenario!'},
+];
+let fcArr=[...allFC],fcI=0;
+function renderFC(){const c=fcArr[fcI];document.getElementById('fcTag').textContent=c.ch.replace('ch','Ch ');document.getElementById('fcQ').textContent=c.q;document.getElementById('fcA').textContent=c.a;document.getElementById('fcD').textContent=c.d;document.getElementById('fcCount').textContent=(fcI+1)+' / '+fcArr.length;document.getElementById('fcWrap').classList.remove('flipped');}
+function nextFC(){fcI=(fcI+1)%fcArr.length;renderFC();}
+function prevFC(){fcI=(fcI-1+fcArr.length)%fcArr.length;renderFC();}
+function shuffleFC(){for(let i=fcArr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[fcArr[i],fcArr[j]]=[fcArr[j],fcArr[i]];}fcI=0;renderFC();}
+function filterFC(ch,btn){document.querySelectorAll('.fpill').forEach(b=>b.classList.remove('active'));btn.classList.add('active');fcArr=ch==='all'?[...allFC]:allFC.filter(c=>c.ch===ch);fcI=0;renderFC();}
+setTimeout(renderFC,100);
+</script>
+</body>
+</html>
