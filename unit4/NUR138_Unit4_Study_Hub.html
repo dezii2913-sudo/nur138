@@ -142,6 +142,12 @@ tr:hover td { background:var(--surface2); }
 .fpill:hover { border-color:var(--teal); color:var(--teal); }
 .fpill.active { background:var(--teal); border-color:var(--teal); color:#fff; }
 
+/* ===== DIFFICULTY BADGES ===== */
+.difficulty-badge { padding:4px 10px; border-radius:12px; font-size:0.75rem; font-weight:700; display:inline-block; margin-left:8px; }
+.difficulty-easy { background:var(--green-soft); color:var(--green); }
+.difficulty-medium { background:var(--gold-soft); color:#8B6914; }
+.difficulty-hard { background:var(--red-soft); color:var(--red); }
+
 /* ===== RESPONSIVE ===== */
 @media(max-width:600px) {
   .card { padding:16px; }
@@ -163,6 +169,7 @@ tr:hover td { background:var(--surface2); }
       <button class="nav-pill" onclick="go('ch50')">Ch 50</button>
       <button class="nav-pill" onclick="go('ch32')">Ch 32</button>
       <button class="nav-pill" onclick="go('fc')">🃏 Cards</button>
+      <button class="nav-pill" onclick="go('nclex')">🎯 NCLEX Practice</button>
       <button class="nav-pill" onclick="go('final')">📝 Final Exam</button>
       <button class="nav-pill" onclick="go('cheat')">⚡ Cheat Sheet</button>
     </div>
@@ -462,6 +469,36 @@ tr:hover td { background:var(--surface2); }
   </div>
 </div>
 
+
+<!-- ==================== NCLEX PRACTICE ==================== -->
+<div class="section" id="s-nclex">
+  <div class="card" style="border:2px solid var(--teal);background:linear-gradient(135deg,var(--teal-soft),var(--surface))">
+    <h3 style="justify-content:center">🎯 NCLEX Critical Thinking Practice</h3>
+    <p style="text-align:center">Advanced practice with question shuffling, wrong answer tracking, and mastery system</p>
+    <div class="score-panel">
+      <div>
+        <span class="score-big" id="nclexScore">0%</span>
+        <div class="score-detail" id="nclexDetail">0 / 0 answered</div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="nav-pill" onclick="nclexShuffle()" style="border-color:var(--teal);color:var(--teal)">🔀 Shuffle Questions</button>
+        <button class="nav-pill" onclick="nclexShowVault()" style="border-color:var(--pink);color:var(--pink)">🗃️ Review Vault (<span id="vaultCount">0</span>)</button>
+        <button class="nav-pill" onclick="nclexReset()" style="border-color:var(--gold);color:var(--gold)">🔄 Full Reset</button>
+      </div>
+    </div>
+    <div style="margin-top:16px;padding:12px;background:var(--teal-soft);border-radius:8px;font-size:0.82rem">
+      <strong>How it works:</strong> Get a question wrong → it goes to your Vault. Get it right 3 times → back to the main pool! Track your progress toward mastery.
+    </div>
+  </div>
+  
+  <div id="nclexMode" style="display:flex;gap:10px;margin:16px 0;justify-content:center;flex-wrap:wrap">
+    <button class="nav-pill active" id="nclexModeAll" onclick="nclexSetMode('all')" style="background:var(--teal);border-color:var(--teal);color:#fff">📚 All Questions</button>
+    <button class="nav-pill" id="nclexModeVault" onclick="nclexSetMode('vault')" style="border-color:var(--pink);color:var(--pink)">🗃️ Vault Only</button>
+  </div>
+  
+  <div id="nclexQuestions"></div>
+</div>
+
 <!-- ==================== FLASHCARDS ==================== -->
 <div class="section" id="s-fc">
   <div class="card">
@@ -568,7 +605,7 @@ function go(id){
   document.querySelectorAll('.nav-pill').forEach(b=>b.classList.remove('active'));
   const s=document.getElementById('s-'+id);
   if(s)s.classList.add('active');
-  document.querySelectorAll('.nav-pill').forEach(b=>{const t=b.textContent.toLowerCase();if((id==='home'&&t.includes('home'))||(id==='ch45'&&t.includes('ch 45'))||(id==='ch46'&&t.includes('ch 46'))||(id==='ch50'&&t.includes('ch 50'))||(id==='ch32'&&t.includes('ch 32'))||(id==='fc'&&t.includes('card'))||(id==='final'&&t.includes('final'))||(id==='cheat'&&t.includes('cheat')))b.classList.add('active');});
+  document.querySelectorAll('.nav-pill').forEach(b=>{const t=b.textContent.toLowerCase();if((id==='home'&&t.includes('home'))||(id==='ch45'&&t.includes('ch 45'))||(id==='ch46'&&t.includes('ch 46'))||(id==='ch50'&&t.includes('ch 50'))||(id==='ch32'&&t.includes('ch 32'))||(id==='fc'&&t.includes('card'))||(id==='nclex'&&t.includes('nclex'))||(id==='final'&&t.includes('final'))||(id==='cheat'&&t.includes('cheat')))b.classList.add('active');});
   if(['ch45','ch46','ch50','ch32'].includes(id)){visited.add(id);const el=document.getElementById('st-'+id);if(el)el.textContent=quizPassed.has(id)?'✅ QUIZ PASSED':'📖 READING';}
   updateProg();
   window.scrollTo({top:0,behavior:'smooth'});
@@ -799,6 +836,291 @@ function prevFC(){fcI=(fcI-1+fcArr.length)%fcArr.length;renderFC();}
 function shuffleFC(){for(let i=fcArr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[fcArr[i],fcArr[j]]=[fcArr[j],fcArr[i]];}fcI=0;renderFC();}
 function filterFC(ch,btn){document.querySelectorAll('.fpill').forEach(b=>b.classList.remove('active'));btn.classList.add('active');fcArr=ch==='all'?[...allFC]:allFC.filter(c=>c.ch===ch);fcI=0;renderFC();}
 setTimeout(renderFC,100);
+
+// ===== NCLEX PRACTICE =====
+const nclexQuestions = [
+  // EASY - Foundation Building (15 questions)
+  {q:'Which type of chemotherapy drug works in all phases of the cell cycle, including resting cells?',opts:['Cell cycle-specific (CCS)','Cell cycle-nonspecific (CCNS)','Hormonal agents','Targeted therapy'],ans:1,hint:'Think: which drugs can kill cells even when they\'re not dividing?',rat:'CCNS drugs work in all phases including G₀ (resting). CCS drugs only work during specific active phases. Alkylating agents are a common example of CCNS.',diff:'easy'},
+  {q:'The nadir is the point when:',opts:['Cancer cells are most vulnerable','Blood cell counts are at their lowest','Chemotherapy is most effective','The patient feels best'],ans:1,hint:'Nadir = lowest point.',rat:'Nadir occurs 10-28 days post-chemo when bone marrow suppression peaks and blood counts drop to their lowest. This is the highest risk period for infection and bleeding.',diff:'easy'},
+  {q:'Normal fasting blood glucose should be:',opts:['40-60 mg/dL','70-100 mg/dL','100-150 mg/dL','150-200 mg/dL'],ans:1,hint:'Remember: below 70 is hypoglycemia, above 126 suggests diabetes.',rat:'Normal fasting glucose: 70-100 mg/dL. <70 = hypoglycemia. ≥126 on two separate occasions = diabetes diagnosis.',diff:'easy'},
+  {q:'Which insulin can be given intravenously?',opts:['NPH','Glargine (Lantus)','Regular (Humulin R)','Detemir (Levemir)'],ans:2,hint:'Only one insulin is clear AND short-acting enough for IV use.',rat:'Regular insulin is the ONLY insulin given IV. Also given IM and SubQ. Used in emergency situations like DKA.',diff:'easy'},
+  {q:'Parietal cells in the stomach secrete:',opts:['Pepsin','Hydrochloric acid','Mucus','Intrinsic factor and hydrochloric acid'],ans:3,hint:'Parietal cells have two important jobs.',rat:'Parietal cells secrete HCl (target of acid-suppressing drugs) and intrinsic factor (needed for B12 absorption). Loss of parietal cells causes pernicious anemia.',diff:'easy'},
+  {q:'Which antacid causes constipation?',opts:['Magnesium hydroxide','Aluminum hydroxide','Calcium carbonate','Sodium bicarbonate'],ans:1,hint:'Think: "aluminum = hard stool"',rat:'Aluminum-based antacids cause constipation. Often combined with magnesium (which causes diarrhea) to balance GI effects.',diff:'easy'},
+  {q:'Type 1 diabetes is characterized by:',opts:['Insulin resistance','Absolute insulin deficiency','Obesity','Gradual onset in older adults'],ans:1,hint:'Type 1 = the pancreas makes NO insulin.',rat:'Type 1 DM: autoimmune destruction of beta cells → absolute insulin deficiency. Requires lifelong insulin therapy. Usually diagnosed in children/young adults.',diff:'easy'},
+  {q:'The "Rule of 15" for treating hypoglycemia means:',opts:['Give 15 units of insulin','Give 15g carbs, wait 15 minutes, recheck glucose','Check glucose every 15 minutes','Give glucagon for 15 minutes'],ans:1,hint:'This is the standard hypoglycemia treatment protocol.',rat:'Rule of 15: Give 15g fast-acting carbs → wait 15 minutes → recheck blood glucose. Repeat if still low. Prevents overcorrection.',diff:'easy'},
+  {q:'PPIs like omeprazole should be taken:',opts:['With meals','30-60 minutes before meals','At bedtime','Anytime of day'],ans:1,hint:'PPIs need time to bind to proton pumps before food activates them.',rat:'PPIs must be taken 30-60 minutes BEFORE meals on an empty stomach. Food stimulates acid production, and PPIs need to be active when proton pumps turn on.',diff:'easy'},
+  {q:'Which lab value indicates the average blood glucose over the past 2-3 months?',opts:['Fasting blood glucose','Random blood glucose','HbA1C','Postprandial glucose'],ans:2,hint:'This test measures glycosylated hemoglobin.',rat:'HbA1C measures glycosylated hemoglobin, reflecting average glucose over RBC lifespan (2-3 months). Goal for diabetics: <7%.',diff:'easy'},
+  {q:'The most common side effect of chemotherapy affecting the GI system is:',opts:['Constipation','Nausea and vomiting','Increased appetite','Weight gain'],ans:1,hint:'This is why antiemetics are given prophylactically.',rat:'Nausea/vomiting occurs because chemotherapy triggers the vomiting center in the brain and damages GI mucosa. Antiemetics should be given 30-60 minutes BEFORE chemo.',diff:'easy'},
+  {q:'Metformin works primarily by:',opts:['Stimulating insulin release from the pancreas','Decreasing glucose production in the liver','Blocking carbohydrate absorption','Increasing insulin sensitivity in muscles only'],ans:1,hint:'Metformin targets the liver\'s glucose output.',rat:'Metformin decreases hepatic glucose production and improves insulin sensitivity. Does NOT cause hypoglycemia when used alone. First-line drug for Type 2 DM.',diff:'easy'},
+  {q:'NPH insulin appears:',opts:['Clear','Cloudy','Yellow','Pink'],ans:1,hint:'Remember: clear before cloudy when mixing.',rat:'NPH is cloudy/milky due to protamine. Regular and rapid-acting insulins are clear. Always draw clear before cloudy to avoid contamination.',diff:'easy'},
+  {q:'H2 receptor blockers like famotidine work by:',opts:['Neutralizing existing stomach acid','Coating the stomach lining','Blocking histamine receptors that stimulate acid production','Permanently disabling proton pumps'],ans:2,hint:'They block the SIGNAL to make acid.',rat:'H2 blockers compete with histamine at H2 receptors on parietal cells → less acid production. Work faster than PPIs but less powerful.',diff:'easy'},
+  {q:'White blood cell count below 4,500/mm³ is called:',opts:['Anemia','Thrombocytopenia','Leukopenia','Neutropenia'],ans:2,hint:'Leuko- = white cells. -penia = low.',rat:'Leukopenia = low WBC count (<4,500). Neutropenia specifically refers to low neutrophils. Normal WBC: 4,500-10,000/mm³.',diff:'easy'},
+
+  // MEDIUM - Application & Analysis (25 questions)
+  {q:'A patient with neutropenia is receiving filgrastim (Neupogen). The nurse knows this drug:',opts:['Stimulates production of RBCs','Stimulates production of WBCs','Stimulates production of platelets','Suppresses the immune system'],ans:1,hint:'Filgrastim = G-CSF = Granulocyte (white cell) Colony Stimulating Factor',rat:'Filgrastim stimulates WBC/neutrophil production. Critical for preventing infection in chemotherapy patients.',diff:'medium'},
+  {q:'A patient receiving cisplatin develops tinnitus and hearing loss. The nurse recognizes this as:',opts:['An allergic reaction requiring epinephrine','Expected ototoxicity — report to provider','Unrelated to chemotherapy','A sign of tumor lysis syndrome'],ans:1,hint:'Cisplatin has three major toxicities: kidneys, ears, nerves.',rat:'Ototoxicity is a known adverse effect of cisplatin. Report immediately — may require dose adjustment or discontinuation.',diff:'medium'},
+  {q:'A patient taking high-dose methotrexate will receive leucovorin rescue. The nurse explains this medication:',opts:['Increases methotrexate effectiveness','Prevents nausea and vomiting','Protects normal cells from methotrexate toxicity','Treats allergic reactions'],ans:2,hint:'Leucovorin provides what methotrexate blocks.',rat:'Methotrexate blocks folic acid. Leucovorin (folinic acid) "rescues" normal cells by providing reduced folate while cancer cells remain vulnerable.',diff:'medium'},
+  {q:'A patient receiving doxorubicin requires cardiac monitoring because this drug causes:',opts:['Pulmonary fibrosis','Cardiomyopathy and heart failure','Renal failure','Liver cirrhosis'],ans:1,hint:'Doxorubicin = RED drug = damages RED muscle = heart',rat:'Doxorubicin causes cumulative cardiac toxicity. Monitor with MUGA scans. Give dexrazoxane for cardioprotection.',diff:'medium'},
+  {q:'A patient asks why they must take omeprazole 30 minutes before breakfast. The best response is:',opts:['"It works better on an empty stomach"','"Taking it with food decreases absorption"','"The medication needs time to start working before stomach acid is stimulated by food"','"This prevents nausea"'],ans:2,hint:'PPIs need to be activated before acid pumps turn on.',rat:'PPIs work by irreversibly binding to proton pumps. They must be taken 30-60 minutes before eating so they\'re active when food stimulates acid secretion.',diff:'medium'},
+  {q:'When mixing insulin, the nurse should draw which type first?',opts:['NPH (cloudy) then Regular (clear)','Regular (clear) then NPH (cloudy)','Either order is acceptable','They should never be mixed'],ans:1,hint:'Remember: "Clear before Cloudy"',rat:'Always draw clear (Regular/rapid) before cloudy (NPH) to prevent contaminating the clear vial with NPH particles.',diff:'medium'},
+  {q:'A patient receiving sliding scale insulin asks why this method is not ideal. The best explanation is:',opts:['"It requires too many injections per day"','"It only treats high blood sugar after it happens, causing glucose swings"','"It is more expensive than other regimens"','"It only works for type 1 diabetes"'],ans:1,hint:'Sliding scale is REACTIVE, not PROACTIVE.',rat:'Sliding scale is reactive — waits for hyperglycemia then corrects it, causing roller-coaster blood glucose. Basal-bolus mimics normal pancreatic function and prevents swings.',diff:'medium'},
+  {q:'The nurse is teaching a patient about metformin. Which condition would be a contraindication?',opts:['Well-controlled hypertension','Chronic kidney disease','Seasonal allergies','Hypothyroidism'],ans:1,hint:'Think about lactic acidosis risk.',rat:'Metformin is contraindicated in renal disease due to risk of lactic acidosis. Also contraindicated in hepatic disease, alcoholism, and held before IV contrast dye.',diff:'medium'},
+  {q:'What laboratory value indicates a patient has achieved diabetes control over the past 2-3 months?',opts:['Fasting blood glucose <100 mg/dL','HbA1C <7%','Postprandial glucose <140 mg/dL','Random glucose 70-100 mg/dL'],ans:1,hint:'HbA1C reflects AVERAGE glucose over months.',rat:'HbA1C <7% is the goal for diabetics. It reflects average blood glucose over 2-3 months by measuring glycosylated hemoglobin.',diff:'medium'},
+  {q:'A patient receiving sucralfate asks when to take other medications. The nurse should instruct:',opts:['Take all medications together','Take other medications at least 2 hours BEFORE sucralfate','Take other medications 30 minutes after sucralfate','Timing does not matter'],ans:1,hint:'Sucralfate coats everything — including other drugs if taken together.',rat:'Sucralfate coats the stomach and binds to drugs, preventing their absorption. Give other medications at least 2 hours before sucralfate.',diff:'medium'},
+  {q:'A patient is prescribed ranitidine but the pharmacy substitutes famotidine. The patient asks about the difference. The nurse explains:',opts:['"Famotidine is a better H2 blocker with fewer side effects"','"They are exactly the same medication"','"Famotidine causes more drowsiness"','"Ranitidine works faster but famotidine lasts longer"'],ans:0,hint:'Cimetidine causes problems. Famotidine does not.',rat:'Famotidine is preferred over cimetidine/ranitidine because it has fewer drug interactions, no P450 inhibition, and no anti-androgen effects (impotence/gynecomastia).',diff:'medium'},
+  {q:'During H. pylori treatment, a patient asks why they must take three medications. The best response is:',opts:['"One drug is not strong enough to kill the bacteria"','"The combination attacks the bacteria in multiple ways and reduces resistance"','"This is standard protocol required by the FDA"','"Two are for the bacteria and one prevents side effects"'],ans:1,hint:'Triple therapy: PPI + 2 antibiotics.',rat:'H. pylori triple therapy (PPI + clarithromycin + amoxicillin or metronidazole) for 10-14 days. Combination reduces resistance and increases eradication rates (>90% for duodenal ulcers).',diff:'medium'},
+  {q:'A patient with type 2 diabetes is started on IV corticosteroids for an inflammatory condition. The nurse anticipates:',opts:['Decreased blood glucose levels','No change in glucose','Elevated blood glucose requiring insulin adjustment','Immediate need for oral antidiabetic medications'],ans:2,hint:'Corticosteroids ANTAGONIZE insulin.',rat:'Corticosteroids antagonize insulin → hyperglycemia. Common scenario! Patient may need temporary insulin or increased doses.',diff:'medium'},
+  {q:'A patient is prescribed bleomycin. Which assessment is most important?',opts:['Cardiac ejection fraction','Pulmonary function tests','Liver enzymes','Electrolytes'],ans:1,hint:'Bleomycin → LUNGS (pulmonary fibrosis).',rat:'Bleomycin causes pulmonary fibrosis. Monitor lung sounds, O2 saturation, and pulmonary function tests. Unique because it does NOT cause bone marrow suppression.',diff:'medium'},
+  {q:'The nurse is preparing to administer amifostine to a patient receiving cisplatin. What is the purpose of this drug?',opts:['Reduce nausea and vomiting','Protect kidneys from nephrotoxicity','Stimulate white blood cell production','Prevent allergic reactions'],ans:1,hint:'Each cytoprotective drug protects a specific organ.',rat:'Amifostine protects kidneys from cisplatin. Leucovorin→MTX/bone marrow. Dexrazoxane→doxorubicin/heart. Allopurinol→uric acid/kidneys.',diff:'medium'},
+  {q:'A patient presents with tachycardia, tremors, diaphoresis, and confusion. Blood glucose is 52 mg/dL. The patient is conscious and able to swallow. What is the priority treatment?',opts:['Give glucagon injection immediately','Administer IV dextrose 50%','Give 15g fast-acting carbohydrate orally (juice, glucose tablets)','Call the provider and wait for orders'],ans:2,hint:'Conscious + able to swallow = oral glucose is safest and fastest.',rat:'Hypoglycemia in conscious patient: give 15g fast-acting carbs orally, recheck in 15 min. Unconscious or unable to swallow: D50W IV or glucagon injection.',diff:'medium'},
+  {q:'Which patient statement indicates understanding of insulin pen technique?',opts:['"I should inject at a 90-degree angle into subcutaneous tissue"','"I can reuse needles up to 3 times to save money"','"I should inject into the same spot each time for consistency"','"I must store opened insulin pens in the refrigerator"'],ans:0,hint:'Insulin = subQ injection at 90 degrees. Rotate sites. Never reuse needles.',rat:'Correct subQ technique: 90-degree angle into fat tissue. Rotate sites to prevent lipohypertrophy. Never reuse needles (increases pain, infection risk, and breaks). Opened pens kept at room temp up to 28-30 days.',diff:'medium'},
+  {q:'A patient taking calcium carbonate antacids for several weeks develops kidney stones. The nurse explains:',opts:['"This is unrelated to the antacid"','"Calcium antacids can cause hypercalcemia and kidney stones with prolonged use"','"You need to take more water with the antacid"','"Switch to aluminum antacids instead"'],ans:1,hint:'Too much calcium → high blood calcium → deposited in kidneys.',rat:'Prolonged calcium antacid use → hypercalcemia → kidney stones, CNS changes. Alternate with magnesium antacids or use other agents. Aluminum also has risks (constipation, accumulation in renal disease).',diff:'medium'},
+  {q:'The nurse teaches a patient about fixed-combination insulin (70/30). What should be included?',opts:['"This provides only basal coverage"','"This combines intermediate and rapid insulin in one injection for basal plus mealtime coverage"','"You can adjust the ratio based on your needs"','"This is only for type 1 diabetes"'],ans:1,hint:'One injection = TWO types of insulin.',rat:'Fixed combinations (Humulin 70/30, Humalog 75/25) contain both intermediate (basal) and rapid/short-acting (mealtime) insulin in a pre-mixed ratio. One injection provides both types of coverage.',diff:'medium'},
+  {q:'A patient asks about the difference between cimetidine and other H2 blockers. The nurse explains:',opts:['"Cimetidine is the most effective H2 blocker"','"Cimetidine can cause gynecomastia and impotence due to anti-androgen effects"','"All H2 blockers have the same side effects"','"Cimetidine works faster than other H2 blockers"'],ans:1,hint:'Cimetidine has unique hormonal side effects.',rat:'Cimetidine has anti-androgen effects causing gynecomastia and impotence in men. It also inhibits P450 enzymes causing many drug interactions. Famotidine/ranitidine preferred.',diff:'medium'},
+  {q:'A Type 2 diabetic patient asks about starting an exercise program. The nurse should advise:',opts:['"Exercise will make your blood sugar dangerously low"','"Check blood glucose before and after exercise; you may need less medication"','"Exercise does not affect blood sugar in Type 2 diabetes"','"Only Type 1 diabetics need to monitor glucose with exercise"'],ans:1,hint:'Exercise increases insulin sensitivity.',rat:'Exercise increases glucose uptake and insulin sensitivity. Monitor glucose closely — may need medication adjustment to prevent hypoglycemia. Carry fast-acting carbs during exercise.',diff:'medium'},
+  {q:'When teaching about sucralfate, the nurse emphasizes:',opts:['"Take with meals for best effect"','"It works systemically to reduce acid production"','"It forms a protective barrier over ulcers in the stomach"','"It can be crushed and mixed with juice"'],ans:2,hint:'Think: liquid bandaid.',rat:'Sucralfate forms a paste-like barrier over ulcers, protecting them from acid. Works locally, not systemically. Take on empty stomach. Also binds phosphate.',diff:'medium'},
+  {q:'A patient receiving tamoxifen for breast cancer should be monitored for:',opts:['Cardiomyopathy','Pulmonary fibrosis','Endometrial cancer','Nephrotoxicity'],ans:2,hint:'Tamoxifen blocks estrogen at breast but can stimulate it elsewhere.',rat:'Tamoxifen is a SERM: blocks estrogen receptors in breast tissue but can stimulate them in the uterus → increased risk of endometrial/ovarian cancer. Also increases blood clot risk.',diff:'medium'},
+  {q:'The nurse is teaching a patient starting insulin therapy. Which statement requires correction?',opts:['"I should rotate my injection sites"','"I can store unopened insulin in the refrigerator"','"If I miss a dose, I should double the next dose"','"I should check my blood sugar before each injection"'],ans:2,hint:'Never double up on insulin doses!',rat:'NEVER double insulin doses — risk of severe hypoglycemia. If a dose is missed, check glucose and follow provider guidelines. Doubling can be fatal.',diff:'medium'},
+  {q:'A patient on long-term aluminum-based antacids should be monitored for:',opts:['Diarrhea','Hyperkalemia','Constipation and possible aluminum toxicity in renal disease','Hypercalcemia'],ans:2,hint:'Aluminum accumulates in kidney disease patients.',rat:'Aluminum antacids cause constipation. In renal disease patients, aluminum accumulates to toxic levels. Best choice for renal patients due to low sodium, but must monitor closely.',diff:'medium'},
+
+  // HARD - Critical Thinking & Priority (20 questions)
+  {q:'When preparing to administer vincristine, what is the most critical safety consideration?',opts:['Check renal function','Verify ONLY intravenous route — never intrathecal','Obtain cardiac clearance','Mix with D5W only'],ans:1,hint:'Intrathecal vincristine is FATAL.',rat:'Vincristine MUST be given IV only. Intrathecal (spinal) administration causes death. This is a sentinel event.',diff:'hard'},
+  {q:'The nurse is caring for a patient 14 days post-chemotherapy who has a fever of 100.5°F. What is the priority action?',opts:['Give acetaminophen and recheck in 4 hours','Immediately assess for infection and notify provider','Encourage oral fluids','Apply cooling blanket'],ans:1,hint:'Fever during nadir = potential medical emergency.',rat:'Day 14 = nadir (lowest blood counts). Even low-grade fever suggests neutropenic sepsis. This is a medical emergency requiring immediate assessment and broad-spectrum antibiotics.',diff:'hard'},
+  {q:'During tumor lysis syndrome, the nurse would expect which laboratory findings?',opts:['Hyperkalemia, hyperphosphatemia, hyperuricemia, hypocalcemia','Hypokalemia, hypophosphatemia, hypouricemia, hypercalcemia','Normal electrolytes with elevated WBCs','Hypernatremia and hyperglycemia'],ans:0,hint:'Remember: Everything UP except calcium DOWN.',rat:'Rapid cancer cell destruction releases intracellular contents: K↑, Phos↑, Uric acid↑. High phosphate binds calcium causing Ca↓.',diff:'hard'},
+  {q:'The nurse notices the IV site of a patient receiving vesicant chemotherapy is swollen and painful. What is the immediate action?',opts:['Apply warm compress and continue infusion','Stop the infusion but remove the IV catheter immediately','Stop the infusion, leave the catheter in place, attempt to aspirate','Slow the infusion rate and notify provider later'],ans:2,hint:'Don\'t pull out the IV — you need it to aspirate the drug back out!',rat:'Extravasation protocol: STOP infusion → LEAVE IV in → ASPIRATE drug back → then remove catheter, apply cold (most vesicants) or warm (vinca alkaloids), elevate, document.',diff:'hard'},
+  {q:'A patient with a history of heart failure is prescribed pioglitazone (Actos) for type 2 diabetes. What is the nurse\'s priority concern?',opts:['Risk of hypoglycemia','Contraindication due to fluid retention worsening heart failure','Increased risk of bladder cancer','Vitamin B12 deficiency'],ans:1,hint:'Glitazones cause edema and fluid retention.',rat:'Thiazolidinediones (glitazones) cause fluid retention and can precipitate or worsen heart failure. Contraindicated in patients with HF.',diff:'hard'},
+  {q:'A diabetic patient is NPO for surgery scheduled at 10 AM. What should the nurse do regarding the morning insulin dose?',opts:['Give the full dose as scheduled','Hold all insulin without notifying anyone','Clarify orders with the provider','Give half the usual dose'],ans:2,hint:'NPO + insulin = hypoglycemia risk. Never guess!',rat:'NPO patients cannot eat to counteract insulin\'s glucose-lowering effect. ALWAYS clarify with provider — they may order reduced dose, different insulin, or glucose infusion.',diff:'hard'},
+  {q:'A patient taking an SGLT2 inhibitor reports severe perineal pain and fever. The nurse suspects:',opts:['Urinary tract infection','Fournier\'s gangrene','Diabetic ketoacidosis','Hypoglycemia'],ans:1,hint:'This is a necrotizing fasciitis — the FDA black box warning for SGLT2 inhibitors.',rat:'Fournier\'s gangrene is a rare but serious infection (necrotizing fasciitis of the perineum) associated with SGLT2 inhibitors. Requires emergency care.',diff:'hard'},
+  {q:'The nurse is administering insulin and realizes they gave Regular insulin instead of rapid-acting (lispro) before a meal. What is the priority action?',opts:['Document the error and monitor closely','Have the patient eat immediately to prevent hypoglycemia','Skip the next insulin dose','Wait 30 minutes then have patient eat'],ans:3,hint:'Regular peaks later than lispro. Patient needs to eat when Regular starts working.',rat:'Regular insulin takes 30-60 minutes to start working (vs. lispro at 5-15 min). Patient should eat in 30 minutes to match insulin action and prevent hypoglycemia.',diff:'hard'},
+  {q:'Which finding would require immediate intervention in a patient receiving chemotherapy?',opts:['Platelets 180,000/mm³','ANC 400/mm³ with fever 100.6°F','Hemoglobin 11 g/dL','Mild nausea controlled with antiemetics'],ans:1,hint:'ANC <500 + fever = neutropenic sepsis emergency.',rat:'ANC <500 = severe neutropenia. ANY fever is an emergency requiring immediate broad-spectrum antibiotics. This is neutropenic sepsis until proven otherwise.',diff:'hard'},
+  {q:'A patient on long-term PPI therapy develops numbness and tingling in extremities. The nurse suspects:',opts:['Hypermagnesemia','Vitamin B12 deficiency','Hypercalcemia','Liver toxicity'],ans:1,hint:'Reduced acid → reduced B12 absorption → pernicious anemia.',rat:'Long-term PPIs reduce stomach acid needed to absorb vitamin B12 → deficiency → pernicious anemia → neurological symptoms. Monitor B12 levels.',diff:'hard'},
+  {q:'When teaching about GLP-1 agonists like semaglutide (Ozempic), what critical warning must be included?',opts:['Risk of hypoglycemia when used alone','Possible thyroid C-cell tumors (black box warning)','Immediate weight gain','Liver failure risk'],ans:1,hint:'Black box = most serious FDA warning.',rat:'GLP-1 agonists have black box warning for thyroid C-cell tumors (medullary thyroid carcinoma). Contraindicated with personal/family history. Also causes weight loss including muscle/protein loss.',diff:'hard'},
+  {q:'A chemotherapy nurse is assessing IV sites before administration. Which finding requires immediate attention?',opts:['Slight redness at insertion site','Blood return with aspiration','Swelling and no blood return','Patient reports mild coolness at site'],ans:2,hint:'No blood return = possible infiltration. With vesicant chemo = disaster.',rat:'Swelling + no blood return = infiltration. With vesicant chemotherapy this becomes extravasation → tissue necrosis. Stop immediately, follow protocol.',diff:'hard'},
+  {q:'A patient presents with confusion, fruity breath odor, Kussmaul respirations, and blood glucose 520 mg/dL. The nurse recognizes this as:',opts:['Hypoglycemia','Diabetic ketoacidosis (DKA)','Hyperosmolar hyperglycemic state (HHS)','Normal response to stress'],ans:1,hint:'Fruity breath + fast deep breathing + high glucose = DKA.',rat:'DKA: hyperglycemia, ketones, metabolic acidosis, Kussmaul respirations (compensatory). More common in Type 1. Requires IV insulin, fluids, and electrolyte replacement.',diff:'hard'},
+  {q:'A patient receiving methotrexate develops severe mucositis and bone marrow suppression. The priority intervention is:',opts:['Stop methotrexate and administer leucovorin rescue immediately','Give antiemetics','Increase IV hydration','Administer pain medication'],ans:0,hint:'This is methotrexate toxicity — the antidote is leucovorin.',rat:'Severe mucositis and BMS indicate methotrexate toxicity. STOP drug immediately and give leucovorin (folinic acid) to rescue normal cells. This is an emergency.',diff:'hard'},
+  {q:'The nurse is caring for a patient with bone metastases. Which assessment finding requires immediate attention?',opts:['Pain rated 6/10','Serum calcium 12.8 mg/dL','Hemoglobin 10.5 g/dL','Fatigue'],ans:1,hint:'Normal calcium: 8.5-10.5 mg/dL. High calcium is an oncologic emergency.',rat:'Hypercalcemia (>10.5) from bone destruction is an oncologic emergency. Symptoms: confusion, constipation, cardiac arrhythmias. Requires immediate IV hydration and bisphosphonates.',diff:'hard'},
+  {q:'A patient on insulin therapy is scheduled for a PET scan requiring fasting. The nurse should:',opts:['Give insulin as scheduled with a small snack','Hold all insulin without notifying anyone','Contact the provider to clarify insulin orders and monitoring plan','Give half the usual insulin dose'],ans:2,hint:'Fasting + imaging + diabetes = complex management. Always clarify.',rat:'PET scans require fasting and glucose control affects imaging. Provider must give specific orders for insulin adjustment, glucose monitoring, and timing. Never assume or guess.',diff:'hard'},
+  {q:'Which patient is at highest risk for lactic acidosis from metformin?',opts:['Patient with well-controlled hypertension','Patient with chronic kidney disease and elevated creatinine','Patient with seasonal allergies','Patient with hypothyroidism'],ans:1,hint:'Kidney disease prevents metformin excretion → accumulation → lactic acidosis.',rat:'CKD/renal impairment → metformin accumulation → lactic acidosis (rare but fatal). Also hold metformin before IV contrast dye, surgery, or if patient develops acute illness.',diff:'hard'},
+  {q:'A patient receiving high-dose cytarabine develops cerebellar toxicity. Which assessment finding would the nurse expect?',opts:['Hearing loss','Ataxia and difficulty with coordination','Cardiac arrhythmias','Skin rash'],ans:1,hint:'Cerebellar = coordination and balance center.',rat:'High-dose cytarabine can cause cerebellar toxicity: ataxia, slurred speech, nystagmus, difficulty with fine motor coordination. May be irreversible. Requires immediate dose reduction or discontinuation.',diff:'hard'},
+  {q:'A Type 1 diabetic patient presents with DKA. Along with IV insulin, which electrolyte requires careful monitoring and replacement?',opts:['Sodium','Calcium','Potassium','Magnesium'],ans:2,hint:'Insulin drives potassium INTO cells. Total body K is already depleted in DKA.',rat:'DKA patients are severely potassium-depleted (despite normal/high initial K levels). Insulin drives K into cells → profound hypokalemia → cardiac arrest risk. Monitor and replace K aggressively.',diff:'hard'},
+  {q:'The nurse is teaching a patient about allopurinol during chemotherapy. The patient should understand this medication:',opts:['Prevents nausea and vomiting','Stimulates white blood cell production','Prevents tumor lysis syndrome by reducing uric acid levels','Protects the kidneys from cisplatin'],ans:2,hint:'Allopurinol blocks xanthine oxidase → prevents uric acid formation.',rat:'Allopurinol prevents tumor lysis syndrome by blocking uric acid formation. Given before chemotherapy in high tumor burden patients to prevent uric acid nephropathy and kidney failure.',diff:'hard'}
+];
+
+// NCLEX Practice System with Vault and Mastery
+let nclexPool = [...nclexQuestions];
+let nclexCurrent = [];
+let nclexVault = JSON.parse(localStorage.getItem('nclexVault') || '{}'); // {questionIndex: correctCount}
+let nclexAnswered = JSON.parse(localStorage.getItem('nclexAnswered') || '{}'); // {questionIndex: timesAnswered}
+let nclexMode = 'all';
+let nclexScore = 0;
+let nclexTotal = 0;
+
+function nclexInit() {
+  if (!go) return;
+  // Update the navigation handler to include nclex
+  const originalGo = window.go;
+  window.go = function(id) {
+    originalGo(id);
+    if (id === 'nclex') {
+      nclexRenderQuestions();
+    }
+  };
+}
+
+function nclexShuffle() {
+  // Shuffle questions, excluding ones seen this session (unless vault mode)
+  nclexScore = 0;
+  nclexTotal = 0;
+  
+  if (nclexMode === 'vault') {
+    // Show only vault questions
+    const vaultIndices = Object.keys(nclexVault).map(Number);
+    nclexCurrent = vaultIndices.map(i => ({...nclexQuestions[i], originalIndex: i}));
+  } else {
+    // Show fresh questions (not in vault or recently answered incorrectly)
+    const availableQuestions = nclexQuestions
+      .map((q, i) => ({...q, originalIndex: i}))
+      .filter((q, i) => {
+        const inVault = nclexVault[i] !== undefined;
+        return !inVault; // Exclude vault questions from main pool
+      });
+    
+    // Shuffle
+    for (let i = availableQuestions.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [availableQuestions[i], availableQuestions[j]] = [availableQuestions[j], availableQuestions[i]];
+    }
+    
+    // Show all available questions (no limit)
+    nclexCurrent = availableQuestions;
+  }
+  
+  nclexRenderQuestions();
+  document.getElementById('nclexQuestions').scrollIntoView({behavior: 'smooth'});
+}
+
+function nclexShowVault() {
+  nclexMode = 'vault';
+  nclexSetMode('vault');
+  nclexShuffle();
+}
+
+function nclexSetMode(mode) {
+  nclexMode = mode;
+  document.getElementById('nclexModeAll').classList.toggle('active', mode === 'all');
+  document.getElementById('nclexModeVault').classList.toggle('active', mode === 'vault');
+  
+  // Update button styles
+  if (mode === 'all') {
+    document.getElementById('nclexModeAll').style.background = 'var(--teal)';
+    document.getElementById('nclexModeAll').style.color = '#fff';
+    document.getElementById('nclexModeVault').style.background = 'white';
+  } else {
+    document.getElementById('nclexModeVault').style.background = 'var(--pink)';
+    document.getElementById('nclexModeVault').style.color = '#fff';
+    document.getElementById('nclexModeAll').style.background = 'white';
+  }
+  
+  nclexShuffle();
+}
+
+function nclexReset() {
+  if (confirm('This will clear your vault and reset all progress. Continue?')) {
+    nclexVault = {};
+    nclexAnswered = {};
+    localStorage.removeItem('nclexVault');
+    localStorage.removeItem('nclexAnswered');
+    nclexScore = 0;
+    nclexTotal = 0;
+    nclexMode = 'all';
+    nclexSetMode('all');
+    nclexShuffle();
+  }
+}
+
+function nclexRenderQuestions() {
+  const container = document.getElementById('nclexQuestions');
+  container.innerHTML = '';
+  
+  if (nclexCurrent.length === 0) {
+    nclexShuffle();
+    return;
+  }
+  
+  nclexCurrent.forEach((q, idx) => {
+    const qDiv = document.createElement('div');
+    qDiv.className = 'quiz-q';
+    qDiv.dataset.originalIndex = q.originalIndex;
+    
+    const diffClass = q.diff === 'hard' ? 'difficulty-hard' : q.diff === 'easy' ? 'difficulty-easy' : 'difficulty-medium';
+    const diffText = q.diff === 'hard' ? 'Hard' : q.diff === 'easy' ? 'Easy' : 'Medium';
+    
+    const masteryHTML = nclexVault[q.originalIndex] !== undefined 
+      ? `<div style="display:inline-block;margin-left:10px;padding:4px 10px;background:var(--pink-soft);color:var(--pink);border-radius:12px;font-size:0.75rem;font-weight:700">
+           🗃️ Vault: ${nclexVault[q.originalIndex]}/3 correct
+         </div>`
+      : '';
+    
+    const hintHTML = q.hint 
+      ? `<button class="hint-btn" onclick="this.nextElementSibling.classList.toggle('show');this.textContent=this.textContent==='💡 Show Hint'?'💡 Hide Hint':'💡 Show Hint'">💡 Show Hint</button>
+         <div class="hint-text">${q.hint}</div>`
+      : '';
+    
+    const optsHTML = q.opts.map((opt, oi) => 
+      `<button class="quiz-opt" data-idx="${oi}">${opt}</button>`
+    ).join('');
+    
+    qDiv.innerHTML = `
+      <div class="q-label">
+        Question ${idx + 1} of ${nclexCurrent.length}
+        <span class="difficulty-badge ${diffClass}">${diffText}</span>
+        ${masteryHTML}
+      </div>
+      <div class="q-text">${q.q}</div>
+      ${hintHTML}
+      ${optsHTML}
+      <div class="quiz-rat">${q.rat}</div>
+    `;
+    
+    // Add click handlers
+    qDiv.querySelectorAll('.quiz-opt').forEach((btn, oi) => {
+      btn.addEventListener('click', () => {
+        if (qDiv.classList.contains('done')) return;
+        
+        qDiv.classList.add('done');
+        const correct = oi === q.ans;
+        const origIdx = q.originalIndex;
+        
+        // Update stats
+        nclexTotal++;
+        if (correct) {
+          nclexScore++;
+          
+          // Update vault mastery
+          if (nclexVault[origIdx] !== undefined) {
+            nclexVault[origIdx]++;
+            if (nclexVault[origIdx] >= 3) {
+              // Mastered! Remove from vault
+              delete nclexVault[origIdx];
+              setTimeout(() => {
+                alert(`🎉 Mastered! This question is back in the main pool.`);
+              }, 300);
+            }
+          }
+        } else {
+          // Wrong answer - add to vault or reset progress
+          if (nclexVault[origIdx] === undefined) {
+            nclexVault[origIdx] = 0;
+          } else {
+            nclexVault[origIdx] = 0; // Reset progress on wrong answer
+          }
+        }
+        
+        // Save to localStorage
+        localStorage.setItem('nclexVault', JSON.stringify(nclexVault));
+        
+        // Update UI
+        qDiv.querySelectorAll('.quiz-opt').forEach((b, j) => {
+          b.classList.add('locked');
+          if (j === q.ans) b.classList.add('right');
+          else if (j === oi && !correct) b.classList.add('wrong');
+          else b.classList.add('dim');
+        });
+        
+        if (correct) {
+          qDiv.classList.add('correct-border');
+        } else {
+          qDiv.classList.add('wrong-border');
+        }
+        
+        qDiv.querySelector('.quiz-rat').classList.add('show');
+        
+        // Update scores
+        const pct = Math.round((nclexScore / nclexTotal) * 100);
+        document.getElementById('nclexScore').textContent = pct + '%';
+        document.getElementById('nclexDetail').textContent = `${nclexScore} / ${nclexTotal} answered`;
+        document.getElementById('vaultCount').textContent = Object.keys(nclexVault).length;
+      });
+    });
+    
+    container.appendChild(qDiv);
+  });
+  
+  // Update vault count
+  document.getElementById('vaultCount').textContent = Object.keys(nclexVault).length;
+  
+  // Update scores
+  const pct = nclexTotal > 0 ? Math.round((nclexScore / nclexTotal) * 100) : 0;
+  document.getElementById('nclexScore').textContent = pct + '%';
+  document.getElementById('nclexDetail').textContent = `${nclexScore} / ${nclexTotal} answered`;
+}
+
+// Initialize NCLEX on load
+setTimeout(() => {
+  nclexInit();
+  nclexShuffle();
+}, 200);
+
 </script>
 </body>
 </html>
