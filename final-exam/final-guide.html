@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -45,284 +46,528 @@
     .hubbtn { grid-column: span 12; }
   }
 
-  .sectionTitle {
-    display:flex; align-items:center; justify-content:space-between; gap:12px;
-    margin:0; color:#764ba2;
-  }
-  .tag { font-size:.85rem; font-weight:800; color:#666; }
-  .callout {
-    border-left:6px solid #667eea;
-    background:#f8f9ff; padding:12px 14px; border-radius:12px;
-    margin:12px 0;
-  }
-  .callout.warn { border-left-color:#dc3545; background:linear-gradient(135deg,#ffe7ea 0%, #fff 70%); }
-  .callout.good { border-left-color:#28a745; background:linear-gradient(135deg,#e7fff0 0%, #fff 70%); }
-  .callout.critical { border-left-color:#ff6b6b; background:linear-gradient(135deg,#ffe0e0 0%, #fff 70%); font-weight:900; }
-  .grid2 {
-    display:grid; grid-template-columns:1fr 1fr; gap:12px;
-  }
-  @media (max-width:820px) { .grid2 { grid-template-columns:1fr; } }
+.sectionTitle {
+display:flex; align-items:center; justify-content:space-between; gap:12px;
+margin:0; color:#764ba2;
+}
+.tag { font-size:.85rem; font-weight:800; color:#666; }
+.callout {
+border-left:6px solid #667eea;
+background:#f8f9ff; padding:12px 14px; border-radius:12px;
+margin:12px 0;
+}
+.callout.warn { border-left-color:#dc3545; background:linear-gradient(135deg,#ffe7ea 0%, #fff 70%); }
+.callout.good { border-left-color:#28a745; background:linear-gradient(135deg,#e7fff0 0%, #fff 70%); }
+.callout.critical { border-left-color:#ff6b6b; background:linear-gradient(135deg,#ffe0e0 0%, #fff 70%); font-weight:900; }
+.grid2 {
+display:grid; grid-template-columns:1fr 1fr; gap:12px;
+}
+@media (max-width:820px) { .grid2 { grid-template-columns:1fr; } }
 
-  details {
-    background:#fff; border-radius:14px; border:2px solid #eef0ff;
-    padding:10px 12px; margin:10px 0;
-  }
-  summary {
-    cursor:pointer; user-select:none; font-weight:900; color:#667eea;
-    list-style:none;
-  }
-  summary::-webkit-details-marker { display:none; }
-  summary::after {
-    content:"＋"; float:right; font-size:1.2rem; color:#667eea;
-  }
-  details[open] summary::after { content:"−"; }
+details {
+background:#fff; border-radius:14px; border:2px solid #eef0ff;
+padding:10px 12px; margin:10px 0;
+}
+summary {
+cursor:pointer; user-select:none; font-weight:900; color:#667eea;
+list-style:none;
+}
+summary::-webkit-details-marker { display:none; }
+summary::after {
+content:“＋”; float:right; font-size:1.2rem; color:#667eea;
+}
+details[open] summary::after { content:“−”; }
 
-  .table {
-    width:100%; border-collapse:separate; border-spacing:0; overflow:hidden;
-    border:2px solid #eef0ff; border-radius:14px; margin-top:10px;
-  }
-  .table th, .table td {
-    padding:10px 10px; border-bottom:1px solid #eef0ff; vertical-align:top;
-  }
-  .table th { text-align:left; background:#f8f9ff; color:#3c4bd6; font-weight:900; }
-  .table tr:last-child td { border-bottom:none; }
-  .muted { color:#666; font-weight:600; }
-  .hl { background:#fff59d; padding:1px 6px; border-radius:7px; font-weight:900; }
-  .hl-red { background:#ffe0e0; padding:1px 6px; border-radius:7px; font-weight:900; color:#dc3545; }
-  
-  ul { margin:8px 0; padding-left:20px; }
-  li { margin:4px 0; }
-  strong { color:#764ba2; }
-  
-  .drug-name { color:#667eea; font-weight:900; }
-  .mechanism { background:#f0f2ff; padding:8px 12px; border-radius:8px; margin:8px 0; border-left:4px solid #667eea; }
-  
-  .topBtn {
-    position:fixed; right:18px; bottom:18px; width:56px; height:56px;
-    border-radius:50%; border:none; cursor:pointer; font-size:22px; font-weight:900;
-    background:linear-gradient(135deg,#667eea 0%, #764ba2 100%);
-    color:#fff; box-shadow:0 8px 18px rgba(0,0,0,.25); display:none;
-  }
-  .topBtn.show { display:block; }
-  
-  .memory-tip {
-    background:linear-gradient(135deg, #fff3cd 0%, #fff 70%);
-    border-left:6px solid #ffc107;
-    padding:12px 14px;
-    border-radius:12px;
-    margin:12px 0;
-    font-weight:800;
-  }
-  
-  .exam-focus {
-    background:linear-gradient(135deg, #ffe0f0 0%, #fff 70%);
-    border-left:6px solid #e83e8c;
-    padding:12px 14px;
-    border-radius:12px;
-    margin:12px 0;
-  }
-  
-  .contrast-box {
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
-    margin:12px 0;
-  }
-  
-  .contrast-item {
-    border:2px solid #eef0ff;
-    border-radius:12px;
-    padding:12px;
-    background:#f8f9ff;
-  }
-  
-  .contrast-item h4 {
-    margin:0 0 8px 0;
-    color:#667eea;
-  }
-  
-  @media (max-width:820px) {
-    .contrast-box { grid-template-columns:1fr; }
-  }
+.table {
+width:100%; border-collapse:separate; border-spacing:0; overflow:hidden;
+border:2px solid #eef0ff; border-radius:14px; margin-top:10px;
+}
+.table th, .table td {
+padding:10px 10px; border-bottom:1px solid #eef0ff; vertical-align:top;
+}
+.table th { text-align:left; background:#f8f9ff; color:#3c4bd6; font-weight:900; }
+.table tr:last-child td { border-bottom:none; }
+.muted { color:#666; font-weight:600; }
+.hl { background:#fff59d; padding:1px 6px; border-radius:7px; font-weight:900; }
+.hl-red { background:#ffe0e0; padding:1px 6px; border-radius:7px; font-weight:900; color:#dc3545; }
 
-  
-  /* Quiz Controls CSS */
-  .quizTop {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 10px;
-  }
-  .btn {
-    border: none;
-    border-radius: 12px;
-    padding: 10px 12px;
-    font-weight: 900;
-    cursor: pointer;
-    background: #667eea;
-    color: #fff;
-  }
-  .btn:active { transform: scale(0.98); }
-  .btn.secondary { background: #6c757d; }
-  .btn.danger { background: #dc3545; }
-  .toggle {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-  .chip {
-    border: 2px solid #eef0ff;
-    background: #fff;
-    border-radius: 999px;
-    padding: 8px 10px;
-    cursor: pointer;
-    user-select: none;
-    font-weight: 900;
-    color: #333;
-  }
-  .chip.active {
-    background: #f0f2ff;
-    border-color: #cfd6ff;
-    color: #3c4bd6;
-  }
-  .qcard {
-    margin-top: 12px;
-    border-radius: 16px;
-    border: 2px solid #eef0ff;
-    overflow: hidden;
-  }
-  .qhead {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: #fff;
-    padding: 14px;
-  }
-  .qhead .meta {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    font-weight: 800;
-  }
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255, 255, 255, 0.18);
-    padding: 6px 10px;
-    border-radius: 999px;
-  }
-  .qbody { padding: 14px; background: #fff; }
-  .stem { font-weight: 900; margin: 0 0 12px; }
-  .opt {
-    border: 2px solid #dee2e6;
-    border-radius: 12px;
-    padding: 10px 12px;
-    margin: 8px 0;
-    background: #fff;
-  }
-  .opt label {
-    display: flex;
-    gap: 10px;
-    cursor: pointer;
-    font-weight: 800;
-  }
-  .opt input {
-    transform: scale(1.15);
-    margin-top: 2px;
-  }
-  .opt.correct {
-    border-color: #28a745;
-    background: rgba(40, 167, 69, 0.08);
-  }
-  .opt.incorrect {
-    border-color: #dc3545;
-    background: rgba(220, 53, 69, 0.08);
-  }
-  .opt.disabled label {
-    cursor: not-allowed;
-    opacity: 0.92;
-  }
-  .statusLine {
-    margin-top: 10px;
-    font-weight: 900;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .progressBar {
-    width: 100%;
-    height: 12px;
-    border-radius: 999px;
-    background: #e9ecef;
-    overflow: hidden;
-  }
-  .progressFill {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    transition: width 0.2s ease;
-  }
-  .hintBox {
-    display: none;
-    margin-top: 10px;
-    padding: 12px;
-    border-radius: 12px;
-    background: linear-gradient(135deg, #fff3cd 0%, #fff 70%);
-    border-left: 6px solid #ffc107;
-    font-weight: 800;
-  }
-  .hintBox.show { display: block; }
-  .ratBox {
-    display: none;
-    margin-top: 10px;
-    padding: 12px;
-    border-radius: 12px;
-    background: linear-gradient(135deg, #e7fff0 0%, #fff 70%);
-    border-left: 6px solid #28a745;
-  }
-  .ratBox.show {
-    display: block;
-    animation: pop 0.18s ease;
-  }
-  @keyframes pop {
-    from { transform: translateY(-4px); opacity: 0.4; }
-    to { transform: translateY(0); opacity: 1; }
-  }
+ul { margin:8px 0; padding-left:20px; }
+li { margin:4px 0; }
+strong { color:#764ba2; }
 
-  /* Mobile Mode Toggle */
-  .mobile-toggle {
-    position: fixed;
-    top: 14px;
-    right: 14px;
-    z-index: 1000;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: #fff;
-    border: none;
-    border-radius: 12px;
-    padding: 10px 16px;
-    font-weight: 900;
-    font-size: 0.9rem;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .mobile-toggle:active { transform: scale(0.95); }
+.drug-name { color:#667eea; font-weight:900; }
+.mechanism { background:#f0f2ff; padding:8px 12px; border-radius:8px; margin:8px 0; border-left:4px solid #667eea; }
 
-  body.mobile-mode { padding: 8px; font-size: 16px; }
-  body.mobile-mode .wrap { max-width: 100%; }
-  body.mobile-mode .card { padding: 12px; margin: 8px 0; }
-  body.mobile-mode h1 { font-size: 1.4rem; }
-  body.mobile-mode h2 { font-size: 1.2rem; }
-  body.mobile-mode h3 { font-size: 1.1rem; }
+.topBtn {
+position:fixed; right:18px; bottom:18px; width:56px; height:56px;
+border-radius:50%; border:none; cursor:pointer; font-size:22px; font-weight:900;
+background:linear-gradient(135deg,#667eea 0%, #764ba2 100%);
+color:#fff; box-shadow:0 8px 18px rgba(0,0,0,.25); display:none;
+}
+.topBtn.show { display:block; }
+
+.memory-tip {
+background:linear-gradient(135deg, #fff3cd 0%, #fff 70%);
+border-left:6px solid #ffc107;
+padding:12px 14px;
+border-radius:12px;
+margin:12px 0;
+font-weight:800;
+}
+
+.exam-focus {
+background:linear-gradient(135deg, #ffe0f0 0%, #fff 70%);
+border-left:6px solid #e83e8c;
+padding:12px 14px;
+border-radius:12px;
+margin:12px 0;
+}
+
+.contrast-box {
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+margin:12px 0;
+}
+
+.contrast-item {
+border:2px solid #eef0ff;
+border-radius:12px;
+padding:12px;
+background:#f8f9ff;
+}
+
+.contrast-item h4 {
+margin:0 0 8px 0;
+color:#667eea;
+}
+
+@media (max-width:820px) {
+.contrast-box { grid-template-columns:1fr; }
+}
+
+/* Quiz Controls CSS */
+.quizTop {
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+align-items: center;
+justify-content: space-between;
+margin-top: 10px;
+}
+.btn {
+border: none;
+border-radius: 12px;
+padding: 10px 12px;
+font-weight: 900;
+cursor: pointer;
+background: #667eea;
+color: #fff;
+position: relative;
+z-index: 10;
+pointer-events: auto;
+touch-action: manipulation;
+user-select: none;
+-webkit-tap-highlight-color: transparent;
+}
+.btn:active {
+transform: scale(0.98);
+opacity: 0.8;
+}
+.btn.secondary { background: #6c757d; }
+.btn.danger { background: #dc3545; }
+.btn:hover { opacity: 0.9; }
+
+/* Ensure buttons are clickable in all contexts */
+.toggle .btn {
+min-height: 44px;
+min-width: 80px;
+}
+
+/* Extra insurance for shuffle and reset buttons */
+#shuffleBtn,
+#resetBtn {
+z-index: 100 !important;
+pointer-events: auto !important;
+display: inline-block !important;
+}
+
+.toggle {
+display: flex;
+gap: 10px;
+flex-wrap: wrap;
+align-items: center;
+}
+.chip {
+border: 2px solid #eef0ff;
+background: #fff;
+border-radius: 999px;
+padding: 8px 10px;
+cursor: pointer;
+user-select: none;
+font-weight: 900;
+color: #333;
+}
+.chip.active {
+background: #f0f2ff;
+border-color: #cfd6ff;
+color: #3c4bd6;
+}
+#shuffleChip {
+background: #e8f5e9;
+border-color: #81c784;
+color: #2e7d32;
+pointer-events: auto !important;
+position: relative;
+z-index: 1000;
+cursor: pointer !important;
+touch-action: manipulation !important;
+-webkit-tap-highlight-color: rgba(0,0,0,0.1);
+min-height: 44px;
+min-width: 100px;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+}
+#shuffleChip:hover {
+background: #c8e6c9;
+}
+#shuffleChip:active {
+transform: scale(0.95);
+}
+#resetChip {
+background: #ffebee;
+border-color: #ef5350;
+color: #c62828;
+pointer-events: auto !important;
+position: relative;
+z-index: 1000;
+cursor: pointer !important;
+touch-action: manipulation !important;
+-webkit-tap-highlight-color: rgba(0,0,0,0.1);
+min-height: 44px;
+min-width: 100px;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+}
+#resetChip:hover {
+background: #ffcdd2;
+}
+#resetChip:active {
+transform: scale(0.95);
+}
+.qcard {
+margin-top: 12px;
+border-radius: 16px;
+border: 2px solid #eef0ff;
+overflow: hidden;
+}
+.qhead {
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+color: #fff;
+padding: 14px;
+}
+.qhead .meta {
+display: flex;
+gap: 10px;
+flex-wrap: wrap;
+align-items: center;
+justify-content: space-between;
+font-weight: 800;
+}
+.badge {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+background: rgba(255, 255, 255, 0.18);
+padding: 6px 10px;
+border-radius: 999px;
+}
+.qbody { padding: 14px; background: #fff; }
+.stem { font-weight: 900; margin: 0 0 12px; }
+.opt {
+border: 2px solid #dee2e6;
+border-radius: 12px;
+padding: 10px 12px;
+margin: 8px 0;
+background: #fff;
+}
+.opt label {
+display: flex;
+gap: 10px;
+cursor: pointer;
+font-weight: 800;
+}
+.opt input {
+transform: scale(1.15);
+margin-top: 2px;
+}
+.opt.correct {
+border-color: #28a745;
+background: rgba(40, 167, 69, 0.08);
+}
+.opt.incorrect {
+border-color: #dc3545;
+background: rgba(220, 53, 69, 0.08);
+}
+.opt.disabled label {
+cursor: not-allowed;
+opacity: 0.92;
+}
+.statusLine {
+margin-top: 10px;
+font-weight: 900;
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+align-items: center;
+justify-content: space-between;
+}
+.progressBar {
+width: 100%;
+height: 12px;
+border-radius: 999px;
+background: #e9ecef;
+overflow: hidden;
+}
+.progressFill {
+height: 100%;
+width: 0%;
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+transition: width 0.2s ease;
+}
+.hintBox {
+display: none;
+margin-top: 10px;
+padding: 12px;
+border-radius: 12px;
+background: linear-gradient(135deg, #fff3cd 0%, #fff 70%);
+border-left: 6px solid #ffc107;
+font-weight: 800;
+}
+.hintBox.show { display: block; }
+.ratBox {
+display: none;
+margin-top: 10px;
+padding: 12px;
+border-radius: 12px;
+background: linear-gradient(135deg, #e7fff0 0%, #fff 70%);
+border-left: 6px solid #28a745;
+}
+.ratBox.show {
+display: block;
+animation: pop 0.18s ease;
+}
+@keyframes pop {
+from { transform: translateY(-4px); opacity: 0.4; }
+to { transform: translateY(0); opacity: 1; }
+}
+
+/* Mobile Mode Toggle */
+.mobile-toggle {
+position: fixed;
+top: 14px;
+right: 14px;
+z-index: 1000;
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+color: #fff;
+border: none;
+border-radius: 12px;
+padding: 10px 16px;
+font-weight: 900;
+font-size: 0.9rem;
+cursor: pointer;
+box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+display: flex;
+align-items: center;
+gap: 8px;
+}
+.mobile-toggle:active { transform: scale(0.95); }
+
+body.mobile-mode {
+padding: 8px;
+font-size: 16px;
+}
+body.mobile-mode .wrap {
+max-width: 100%;
+overflow-x: hidden;
+}
+body.mobile-mode .card {
+padding: 12px;
+margin: 8px 0;
+overflow-x: auto;
+}
+body.mobile-mode h1 { font-size: 1.4rem; }
+body.mobile-mode h2 { font-size: 1.2rem; }
+body.mobile-mode h3 { font-size: 1.1rem; }
+body.mobile-mode .hubbtn {
+padding: 12px;
+}
+body.mobile-mode .callout {
+padding: 10px;
+font-size: 0.9rem;
+}
+body.mobile-mode .contrast-box {
+grid-template-columns: 1fr;
+}
+body.mobile-mode .qcard {
+overflow-x: hidden;
+}
+body.mobile-mode .stem {
+font-size: 0.95rem;
+}
+body.mobile-mode .opt {
+font-size: 0.9rem;
+padding: 8px;
+}
+
+/* Night Mode Styles */
+body.night-mode {
+background: #1a1a2e;
+color: #eee;
+}
+body.night-mode .wrap {
+background: #1a1a2e;
+}
+body.night-mode .card {
+background: #16213e;
+border-color: #2a3f5f;
+}
+body.night-mode h1,
+body.night-mode h2,
+body.night-mode h3 {
+color: #fff;
+}
+body.night-mode .callout {
+background: #0f3460;
+border-color: #1a5490;
+color: #e0e0e0;
+}
+body.night-mode .callout.critical {
+background: #3d1f1f;
+border-color: #722f37;
+}
+body.night-mode .callout.warn {
+background: #3d2f1f;
+border-color: #8b6f47;
+}
+body.night-mode .callout.good {
+background: #1f3d2f;
+border-color: #2d5f47;
+}
+body.night-mode .table {
+background: #0f3460;
+color: #eee;
+}
+body.night-mode .table th {
+background: #1a5490;
+color: #fff;
+}
+body.night-mode .table td {
+border-color: #2a3f5f;
+}
+body.night-mode .hubbtn {
+background: #0f3460;
+border-color: #2a3f5f;
+}
+body.night-mode .hubbtn:hover {
+background: #1a5490;
+}
+body.night-mode .pill {
+background: #0f3460;
+color: #a8dadc;
+}
+body.night-mode .exam-focus {
+background: #1f2b3d;
+border-color: #3d5a80;
+}
+body.night-mode .memory-tip {
+background: #2d1f3d;
+border-color: #5a3d80;
+}
+body.night-mode .contrast-box {
+background: #0f3460;
+}
+body.night-mode .contrast-item {
+background: #16213e;
+border-color: #2a3f5f;
+}
+body.night-mode .qcard {
+background: #16213e;
+border-color: #2a3f5f;
+}
+body.night-mode .qbody {
+background: #16213e;
+}
+body.night-mode .opt {
+background: #0f3460;
+border-color: #2a3f5f;
+color: #eee;
+}
+body.night-mode .chip {
+background: #0f3460;
+border-color: #2a3f5f;
+color: #eee;
+}
+body.night-mode .chip.active {
+background: #1a5490;
+border-color: #3d7dc4;
+color: #fff;
+}
+body.night-mode #shuffleChip {
+background: #2d4a2f;
+border-color: #5a8d5f;
+color: #a5d6a7;
+}
+body.night-mode #resetChip {
+background: #4a2d2d;
+border-color: #8d5a5a;
+color: #ef9a9a;
+}
+body.night-mode .hintBox {
+background: #3d2f1f;
+border-color: #8b6f47;
+}
+body.night-mode .ratBox {
+background: #1f3d2f;
+border-color: #2d5f47;
+}
+body.night-mode .hl {
+background: #5a7d3a;
+color: #fff;
+}
+body.night-mode .hl-red {
+background: #5a3a3a;
+color: #ffb3b3;
+}
+body.night-mode .sub {
+color: #a8dadc;
+}
+body.night-mode .hubbtn h3 {
+color: #fff;
+}
+body.night-mode .hubbtn p {
+color: #a8dadc;
+}
+body.night-mode p {
+color: #d0d0d0;
+}
+
+/* Mobile Mode - Tables scroll horizontally */
+body.mobile-mode .table {
+font-size: 0.85rem;
+display: block;
+overflow-x: auto;
+white-space: nowrap;
+}
+body.mobile-mode .table th,
+body.mobile-mode .table td {
+padding: 6px;
+font-size: 0.85rem;
+}
 </style>
+
 </head>
 <body>
 <button class="mobile-toggle" id="mobileToggle" onclick="toggleMobileMode()">
@@ -330,9 +575,15 @@
   <span id="mobileText">Mobile Mode</span>
 </button>
 
+<button class="mobile-toggle" id="nightToggle" onclick="toggleNightMode()" style="top: 60px;">
+  <span id="nightIcon">🌙</span>
+  <span id="nightText">Night Mode</span>
+</button>
+
 <div class="wrap">
 
   <!-- HUB PAGE -->
+
   <div class="card" id="hub">
     <h1>🧪 NUR 138 Pharmacology • Enhanced Final Exam Guide</h1>
     <p class="sub">Comprehensive review + interactive practice • Built for exam success ✨</p>
@@ -343,1490 +594,1511 @@
       <div class="pill">Practice Exams Ready</div>
     </div>
 
-    <div class="callout">
-      <strong>📚 How to use this guide:</strong> Start with the comprehensive review sections below to master each topic. 
-      Each section includes exam-focused callouts, clinical scenarios, and memory aids. When ready, test yourself with 
-      the practice exams (teacher-style and NCLEX-style questions included in your original files).
-    </div>
+```
+<div class="callout">
+  <strong>📚 How to use this guide:</strong> Start with the comprehensive review sections below to master each topic. 
+  Each section includes exam-focused callouts, clinical scenarios, and memory aids. When ready, test yourself with 
+  the practice exams (teacher-style and NCLEX-style questions included in your original files).
+</div>
 
-    <div class="hub" aria-label="Main navigation hub">
-      <div class="hubbtn" onclick="go('cardiovascular')">
-        <h3>🫀 Cardiovascular Drugs</h3>
-        <p>HTN stages • RAAS • ACE/ARBs • CCBs • Beta blockers • Diuretics</p>
-      </div>
-      <div class="hubbtn" onclick="go('ans')">
-        <h3>⚡ Autonomic Nervous System</h3>
-        <p>Atropine • Epinephrine • Beta 1 & 2 effects • SNS vs PNS</p>
-      </div>
-      <div class="hubbtn" onclick="go('antibiotics')">
-        <h3>🦠 Antibiotics & Infection</h3>
-        <p>Vancomycin • Tetracycline • TB drugs • Definitions • Colonization</p>
-      </div>
-      <div class="hubbtn" onclick="go('respiratory')">
-        <h3>🫁 Respiratory Medications</h3>
-        <p>Albuterol • Ipratropium • ICS • LTRA • Bronchodilators • Asthma</p>
-      </div>
-      <div class="hubbtn" onclick="go('pain')">
-        <h3>💊 Pain Management</h3>
-        <p>NSAIDs • Tylenol • Morphine • Opioid toxicity • Narcan • Pain types</p>
-      </div>
-      <div class="hubbtn" onclick="go('special')">
-        <h3>🧬 Special Topics</h3>
-        <p>Herbal-anticoag interactions • Routes • Age-related changes</p>
-      </div>
-      <div class="hubbtn" onclick="go('quiz')" style="grid-column: span 12; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-        <h3 style="color: #fff;">🎮 Practice Exams (Teacher + NCLEX Style)</h3>
-        <p style="color: rgba(255,255,255,0.9);">140 total questions • Hints • Rationales • Missed Vault • Progress Tracking</p>
-      </div>
-    </div>
+<div class="hub" aria-label="Main navigation hub">
+  <div class="hubbtn" onclick="go('cardiovascular')">
+    <h3>🫀 Cardiovascular Drugs</h3>
+    <p>HTN stages • RAAS • ACE/ARBs • CCBs • Beta blockers • Diuretics</p>
+  </div>
+  <div class="hubbtn" onclick="go('ans')">
+    <h3>⚡ Autonomic Nervous System</h3>
+    <p>Atropine • Epinephrine • Beta 1 & 2 effects • SNS vs PNS</p>
+  </div>
+  <div class="hubbtn" onclick="go('antibiotics')">
+    <h3>🦠 Antibiotics & Infection</h3>
+    <p>Vancomycin • Tetracycline • TB drugs • Definitions • Colonization</p>
+  </div>
+  <div class="hubbtn" onclick="go('respiratory')">
+    <h3>🫁 Respiratory Medications</h3>
+    <p>Albuterol • Ipratropium • ICS • LTRA • Bronchodilators • Asthma</p>
+  </div>
+  <div class="hubbtn" onclick="go('pain')">
+    <h3>💊 Pain Management</h3>
+    <p>NSAIDs • Tylenol • Morphine • Opioid toxicity • Narcan • Pain types</p>
+  </div>
+  <div class="hubbtn" onclick="go('special')">
+    <h3>🧬 Special Topics</h3>
+    <p>Herbal-anticoag interactions • Routes • Age-related changes</p>
+  </div>
+  <div class="hubbtn" onclick="go('quiz')" style="grid-column: span 12; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+    <h3 style="color: #fff;">🎮 Practice Exams (Teacher + NCLEX Style)</h3>
+    <p style="color: rgba(255,255,255,0.9);">140 total questions • Hints • Rationales • Missed Vault • Progress Tracking</p>
+  </div>
+</div>
+```
+
   </div>
 
   <!-- CARDIOVASCULAR SECTION -->
+
   <div class="card" id="cardiovascular" style="display:none;">
     <h2 class="sectionTitle">🫀 Cardiovascular Medications <span class="tag">High-yield for exam</span></h2>
     <button class="btn" onclick="go('hub')" style="margin-bottom:12px;">← Back to Hub</button>
 
-    <details open>
-      <summary>🩸 Hypertension Definitions & Stages (ACC/AHA Guidelines)</summary>
-      <div class="exam-focus">
-        <strong>🎯 EXAM FOCUS:</strong> Know the exact numbers for each stage. Questions often ask you to classify BP readings.
-      </div>
-      <table class="table">
-        <thead>
-          <tr><th>Category</th><th>Systolic (mmHg)</th><th>Diastolic (mmHg)</th><th>Management</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Normal</strong></td>
-            <td>&lt;120</td>
-            <td><strong>AND</strong> &lt;80</td>
-            <td class="muted">Promote lifestyle modifications for prevention</td>
-          </tr>
-          <tr>
-            <td><strong>Elevated</strong></td>
-            <td>120–129</td>
-            <td><strong>AND</strong> &lt;80</td>
-            <td class="muted">Lifestyle changes + reassess in 3-6 months</td>
-          </tr>
-          <tr>
-            <td><strong>Stage 1 HTN</strong></td>
-            <td>130–139</td>
-            <td><strong>OR</strong> 80–89</td>
-            <td class="muted">Lifestyle + medication if high CV risk</td>
-          </tr>
-          <tr>
-            <td><strong>Stage 2 HTN</strong></td>
-            <td><span class="hl-red">≥140</span></td>
-            <td><strong>OR</strong> <span class="hl-red">≥90</span></td>
-            <td class="muted">Lifestyle + medication (usually 2 drugs)</td>
-          </tr>
-          <tr>
-            <td><strong>Hypertensive Crisis</strong></td>
-            <td><span class="hl-red">≥180</span></td>
-            <td><strong>AND/OR</strong> <span class="hl-red">≥120</span></td>
-            <td class="muted">⚠️ Emergency if symptoms present (chest pain, SOB, neuro changes)</td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="memory-tip">
-        💡 <strong>Memory Tip:</strong> "130/80 = Stage 1, 140/90 = Stage 2" — Remember these thresholds!
-      </div>
-    </details>
+```
+<details open>
+  <summary>🩸 Hypertension Definitions & Stages (ACC/AHA Guidelines)</summary>
+  <div class="exam-focus">
+    <strong>🎯 EXAM FOCUS:</strong> Know the exact numbers for each stage. Questions often ask you to classify BP readings.
+  </div>
+  <table class="table">
+    <thead>
+      <tr><th>Category</th><th>Systolic (mmHg)</th><th>Diastolic (mmHg)</th><th>Management</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Normal</strong></td>
+        <td>&lt;120</td>
+        <td><strong>AND</strong> &lt;80</td>
+        <td class="muted">Promote lifestyle modifications for prevention</td>
+      </tr>
+      <tr>
+        <td><strong>Elevated</strong></td>
+        <td>120–129</td>
+        <td><strong>AND</strong> &lt;80</td>
+        <td class="muted">Lifestyle changes + reassess in 3-6 months</td>
+      </tr>
+      <tr>
+        <td><strong>Stage 1 HTN</strong></td>
+        <td>130–139</td>
+        <td><strong>OR</strong> 80–89</td>
+        <td class="muted">Lifestyle + medication if high CV risk</td>
+      </tr>
+      <tr>
+        <td><strong>Stage 2 HTN</strong></td>
+        <td><span class="hl-red">≥140</span></td>
+        <td><strong>OR</strong> <span class="hl-red">≥90</span></td>
+        <td class="muted">Lifestyle + medication (usually 2 drugs)</td>
+      </tr>
+      <tr>
+        <td><strong>Hypertensive Crisis</strong></td>
+        <td><span class="hl-red">≥180</span></td>
+        <td><strong>AND/OR</strong> <span class="hl-red">≥120</span></td>
+        <td class="muted">⚠️ Emergency if symptoms present (chest pain, SOB, neuro changes)</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="memory-tip">
+    💡 <strong>Memory Tip:</strong> "130/80 = Stage 1, 140/90 = Stage 2" — Remember these thresholds!
+  </div>
+</details>
 
-    <details>
-      <summary>🔄 RAAS System (Why ACE Inhibitors & ARBs Work)</summary>
-      <div class="callout">
-        <strong>The Cascade:</strong><br/>
-        1. <strong>Kidney</strong> senses low BP → releases <span class="hl">RENIN</span><br/>
-        2. Renin converts angiotensinogen → <span class="hl">Angiotensin I</span><br/>
-        3. <span class="hl">ACE</span> (in lungs) converts Angiotensin I → <span class="hl">Angiotensin II</span><br/>
-        4. Angiotensin II: <strong>VASOCONSTRICTION</strong> + stimulates <span class="hl">ALDOSTERONE</span><br/>
-        5. Aldosterone: <strong>Retains Na⁺ & H₂O</strong> (↑BP) and <strong>Dumps K⁺</strong> (↓K⁺)
-      </div>
-      <div class="mechanism">
-        <strong>💊 How Drugs Interrupt:</strong><br/>
-        • <strong>ACE Inhibitors (-pril):</strong> Block ACE → ↓ Ang II formation → ↓BP, ↓aldosterone<br/>
-        • <strong>ARBs (-sartan):</strong> Block Ang II receptors → same BP effect, different mechanism<br/>
-        • <strong>Aldosterone Antagonists:</strong> Block aldosterone → retain K⁺, lose Na⁺/H₂O
-      </div>
-    </details>
+<details>
+  <summary>🔄 RAAS System (Why ACE Inhibitors & ARBs Work)</summary>
+  <div class="callout">
+    <strong>The Cascade:</strong><br/>
+    1. <strong>Kidney</strong> senses low BP → releases <span class="hl">RENIN</span><br/>
+    2. Renin converts angiotensinogen → <span class="hl">Angiotensin I</span><br/>
+    3. <span class="hl">ACE</span> (in lungs) converts Angiotensin I → <span class="hl">Angiotensin II</span><br/>
+    4. Angiotensin II: <strong>VASOCONSTRICTION</strong> + stimulates <span class="hl">ALDOSTERONE</span><br/>
+    5. Aldosterone: <strong>Retains Na⁺ & H₂O</strong> (↑BP) and <strong>Dumps K⁺</strong> (↓K⁺)
+  </div>
+  <div class="mechanism">
+    <strong>💊 How Drugs Interrupt:</strong><br/>
+    • <strong>ACE Inhibitors (-pril):</strong> Block ACE → ↓ Ang II formation → ↓BP, ↓aldosterone<br/>
+    • <strong>ARBs (-sartan):</strong> Block Ang II receptors → same BP effect, different mechanism<br/>
+    • <strong>Aldosterone Antagonists:</strong> Block aldosterone → retain K⁺, lose Na⁺/H₂O
+  </div>
+</details>
 
-    <details>
-      <summary>💊 ACE Inhibitors (-pril)</summary>
-      <div class="callout warn">
-        <strong>⚠️ KEY ADVERSE EFFECTS:</strong>
-        <ul>
-          <li><span class="hl-red">Dry cough</span> — #1 most common (ACE breakdown causes bradykinin accumulation in lungs)</li>
-          <li><span class="hl-red">Angioedema</span> — LIFE-THREATENING swelling of face/lips/tongue/throat → STOP drug immediately, assess airway</li>
-          <li><span class="hl-red">Hyperkalemia (↑K⁺)</span> — ↓aldosterone → body retains K⁺</li>
-          <li><span class="hl-red">Acute kidney injury</span> — especially with bilateral renal artery stenosis</li>
-        </ul>
-      </div>
-      <div class="callout critical">
-        <strong>🚫 CONTRAINDICATIONS:</strong> Pregnancy (teratogenic), bilateral renal artery stenosis, history of angioedema, hyperkalemia
-      </div>
-      <div class="exam-focus">
-        <strong>📋 NURSING IMPLICATIONS:</strong><br/>
-        • Monitor: BP, K⁺ levels, BUN/Cr (renal function)<br/>
-        • Teach: Change positions slowly (orthostatic hypotension), report facial swelling immediately<br/>
-        • Hold: If BP drops below parameter (typically &lt;100 systolic) or K⁺ &gt;5.5<br/>
-        • Patient teaching: "Report any swelling of your face, lips, or tongue immediately — this is an emergency"
-      </div>
-      <div class="memory-tip">
-        💡 <strong>Memory:</strong> "ACE = Accumulated Cough & Edema" — The two big side effects!
-      </div>
-    </details>
+<details>
+  <summary>💊 ACE Inhibitors (-pril)</summary>
+  <div class="callout warn">
+    <strong>⚠️ KEY ADVERSE EFFECTS:</strong>
+    <ul>
+      <li><span class="hl-red">Dry cough</span> — #1 most common (ACE breakdown causes bradykinin accumulation in lungs)</li>
+      <li><span class="hl-red">Angioedema</span> — LIFE-THREATENING swelling of face/lips/tongue/throat → STOP drug immediately, assess airway</li>
+      <li><span class="hl-red">Hyperkalemia (↑K⁺)</span> — ↓aldosterone → body retains K⁺</li>
+      <li><span class="hl-red">Acute kidney injury</span> — especially with bilateral renal artery stenosis</li>
+    </ul>
+  </div>
+  <div class="callout critical">
+    <strong>🚫 CONTRAINDICATIONS:</strong> Pregnancy (teratogenic), bilateral renal artery stenosis, history of angioedema, hyperkalemia
+  </div>
+  <div class="exam-focus">
+    <strong>📋 NURSING IMPLICATIONS:</strong><br/>
+    • Monitor: BP, K⁺ levels, BUN/Cr (renal function)<br/>
+    • Teach: Change positions slowly (orthostatic hypotension), report facial swelling immediately<br/>
+    • Hold: If BP drops below parameter (typically &lt;100 systolic) or K⁺ &gt;5.5<br/>
+    • Patient teaching: "Report any swelling of your face, lips, or tongue immediately — this is an emergency"
+  </div>
+  <div class="memory-tip">
+    💡 <strong>Memory:</strong> "ACE = Accumulated Cough & Edema" — The two big side effects!
+  </div>
+</details>
 
-    <details>
-      <summary>💊 ARBs (-sartan)</summary>
-      <div class="callout good">
-        <strong>✅ ADVANTAGES over ACE Inhibitors:</strong><br/>
-        • <span class="hl">NO cough</span> (doesn't affect bradykinin)<br/>
-        • <span class="hl">NO angioedema</span> (or very rare)<br/>
-        • Same BP-lowering effect<br/>
-        • Better tolerated overall
-      </div>
-      <div class="callout warn">
-        <strong>⚠️ STILL CAUSES:</strong><br/>
-        • Hyperkalemia (↑K⁺) — Monitor K⁺ levels<br/>
-        • Renal dysfunction — Monitor BUN/Cr<br/>
-        • Hypotension — First-dose effect possible
-      </div>
-      <div class="callout critical">
-        <strong>🚫 CONTRAINDICATIONS:</strong> Pregnancy (teratogenic — same as ACE-I), bilateral renal artery stenosis
-      </div>
-      <div class="exam-focus">
-        <strong>📋 NURSING:</strong> Same monitoring as ACE-I (BP, K⁺, renal function), but ARBs are often used when patient can't tolerate ACE-I due to cough
-      </div>
-    </details>
+<details>
+  <summary>💊 ARBs (-sartan)</summary>
+  <div class="callout good">
+    <strong>✅ ADVANTAGES over ACE Inhibitors:</strong><br/>
+    • <span class="hl">NO cough</span> (doesn't affect bradykinin)<br/>
+    • <span class="hl">NO angioedema</span> (or very rare)<br/>
+    • Same BP-lowering effect<br/>
+    • Better tolerated overall
+  </div>
+  <div class="callout warn">
+    <strong>⚠️ STILL CAUSES:</strong><br/>
+    • Hyperkalemia (↑K⁺) — Monitor K⁺ levels<br/>
+    • Renal dysfunction — Monitor BUN/Cr<br/>
+    • Hypotension — First-dose effect possible
+  </div>
+  <div class="callout critical">
+    <strong>🚫 CONTRAINDICATIONS:</strong> Pregnancy (teratogenic — same as ACE-I), bilateral renal artery stenosis
+  </div>
+  <div class="exam-focus">
+    <strong>📋 NURSING:</strong> Same monitoring as ACE-I (BP, K⁺, renal function), but ARBs are often used when patient can't tolerate ACE-I due to cough
+  </div>
+</details>
 
-    <details>
-      <summary>💊 Calcium Channel Blockers (CCBs)</summary>
-      <div class="contrast-box">
-        <div class="contrast-item">
-          <h4>Non-Dihydropyridines</h4>
-          <p><strong class="drug-name">Diltiazem, Verapamil</strong></p>
-          <p><strong>Effects:</strong> ↓HR, ↓AV conduction, ↓contractility</p>
-          <p><strong>Uses:</strong> HTN, angina, A-fib rate control</p>
-          <p class="hl-red"><strong>Watch for:</strong> Bradycardia, heart block, HF exacerbation</p>
-        </div>
-        <div class="contrast-item">
-          <h4>Dihydropyridines</h4>
-          <p><strong class="drug-name">Amlodipine, Nifedipine</strong></p>
-          <p><strong>Effects:</strong> Vasodilation (minimal cardiac effects)</p>
-          <p><strong>Uses:</strong> HTN, angina</p>
-          <p class="hl-red"><strong>Watch for:</strong> Peripheral edema, flushing, headache</p>
-        </div>
-      </div>
-      <div class="callout warn">
-        <strong>⚠️ GRAPEFRUIT JUICE INTERACTION:</strong> Increases CCB levels → ↑hypotension, ↑adverse effects. Avoid grapefruit juice!
-      </div>
-      <div class="exam-focus">
-        <strong>📋 NURSING:</strong><br/>
-        • Monitor: HR and BP before each dose<br/>
-        • Hold parameters: HR &lt;60 (for diltiazem/verapamil), BP &lt;100 systolic<br/>
-        • Teach: Avoid grapefruit juice, change positions slowly, report swelling of ankles
-      </div>
-    </details>
+<details>
+  <summary>💊 Calcium Channel Blockers (CCBs)</summary>
+  <div class="contrast-box">
+    <div class="contrast-item">
+      <h4>Non-Dihydropyridines</h4>
+      <p><strong class="drug-name">Diltiazem, Verapamil</strong></p>
+      <p><strong>Effects:</strong> ↓HR, ↓AV conduction, ↓contractility</p>
+      <p><strong>Uses:</strong> HTN, angina, A-fib rate control</p>
+      <p class="hl-red"><strong>Watch for:</strong> Bradycardia, heart block, HF exacerbation</p>
+    </div>
+    <div class="contrast-item">
+      <h4>Dihydropyridines</h4>
+      <p><strong class="drug-name">Amlodipine, Nifedipine</strong></p>
+      <p><strong>Effects:</strong> Vasodilation (minimal cardiac effects)</p>
+      <p><strong>Uses:</strong> HTN, angina</p>
+      <p class="hl-red"><strong>Watch for:</strong> Peripheral edema, flushing, headache</p>
+    </div>
+  </div>
+  <div class="callout warn">
+    <strong>⚠️ GRAPEFRUIT JUICE INTERACTION:</strong> Increases CCB levels → ↑hypotension, ↑adverse effects. Avoid grapefruit juice!
+  </div>
+  <div class="exam-focus">
+    <strong>📋 NURSING:</strong><br/>
+    • Monitor: HR and BP before each dose<br/>
+    • Hold parameters: HR &lt;60 (for diltiazem/verapamil), BP &lt;100 systolic<br/>
+    • Teach: Avoid grapefruit juice, change positions slowly, report swelling of ankles
+  </div>
+</details>
 
-    <details>
-      <summary>💊 Beta Blockers</summary>
-      <div class="callout">
-        <strong>🎯 Mechanism:</strong> Block beta-adrenergic receptors<br/>
-        • <span class="hl">β1 (heart):</span> ↓HR, ↓contractility, ↓renin release → ↓BP<br/>
-        • <span class="hl">β2 (lungs, vessels):</span> Can cause bronchoconstriction if blocked
-      </div>
-      
-      <div class="contrast-box">
-        <div class="contrast-item">
-          <h4>β1-Selective (Cardioselective)</h4>
-          <p><strong class="drug-name">Metoprolol, Atenolol, Bisoprolol</strong></p>
-          <p>✅ <strong>Safer in asthma/COPD</strong> (but still use caution!)</p>
-          <p>Primarily affect heart, less bronchospasm risk</p>
-        </div>
-        <div class="contrast-item">
-          <h4>Non-Selective</h4>
-          <p><strong class="drug-name">Propranolol, Nadolol</strong></p>
-          <p>❌ <strong>AVOID in asthma/COPD</strong></p>
-          <p>Block both β1 and β2 → can trigger severe bronchospasm</p>
-        </div>
-      </div>
+<details>
+  <summary>💊 Beta Blockers</summary>
+  <div class="callout">
+    <strong>🎯 Mechanism:</strong> Block beta-adrenergic receptors<br/>
+    • <span class="hl">β1 (heart):</span> ↓HR, ↓contractility, ↓renin release → ↓BP<br/>
+    • <span class="hl">β2 (lungs, vessels):</span> Can cause bronchoconstriction if blocked
+  </div>
+  
+  <div class="contrast-box">
+    <div class="contrast-item">
+      <h4>β1-Selective (Cardioselective)</h4>
+      <p><strong class="drug-name">Metoprolol, Atenolol, Bisoprolol</strong></p>
+      <p>✅ <strong>Safer in asthma/COPD</strong> (but still use caution!)</p>
+      <p>Primarily affect heart, less bronchospasm risk</p>
+    </div>
+    <div class="contrast-item">
+      <h4>Non-Selective</h4>
+      <p><strong class="drug-name">Propranolol, Nadolol</strong></p>
+      <p>❌ <strong>AVOID in asthma/COPD</strong></p>
+      <p>Block both β1 and β2 → can trigger severe bronchospasm</p>
+    </div>
+  </div>
 
-      <div class="callout critical">
-        <strong>🚫 CRITICAL SAFETY POINTS:</strong><br/>
-        • <span class="hl-red">Do NOT stop abruptly</span> → Rebound HTN, tachycardia, MI risk. Must taper!<br/>
-        • <span class="hl-red">Masks hypoglycemia symptoms in diabetics</span> → Blocks tachycardia/tremor; can still sweat<br/>
-        • <span class="hl-red">Can worsen heart failure</span> → Negative inotrope (↓contractility)<br/>
-        • <span class="hl-red">Bradycardia & heart block risk</span> → Don't combine with other rate-lowering drugs
-      </div>
+  <div class="callout critical">
+    <strong>🚫 CRITICAL SAFETY POINTS:</strong><br/>
+    • <span class="hl-red">Do NOT stop abruptly</span> → Rebound HTN, tachycardia, MI risk. Must taper!<br/>
+    • <span class="hl-red">Masks hypoglycemia symptoms in diabetics</span> → Blocks tachycardia/tremor; can still sweat<br/>
+    • <span class="hl-red">Can worsen heart failure</span> → Negative inotrope (↓contractility)<br/>
+    • <span class="hl-red">Bradycardia & heart block risk</span> → Don't combine with other rate-lowering drugs
+  </div>
 
-      <div class="exam-focus">
-        <strong>📋 NURSING IMPLICATIONS:</strong><br/>
-        • Monitor: HR and BP before each dose; Hold if HR &lt;60 or BP &lt;100 systolic (typical parameters)<br/>
-        • Diabetic patients: Teach to monitor blood glucose closely; may not feel usual hypo symptoms<br/>
-        • Assess: Lung sounds (bronchospasm), peripheral circulation (cold extremities)<br/>
-        • Patient teaching: "Take your pulse daily. Don't stop this medication suddenly — call if you want to stop"
-      </div>
+  <div class="exam-focus">
+    <strong>📋 NURSING IMPLICATIONS:</strong><br/>
+    • Monitor: HR and BP before each dose; Hold if HR &lt;60 or BP &lt;100 systolic (typical parameters)<br/>
+    • Diabetic patients: Teach to monitor blood glucose closely; may not feel usual hypo symptoms<br/>
+    • Assess: Lung sounds (bronchospasm), peripheral circulation (cold extremities)<br/>
+    • Patient teaching: "Take your pulse daily. Don't stop this medication suddenly — call if you want to stop"
+  </div>
 
-      <div class="memory-tip">
-        💡 <strong>Memory:</strong> "Beta 1 = 1 heart, Beta 2 = 2 lungs" — β1 receptors in heart, β2 receptors in lungs!
-      </div>
-    </details>
+  <div class="memory-tip">
+    💡 <strong>Memory:</strong> "Beta 1 = 1 heart, Beta 2 = 2 lungs" — β1 receptors in heart, β2 receptors in lungs!
+  </div>
+</details>
 
-    <details>
-      <summary>💊 Diuretics</summary>
-      <div class="callout">
-        <strong>General principle:</strong> ↓fluid volume → ↓BP<br/>
-        Different types work at different parts of the nephron
-      </div>
+<details>
+  <summary>💊 Diuretics</summary>
+  <div class="callout">
+    <strong>General principle:</strong> ↓fluid volume → ↓BP<br/>
+    Different types work at different parts of the nephron
+  </div>
 
-      <table class="table">
-        <thead>
-          <tr><th>Type</th><th>Examples</th><th>K⁺ Effect</th><th>Key Points</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Loop Diuretics</strong></td>
-            <td>Furosemide (Lasix), Bumetanide</td>
-            <td><span class="hl-red">↓K⁺</span></td>
-            <td>Most potent; IV/PO; ototoxicity risk; rapid diuresis</td>
-          </tr>
-          <tr>
-            <td><strong>Thiazides</strong></td>
-            <td>Hydrochlorothiazide (HCTZ), Chlorthalidone</td>
-            <td><span class="hl-red">↓K⁺</span></td>
-            <td>First-line for HTN; less potent than loop; photosensitivity</td>
-          </tr>
-          <tr>
-            <td><strong>K⁺-Sparing</strong></td>
-            <td>Spironolactone, Amiloride</td>
-            <td><span class="hl">↑K⁺</span></td>
-            <td>Weak diuretic; often combined with HCTZ; monitor K⁺!</td>
-          </tr>
-        </tbody>
-      </table>
+  <table class="table">
+    <thead>
+      <tr><th>Type</th><th>Examples</th><th>K⁺ Effect</th><th>Key Points</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Loop Diuretics</strong></td>
+        <td>Furosemide (Lasix), Bumetanide</td>
+        <td><span class="hl-red">↓K⁺</span></td>
+        <td>Most potent; IV/PO; ototoxicity risk; rapid diuresis</td>
+      </tr>
+      <tr>
+        <td><strong>Thiazides</strong></td>
+        <td>Hydrochlorothiazide (HCTZ), Chlorthalidone</td>
+        <td><span class="hl-red">↓K⁺</span></td>
+        <td>First-line for HTN; less potent than loop; photosensitivity</td>
+      </tr>
+      <tr>
+        <td><strong>K⁺-Sparing</strong></td>
+        <td>Spironolactone, Amiloride</td>
+        <td><span class="hl">↑K⁺</span></td>
+        <td>Weak diuretic; often combined with HCTZ; monitor K⁺!</td>
+      </tr>
+    </tbody>
+  </table>
 
-      <div class="callout warn">
-        <strong>⚠️ HYPOKALEMIA SIGNS (Loop & Thiazide):</strong><br/>
-        Muscle cramps, weakness, fatigue, cardiac dysrhythmias, constipation<br/>
-        <strong>→ Monitor K⁺ levels, encourage K⁺-rich foods, may need supplement</strong>
-      </div>
+  <div class="callout warn">
+    <strong>⚠️ HYPOKALEMIA SIGNS (Loop & Thiazide):</strong><br/>
+    Muscle cramps, weakness, fatigue, cardiac dysrhythmias, constipation<br/>
+    <strong>→ Monitor K⁺ levels, encourage K⁺-rich foods, may need supplement</strong>
+  </div>
 
-      <div class="callout warn">
-        <strong>⚠️ HYPERKALEMIA RISK (K⁺-Sparing):</strong><br/>
-        Especially dangerous when combined with ACE-I or ARBs!<br/>
-        <strong>→ Monitor K⁺ closely; avoid salt substitutes (high in K⁺)</strong>
-      </div>
+  <div class="callout warn">
+    <strong>⚠️ HYPERKALEMIA RISK (K⁺-Sparing):</strong><br/>
+    Especially dangerous when combined with ACE-I or ARBs!<br/>
+    <strong>→ Monitor K⁺ closely; avoid salt substitutes (high in K⁺)</strong>
+  </div>
 
-      <div class="exam-focus">
-        <strong>📋 NURSING IMPLICATIONS:</strong><br/>
-        • Monitor: Daily weights, I&Os, BP, electrolytes (especially K⁺), BUN/Cr<br/>
-        • Teach: Take in morning (avoid nocturia), change positions slowly (orthostatic hypotension)<br/>
-        • Loop diuretics: Monitor hearing (ototoxicity), avoid with aminoglycosides (↑ototoxicity)<br/>
-        • Thiazides: Teach sun protection (photosensitivity), may worsen gout (↑uric acid)
-      </div>
+  <div class="exam-focus">
+    <strong>📋 NURSING IMPLICATIONS:</strong><br/>
+    • Monitor: Daily weights, I&Os, BP, electrolytes (especially K⁺), BUN/Cr<br/>
+    • Teach: Take in morning (avoid nocturia), change positions slowly (orthostatic hypotension)<br/>
+    • Loop diuretics: Monitor hearing (ototoxicity), avoid with aminoglycosides (↑ototoxicity)<br/>
+    • Thiazides: Teach sun protection (photosensitivity), may worsen gout (↑uric acid)
+  </div>
 
-      <div class="memory-tip">
-        💡 <strong>Memory:</strong> "Loop Loses K⁺, K-Sparing Keeps K⁺"
-      </div>
-    </details>
+  <div class="memory-tip">
+    💡 <strong>Memory:</strong> "Loop Loses K⁺, K-Sparing Keeps K⁺"
+  </div>
+</details>
+```
 
   </div>
 
   <!-- ANS SECTION -->
+
   <div class="card" id="ans" style="display:none;">
     <h2 class="sectionTitle">⚡ Autonomic Nervous System <span class="tag">Know this cold for exam</span></h2>
     <button class="btn" onclick="go('hub')" style="margin-bottom:12px;">← Back to Hub</button>
 
-    <details open>
-      <summary>🧠 SNS vs PNS Overview</summary>
-      <div class="contrast-box">
-        <div class="contrast-item">
-          <h4>Sympathetic (SNS) — "Fight or Flight"</h4>
-          <p><strong>Neurotransmitter:</strong> Norepinephrine (NE), Epinephrine</p>
-          <p><strong>Effects:</strong></p>
-          <ul>
-            <li>↑HR, ↑BP, ↑contractility</li>
-            <li>Bronchodilation (β2)</li>
-            <li>↓GI motility</li>
-            <li>Urinary retention</li>
-            <li>Mydriasis (pupil dilation)</li>
-            <li>↑Blood glucose</li>
-          </ul>
-        </div>
-        <div class="contrast-item">
-          <h4>Parasympathetic (PNS) — "Rest & Digest"</h4>
-          <p><strong>Neurotransmitter:</strong> Acetylcholine (ACh)</p>
-          <p><strong>Effects:</strong></p>
-          <ul>
-            <li>↓HR, ↓BP</li>
-            <li>Bronchoconstriction</li>
-            <li>↑GI motility & secretions</li>
-            <li>Urination</li>
-            <li>Miosis (pupil constriction)</li>
-            <li>↑Secretions (saliva, tears, sweat)</li>
-          </ul>
-        </div>
-      </div>
+```
+<details open>
+  <summary>🧠 SNS vs PNS Overview</summary>
+  <div class="contrast-box">
+    <div class="contrast-item">
+      <h4>Sympathetic (SNS) — "Fight or Flight"</h4>
+      <p><strong>Neurotransmitter:</strong> Norepinephrine (NE), Epinephrine</p>
+      <p><strong>Effects:</strong></p>
+      <ul>
+        <li>↑HR, ↑BP, ↑contractility</li>
+        <li>Bronchodilation (β2)</li>
+        <li>↓GI motility</li>
+        <li>Urinary retention</li>
+        <li>Mydriasis (pupil dilation)</li>
+        <li>↑Blood glucose</li>
+      </ul>
+    </div>
+    <div class="contrast-item">
+      <h4>Parasympathetic (PNS) — "Rest & Digest"</h4>
+      <p><strong>Neurotransmitter:</strong> Acetylcholine (ACh)</p>
+      <p><strong>Effects:</strong></p>
+      <ul>
+        <li>↓HR, ↓BP</li>
+        <li>Bronchoconstriction</li>
+        <li>↑GI motility & secretions</li>
+        <li>Urination</li>
+        <li>Miosis (pupil constriction)</li>
+        <li>↑Secretions (saliva, tears, sweat)</li>
+      </ul>
+    </div>
+  </div>
 
-      <div class="memory-tip">
-        💡 <strong>Memory:</strong><br/>
-        <strong>Cholinergic (PNS) = "WET"</strong> — Sweating, Salivation, Lacrimation, Urination, Defecation<br/>
-        <strong>Anticholinergic = "DRY & FAST"</strong> — Dry mouth, Tachycardia, Hot, Constipation, Urinary retention
-      </div>
-    </details>
+  <div class="memory-tip">
+    💡 <strong>Memory:</strong><br/>
+    <strong>Cholinergic (PNS) = "WET"</strong> — Sweating, Salivation, Lacrimation, Urination, Defecation<br/>
+    <strong>Anticholinergic = "DRY & FAST"</strong> — Dry mouth, Tachycardia, Hot, Constipation, Urinary retention
+  </div>
+</details>
 
-    <details>
-      <summary>💊 Atropine (Anticholinergic)</summary>
-      <div class="mechanism">
-        <strong>MOA:</strong> Blocks <strong>muscarinic receptors</strong> → Inhibits parasympathetic (ACh) effects
-      </div>
+<details>
+  <summary>💊 Atropine (Anticholinergic)</summary>
+  <div class="mechanism">
+    <strong>MOA:</strong> Blocks <strong>muscarinic receptors</strong> → Inhibits parasympathetic (ACh) effects
+  </div>
 
-      <div class="callout">
-        <strong>Clinical Uses:</strong><br/>
-        • <strong>Bradycardia</strong> — Increases HR by blocking vagal (PNS) effects on heart<br/>
-        • <strong>Organophosphate poisoning</strong> — Reverses excessive cholinergic stimulation<br/>
-        • <strong>Preanesthetic</strong> — Decreases secretions during surgery<br/>
-        • <strong>Ophthalmic</strong> — Mydriasis for eye exams
-      </div>
+  <div class="callout">
+    <strong>Clinical Uses:</strong><br/>
+    • <strong>Bradycardia</strong> — Increases HR by blocking vagal (PNS) effects on heart<br/>
+    • <strong>Organophosphate poisoning</strong> — Reverses excessive cholinergic stimulation<br/>
+    • <strong>Preanesthetic</strong> — Decreases secretions during surgery<br/>
+    • <strong>Ophthalmic</strong> — Mydriasis for eye exams
+  </div>
 
-      <div class="callout warn">
-        <strong>⚠️ Anticholinergic Effects ("Hot, Dry, Blind, Fast, Constipated"):</strong><br/>
-        • Tachycardia<br/>
-        • Dry mouth, dry skin, ↓sweating (heat intolerance!)<br/>
-        • Mydriasis (dilated pupils), blurred vision<br/>
-        • Urinary retention<br/>
-        • Constipation<br/>
-        • Confusion (especially elderly)
-      </div>
+  <div class="callout warn">
+    <strong>⚠️ Anticholinergic Effects ("Hot, Dry, Blind, Fast, Constipated"):</strong><br/>
+    • Tachycardia<br/>
+    • Dry mouth, dry skin, ↓sweating (heat intolerance!)<br/>
+    • Mydriasis (dilated pupils), blurred vision<br/>
+    • Urinary retention<br/>
+    • Constipation<br/>
+    • Confusion (especially elderly)
+  </div>
 
-      <div class="callout critical">
-        <strong>🚫 CONTRAINDICATIONS:</strong><br/>
-        • <span class="hl-red">Narrow-angle glaucoma</span> — Mydriasis ↑intraocular pressure → blindness risk<br/>
-        • <span class="hl-red">BPH/urinary retention</span> — Will worsen urinary retention<br/>
-        • <span class="hl-red">Tachyarrhythmias</span> — Will increase HR further<br/>
-        • <span class="hl-red">Hyperthyroidism</span> — Can precipitate thyroid storm
-      </div>
+  <div class="callout critical">
+    <strong>🚫 CONTRAINDICATIONS:</strong><br/>
+    • <span class="hl-red">Narrow-angle glaucoma</span> — Mydriasis ↑intraocular pressure → blindness risk<br/>
+    • <span class="hl-red">BPH/urinary retention</span> — Will worsen urinary retention<br/>
+    • <span class="hl-red">Tachyarrhythmias</span> — Will increase HR further<br/>
+    • <span class="hl-red">Hyperthyroidism</span> — Can precipitate thyroid storm
+  </div>
 
-      <div class="exam-focus">
-        <strong>📋 NURSING:</strong><br/>
-        • Monitor: HR (target ↑HR if given for bradycardia), pupil size, urinary output<br/>
-        • Elderly: High risk for confusion, falls, urinary retention<br/>
-        • Teach: Avoid overheating (↓sweating), report difficulty urinating, use sunglasses (photophobia from mydriasis)
-      </div>
+  <div class="exam-focus">
+    <strong>📋 NURSING:</strong><br/>
+    • Monitor: HR (target ↑HR if given for bradycardia), pupil size, urinary output<br/>
+    • Elderly: High risk for confusion, falls, urinary retention<br/>
+    • Teach: Avoid overheating (↓sweating), report difficulty urinating, use sunglasses (photophobia from mydriasis)
+  </div>
 
-      <div class="memory-tip">
-        💡 <strong>Toxicity Memory:</strong> "Mad as a hatter, blind as a bat, red as a beet, hot as a hare, dry as a bone"
-      </div>
-    </details>
+  <div class="memory-tip">
+    💡 <strong>Toxicity Memory:</strong> "Mad as a hatter, blind as a bat, red as a beet, hot as a hare, dry as a bone"
+  </div>
+</details>
 
-    <details>
-      <summary>💊 Epinephrine (Sympathomimetic)</summary>
-      <div class="mechanism">
-        <strong>MOA:</strong> Stimulates <strong>ALL adrenergic receptors</strong> (α1, α2, β1, β2)<br/>
-        • <strong>β1:</strong> ↑HR, ↑contractility, ↑cardiac output<br/>
-        • <strong>β2:</strong> Bronchodilation, vasodilation (skeletal muscle)<br/>
-        • <strong>α1:</strong> Vasoconstriction (skin, mucosa, viscera)
-      </div>
+<details>
+  <summary>💊 Epinephrine (Sympathomimetic)</summary>
+  <div class="mechanism">
+    <strong>MOA:</strong> Stimulates <strong>ALL adrenergic receptors</strong> (α1, α2, β1, β2)<br/>
+    • <strong>β1:</strong> ↑HR, ↑contractility, ↑cardiac output<br/>
+    • <strong>β2:</strong> Bronchodilation, vasodilation (skeletal muscle)<br/>
+    • <strong>α1:</strong> Vasoconstriction (skin, mucosa, viscera)
+  </div>
 
-      <div class="callout critical">
-        <strong>🚨 PRIMARY USE: ANAPHYLAXIS</strong><br/>
-        First-line emergency treatment for anaphylactic shock<br/>
-        <strong>Route:</strong> IM (preferred) into anterolateral thigh<br/>
-        <strong>Dose:</strong> 0.3-0.5 mg (1:1000 concentration)<br/>
-        <strong>May repeat q5-15min</strong> if no response
-      </div>
+  <div class="callout critical">
+    <strong>🚨 PRIMARY USE: ANAPHYLAXIS</strong><br/>
+    First-line emergency treatment for anaphylactic shock<br/>
+    <strong>Route:</strong> IM (preferred) into anterolateral thigh<br/>
+    <strong>Dose:</strong> 0.3-0.5 mg (1:1000 concentration)<br/>
+    <strong>May repeat q5-15min</strong> if no response
+  </div>
 
-      <div class="callout">
-        <strong>Other Uses:</strong><br/>
-        • Cardiac arrest (ACLS) — IV/IO route<br/>
-        • Severe asthma/bronchospasm (when other treatments fail)<br/>
-        • Combined with local anesthetics (vasoconstriction → ↑duration, ↓bleeding)
-      </div>
+  <div class="callout">
+    <strong>Other Uses:</strong><br/>
+    • Cardiac arrest (ACLS) — IV/IO route<br/>
+    • Severe asthma/bronchospasm (when other treatments fail)<br/>
+    • Combined with local anesthetics (vasoconstriction → ↑duration, ↓bleeding)
+  </div>
 
-      <div class="callout warn">
-        <strong>⚠️ ADVERSE EFFECTS:</strong><br/>
-        • Tachycardia, palpitations, arrhythmias<br/>
-        • Hypertension<br/>
-        • Tremor, anxiety, nervousness<br/>
-        • Hyperglycemia (stimulates glycogenolysis)
-      </div>
+  <div class="callout warn">
+    <strong>⚠️ ADVERSE EFFECTS:</strong><br/>
+    • Tachycardia, palpitations, arrhythmias<br/>
+    • Hypertension<br/>
+    • Tremor, anxiety, nervousness<br/>
+    • Hyperglycemia (stimulates glycogenolysis)
+  </div>
 
-      <div class="exam-focus">
-        <strong>📋 NURSING — Anaphylaxis:</strong><br/>
-        1. <strong>Assess airway</strong> — Priority! Stridor = impending obstruction<br/>
-        2. <strong>Give epinephrine IM immediately</strong> — Don't delay!<br/>
-        3. <strong>Call for help / activate emergency response</strong><br/>
-        4. <strong>Position patient supine</strong> with legs elevated (if no respiratory distress)<br/>
-        5. <strong>Give O₂, establish IV access</strong><br/>
-        6. <strong>Monitor continuously:</strong> VS (especially BP and HR), respiratory status, ECG<br/>
-        7. <strong>Be prepared to repeat epinephrine</strong> q5-15min if needed<br/>
-        8. <strong>Adjunct treatments:</strong> IV fluids, H1/H2 blockers, corticosteroids, albuterol
-      </div>
+  <div class="exam-focus">
+    <strong>📋 NURSING — Anaphylaxis:</strong><br/>
+    1. <strong>Assess airway</strong> — Priority! Stridor = impending obstruction<br/>
+    2. <strong>Give epinephrine IM immediately</strong> — Don't delay!<br/>
+    3. <strong>Call for help / activate emergency response</strong><br/>
+    4. <strong>Position patient supine</strong> with legs elevated (if no respiratory distress)<br/>
+    5. <strong>Give O₂, establish IV access</strong><br/>
+    6. <strong>Monitor continuously:</strong> VS (especially BP and HR), respiratory status, ECG<br/>
+    7. <strong>Be prepared to repeat epinephrine</strong> q5-15min if needed<br/>
+    8. <strong>Adjunct treatments:</strong> IV fluids, H1/H2 blockers, corticosteroids, albuterol
+  </div>
 
-      <div class="memory-tip">
-        💡 <strong>Anaphylaxis Memory:</strong> "Epi First, IM Thigh, Don't Die" — Epinephrine is FIRST-LINE, given IM in anterolateral thigh
-      </div>
-    </details>
+  <div class="memory-tip">
+    💡 <strong>Anaphylaxis Memory:</strong> "Epi First, IM Thigh, Don't Die" — Epinephrine is FIRST-LINE, given IM in anterolateral thigh
+  </div>
+</details>
 
-    <details>
-      <summary>🎯 Beta-1 vs Beta-2 Receptor Effects</summary>
-      <table class="table">
-        <thead>
-          <tr><th>Receptor</th><th>Location</th><th>Stimulation Effect</th><th>Blockade Effect</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>β1 (Beta-1)</strong></td>
-            <td>Heart</td>
-            <td>
-              ✅ ↑HR<br/>
-              ✅ ↑Contractility<br/>
-              ✅ ↑AV conduction
-            </td>
-            <td>
-              ❌ ↓HR (Bradycardia)<br/>
-              ❌ ↓Contractility<br/>
-              ❌ Heart block risk
-            </td>
-          </tr>
-          <tr>
-            <td><strong>β2 (Beta-2)</strong></td>
-            <td>Lungs, Blood vessels, Uterus</td>
-            <td>
-              ✅ Bronchodilation<br/>
-              ✅ Vasodilation (skeletal muscle)<br/>
-              ✅ ↑Glycogenolysis → ↑glucose<br/>
-              ✅ ↓K⁺ (shifts into cells)
-            </td>
-            <td>
-              ❌ Bronchoconstriction<br/>
-              ❌ Can trigger asthma attack
-            </td>
-          </tr>
-        </tbody>
-      </table>
+<details>
+  <summary>🎯 Beta-1 vs Beta-2 Receptor Effects</summary>
+  <table class="table">
+    <thead>
+      <tr><th>Receptor</th><th>Location</th><th>Stimulation Effect</th><th>Blockade Effect</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>β1 (Beta-1)</strong></td>
+        <td>Heart</td>
+        <td>
+          ✅ ↑HR<br/>
+          ✅ ↑Contractility<br/>
+          ✅ ↑AV conduction
+        </td>
+        <td>
+          ❌ ↓HR (Bradycardia)<br/>
+          ❌ ↓Contractility<br/>
+          ❌ Heart block risk
+        </td>
+      </tr>
+      <tr>
+        <td><strong>β2 (Beta-2)</strong></td>
+        <td>Lungs, Blood vessels, Uterus</td>
+        <td>
+          ✅ Bronchodilation<br/>
+          ✅ Vasodilation (skeletal muscle)<br/>
+          ✅ ↑Glycogenolysis → ↑glucose<br/>
+          ✅ ↓K⁺ (shifts into cells)
+        </td>
+        <td>
+          ❌ Bronchoconstriction<br/>
+          ❌ Can trigger asthma attack
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-      <div class="exam-focus">
-        <strong>🎯 EXAM APPLICATION:</strong><br/>
-        • <strong>Albuterol (β2 agonist):</strong> Bronchodilation for asthma; watch for tachycardia (also stimulates β1) and ↓K⁺<br/>
-        • <strong>Metoprolol (β1-selective blocker):</strong> ↓HR and BP; relatively safer in asthma (doesn't block β2 as much)<br/>
-        • <strong>Propranolol (non-selective β-blocker):</strong> Blocks BOTH β1 and β2 → AVOID in asthma/COPD (bronchospasm risk)
-      </div>
+  <div class="exam-focus">
+    <strong>🎯 EXAM APPLICATION:</strong><br/>
+    • <strong>Albuterol (β2 agonist):</strong> Bronchodilation for asthma; watch for tachycardia (also stimulates β1) and ↓K⁺<br/>
+    • <strong>Metoprolol (β1-selective blocker):</strong> ↓HR and BP; relatively safer in asthma (doesn't block β2 as much)<br/>
+    • <strong>Propranolol (non-selective β-blocker):</strong> Blocks BOTH β1 and β2 → AVOID in asthma/COPD (bronchospasm risk)
+  </div>
 
-      <div class="memory-tip">
-        💡 <strong>Memory:</strong> "β1 = 1 heart, β2 = 2 lungs"
-      </div>
-    </details>
+  <div class="memory-tip">
+    💡 <strong>Memory:</strong> "β1 = 1 heart, β2 = 2 lungs"
+  </div>
+</details>
+```
 
   </div>
 
   <!-- ANTIBIOTICS SECTION -->
+
   <div class="card" id="antibiotics" style="display:none;">
     <h2 class="sectionTitle">🦠 Antibiotics & Infection Control <span class="tag">High-yield</span></h2>
     <button class="btn" onclick="go('hub')" style="margin-bottom:12px;">← Back to Hub</button>
 
-    <details open>
-      <summary>📚 Key Definitions (Infection, Colonization, Disinfectant vs Antiseptic)</summary>
-      <table class="table">
-        <thead>
-          <tr><th>Term</th><th>Definition</th><th>Clinical Example</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Colonization</strong></td>
-            <td>Microorganisms are PRESENT on/in body but NOT causing disease or symptoms. No immune response.</td>
-            <td>MRSA in nares without infection. <strong>Does NOT require treatment.</strong></td>
-          </tr>
-          <tr>
-            <td><strong>Infection</strong></td>
-            <td>Microorganisms have INVADED tissue, multiplying, triggering immune response. Signs/symptoms present.</td>
-            <td>MRSA wound infection: redness, warmth, purulent drainage, fever. <strong>Requires antibiotics.</strong></td>
-          </tr>
-          <tr>
-            <td><strong>Disease</strong></td>
-            <td>Infection causing clear signs and symptoms; patient is clinically ill.</td>
-            <td>Patient with pneumonia: fever, cough, infiltrates on CXR, elevated WBC</td>
-          </tr>
-          <tr>
-            <td><strong>Antiseptic</strong></td>
-            <td>Chemical that INHIBITS growth of microorganisms on LIVING TISSUE. Bacteriostatic (doesn't kill).</td>
-            <td>Hand sanitizer, Betadine on skin before surgery</td>
-          </tr>
-          <tr>
-            <td><strong>Disinfectant</strong></td>
-            <td>Chemical that KILLS microorganisms on NON-LIVING objects/surfaces. Bactericidal.</td>
-            <td>Bleach on countertops, instrument sterilization solutions</td>
-          </tr>
-        </tbody>
-      </table>
+```
+<details open>
+  <summary>📚 Key Definitions (Infection, Colonization, Disinfectant vs Antiseptic)</summary>
+  <table class="table">
+    <thead>
+      <tr><th>Term</th><th>Definition</th><th>Clinical Example</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Colonization</strong></td>
+        <td>Microorganisms are PRESENT on/in body but NOT causing disease or symptoms. No immune response.</td>
+        <td>MRSA in nares without infection. <strong>Does NOT require treatment.</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Infection</strong></td>
+        <td>Microorganisms have INVADED tissue, multiplying, triggering immune response. Signs/symptoms present.</td>
+        <td>MRSA wound infection: redness, warmth, purulent drainage, fever. <strong>Requires antibiotics.</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Disease</strong></td>
+        <td>Infection causing clear signs and symptoms; patient is clinically ill.</td>
+        <td>Patient with pneumonia: fever, cough, infiltrates on CXR, elevated WBC</td>
+      </tr>
+      <tr>
+        <td><strong>Antiseptic</strong></td>
+        <td>Chemical that INHIBITS growth of microorganisms on LIVING TISSUE. Bacteriostatic (doesn't kill).</td>
+        <td>Hand sanitizer, Betadine on skin before surgery</td>
+      </tr>
+      <tr>
+        <td><strong>Disinfectant</strong></td>
+        <td>Chemical that KILLS microorganisms on NON-LIVING objects/surfaces. Bactericidal.</td>
+        <td>Bleach on countertops, instrument sterilization solutions</td>
+      </tr>
+    </tbody>
+  </table>
 
-      <div class="memory-tip">
-        💡 <strong>Memory:</strong><br/>
-        <strong>Antiseptic = Living</strong> tissue (hand sanitizer on YOUR hands)<br/>
-        <strong>Disinfectant = Dead</strong> objects (bleach on TABLES)
-      </div>
-    </details>
+  <div class="memory-tip">
+    💡 <strong>Memory:</strong><br/>
+    <strong>Antiseptic = Living</strong> tissue (hand sanitizer on YOUR hands)<br/>
+    <strong>Disinfectant = Dead</strong> objects (bleach on TABLES)
+  </div>
+</details>
 
-    <details>
-      <summary>💊 Vancomycin — MRSA Drug of Choice</summary>
-      <div class="mechanism">
-        <strong>MOA:</strong> Inhibits bacterial cell wall synthesis<br/>
-        <strong>Coverage:</strong> Gram-POSITIVE only (MRSA, VRE, C. difficile)
-      </div>
+<details>
+  <summary>💊 Vancomycin — MRSA Drug of Choice</summary>
+  <div class="mechanism">
+    <strong>MOA:</strong> Inhibits bacterial cell wall synthesis<br/>
+    <strong>Coverage:</strong> Gram-POSITIVE only (MRSA, VRE, C. difficile)
+  </div>
 
-      <div class="callout">
-        <strong>Uses:</strong><br/>
-        • <strong>IV vancomycin:</strong> MRSA infections (bacteremia, pneumonia, skin/soft tissue)<br/>
-        • <strong>Oral vancomycin:</strong> C. difficile colitis ONLY (not absorbed systemically)
-      </div>
+  <div class="callout">
+    <strong>Uses:</strong><br/>
+    • <strong>IV vancomycin:</strong> MRSA infections (bacteremia, pneumonia, skin/soft tissue)<br/>
+    • <strong>Oral vancomycin:</strong> C. difficile colitis ONLY (not absorbed systemically)
+  </div>
 
-      <div class="callout critical">
-        <strong>🚨 RED MAN SYNDROME — KNOW THIS!</strong><br/>
-        <strong>Cause:</strong> Infusing <span class="hl-red">TOO FAST</span> → Rapid histamine release<br/>
-        <strong>Signs:</strong><br/>
-        • Flushing/redness of face, neck, upper chest ("red man")<br/>
-        • Pruritus (itching)<br/>
-        • <strong>HYPOTENSION</strong> (NOT hypertension!)<br/>
-        • Rash, possibly tachycardia<br/>
-        <strong>Action:</strong><br/>
-        1. <strong>STOP the infusion immediately</strong><br/>
-        2. Give antihistamine (diphenhydramine/Benadryl) as ordered<br/>
-        3. Wait for symptoms to resolve<br/>
-        4. <strong>Restart at SLOWER rate</strong> (≥60 minutes per gram)<br/>
-        <strong>KEY:</strong> This is <span class="hl">NOT a true allergy!</span> Patient CAN receive vancomycin again — just infuse slower!
-      </div>
+  <div class="callout critical">
+    <strong>🚨 RED MAN SYNDROME — KNOW THIS!</strong><br/>
+    <strong>Cause:</strong> Infusing <span class="hl-red">TOO FAST</span> → Rapid histamine release<br/>
+    <strong>Signs:</strong><br/>
+    • Flushing/redness of face, neck, upper chest ("red man")<br/>
+    • Pruritus (itching)<br/>
+    • <strong>HYPOTENSION</strong> (NOT hypertension!)<br/>
+    • Rash, possibly tachycardia<br/>
+    <strong>Action:</strong><br/>
+    1. <strong>STOP the infusion immediately</strong><br/>
+    2. Give antihistamine (diphenhydramine/Benadryl) as ordered<br/>
+    3. Wait for symptoms to resolve<br/>
+    4. <strong>Restart at SLOWER rate</strong> (≥60 minutes per gram)<br/>
+    <strong>KEY:</strong> This is <span class="hl">NOT a true allergy!</span> Patient CAN receive vancomycin again — just infuse slower!
+  </div>
 
-      <div class="callout warn">
-        <strong>⚠️ TOXICITIES (Same as Aminoglycosides):</strong><br/>
-        • <strong>NEPHROTOXICITY</strong> — Monitor BUN/Cr, I&Os<br/>
-        • <strong>OTOTOXICITY</strong> — Monitor hearing, assess for tinnitus, vertigo
-      </div>
+  <div class="callout warn">
+    <strong>⚠️ TOXICITIES (Same as Aminoglycosides):</strong><br/>
+    • <strong>NEPHROTOXICITY</strong> — Monitor BUN/Cr, I&Os<br/>
+    • <strong>OTOTOXICITY</strong> — Monitor hearing, assess for tinnitus, vertigo
+  </div>
 
-      <div class="exam-focus">
-        <strong>📋 NURSING IMPLICATIONS:</strong><br/>
-        • <strong>Infusion rate:</strong> MUST infuse over ≥60 minutes (1 gram per hour maximum)<br/>
-        • <strong>Monitor trough levels:</strong> Draw right before 4th or 5th dose (goal 10-20 mcg/mL)<br/>
-        • <strong>Monitor:</strong> BUN/Cr (nephrotoxicity), hearing (ototoxicity), IV site (phlebitis/extravasation)<br/>
-        • <strong>Avoid combining</strong> with aminoglycosides if possible (additive nephro/ototoxicity)<br/>
-        • <strong>C. diff:</strong> Oral vancomycin stays in GI tract; IV vancomycin does NOT treat C. diff
-      </div>
+  <div class="exam-focus">
+    <strong>📋 NURSING IMPLICATIONS:</strong><br/>
+    • <strong>Infusion rate:</strong> MUST infuse over ≥60 minutes (1 gram per hour maximum)<br/>
+    • <strong>Monitor trough levels:</strong> Draw right before 4th or 5th dose (goal 10-20 mcg/mL)<br/>
+    • <strong>Monitor:</strong> BUN/Cr (nephrotoxicity), hearing (ototoxicity), IV site (phlebitis/extravasation)<br/>
+    • <strong>Avoid combining</strong> with aminoglycosides if possible (additive nephro/ototoxicity)<br/>
+    • <strong>C. diff:</strong> Oral vancomycin stays in GI tract; IV vancomycin does NOT treat C. diff
+  </div>
 
-      <div class="memory-tip">
-        💡 <strong>Memory:</strong> "Vanc goes SLOW or you'll be RED from head to toe" — Red Man Syndrome from fast infusion
-      </div>
-    </details>
+  <div class="memory-tip">
+    💡 <strong>Memory:</strong> "Vanc goes SLOW or you'll be RED from head to toe" — Red Man Syndrome from fast infusion
+  </div>
+</details>
 
-    <details>
-      <summary>💊 Tetracyclines (Doxycycline)</summary>
-      <div class="mechanism">
-        <strong>MOA:</strong> Inhibit bacterial protein synthesis (bind to 30S ribosomal subunit)<br/>
-        <strong>Coverage:</strong> Broad-spectrum (many Gram+, Gram-, atypicals like Chlamydia, Rickettsia)
-      </div>
+<details>
+  <summary>💊 Tetracyclines (Doxycycline)</summary>
+  <div class="mechanism">
+    <strong>MOA:</strong> Inhibit bacterial protein synthesis (bind to 30S ribosomal subunit)<br/>
+    <strong>Coverage:</strong> Broad-spectrum (many Gram+, Gram-, atypicals like Chlamydia, Rickettsia)
+  </div>
 
-      <div class="callout">
-        <strong>Common Uses:</strong><br/>
-        • Acne<br/>
-        • <strong>Lyme disease</strong> (doxycycline is first-line)<br/>
-        • <strong>Rocky Mountain Spotted Fever</strong><br/>
-        • Chlamydia, Mycoplasma pneumonia<br/>
-        • Community-acquired MRSA skin infections<br/>
-        • Malaria prophylaxis (doxycycline)
-      </div>
+  <div class="callout">
+    <strong>Common Uses:</strong><br/>
+    • Acne<br/>
+    • <strong>Lyme disease</strong> (doxycycline is first-line)<br/>
+    • <strong>Rocky Mountain Spotted Fever</strong><br/>
+    • Chlamydia, Mycoplasma pneumonia<br/>
+    • Community-acquired MRSA skin infections<br/>
+    • Malaria prophylaxis (doxycycline)
+  </div>
 
-      <div class="callout critical">
-        <strong>🚫 CRITICAL RESTRICTIONS (HIGH-YIELD):</strong><br/>
-        1. <span class="hl-red">NO dairy, antacids, or iron supplements</span><br/>
-           → Chelation (binds to Ca²⁺, Mg²⁺, Fe²⁺) → Drug becomes inactive<br/>
-           → Take 1 hour BEFORE or 2 hours AFTER these products<br/>
-        2. <span class="hl-red">NO in pregnancy</span><br/>
-           → Crosses placenta → Permanent YELLOW-BROWN tooth discoloration in fetus<br/>
-        3. <span class="hl-red">NO in children &lt;8 years</span><br/>
-           → Binds to developing teeth → Permanent tooth staining and enamel hypoplasia<br/>
-        4. <span class="hl-red">PHOTOSENSITIVITY</span><br/>
-           → Severe sunburn risk → Teach: sunscreen, protective clothing, avoid tanning beds
-      </div>
+  <div class="callout critical">
+    <strong>🚫 CRITICAL RESTRICTIONS (HIGH-YIELD):</strong><br/>
+    1. <span class="hl-red">NO dairy, antacids, or iron supplements</span><br/>
+       → Chelation (binds to Ca²⁺, Mg²⁺, Fe²⁺) → Drug becomes inactive<br/>
+       → Take 1 hour BEFORE or 2 hours AFTER these products<br/>
+    2. <span class="hl-red">NO in pregnancy</span><br/>
+       → Crosses placenta → Permanent YELLOW-BROWN tooth discoloration in fetus<br/>
+    3. <span class="hl-red">NO in children &lt;8 years</span><br/>
+       → Binds to developing teeth → Permanent tooth staining and enamel hypoplasia<br/>
+    4. <span class="hl-red">PHOTOSENSITIVITY</span><br/>
+       → Severe sunburn risk → Teach: sunscreen, protective clothing, avoid tanning beds
+  </div>
 
-      <div class="callout warn">
-        <strong>⚠️ OTHER ADVERSE EFFECTS:</strong><br/>
-        • <strong>Esophagitis/esophageal ulceration</strong> — Take with FULL glass of water, stay UPRIGHT ≥30 minutes<br/>
-        • GI upset (N/V/D) — Take with food (doxycycline can be taken with food, unlike other tetracyclines)<br/>
-        • Superinfection risk — Broad spectrum kills normal flora → C. diff, yeast
-      </div>
+  <div class="callout warn">
+    <strong>⚠️ OTHER ADVERSE EFFECTS:</strong><br/>
+    • <strong>Esophagitis/esophageal ulceration</strong> — Take with FULL glass of water, stay UPRIGHT ≥30 minutes<br/>
+    • GI upset (N/V/D) — Take with food (doxycycline can be taken with food, unlike other tetracyclines)<br/>
+    • Superinfection risk — Broad spectrum kills normal flora → C. diff, yeast
+  </div>
 
-      <div class="exam-focus">
-        <strong>📋 NURSING:</strong><br/>
-        • <strong>Before administering:</strong> Verify NOT pregnant, NOT &lt;8 years old<br/>
-        • <strong>Teach:</strong> "No milk, no calcium, no antacids, no iron — wait 2 hours"<br/>
-        • <strong>Teach:</strong> "Take with full glass of water and stay upright for 30 minutes"<br/>
-        • <strong>Teach:</strong> "Use strong sunscreen and avoid prolonged sun exposure"<br/>
-        • <strong>Monitor:</strong> Oral/vaginal yeast infections, diarrhea (C. diff)
-      </div>
+  <div class="exam-focus">
+    <strong>📋 NURSING:</strong><br/>
+    • <strong>Before administering:</strong> Verify NOT pregnant, NOT &lt;8 years old<br/>
+    • <strong>Teach:</strong> "No milk, no calcium, no antacids, no iron — wait 2 hours"<br/>
+    • <strong>Teach:</strong> "Take with full glass of water and stay upright for 30 minutes"<br/>
+    • <strong>Teach:</strong> "Use strong sunscreen and avoid prolonged sun exposure"<br/>
+    • <strong>Monitor:</strong> Oral/vaginal yeast infections, diarrhea (C. diff)
+  </div>
 
-      <div class="memory-tip">
-        💡 <strong>Memory:</strong> "No MILK, no SUN, no BABIES, no KIDS under 8" — The 4 big tetracycline restrictions!
-      </div>
-    </details>
+  <div class="memory-tip">
+    💡 <strong>Memory:</strong> "No MILK, no SUN, no BABIES, no KIDS under 8" — The 4 big tetracycline restrictions!
+  </div>
+</details>
 
-    <details>
-      <summary>💊 TB Drugs — INH, Rifampin, Ethambutol</summary>
-      <div class="callout">
-        <strong>Standard TB Treatment: "RIPE"</strong><br/>
-        • <strong>R</strong>ifampin<br/>
-        • <strong>I</strong>soniazid (INH)<br/>
-        • <strong>P</strong>yrazinamide<br/>
-        • <strong>E</strong>thambutol<br/>
-        <strong>Duration:</strong> Intensive phase (2 months all 4 drugs) → Continuation phase (4-7 months INH + Rifampin)
-      </div>
+<details>
+  <summary>💊 TB Drugs — INH, Rifampin, Ethambutol</summary>
+  <div class="callout">
+    <strong>Standard TB Treatment: "RIPE"</strong><br/>
+    • <strong>R</strong>ifampin<br/>
+    • <strong>I</strong>soniazid (INH)<br/>
+    • <strong>P</strong>yrazinamide<br/>
+    • <strong>E</strong>thambutol<br/>
+    <strong>Duration:</strong> Intensive phase (2 months all 4 drugs) → Continuation phase (4-7 months INH + Rifampin)
+  </div>
 
-      <div class="callout critical">
-        <strong>🔬 Sputum Collection:</strong><br/>
-        • Collect early morning specimen (best yield — organisms accumulate overnight)<br/>
-        • Need <strong>3 consecutive sputum samples</strong> for AFB (acid-fast bacilli)<br/>
-        • Patient must cough DEEP (not just saliva) — may need sputum induction<br/>
-        • <strong>Negative pressure room/airborne precautions</strong> during collection
-      </div>
+  <div class="callout critical">
+    <strong>🔬 Sputum Collection:</strong><br/>
+    • Collect early morning specimen (best yield — organisms accumulate overnight)<br/>
+    • Need <strong>3 consecutive sputum samples</strong> for AFB (acid-fast bacilli)<br/>
+    • Patient must cough DEEP (not just saliva) — may need sputum induction<br/>
+    • <strong>Negative pressure room/airborne precautions</strong> during collection
+  </div>
 
-      <div class="callout critical">
-        <strong>😷 Infectious Period & Airborne Precautions:</strong><br/>
-        • TB spreads via <strong>airborne droplet nuclei</strong> when patient coughs/sneezes<br/>
-        • <strong>Airborne precautions required:</strong> N95 mask, negative pressure room<br/>
-        • Patient is contagious until <strong>3 negative sputum cultures</strong> OR <strong>2-3 weeks of effective treatment</strong><br/>
-        • <strong>Non-infectious</strong> once: 3 negative AFB smears AND clinically improving AND on appropriate therapy
-      </div>
+  <div class="callout critical">
+    <strong>😷 Infectious Period & Airborne Precautions:</strong><br/>
+    • TB spreads via <strong>airborne droplet nuclei</strong> when patient coughs/sneezes<br/>
+    • <strong>Airborne precautions required:</strong> N95 mask, negative pressure room<br/>
+    • Patient is contagious until <strong>3 negative sputum cultures</strong> OR <strong>2-3 weeks of effective treatment</strong><br/>
+    • <strong>Non-infectious</strong> once: 3 negative AFB smears AND clinically improving AND on appropriate therapy
+  </div>
 
-      <h4>Isoniazid (INH)</h4>
-      <div class="callout warn">
-        <strong>⚠️ KEY ADVERSE EFFECTS:</strong><br/>
-        • <strong>HEPATOTOXICITY</strong> — Monitor LFTs; avoid alcohol<br/>
-        • <strong>Peripheral neuropathy</strong> — Give pyridoxine (vitamin B6) prophylactically to prevent<br/>
-        • Drug interactions — Many!
-      </div>
+  <h4>Isoniazid (INH)</h4>
+  <div class="callout warn">
+    <strong>⚠️ KEY ADVERSE EFFECTS:</strong><br/>
+    • <strong>HEPATOTOXICITY</strong> — Monitor LFTs; avoid alcohol<br/>
+    • <strong>Peripheral neuropathy</strong> — Give pyridoxine (vitamin B6) prophylactically to prevent<br/>
+    • Drug interactions — Many!
+  </div>
 
-      <h4>Rifampin</h4>
-      <div class="callout warn">
-        <strong>⚠️ KEY POINTS:</strong><br/>
-        • <strong>Orange/red discoloration</strong> of body fluids (urine, tears, saliva, sweat) — EXPECTED, harmless<br/>
-        • <strong>MASSIVE drug interactions</strong> — Induces CYP450 enzymes<br/>
-        • <strong>↓Oral contraceptive effectiveness</strong> — Use backup birth control!<br/>
-        • Hepatotoxicity — Monitor LFTs<br/>
-        • Can cause flu-like syndrome
-      </div>
+  <h4>Rifampin</h4>
+  <div class="callout warn">
+    <strong>⚠️ KEY POINTS:</strong><br/>
+    • <strong>Orange/red discoloration</strong> of body fluids (urine, tears, saliva, sweat) — EXPECTED, harmless<br/>
+    • <strong>MASSIVE drug interactions</strong> — Induces CYP450 enzymes<br/>
+    • <strong>↓Oral contraceptive effectiveness</strong> — Use backup birth control!<br/>
+    • Hepatotoxicity — Monitor LFTs<br/>
+    • Can cause flu-like syndrome
+  </div>
 
-      <h4>Ethambutol</h4>
-      <div class="callout warn">
-        <strong>⚠️ OPTIC NEURITIS (VISION CHANGES):</strong><br/>
-        • Can cause <strong>decreased visual acuity and color blindness (especially red-green)</strong><br/>
-        • <strong>Monitor:</strong> Baseline eye exam, monthly vision checks<br/>
-        • <strong>Teach:</strong> "Report any vision changes or difficulty seeing colors immediately"<br/>
-        • Usually reversible if caught early and drug stopped
-      </div>
+  <h4>Ethambutol</h4>
+  <div class="callout warn">
+    <strong>⚠️ OPTIC NEURITIS (VISION CHANGES):</strong><br/>
+    • Can cause <strong>decreased visual acuity and color blindness (especially red-green)</strong><br/>
+    • <strong>Monitor:</strong> Baseline eye exam, monthly vision checks<br/>
+    • <strong>Teach:</strong> "Report any vision changes or difficulty seeing colors immediately"<br/>
+    • Usually reversible if caught early and drug stopped
+  </div>
 
-      <div class="exam-focus">
-        <strong>📋 NURSING IMPLICATIONS:</strong><br/>
-        • <strong>Directly Observed Therapy (DOT)</strong> — Watch patient swallow every dose (↑adherence, ↓resistance)<br/>
-        • <strong>Airborne precautions</strong> until non-infectious<br/>
-        • <strong>Contact investigation</strong> — Screen close contacts for latent TB<br/>
-        • <strong>Patient teaching:</strong> Complete FULL course (6-9 months), report adverse effects, no alcohol<br/>
-        • <strong>INH:</strong> Give vitamin B6, monitor LFTs<br/>
-        • <strong>Rifampin:</strong> "Your urine will turn orange — this is normal"; use backup contraception<br/>
-        • <strong>Ethambutol:</strong> Report vision changes immediately
-      </div>
+  <div class="exam-focus">
+    <strong>📋 NURSING IMPLICATIONS:</strong><br/>
+    • <strong>Directly Observed Therapy (DOT)</strong> — Watch patient swallow every dose (↑adherence, ↓resistance)<br/>
+    • <strong>Airborne precautions</strong> until non-infectious<br/>
+    • <strong>Contact investigation</strong> — Screen close contacts for latent TB<br/>
+    • <strong>Patient teaching:</strong> Complete FULL course (6-9 months), report adverse effects, no alcohol<br/>
+    • <strong>INH:</strong> Give vitamin B6, monitor LFTs<br/>
+    • <strong>Rifampin:</strong> "Your urine will turn orange — this is normal"; use backup contraception<br/>
+    • <strong>Ethambutol:</strong> Report vision changes immediately
+  </div>
 
-      <div class="memory-tip">
-        💡 <strong>TB Treatment Memory:</strong> "RIPE for 2, Then IR for 4 more" — RIPE therapy for 2 months intensive, then just Isoniazid + Rifampin for 4-7 months
-      </div>
-    </details>
+  <div class="memory-tip">
+    💡 <strong>TB Treatment Memory:</strong> "RIPE for 2, Then IR for 4 more" — RIPE therapy for 2 months intensive, then just Isoniazid + Rifampin for 4-7 months
+  </div>
+</details>
+```
 
   </div>
 
   <!-- RESPIRATORY SECTION -->
+
   <div class="card" id="respiratory" style="display:none;">
     <h2 class="sectionTitle">🫁 Respiratory Medications <span class="tag">Bronchodilators & Controllers</span></h2>
     <button class="btn" onclick="go('hub')" style="margin-bottom:12px;">← Back to Hub</button>
 
-    <details open>
-      <summary>🎯 Asthma Medication Overview — Controllers vs Rescue</summary>
-      <div class="contrast-box">
-        <div class="contrast-item">
-          <h4>🚨 RESCUE (Quick-Relief)</h4>
-          <p><strong>When:</strong> Acute symptoms, PRN use</p>
-          <p><strong>Examples:</strong></p>
-          <ul>
-            <li><strong>SABA:</strong> Albuterol (β2 agonist)</li>
-            <li><strong>Anticholinergic:</strong> Ipratropium</li>
-          </ul>
-          <p><strong>Action:</strong> Rapid bronchodilation within minutes</p>
-        </div>
-        <div class="contrast-item">
-          <h4>🛡️ CONTROLLER (Maintenance)</h4>
-          <p><strong>When:</strong> Daily, scheduled use for prevention</p>
-          <p><strong>Examples:</strong></p>
-          <ul>
-            <li><strong>ICS:</strong> Inhaled corticosteroids</li>
-            <li><strong>LABA:</strong> Long-acting β2 agonists</li>
-            <li><strong>LTRA:</strong> Montelukast (Singulair)</li>
-          </ul>
-          <p><strong>Action:</strong> Reduce inflammation, prevent attacks</p>
-        </div>
-      </div>
+```
+<details open>
+  <summary>🎯 Asthma Medication Overview — Controllers vs Rescue</summary>
+  <div class="contrast-box">
+    <div class="contrast-item">
+      <h4>🚨 RESCUE (Quick-Relief)</h4>
+      <p><strong>When:</strong> Acute symptoms, PRN use</p>
+      <p><strong>Examples:</strong></p>
+      <ul>
+        <li><strong>SABA:</strong> Albuterol (β2 agonist)</li>
+        <li><strong>Anticholinergic:</strong> Ipratropium</li>
+      </ul>
+      <p><strong>Action:</strong> Rapid bronchodilation within minutes</p>
+    </div>
+    <div class="contrast-item">
+      <h4>🛡️ CONTROLLER (Maintenance)</h4>
+      <p><strong>When:</strong> Daily, scheduled use for prevention</p>
+      <p><strong>Examples:</strong></p>
+      <ul>
+        <li><strong>ICS:</strong> Inhaled corticosteroids</li>
+        <li><strong>LABA:</strong> Long-acting β2 agonists</li>
+        <li><strong>LTRA:</strong> Montelukast (Singulair)</li>
+      </ul>
+      <p><strong>Action:</strong> Reduce inflammation, prevent attacks</p>
+    </div>
+  </div>
 
-      <div class="callout critical">
-        <strong>🎯 MDI TECHNIQUE (EXAM HIGH-YIELD):</strong><br/>
-        1. <strong>Bronchodilator FIRST</strong> (e.g., albuterol) → Opens airways<br/>
-        2. <strong>Wait 1-2 minutes</strong><br/>
-        3. <strong>Steroid SECOND</strong> (e.g., fluticasone) → Better delivery to airways<br/>
-        4. <strong>RINSE MOUTH after steroid</strong> → Prevents oral thrush
-      </div>
+  <div class="callout critical">
+    <strong>🎯 MDI TECHNIQUE (EXAM HIGH-YIELD):</strong><br/>
+    1. <strong>Bronchodilator FIRST</strong> (e.g., albuterol) → Opens airways<br/>
+    2. <strong>Wait 1-2 minutes</strong><br/>
+    3. <strong>Steroid SECOND</strong> (e.g., fluticasone) → Better delivery to airways<br/>
+    4. <strong>RINSE MOUTH after steroid</strong> → Prevents oral thrush
+  </div>
 
-      <div class="exam-focus">
-        <strong>📋 ASSESSING BRONCHODILATOR EFFECTIVENESS:</strong><br/>
-        • <strong>Before:</strong> Lung sounds (wheezing, decreased breath sounds), RR, O₂ sat, dyspnea severity, peak flow<br/>
-        • <strong>After (5-15 min):</strong> Reassess same parameters<br/>
-        • <strong>Effective:</strong> ↓wheezing, ↑breath sounds, ↑O₂ sat, ↓RR, ↓work of breathing, improved peak flow<br/>
-        • <strong>Not effective:</strong> Persistent/worsening symptoms → May need nebulizer, systemic steroids, or higher level of care
-      </div>
-    </details>
+  <div class="exam-focus">
+    <strong>📋 ASSESSING BRONCHODILATOR EFFECTIVENESS:</strong><br/>
+    • <strong>Before:</strong> Lung sounds (wheezing, decreased breath sounds), RR, O₂ sat, dyspnea severity, peak flow<br/>
+    • <strong>After (5-15 min):</strong> Reassess same parameters<br/>
+    • <strong>Effective:</strong> ↓wheezing, ↑breath sounds, ↑O₂ sat, ↓RR, ↓work of breathing, improved peak flow<br/>
+    • <strong>Not effective:</strong> Persistent/worsening symptoms → May need nebulizer, systemic steroids, or higher level of care
+  </div>
+</details>
 
-    <details>
-      <summary>💊 Albuterol (SABA — Short-Acting Beta-2 Agonist)</summary>
-      <div class="mechanism">
-        <strong>MOA:</strong> Stimulates <strong>β2 receptors</strong> in lungs → Bronchodilation<br/>
-        <strong>Onset:</strong> 5-15 minutes (rapid!)<br/>
-        <strong>Duration:</strong> 4-6 hours
-      </div>
+<details>
+  <summary>💊 Albuterol (SABA — Short-Acting Beta-2 Agonist)</summary>
+  <div class="mechanism">
+    <strong>MOA:</strong> Stimulates <strong>β2 receptors</strong> in lungs → Bronchodilation<br/>
+    <strong>Onset:</strong> 5-15 minutes (rapid!)<br/>
+    <strong>Duration:</strong> 4-6 hours
+  </div>
 
-      <div class="callout good">
-        <strong>✅ USE:</strong> <span class="hl">RESCUE inhaler</span> for acute bronchospasm<br/>
-        • Asthma attack<br/>
-        • Exercise-induced bronchospasm (use 15-30 min before exercise)<br/>
-        • COPD exacerbation
-      </div>
+  <div class="callout good">
+    <strong>✅ USE:</strong> <span class="hl">RESCUE inhaler</span> for acute bronchospasm<br/>
+    • Asthma attack<br/>
+    • Exercise-induced bronchospasm (use 15-30 min before exercise)<br/>
+    • COPD exacerbation
+  </div>
 
-      <div class="callout warn">
-        <strong>⚠️ ADVERSE EFFECTS (β2 stimulation + some β1 cross-stimulation):</strong><br/>
-        • <strong>Tachycardia, palpitations</strong> — β1 effects on heart<br/>
-        • <strong>Tremor</strong> — Very common<br/>
-        • <strong>Nervousness, anxiety</strong><br/>
-        • <strong>HYPOKALEMIA (↓K⁺)</strong> — β2 stimulation shifts K⁺ into cells → Monitor K⁺ if frequent use!<br/>
-        • Hyperglycemia
-      </div>
+  <div class="callout warn">
+    <strong>⚠️ ADVERSE EFFECTS (β2 stimulation + some β1 cross-stimulation):</strong><br/>
+    • <strong>Tachycardia, palpitations</strong> — β1 effects on heart<br/>
+    • <strong>Tremor</strong> — Very common<br/>
+    • <strong>Nervousness, anxiety</strong><br/>
+    • <strong>HYPOKALEMIA (↓K⁺)</strong> — β2 stimulation shifts K⁺ into cells → Monitor K⁺ if frequent use!<br/>
+    • Hyperglycemia
+  </div>
 
-      <div class="callout critical">
-        <strong>⚠️ OVERUSE WARNING:</strong><br/>
-        If patient needs albuterol <strong>&gt;2 times/week for symptom relief</strong> → Asthma NOT well-controlled → Need controller medication (ICS)!
-      </div>
+  <div class="callout critical">
+    <strong>⚠️ OVERUSE WARNING:</strong><br/>
+    If patient needs albuterol <strong>&gt;2 times/week for symptom relief</strong> → Asthma NOT well-controlled → Need controller medication (ICS)!
+  </div>
 
-      <div class="exam-focus">
-        <strong>📋 NURSING:</strong><br/>
-        • <strong>Assess:</strong> Lung sounds, RR, O₂ sat, HR BEFORE and AFTER<br/>
-        • <strong>Monitor:</strong> HR (watch for tachycardia), K⁺ levels (especially if on diuretics or digoxin)<br/>
-        • <strong>Teach MDI technique:</strong> Shake, exhale fully, inhale slowly while pressing, hold breath 10 sec<br/>
-        • <strong>Teach:</strong> "Use this as a rescue inhaler, not for daily prevention"<br/>
-        • <strong>Teach:</strong> "If you need this more than twice a week, call your doctor — you need a controller medication"
-      </div>
+  <div class="exam-focus">
+    <strong>📋 NURSING:</strong><br/>
+    • <strong>Assess:</strong> Lung sounds, RR, O₂ sat, HR BEFORE and AFTER<br/>
+    • <strong>Monitor:</strong> HR (watch for tachycardia), K⁺ levels (especially if on diuretics or digoxin)<br/>
+    • <strong>Teach MDI technique:</strong> Shake, exhale fully, inhale slowly while pressing, hold breath 10 sec<br/>
+    • <strong>Teach:</strong> "Use this as a rescue inhaler, not for daily prevention"<br/>
+    • <strong>Teach:</strong> "If you need this more than twice a week, call your doctor — you need a controller medication"
+  </div>
 
-      <div class="memory-tip">
-        💡 <strong>Memory:</strong> "Albuterol = β2 = 2 lungs" — Opens airways FAST but causes tremor and ↓K⁺
-      </div>
-    </details>
+  <div class="memory-tip">
+    💡 <strong>Memory:</strong> "Albuterol = β2 = 2 lungs" — Opens airways FAST but causes tremor and ↓K⁺
+  </div>
+</details>
 
-    <details>
-      <summary>💊 Ipratropium (Atrovent — Anticholinergic Bronchodilator)</summary>
-      <div class="mechanism">
-        <strong>MOA:</strong> Blocks <strong>muscarinic receptors</strong> in airways → Prevents bronchoconstriction → Bronchodilation<br/>
-        <strong>Onset:</strong> 15-30 minutes (slower than albuterol)<br/>
-        <strong>Duration:</strong> 4-6 hours
-      </div>
+<details>
+  <summary>💊 Ipratropium (Atrovent — Anticholinergic Bronchodilator)</summary>
+  <div class="mechanism">
+    <strong>MOA:</strong> Blocks <strong>muscarinic receptors</strong> in airways → Prevents bronchoconstriction → Bronchodilation<br/>
+    <strong>Onset:</strong> 15-30 minutes (slower than albuterol)<br/>
+    <strong>Duration:</strong> 4-6 hours
+  </div>
 
-      <div class="callout">
-        <strong>Use:</strong><br/>
-        • <strong>COPD</strong> (first-line bronchodilator for COPD!)<br/>
-        • Asthma (adjunct to SABA in acute exacerbation)<br/>
-        • Often combined with albuterol in nebulizer (DuoNeb = albuterol + ipratropium)
-      </div>
+  <div class="callout">
+    <strong>Use:</strong><br/>
+    • <strong>COPD</strong> (first-line bronchodilator for COPD!)<br/>
+    • Asthma (adjunct to SABA in acute exacerbation)<br/>
+    • Often combined with albuterol in nebulizer (DuoNeb = albuterol + ipratropium)
+  </div>
 
-      <div class="callout warn">
-        <strong>⚠️ ADVERSE EFFECTS (Anticholinergic):</strong><br/>
-        • Dry mouth<br/>
-        • Cough, throat irritation<br/>
-        • Headache<br/>
-        • <strong>Less systemic effects than albuterol</strong> (no tachycardia/tremor typically)
-      </div>
+  <div class="callout warn">
+    <strong>⚠️ ADVERSE EFFECTS (Anticholinergic):</strong><br/>
+    • Dry mouth<br/>
+    • Cough, throat irritation<br/>
+    • Headache<br/>
+    • <strong>Less systemic effects than albuterol</strong> (no tachycardia/tremor typically)
+  </div>
 
-      <div class="callout critical">
-        <strong>⚠️ EYE SAFETY WARNING:</strong><br/>
-        • Avoid spraying in eyes → Can cause <strong>acute angle-closure glaucoma</strong> and mydriasis<br/>
-        • Use mouthpiece or mask properly to avoid eye exposure
-      </div>
+  <div class="callout critical">
+    <strong>⚠️ EYE SAFETY WARNING:</strong><br/>
+    • Avoid spraying in eyes → Can cause <strong>acute angle-closure glaucoma</strong> and mydriasis<br/>
+    • Use mouthpiece or mask properly to avoid eye exposure
+  </div>
 
-      <div class="exam-focus">
-        <strong>📋 NURSING:</strong><br/>
-        • <strong>Assess:</strong> Lung sounds, RR, O₂ sat before and after<br/>
-        • <strong>COPD patients:</strong> Often first-line; more effective than albuterol for COPD<br/>
-        • <strong>Teach:</strong> "Avoid spraying in your eyes", "Rinse mouth after use to prevent dryness"<br/>
-        • <strong>Onset slower:</strong> Takes 15-30 min to work (vs 5 min for albuterol)
-      </div>
-    </details>
+  <div class="exam-focus">
+    <strong>📋 NURSING:</strong><br/>
+    • <strong>Assess:</strong> Lung sounds, RR, O₂ sat before and after<br/>
+    • <strong>COPD patients:</strong> Often first-line; more effective than albuterol for COPD<br/>
+    • <strong>Teach:</strong> "Avoid spraying in your eyes", "Rinse mouth after use to prevent dryness"<br/>
+    • <strong>Onset slower:</strong> Takes 15-30 min to work (vs 5 min for albuterol)
+  </div>
+</details>
 
-    <details>
-      <summary>💊 Inhaled Corticosteroids (ICS) — Fluticasone, Budesonide</summary>
-      <div class="mechanism">
-        <strong>MOA:</strong> <strong>Anti-inflammatory</strong> — Reduces airway inflammation and hyperresponsiveness<br/>
-        <strong>NOT a bronchodilator!</strong> Does not provide immediate relief
-      </div>
+<details>
+  <summary>💊 Inhaled Corticosteroids (ICS) — Fluticasone, Budesonide</summary>
+  <div class="mechanism">
+    <strong>MOA:</strong> <strong>Anti-inflammatory</strong> — Reduces airway inflammation and hyperresponsiveness<br/>
+    <strong>NOT a bronchodilator!</strong> Does not provide immediate relief
+  </div>
 
-      <div class="callout good">
-        <strong>✅ USE:</strong> <span class="hl">CONTROLLER medication</span> for asthma<br/>
-        • First-line maintenance therapy for persistent asthma<br/>
-        • Prevents asthma attacks<br/>
-        • Taken DAILY, even when feeling well
-      </div>
+  <div class="callout good">
+    <strong>✅ USE:</strong> <span class="hl">CONTROLLER medication</span> for asthma<br/>
+    • First-line maintenance therapy for persistent asthma<br/>
+    • Prevents asthma attacks<br/>
+    • Taken DAILY, even when feeling well
+  </div>
 
-      <div class="callout warn">
-        <strong>⚠️ ADVERSE EFFECTS:</strong><br/>
-        • <span class="hl-red">Oral thrush (candidiasis)</span> — #1 local side effect<br/>
-        • Hoarseness, sore throat<br/>
-        • Cough<br/>
-        • Minimal systemic effects at therapeutic doses (unlike oral steroids)
-      </div>
+  <div class="callout warn">
+    <strong>⚠️ ADVERSE EFFECTS:</strong><br/>
+    • <span class="hl-red">Oral thrush (candidiasis)</span> — #1 local side effect<br/>
+    • Hoarseness, sore throat<br/>
+    • Cough<br/>
+    • Minimal systemic effects at therapeutic doses (unlike oral steroids)
+  </div>
 
-      <div class="callout critical">
-        <strong>🚨 THRUSH PREVENTION:</strong><br/>
-        <strong>RINSE MOUTH AND GARGLE after every use</strong> → Spit out (don't swallow)<br/>
-        Use spacer device → ↓oral deposition → ↓thrush risk
-      </div>
+  <div class="callout critical">
+    <strong>🚨 THRUSH PREVENTION:</strong><br/>
+    <strong>RINSE MOUTH AND GARGLE after every use</strong> → Spit out (don't swallow)<br/>
+    Use spacer device → ↓oral deposition → ↓thrush risk
+  </div>
 
-      <div class="exam-focus">
-        <strong>📋 NURSING:</strong><br/>
-        • <strong>NOT for acute relief!</strong> Takes days to weeks for full effect<br/>
-        • <strong>Teach:</strong> "Use this every day, even when you feel good — it prevents attacks, doesn't stop them"<br/>
-        • <strong>Teach:</strong> "Rinse your mouth thoroughly after each use to prevent yeast infection"<br/>
-        • <strong>Teach:</strong> "Use your albuterol (rescue inhaler) FIRST, then wait, then use this steroid inhaler"<br/>
-        • <strong>Monitor:</strong> Oral cavity for thrush (white patches), hoarseness<br/>
-        • <strong>Growth monitoring in children:</strong> High doses may slow growth slightly
-      </div>
+  <div class="exam-focus">
+    <strong>📋 NURSING:</strong><br/>
+    • <strong>NOT for acute relief!</strong> Takes days to weeks for full effect<br/>
+    • <strong>Teach:</strong> "Use this every day, even when you feel good — it prevents attacks, doesn't stop them"<br/>
+    • <strong>Teach:</strong> "Rinse your mouth thoroughly after each use to prevent yeast infection"<br/>
+    • <strong>Teach:</strong> "Use your albuterol (rescue inhaler) FIRST, then wait, then use this steroid inhaler"<br/>
+    • <strong>Monitor:</strong> Oral cavity for thrush (white patches), hoarseness<br/>
+    • <strong>Growth monitoring in children:</strong> High doses may slow growth slightly
+  </div>
 
-      <div class="memory-tip">
-        💡 <strong>Memory:</strong> "ICS = Inside Control Steroid" — Use daily for CONTROL, rinse mouth after to prevent thrush
-      </div>
-    </details>
+  <div class="memory-tip">
+    💡 <strong>Memory:</strong> "ICS = Inside Control Steroid" — Use daily for CONTROL, rinse mouth after to prevent thrush
+  </div>
+</details>
 
-    <details>
-      <summary>💊 LTRA — Montelukast (Singulair)</summary>
-      <div class="mechanism">
-        <strong>MOA:</strong> <strong>Leukotriene receptor antagonist</strong> — Blocks inflammatory mediators<br/>
-        <strong>Route:</strong> ORAL (tablet or chewable)<br/>
-        <strong>NOT an inhaler!</strong>
-      </div>
+<details>
+  <summary>💊 LTRA — Montelukast (Singulair)</summary>
+  <div class="mechanism">
+    <strong>MOA:</strong> <strong>Leukotriene receptor antagonist</strong> — Blocks inflammatory mediators<br/>
+    <strong>Route:</strong> ORAL (tablet or chewable)<br/>
+    <strong>NOT an inhaler!</strong>
+  </div>
 
-      <div class="callout good">
-        <strong>✅ USE:</strong> <span class="hl">Controller medication</span><br/>
-        • Asthma maintenance (alternative/add-on to ICS)<br/>
-        • Allergic rhinitis<br/>
-        • Exercise-induced bronchospasm prevention<br/>
-        • Taken ONCE DAILY, usually at bedtime
-      </div>
+  <div class="callout good">
+    <strong>✅ USE:</strong> <span class="hl">Controller medication</span><br/>
+    • Asthma maintenance (alternative/add-on to ICS)<br/>
+    • Allergic rhinitis<br/>
+    • Exercise-induced bronchospasm prevention<br/>
+    • Taken ONCE DAILY, usually at bedtime
+  </div>
 
-      <div class="callout critical">
-        <strong>🚨 FDA BLACK BOX WARNING (2020):</strong><br/>
-        <span class="hl-red">Neuropsychiatric events:</span> Agitation, aggression, depression, suicidal thoughts/behavior, sleep disturbances<br/>
-        <strong>Monitor closely for mood/behavior changes!</strong><br/>
-        Consider alternatives if patient has history of psychiatric illness
-      </div>
+  <div class="callout critical">
+    <strong>🚨 FDA BLACK BOX WARNING (2020):</strong><br/>
+    <span class="hl-red">Neuropsychiatric events:</span> Agitation, aggression, depression, suicidal thoughts/behavior, sleep disturbances<br/>
+    <strong>Monitor closely for mood/behavior changes!</strong><br/>
+    Consider alternatives if patient has history of psychiatric illness
+  </div>
 
-      <div class="callout warn">
-        <strong>⚠️ OTHER ADVERSE EFFECTS:</strong><br/>
-        • Headache<br/>
-        • GI upset<br/>
-        • Upper respiratory infection<br/>
-        • Generally well-tolerated
-      </div>
+  <div class="callout warn">
+    <strong>⚠️ OTHER ADVERSE EFFECTS:</strong><br/>
+    • Headache<br/>
+    • GI upset<br/>
+    • Upper respiratory infection<br/>
+    • Generally well-tolerated
+  </div>
 
-      <div class="exam-focus">
-        <strong>📋 NURSING:</strong><br/>
-        • <strong>NOT for acute rescue!</strong> Takes days for full effect<br/>
-        • <strong>Assess mental health:</strong> Screen for depression, anxiety, mood changes at every visit<br/>
-        • <strong>Teach:</strong> "Take this every day for prevention, not during an attack"<br/>
-        • <strong>Teach:</strong> "Report any mood changes, depression, or unusual behavior immediately"<br/>
-        • <strong>Teach:</strong> "This is a pill, not an inhaler — take with or without food"
-      </div>
-    </details>
+  <div class="exam-focus">
+    <strong>📋 NURSING:</strong><br/>
+    • <strong>NOT for acute rescue!</strong> Takes days for full effect<br/>
+    • <strong>Assess mental health:</strong> Screen for depression, anxiety, mood changes at every visit<br/>
+    • <strong>Teach:</strong> "Take this every day for prevention, not during an attack"<br/>
+    • <strong>Teach:</strong> "Report any mood changes, depression, or unusual behavior immediately"<br/>
+    • <strong>Teach:</strong> "This is a pill, not an inhaler — take with or without food"
+  </div>
+</details>
+```
 
   </div>
 
   <!-- PAIN MANAGEMENT SECTION -->
+
   <div class="card" id="pain" style="display:none;">
     <h2 class="sectionTitle">💊 Pain Management <span class="tag">Opioids, NSAIDs, Tylenol</span></h2>
     <button class="btn" onclick="go('hub')" style="margin-bottom:12px;">← Back to Hub</button>
 
-    <details open>
-      <summary>🧠 Types of Pain</summary>
-      <table class="table">
-        <thead>
-          <tr><th>Type</th><th>Description</th><th>Examples</th><th>Treatment</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Acute Pain</strong></td>
-            <td>Sudden onset, specific cause, limited duration (&lt;3-6 months)</td>
-            <td>Post-surgical pain, trauma, childbirth</td>
-            <td>Opioids, NSAIDs, acetaminophen</td>
-          </tr>
-          <tr>
-            <td><strong>Chronic Pain</strong></td>
-            <td>Persists &gt;3-6 months beyond expected healing</td>
-            <td>Arthritis, fibromyalgia, chronic back pain</td>
-            <td>Multimodal: NSAIDs, adjuvants, non-pharm</td>
-          </tr>
-          <tr>
-            <td><strong>Nociceptive</strong></td>
-            <td>Tissue damage detected by nociceptors</td>
-            <td>Cut, burn, bone fracture, surgical incision</td>
-            <td>Opioids, NSAIDs, local anesthetics</td>
-          </tr>
-          <tr>
-            <td><strong>Neuropathic</strong></td>
-            <td>Nerve damage; burning, shooting, tingling</td>
-            <td>Diabetic neuropathy, post-herpetic neuralgia</td>
-            <td>Gabapentin, TCAs, SNRIs; opioids less effective</td>
-          </tr>
-          <tr>
-            <td><strong>Breakthrough Pain</strong></td>
-            <td>Transient flare of severe pain despite around-the-clock analgesia</td>
-            <td>Cancer pain spike with movement</td>
-            <td><span class="hl">IV opioid</span> (fast-acting) PRN</td>
-          </tr>
-        </tbody>
-      </table>
+```
+<details open>
+  <summary>🧠 Types of Pain</summary>
+  <table class="table">
+    <thead>
+      <tr><th>Type</th><th>Description</th><th>Examples</th><th>Treatment</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Acute Pain</strong></td>
+        <td>Sudden onset, specific cause, limited duration (&lt;3-6 months)</td>
+        <td>Post-surgical pain, trauma, childbirth</td>
+        <td>Opioids, NSAIDs, acetaminophen</td>
+      </tr>
+      <tr>
+        <td><strong>Chronic Pain</strong></td>
+        <td>Persists &gt;3-6 months beyond expected healing</td>
+        <td>Arthritis, fibromyalgia, chronic back pain</td>
+        <td>Multimodal: NSAIDs, adjuvants, non-pharm</td>
+      </tr>
+      <tr>
+        <td><strong>Nociceptive</strong></td>
+        <td>Tissue damage detected by nociceptors</td>
+        <td>Cut, burn, bone fracture, surgical incision</td>
+        <td>Opioids, NSAIDs, local anesthetics</td>
+      </tr>
+      <tr>
+        <td><strong>Neuropathic</strong></td>
+        <td>Nerve damage; burning, shooting, tingling</td>
+        <td>Diabetic neuropathy, post-herpetic neuralgia</td>
+        <td>Gabapentin, TCAs, SNRIs; opioids less effective</td>
+      </tr>
+      <tr>
+        <td><strong>Breakthrough Pain</strong></td>
+        <td>Transient flare of severe pain despite around-the-clock analgesia</td>
+        <td>Cancer pain spike with movement</td>
+        <td><span class="hl">IV opioid</span> (fast-acting) PRN</td>
+      </tr>
+    </tbody>
+  </table>
 
-      <div class="callout critical">
-        <strong>🎯 BREAKTHROUGH PAIN — EXAM FOCUS:</strong><br/>
-        • <strong>Definition:</strong> Sudden, severe pain that "breaks through" baseline controlled pain<br/>
-        • <strong>Treatment:</strong> <span class="hl">RAPID-ONSET opioid</span> (IV preferred for fastest relief)<br/>
-        • <strong>Do NOT:</strong> Wait for next scheduled dose or give long-acting opioid<br/>
-        • <strong>Reassess:</strong> 15-30 min after IV dose; may need additional rescue doses
-      </div>
-    </details>
+  <div class="callout critical">
+    <strong>🎯 BREAKTHROUGH PAIN — EXAM FOCUS:</strong><br/>
+    • <strong>Definition:</strong> Sudden, severe pain that "breaks through" baseline controlled pain<br/>
+    • <strong>Treatment:</strong> <span class="hl">RAPID-ONSET opioid</span> (IV preferred for fastest relief)<br/>
+    • <strong>Do NOT:</strong> Wait for next scheduled dose or give long-acting opioid<br/>
+    • <strong>Reassess:</strong> 15-30 min after IV dose; may need additional rescue doses
+  </div>
+</details>
 
-    <details>
-      <summary>💊 NSAIDs — Ibuprofen, Naproxen, Ketorolac</summary>
-      <div class="mechanism">
-        <strong>MOA:</strong> Inhibit <strong>COX enzymes</strong> → ↓prostaglandin synthesis → ↓inflammation & pain
-      </div>
+<details>
+  <summary>💊 NSAIDs — Ibuprofen, Naproxen, Ketorolac</summary>
+  <div class="mechanism">
+    <strong>MOA:</strong> Inhibit <strong>COX enzymes</strong> → ↓prostaglandin synthesis → ↓inflammation & pain
+  </div>
 
-      <div class="callout">
-        <strong>Uses:</strong> Pain + Fever + Inflammation<br/>
-        • Mild to moderate pain<br/>
-        • Inflammatory conditions (arthritis, gout)<br/>
-        • Fever<br/>
-        • Dysmenorrhea
-      </div>
+  <div class="callout">
+    <strong>Uses:</strong> Pain + Fever + Inflammation<br/>
+    • Mild to moderate pain<br/>
+    • Inflammatory conditions (arthritis, gout)<br/>
+    • Fever<br/>
+    • Dysmenorrhea
+  </div>
 
-      <div class="callout critical">
-        <strong>🚫 CONTRAINDICATIONS (HIGH-YIELD):</strong><br/>
-        1. <span class="hl-red">Active bleeding or bleeding disorders</span><br/>
-        2. <span class="hl-red">Anticoagulant therapy</span> (warfarin, heparin, DOACs) — ↑bleeding risk!<br/>
-        3. <span class="hl-red">Renal disease</span> — NSAIDs ↓renal blood flow → acute kidney injury<br/>
-        4. <span class="hl-red">Peptic ulcer disease or GI bleeding history</span> — NSAIDs ↑GI bleed risk<br/>
-        5. Severe heart failure (fluid retention)<br/>
-        6. Aspirin allergy (cross-sensitivity)
-      </div>
+  <div class="callout critical">
+    <strong>🚫 CONTRAINDICATIONS (HIGH-YIELD):</strong><br/>
+    1. <span class="hl-red">Active bleeding or bleeding disorders</span><br/>
+    2. <span class="hl-red">Anticoagulant therapy</span> (warfarin, heparin, DOACs) — ↑bleeding risk!<br/>
+    3. <span class="hl-red">Renal disease</span> — NSAIDs ↓renal blood flow → acute kidney injury<br/>
+    4. <span class="hl-red">Peptic ulcer disease or GI bleeding history</span> — NSAIDs ↑GI bleed risk<br/>
+    5. Severe heart failure (fluid retention)<br/>
+    6. Aspirin allergy (cross-sensitivity)
+  </div>
 
-      <div class="callout warn">
-        <strong>⚠️ ADVERSE EFFECTS:</strong><br/>
-        • <span class="hl-red">GI bleeding/ulceration</span> — #1 serious adverse effect; take with food<br/>
-        • <span class="hl-red">Acute kidney injury</span> — Especially in elderly, dehydrated, CKD patients<br/>
-        • <span class="hl-red">↑bleeding risk</span> — Inhibits platelet function<br/>
-        • Cardiovascular events (MI, stroke) with long-term use<br/>
-        • Fluid retention, edema, HTN
-      </div>
+  <div class="callout warn">
+    <strong>⚠️ ADVERSE EFFECTS:</strong><br/>
+    • <span class="hl-red">GI bleeding/ulceration</span> — #1 serious adverse effect; take with food<br/>
+    • <span class="hl-red">Acute kidney injury</span> — Especially in elderly, dehydrated, CKD patients<br/>
+    • <span class="hl-red">↑bleeding risk</span> — Inhibits platelet function<br/>
+    • Cardiovascular events (MI, stroke) with long-term use<br/>
+    • Fluid retention, edema, HTN
+  </div>
 
-      <div class="exam-focus">
-        <strong>📋 NURSING:</strong><br/>
-        • <strong>Before giving:</strong> Check for contraindications (bleeding disorder, anticoagulants, renal disease)<br/>
-        • <strong>Monitor:</strong> BUN/Cr (kidney function), stool for occult blood, BP<br/>
-        • <strong>Teach:</strong> "Take with food or milk to protect your stomach"<br/>
-        • <strong>Teach:</strong> "Report black/tarry stools, coffee-ground vomitus, or unusual bruising" (GI bleed signs)<br/>
-        • <strong>Teach:</strong> "Do NOT combine with aspirin or other NSAIDs" (↑toxicity)<br/>
-        • <strong>Elderly:</strong> Higher risk for GI bleeding and kidney injury — use lowest effective dose
-      </div>
+  <div class="exam-focus">
+    <strong>📋 NURSING:</strong><br/>
+    • <strong>Before giving:</strong> Check for contraindications (bleeding disorder, anticoagulants, renal disease)<br/>
+    • <strong>Monitor:</strong> BUN/Cr (kidney function), stool for occult blood, BP<br/>
+    • <strong>Teach:</strong> "Take with food or milk to protect your stomach"<br/>
+    • <strong>Teach:</strong> "Report black/tarry stools, coffee-ground vomitus, or unusual bruising" (GI bleed signs)<br/>
+    • <strong>Teach:</strong> "Do NOT combine with aspirin or other NSAIDs" (↑toxicity)<br/>
+    • <strong>Elderly:</strong> Higher risk for GI bleeding and kidney injury — use lowest effective dose
+  </div>
 
-      <div class="memory-tip">
-        💡 <strong>Memory:</strong> "NSAIDs = No Stomach, Anticoags, Impaired kidneys, Dialysis" — The contraindications!
-      </div>
-    </details>
+  <div class="memory-tip">
+    💡 <strong>Memory:</strong> "NSAIDs = No Stomach, Anticoags, Impaired kidneys, Dialysis" — The contraindications!
+  </div>
+</details>
 
-    <details>
-      <summary>💊 Acetaminophen (Tylenol)</summary>
-      <div class="mechanism">
-        <strong>MOA:</strong> Inhibits COX in CNS → ↓pain & fever<br/>
-        <strong>KEY:</strong> <span class="hl">NO anti-inflammatory effect</span> (doesn't work on COX in periphery)
-      </div>
+<details>
+  <summary>💊 Acetaminophen (Tylenol)</summary>
+  <div class="mechanism">
+    <strong>MOA:</strong> Inhibits COX in CNS → ↓pain & fever<br/>
+    <strong>KEY:</strong> <span class="hl">NO anti-inflammatory effect</span> (doesn't work on COX in periphery)
+  </div>
 
-      <div class="callout">
-        <strong>Uses:</strong> Pain + Fever (NOT inflammation)<br/>
-        • Mild to moderate pain<br/>
-        • Fever reduction<br/>
-        • Safer than NSAIDs for patients with bleeding risk, renal disease, or GI issues
-      </div>
+  <div class="callout">
+    <strong>Uses:</strong> Pain + Fever (NOT inflammation)<br/>
+    • Mild to moderate pain<br/>
+    • Fever reduction<br/>
+    • Safer than NSAIDs for patients with bleeding risk, renal disease, or GI issues
+  </div>
 
-      <div class="callout critical">
-        <strong>🚨 HEPATOTOXICITY — #1 CONCERN:</strong><br/>
-        <span class="hl-red">Maximum dose: 4000 mg/day (4 grams)</span><br/>
-        <span class="hl-red">Elderly/liver disease: 3000 mg/day max</span><br/>
-        <strong>Overdose causes:</strong><br/>
-        • Acute liver failure (can be fatal!)<br/>
-        • Symptoms may be delayed 24-48 hours<br/>
-        • <strong>Antidote: N-acetylcysteine (NAC)</strong> — most effective if given within 8 hours
-      </div>
+  <div class="callout critical">
+    <strong>🚨 HEPATOTOXICITY — #1 CONCERN:</strong><br/>
+    <span class="hl-red">Maximum dose: 4000 mg/day (4 grams)</span><br/>
+    <span class="hl-red">Elderly/liver disease: 3000 mg/day max</span><br/>
+    <strong>Overdose causes:</strong><br/>
+    • Acute liver failure (can be fatal!)<br/>
+    • Symptoms may be delayed 24-48 hours<br/>
+    • <strong>Antidote: N-acetylcysteine (NAC)</strong> — most effective if given within 8 hours
+  </div>
 
-      <div class="callout warn">
-        <strong>⚠️ HIDDEN ACETAMINOPHEN DANGER:</strong><br/>
-        Many OTC products contain acetaminophen:<br/>
-        • Combination cold/flu medications<br/>
-        • Percocet (oxycodone + acetaminophen)<br/>
-        • Vicodin (hydrocodone + acetaminophen)<br/>
-        <strong>→ Easy to accidentally exceed max dose!</strong>
-      </div>
+  <div class="callout warn">
+    <strong>⚠️ HIDDEN ACETAMINOPHEN DANGER:</strong><br/>
+    Many OTC products contain acetaminophen:<br/>
+    • Combination cold/flu medications<br/>
+    • Percocet (oxycodone + acetaminophen)<br/>
+    • Vicodin (hydrocodone + acetaminophen)<br/>
+    <strong>→ Easy to accidentally exceed max dose!</strong>
+  </div>
 
-      <div class="exam-focus">
-        <strong>📋 NURSING:</strong><br/>
-        • <strong>Before giving:</strong> Ask about liver disease, alcohol use (↑hepatotoxicity risk)<br/>
-        • <strong>Calculate total daily dose</strong> from ALL sources (OTC, prescription combos)<br/>
-        • <strong>Monitor:</strong> LFTs (AST, ALT) if long-term use or risk factors<br/>
-        • <strong>Teach:</strong> "Do not exceed 4000 mg (4 grams) per day — this includes all products with acetaminophen"<br/>
-        • <strong>Teach:</strong> "Read labels! Many cold medicines contain acetaminophen"<br/>
-        • <strong>Teach:</strong> "Avoid alcohol while taking this — increases liver damage risk"<br/>
-        • <strong>Overdose:</strong> Treat immediately with NAC; most effective within 8 hours
-      </div>
+  <div class="exam-focus">
+    <strong>📋 NURSING:</strong><br/>
+    • <strong>Before giving:</strong> Ask about liver disease, alcohol use (↑hepatotoxicity risk)<br/>
+    • <strong>Calculate total daily dose</strong> from ALL sources (OTC, prescription combos)<br/>
+    • <strong>Monitor:</strong> LFTs (AST, ALT) if long-term use or risk factors<br/>
+    • <strong>Teach:</strong> "Do not exceed 4000 mg (4 grams) per day — this includes all products with acetaminophen"<br/>
+    • <strong>Teach:</strong> "Read labels! Many cold medicines contain acetaminophen"<br/>
+    • <strong>Teach:</strong> "Avoid alcohol while taking this — increases liver damage risk"<br/>
+    • <strong>Overdose:</strong> Treat immediately with NAC; most effective within 8 hours
+  </div>
 
-      <div class="memory-tip">
-        💡 <strong>Memory:</strong> "Tylenol = 4000 mg Top, or Toxicity Takes over" — Don't exceed 4g/day!
-      </div>
-    </details>
+  <div class="memory-tip">
+    💡 <strong>Memory:</strong> "Tylenol = 4000 mg Top, or Toxicity Takes over" — Don't exceed 4g/day!
+  </div>
+</details>
 
-    <details>
-      <summary>🚫 Aspirin in Children — Reye Syndrome</summary>
-      <div class="callout critical">
-        <strong>⚠️ CONTRAINDICATION: Aspirin in children/teens with viral illness</strong><br/>
-        <strong>Risk:</strong> <span class="hl-red">Reye Syndrome</span> — Rare but potentially fatal<br/>
-        <strong>Pathophysiology:</strong> Acute encephalopathy + fatty liver degeneration<br/>
-        <strong>Symptoms:</strong> Vomiting, lethargy, confusion, seizures, coma<br/>
-        <strong>Mortality:</strong> 20-40% if untreated
-      </div>
+<details>
+  <summary>🚫 Aspirin in Children — Reye Syndrome</summary>
+  <div class="callout critical">
+    <strong>⚠️ CONTRAINDICATION: Aspirin in children/teens with viral illness</strong><br/>
+    <strong>Risk:</strong> <span class="hl-red">Reye Syndrome</span> — Rare but potentially fatal<br/>
+    <strong>Pathophysiology:</strong> Acute encephalopathy + fatty liver degeneration<br/>
+    <strong>Symptoms:</strong> Vomiting, lethargy, confusion, seizures, coma<br/>
+    <strong>Mortality:</strong> 20-40% if untreated
+  </div>
 
-      <div class="callout critical">
-        <strong>🚫 DO NOT give aspirin to:</strong><br/>
-        • Children &lt;18 years with fever or viral illness (especially flu, chickenpox)<br/>
-        • <strong>Use acetaminophen or ibuprofen instead</strong>
-      </div>
+  <div class="callout critical">
+    <strong>🚫 DO NOT give aspirin to:</strong><br/>
+    • Children &lt;18 years with fever or viral illness (especially flu, chickenpox)<br/>
+    • <strong>Use acetaminophen or ibuprofen instead</strong>
+  </div>
 
-      <div class="exam-focus">
-        <strong>📋 NURSING:</strong><br/>
-        • <strong>Teach parents:</strong> "Never give aspirin to children with flu or chickenpox"<br/>
-        • <strong>Check labels:</strong> Some OTC products contain aspirin (aspirin = salicylate = ASA)<br/>
-        • <strong>Exception:</strong> Aspirin may be prescribed for children with Kawasaki disease (antiplatelet effect) — but this is MD decision
-      </div>
-    </details>
+  <div class="exam-focus">
+    <strong>📋 NURSING:</strong><br/>
+    • <strong>Teach parents:</strong> "Never give aspirin to children with flu or chickenpox"<br/>
+    • <strong>Check labels:</strong> Some OTC products contain aspirin (aspirin = salicylate = ASA)<br/>
+    • <strong>Exception:</strong> Aspirin may be prescribed for children with Kawasaki disease (antiplatelet effect) — but this is MD decision
+  </div>
+</details>
 
-    <details>
-      <summary>💊 Morphine & Opioids</summary>
-      <div class="mechanism">
-        <strong>MOA:</strong> Bind to <strong>mu (μ) opioid receptors</strong> in CNS → ↓pain perception
-      </div>
+<details>
+  <summary>💊 Morphine & Opioids</summary>
+  <div class="mechanism">
+    <strong>MOA:</strong> Bind to <strong>mu (μ) opioid receptors</strong> in CNS → ↓pain perception
+  </div>
 
-      <div class="callout">
-        <strong>Common Opioids:</strong><br/>
-        • <strong>Morphine</strong> — Prototype; IV/PO/epidural<br/>
-        • <strong>Hydromorphone (Dilaudid)</strong> — 5-7x more potent than morphine<br/>
-        • <strong>Fentanyl</strong> — 50-100x more potent; IV/transdermal patch<br/>
-        • <strong>Oxycodone</strong> — PO; often combined with acetaminophen (Percocet)<br/>
-        • <strong>Hydrocodone</strong> — PO; combined with acetaminophen (Vicodin)
-      </div>
+  <div class="callout">
+    <strong>Common Opioids:</strong><br/>
+    • <strong>Morphine</strong> — Prototype; IV/PO/epidural<br/>
+    • <strong>Hydromorphone (Dilaudid)</strong> — 5-7x more potent than morphine<br/>
+    • <strong>Fentanyl</strong> — 50-100x more potent; IV/transdermal patch<br/>
+    • <strong>Oxycodone</strong> — PO; often combined with acetaminophen (Percocet)<br/>
+    • <strong>Hydrocodone</strong> — PO; combined with acetaminophen (Vicodin)
+  </div>
 
-      <div class="callout critical">
-        <strong>🚨 OPIOID OVERDOSE/TOXICITY — PRIORITY NURSING:</strong><br/>
-        <span class="hl-red">TRIAD:</span><br/>
-        1. <strong>RESPIRATORY DEPRESSION</strong> — RR &lt;12, shallow, irregular<br/>
-        2. <strong>CNS DEPRESSION</strong> — Sedation, stupor, coma<br/>
-        3. <strong>MIOSIS</strong> — Pinpoint pupils (except meperidine)
-      </div>
+  <div class="callout critical">
+    <strong>🚨 OPIOID OVERDOSE/TOXICITY — PRIORITY NURSING:</strong><br/>
+    <span class="hl-red">TRIAD:</span><br/>
+    1. <strong>RESPIRATORY DEPRESSION</strong> — RR &lt;12, shallow, irregular<br/>
+    2. <strong>CNS DEPRESSION</strong> — Sedation, stupor, coma<br/>
+    3. <strong>MIOSIS</strong> — Pinpoint pupils (except meperidine)
+  </div>
 
-      <div class="callout critical">
-        <strong>⚠️ #1 PRIORITY: RESPIRATORY ASSESSMENT</strong><br/>
-        <strong>Before EVERY opioid dose:</strong><br/>
-        • Assess: RR, depth, rhythm, O₂ saturation, level of consciousness<br/>
-        • <strong>Hold opioid if:</strong> RR &lt;12 (or &lt;8-10 depending on policy), O₂ sat &lt;90%, excessive sedation<br/>
-        • <strong>After giving opioid:</strong> Reassess q15-30min initially, then q1-2hr
-      </div>
+  <div class="callout critical">
+    <strong>⚠️ #1 PRIORITY: RESPIRATORY ASSESSMENT</strong><br/>
+    <strong>Before EVERY opioid dose:</strong><br/>
+    • Assess: RR, depth, rhythm, O₂ saturation, level of consciousness<br/>
+    • <strong>Hold opioid if:</strong> RR &lt;12 (or &lt;8-10 depending on policy), O₂ sat &lt;90%, excessive sedation<br/>
+    • <strong>After giving opioid:</strong> Reassess q15-30min initially, then q1-2hr
+  </div>
 
-      <div class="callout warn">
-        <strong>⚠️ OTHER ADVERSE EFFECTS:</strong><br/>
-        • <span class="hl">Constipation</span> — Occurs in almost ALL patients; give stool softener/stimulant prophylactically<br/>
-        • Nausea/vomiting — Common initially, often improves<br/>
-        • Pruritus (itching) — Histamine release, not true allergy<br/>
-        • Urinary retention<br/>
-        • Sedation, confusion (especially elderly)<br/>
-        • Hypotension (vasodilation)
-      </div>
+  <div class="callout warn">
+    <strong>⚠️ OTHER ADVERSE EFFECTS:</strong><br/>
+    • <span class="hl">Constipation</span> — Occurs in almost ALL patients; give stool softener/stimulant prophylactically<br/>
+    • Nausea/vomiting — Common initially, often improves<br/>
+    • Pruritus (itching) — Histamine release, not true allergy<br/>
+    • Urinary retention<br/>
+    • Sedation, confusion (especially elderly)<br/>
+    • Hypotension (vasodilation)
+  </div>
 
-      <div class="exam-focus">
-        <strong>📋 NURSING IMPLICATIONS:</strong><br/>
-        • <strong>Monitor:</strong> RR, sedation level, pain score, O₂ sat, BP (PRIORITY: respiratory status)<br/>
-        • <strong>Hold parameters:</strong> RR &lt;12, sedation score ≥3, O₂ sat &lt;90%<br/>
-        • <strong>IV push:</strong> Give SLOWLY (over 4-5 min) to prevent respiratory depression<br/>
-        • <strong>Constipation prevention:</strong> Give stool softener (docusate) + stimulant (senna) prophylactically<br/>
-        • <strong>Safety:</strong> Fall precautions (sedation, orthostatic hypotension), bed alarm, call bell within reach<br/>
-        • <strong>Do NOT combine</strong> with other CNS depressants (benzos, alcohol) → Synergistic respiratory depression!
-      </div>
-    </details>
+  <div class="exam-focus">
+    <strong>📋 NURSING IMPLICATIONS:</strong><br/>
+    • <strong>Monitor:</strong> RR, sedation level, pain score, O₂ sat, BP (PRIORITY: respiratory status)<br/>
+    • <strong>Hold parameters:</strong> RR &lt;12, sedation score ≥3, O₂ sat &lt;90%<br/>
+    • <strong>IV push:</strong> Give SLOWLY (over 4-5 min) to prevent respiratory depression<br/>
+    • <strong>Constipation prevention:</strong> Give stool softener (docusate) + stimulant (senna) prophylactically<br/>
+    • <strong>Safety:</strong> Fall precautions (sedation, orthostatic hypotension), bed alarm, call bell within reach<br/>
+    • <strong>Do NOT combine</strong> with other CNS depressants (benzos, alcohol) → Synergistic respiratory depression!
+  </div>
+</details>
 
-    <details>
-      <summary>💊 Naloxone (Narcan) — Opioid Antidote</summary>
-      <div class="mechanism">
-        <strong>MOA:</strong> <strong>Opioid antagonist</strong> — Competitively blocks mu receptors → Reverses opioid effects
-      </div>
+<details>
+  <summary>💊 Naloxone (Narcan) — Opioid Antidote</summary>
+  <div class="mechanism">
+    <strong>MOA:</strong> <strong>Opioid antagonist</strong> — Competitively blocks mu receptors → Reverses opioid effects
+  </div>
 
-      <div class="callout critical">
-        <strong>🚨 INDICATIONS:</strong><br/>
-        • <strong>Opioid overdose</strong> — Respiratory depression, CNS depression, miosis<br/>
-        • <strong>Respiratory depression</strong> from therapeutic opioid use<br/>
-        • <strong>Suspected opioid overdose</strong> (street drugs)
-      </div>
+  <div class="callout critical">
+    <strong>🚨 INDICATIONS:</strong><br/>
+    • <strong>Opioid overdose</strong> — Respiratory depression, CNS depression, miosis<br/>
+    • <strong>Respiratory depression</strong> from therapeutic opioid use<br/>
+    • <strong>Suspected opioid overdose</strong> (street drugs)
+  </div>
 
-      <div class="callout critical">
-        <strong>⚠️ SHORT-ACTING!</strong><br/>
-        <span class="hl-red">Duration: 30-90 minutes</span><br/>
-        <strong>Many opioids last LONGER than naloxone</strong><br/>
-        → <strong>Respiratory depression can RETURN</strong> after naloxone wears off!<br/>
-        → <strong>Must monitor closely for several hours</strong><br/>
-        → <strong>May need repeat doses or continuous infusion</strong>
-      </div>
+  <div class="callout critical">
+    <strong>⚠️ SHORT-ACTING!</strong><br/>
+    <span class="hl-red">Duration: 30-90 minutes</span><br/>
+    <strong>Many opioids last LONGER than naloxone</strong><br/>
+    → <strong>Respiratory depression can RETURN</strong> after naloxone wears off!<br/>
+    → <strong>Must monitor closely for several hours</strong><br/>
+    → <strong>May need repeat doses or continuous infusion</strong>
+  </div>
 
-      <div class="callout warn">
-        <strong>⚠️ ADVERSE EFFECTS OF RAPID REVERSAL:</strong><br/>
-        • <strong>Acute withdrawal syndrome</strong> — Agitation, tachycardia, HTN, N/V, pain<br/>
-        • <strong>Severe pain</strong> — Reverses ALL opioid analgesia<br/>
-        • <strong>Pulmonary edema</strong> (rare but serious)<br/>
-        • <strong>Seizures</strong> (rare)
-      </div>
+  <div class="callout warn">
+    <strong>⚠️ ADVERSE EFFECTS OF RAPID REVERSAL:</strong><br/>
+    • <strong>Acute withdrawal syndrome</strong> — Agitation, tachycardia, HTN, N/V, pain<br/>
+    • <strong>Severe pain</strong> — Reverses ALL opioid analgesia<br/>
+    • <strong>Pulmonary edema</strong> (rare but serious)<br/>
+    • <strong>Seizures</strong> (rare)
+  </div>
 
-      <div class="exam-focus">
-        <strong>📋 NURSING — Opioid Overdose:</strong><br/>
-        1. <strong>Assess ABCs</strong> — Airway patent? Breathing adequate? Pulse present?<br/>
-        2. <strong>Stimulate patient</strong> — "Can you hear me?" Sternal rub if needed<br/>
-        3. <strong>Give naloxone</strong>:<br/>
-           • <strong>IV:</strong> 0.4-2 mg IV push (can repeat q2-3min; max 10 mg)<br/>
-           • <strong>IM/SubQ/Intranasal:</strong> Available for community/field use<br/>
-        4. <strong>Support respirations</strong> — Bag-valve-mask if needed, O₂<br/>
-        5. <strong>Monitor continuously</strong> — VS, RR, sedation level, O₂ sat<br/>
-        6. <strong>Watch for re-sedation</strong> — Naloxone wears off before opioid! May need repeat doses<br/>
-        7. <strong>Pain management</strong> — Patient may have severe pain after reversal; consider non-opioid options initially
-      </div>
+  <div class="exam-focus">
+    <strong>📋 NURSING — Opioid Overdose:</strong><br/>
+    1. <strong>Assess ABCs</strong> — Airway patent? Breathing adequate? Pulse present?<br/>
+    2. <strong>Stimulate patient</strong> — "Can you hear me?" Sternal rub if needed<br/>
+    3. <strong>Give naloxone</strong>:<br/>
+       • <strong>IV:</strong> 0.4-2 mg IV push (can repeat q2-3min; max 10 mg)<br/>
+       • <strong>IM/SubQ/Intranasal:</strong> Available for community/field use<br/>
+    4. <strong>Support respirations</strong> — Bag-valve-mask if needed, O₂<br/>
+    5. <strong>Monitor continuously</strong> — VS, RR, sedation level, O₂ sat<br/>
+    6. <strong>Watch for re-sedation</strong> — Naloxone wears off before opioid! May need repeat doses<br/>
+    7. <strong>Pain management</strong> — Patient may have severe pain after reversal; consider non-opioid options initially
+  </div>
 
-      <div class="memory-tip">
-        💡 <strong>Memory:</strong> "Narcan is Short, So See Sedation Soon" — Short duration (30-90 min), watch for return of respiratory depression!
-      </div>
-    </details>
+  <div class="memory-tip">
+    💡 <strong>Memory:</strong> "Narcan is Short, So See Sedation Soon" — Short duration (30-90 min), watch for return of respiratory depression!
+  </div>
+</details>
+```
 
   </div>
 
   <!-- SPECIAL TOPICS SECTION -->
+
   <div class="card" id="special" style="display:none;">
     <h2 class="sectionTitle">🧬 Special Topics <span class="tag">Routes, Herbals, Age Changes</span></h2>
     <button class="btn" onclick="go('hub')" style="margin-bottom:12px;">← Back to Hub</button>
 
-    <details open>
-      <summary>💊 Parenteral vs Enteral Routes</summary>
-      <div class="contrast-box">
-        <div class="contrast-item">
-          <h4>Enteral (GI Tract)</h4>
-          <p><strong>Routes:</strong> Oral (PO), NG/PEG tube, Rectal</p>
-          <p><strong>Characteristics:</strong></p>
-          <ul>
-            <li>Slower onset</li>
-            <li>First-pass metabolism (oral)</li>
-            <li>Variable absorption</li>
-            <li>Patient must have functioning GI tract</li>
-            <li>Lower bioavailability than IV</li>
-          </ul>
-        </div>
-        <div class="contrast-item">
-          <h4>Parenteral (Bypass GI)</h4>
-          <p><strong>Routes:</strong> IV, IM, SubQ, Intradermal, Intrathecal</p>
-          <p><strong>Characteristics:</strong></p>
-          <ul>
-            <li>Faster onset (IV = immediate)</li>
-            <li>NO first-pass metabolism</li>
-            <li>More predictable absorption</li>
-            <li>Higher bioavailability</li>
-            <li>Useful if NPO, vomiting, unconscious</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="exam-focus">
-        <strong>🎯 CLINICAL DECISION:</strong><br/>
-        <strong>Choose Parenteral when:</strong><br/>
-        • Rapid effect needed (emergency)<br/>
-        • NPO, vomiting, altered LOC<br/>
-        • Drug destroyed by stomach acid<br/>
-        • GI dysfunction/malabsorption<br/>
-        <strong>Choose Enteral when:</strong><br/>
-        • Patient can swallow and tolerate PO<br/>
-        • Non-urgent situation<br/>
-        • Long-term maintenance therapy<br/>
-        • Cost/convenience considerations
-      </div>
-    </details>
-
-    <details>
-      <summary>🌿 Herbal Treatments & Anticoagulant Interactions</summary>
-      <div class="callout critical">
-        <strong>⚠️ CRITICAL CONCEPT:</strong><br/>
-        "Natural" does NOT mean safe! Many herbals interact with prescription medications, especially anticoagulants.
-      </div>
-
-      <table class="table">
-        <thead>
-          <tr><th>Herbal/Supplement</th><th>Effect with Anticoagulants</th><th>Mechanism</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Ginkgo Biloba</strong></td>
-            <td><span class="hl-red">↑Bleeding risk</span></td>
-            <td>Inhibits platelet aggregation; potentiates warfarin</td>
-          </tr>
-          <tr>
-            <td><strong>Garlic</strong></td>
-            <td><span class="hl-red">↑Bleeding risk</span></td>
-            <td>Antiplatelet effects; may ↑INR on warfarin</td>
-          </tr>
-          <tr>
-            <td><strong>Ginger</strong></td>
-            <td><span class="hl-red">↑Bleeding risk</span></td>
-            <td>Inhibits thromboxane synthetase (antiplatelet)</td>
-          </tr>
-          <tr>
-            <td><strong>Ginseng</strong></td>
-            <td><span class="hl-red">↓Warfarin effect</span></td>
-            <td>↓INR (mechanism unclear); also ↑bleeding with antiplatelet agents</td>
-          </tr>
-          <tr>
-            <td><strong>St. John's Wort</strong></td>
-            <td><span class="hl-red">↓Warfarin effect</span></td>
-            <td>CYP450 inducer → ↑warfarin metabolism → ↓INR</td>
-          </tr>
-          <tr>
-            <td><strong>Vitamin E (high dose)</strong></td>
-            <td><span class="hl-red">↑Bleeding risk</span></td>
-            <td>Inhibits platelet aggregation; potentiates anticoagulants</td>
-          </tr>
-          <tr>
-            <td><strong>Fish Oil/Omega-3</strong></td>
-            <td><span class="hl-red">↑Bleeding risk</span></td>
-            <td>Antiplatelet effects; ↓thromboxane A2</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="exam-focus">
-        <strong>📋 NURSING IMPLICATIONS:</strong><br/>
-        • <strong>ALWAYS ask about herbal/supplement use</strong> during medication reconciliation<br/>
-        • <strong>Patients on anticoagulants:</strong> Teach to avoid herbals with bleeding risk; consult MD before starting ANY supplement<br/>
-        • <strong>Warfarin patients:</strong> Check INR more frequently if herbal use suspected<br/>
-        • <strong>Teach:</strong> "Natural does not mean safe — herbals can interact with your medications"<br/>
-        • <strong>Teach:</strong> "Tell ALL your healthcare providers about every supplement you take"
-      </div>
-
-      <div class="memory-tip">
-        💡 <strong>Memory:</strong> "The 3 G's ↑Bleed: Ginkgo, Garlic, Ginger" — All increase bleeding with anticoagulants!
-      </div>
-    </details>
-
-    <details>
-      <summary>👴 Age-Related Changes in Pharmacokinetics</summary>
-      <div class="callout">
-        <strong>WHY IT MATTERS:</strong> Elderly patients at ↑risk for adverse drug reactions and toxicity due to age-related changes in ADME
-      </div>
-
-      <h4>Absorption (Usually minimal change)</h4>
+```
+<details open>
+  <summary>💊 Parenteral vs Enteral Routes</summary>
+  <div class="contrast-box">
+    <div class="contrast-item">
+      <h4>Enteral (GI Tract)</h4>
+      <p><strong>Routes:</strong> Oral (PO), NG/PEG tube, Rectal</p>
+      <p><strong>Characteristics:</strong></p>
       <ul>
-        <li>↓Gastric acid → May ↓absorption of some drugs</li>
-        <li>↓GI motility → Slower absorption</li>
-        <li><strong>Clinical impact:</strong> Minimal for most drugs</li>
+        <li>Slower onset</li>
+        <li>First-pass metabolism (oral)</li>
+        <li>Variable absorption</li>
+        <li>Patient must have functioning GI tract</li>
+        <li>Lower bioavailability than IV</li>
       </ul>
-
-      <h4>Distribution (Significant changes)</h4>
+    </div>
+    <div class="contrast-item">
+      <h4>Parenteral (Bypass GI)</h4>
+      <p><strong>Routes:</strong> IV, IM, SubQ, Intradermal, Intrathecal</p>
+      <p><strong>Characteristics:</strong></p>
       <ul>
-        <li>↓Total body water → ↑concentration of water-soluble drugs (e.g., digoxin)</li>
-        <li>↑Body fat → ↑accumulation of fat-soluble drugs (e.g., benzodiazepines, anesthetics)</li>
-        <li>↓Serum albumin → ↑FREE (active) drug levels of protein-bound drugs (e.g., warfarin, phenytoin)</li>
-        <li><strong>Clinical impact:</strong> Standard doses may cause toxicity</li>
+        <li>Faster onset (IV = immediate)</li>
+        <li>NO first-pass metabolism</li>
+        <li>More predictable absorption</li>
+        <li>Higher bioavailability</li>
+        <li>Useful if NPO, vomiting, unconscious</li>
       </ul>
+    </div>
+  </div>
 
-      <h4>Metabolism (Significant changes)</h4>
-      <ul>
-        <li>↓Liver mass and hepatic blood flow</li>
-        <li>↓CYP450 enzyme activity</li>
-        <li>→ <span class="hl">↓drug metabolism → ↑half-life → accumulation</span></li>
-        <li><strong>Clinical impact:</strong> CNS depressants (opioids, benzos) especially dangerous</li>
-      </ul>
+  <div class="exam-focus">
+    <strong>🎯 CLINICAL DECISION:</strong><br/>
+    <strong>Choose Parenteral when:</strong><br/>
+    • Rapid effect needed (emergency)<br/>
+    • NPO, vomiting, altered LOC<br/>
+    • Drug destroyed by stomach acid<br/>
+    • GI dysfunction/malabsorption<br/>
+    <strong>Choose Enteral when:</strong><br/>
+    • Patient can swallow and tolerate PO<br/>
+    • Non-urgent situation<br/>
+    • Long-term maintenance therapy<br/>
+    • Cost/convenience considerations
+  </div>
+</details>
 
-      <h4>Excretion (MOST SIGNIFICANT)</h4>
-      <ul>
-        <li><span class="hl-red">↓GFR (glomerular filtration rate)</span> — Progressive decline with age</li>
-        <li>↓Renal blood flow</li>
-        <li>↓Tubular secretion</li>
-        <li>→ <span class="hl-red">↓drug clearance → accumulation → TOXICITY</span></li>
-        <li><strong>Note:</strong> Serum creatinine may appear "normal" due to ↓muscle mass, but eGFR/CrCl shows renal impairment</li>
-        <li><strong>Clinical impact:</strong> Dose adjustments needed for renally cleared drugs (aminoglycosides, vancomycin, metformin, digoxin)</li>
-      </ul>
+<details>
+  <summary>🌿 Herbal Treatments & Anticoagulant Interactions</summary>
+  <div class="callout critical">
+    <strong>⚠️ CRITICAL CONCEPT:</strong><br/>
+    "Natural" does NOT mean safe! Many herbals interact with prescription medications, especially anticoagulants.
+  </div>
 
-      <div class="callout critical">
-        <strong>🎯 EXAM PRINCIPLE:</strong> "Start low, go slow" in elderly<br/>
-        <strong>→ Use lowest effective dose and titrate slowly</strong>
-      </div>
+  <table class="table">
+    <thead>
+      <tr><th>Herbal/Supplement</th><th>Effect with Anticoagulants</th><th>Mechanism</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Ginkgo Biloba</strong></td>
+        <td><span class="hl-red">↑Bleeding risk</span></td>
+        <td>Inhibits platelet aggregation; potentiates warfarin</td>
+      </tr>
+      <tr>
+        <td><strong>Garlic</strong></td>
+        <td><span class="hl-red">↑Bleeding risk</span></td>
+        <td>Antiplatelet effects; may ↑INR on warfarin</td>
+      </tr>
+      <tr>
+        <td><strong>Ginger</strong></td>
+        <td><span class="hl-red">↑Bleeding risk</span></td>
+        <td>Inhibits thromboxane synthetase (antiplatelet)</td>
+      </tr>
+      <tr>
+        <td><strong>Ginseng</strong></td>
+        <td><span class="hl-red">↓Warfarin effect</span></td>
+        <td>↓INR (mechanism unclear); also ↑bleeding with antiplatelet agents</td>
+      </tr>
+      <tr>
+        <td><strong>St. John's Wort</strong></td>
+        <td><span class="hl-red">↓Warfarin effect</span></td>
+        <td>CYP450 inducer → ↑warfarin metabolism → ↓INR</td>
+      </tr>
+      <tr>
+        <td><strong>Vitamin E (high dose)</strong></td>
+        <td><span class="hl-red">↑Bleeding risk</span></td>
+        <td>Inhibits platelet aggregation; potentiates anticoagulants</td>
+      </tr>
+      <tr>
+        <td><strong>Fish Oil/Omega-3</strong></td>
+        <td><span class="hl-red">↑Bleeding risk</span></td>
+        <td>Antiplatelet effects; ↓thromboxane A2</td>
+      </tr>
+    </tbody>
+  </table>
 
-      <div class="exam-focus">
-        <strong>📋 NURSING:</strong><br/>
-        • <strong>Calculate eGFR/CrCl</strong> — Don't rely on serum creatinine alone in elderly<br/>
-        • <strong>Monitor closely</strong> for adverse effects, especially CNS depression and orthostatic hypotension<br/>
-        • <strong>Drug safety:</strong> Beers Criteria = list of potentially inappropriate meds for elderly (anticholinergics, benzos, long-acting opioids)<br/>
-        • <strong>Polypharmacy:</strong> Elderly often on multiple meds → ↑drug interaction risk<br/>
-        • <strong>Teach:</strong> Keep updated med list, bring ALL meds (including OTC/herbals) to appointments
-      </div>
-    </details>
+  <div class="exam-focus">
+    <strong>📋 NURSING IMPLICATIONS:</strong><br/>
+    • <strong>ALWAYS ask about herbal/supplement use</strong> during medication reconciliation<br/>
+    • <strong>Patients on anticoagulants:</strong> Teach to avoid herbals with bleeding risk; consult MD before starting ANY supplement<br/>
+    • <strong>Warfarin patients:</strong> Check INR more frequently if herbal use suspected<br/>
+    • <strong>Teach:</strong> "Natural does not mean safe — herbals can interact with your medications"<br/>
+    • <strong>Teach:</strong> "Tell ALL your healthcare providers about every supplement you take"
+  </div>
 
-    <details>
-      <summary>🩺 Nursing Process (ADPIE)</summary>
-      <div class="exam-focus">
-        <strong>🎯 MEMORIZE THE ORDER:</strong> Assessment → Diagnosis → Planning → Implementation → Evaluation
-      </div>
+  <div class="memory-tip">
+    💡 <strong>Memory:</strong> "The 3 G's ↑Bleed: Ginkgo, Garlic, Ginger" — All increase bleeding with anticoagulants!
+  </div>
+</details>
 
-      <table class="table">
-        <thead>
-          <tr><th>Step</th><th>What You Do</th><th>Example</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>1. Assessment</strong></td>
-            <td>Collect data (subjective + objective)</td>
-            <td class="muted">VS, pain scale, breath sounds, medication history, allergies</td>
-          </tr>
-          <tr>
-            <td><strong>2. Diagnosis</strong></td>
-            <td>Identify nursing problems</td>
-            <td class="muted">"Ineffective airway clearance r/t excessive secretions"</td>
-          </tr>
-          <tr>
-            <td><strong>3. Planning</strong></td>
-            <td>Set goals & interventions</td>
-            <td class="muted">Goal: "Patient will maintain O2 sat >92%"<br/>Intervention: "Administer albuterol q4h"</td>
-          </tr>
-          <tr>
-            <td><strong>4. Implementation</strong></td>
-            <td>Carry out the plan</td>
-            <td class="muted">Give albuterol, monitor response, document</td>
-          </tr>
-          <tr>
-            <td><strong>5. Evaluation</strong></td>
-            <td>Did it work? Reassess.</td>
-            <td class="muted">Check O2 sat after treatment, adjust plan if needed</td>
-          </tr>
-        </tbody>
-      </table>
+<details>
+  <summary>👴 Age-Related Changes in Pharmacokinetics</summary>
+  <div class="callout">
+    <strong>WHY IT MATTERS:</strong> Elderly patients at ↑risk for adverse drug reactions and toxicity due to age-related changes in ADME
+  </div>
 
-      <div class="callout">
-        <strong>📌 EXAM TIP:</strong> When prioritizing nursing actions, <strong>Assessment ALWAYS comes first</strong> unless the patient is in immediate danger (then you implement life-saving interventions first, THEN assess).
-      </div>
-    </details>
+  <h4>Absorption (Usually minimal change)</h4>
+  <ul>
+    <li>↓Gastric acid → May ↓absorption of some drugs</li>
+    <li>↓GI motility → Slower absorption</li>
+    <li><strong>Clinical impact:</strong> Minimal for most drugs</li>
+  </ul>
 
-    <details>
-      <summary>🦠 TB Infective Period & Isolation</summary>
-      <div class="callout critical">
-        <strong>⚠️ HIGH-YIELD:</strong> Know when TB patients are contagious and when isolation can be discontinued.
-      </div>
+  <h4>Distribution (Significant changes)</h4>
+  <ul>
+    <li>↓Total body water → ↑concentration of water-soluble drugs (e.g., digoxin)</li>
+    <li>↑Body fat → ↑accumulation of fat-soluble drugs (e.g., benzodiazepines, anesthetics)</li>
+    <li>↓Serum albumin → ↑FREE (active) drug levels of protein-bound drugs (e.g., warfarin, phenytoin)</li>
+    <li><strong>Clinical impact:</strong> Standard doses may cause toxicity</li>
+  </ul>
 
-      <h4>When is TB Contagious?</h4>
-      <ul>
-        <li><strong class="hl-red">BEFORE treatment starts</strong> — Patient is most contagious</li>
-        <li><strong class="hl-red">First 2-3 weeks of treatment</strong> — Still potentially infectious</li>
-        <li><strong class="hl">After 2-3 weeks on effective therapy</strong> — Usually no longer contagious if:</li>
-        <ul>
-          <li>Clinical improvement (↓cough, ↓fever)</li>
-          <li>3 consecutive negative sputum cultures</li>
-          <li>Adherence to medication regimen confirmed</li>
-        </ul>
-      </ul>
+  <h4>Metabolism (Significant changes)</h4>
+  <ul>
+    <li>↓Liver mass and hepatic blood flow</li>
+    <li>↓CYP450 enzyme activity</li>
+    <li>→ <span class="hl">↓drug metabolism → ↑half-life → accumulation</span></li>
+    <li><strong>Clinical impact:</strong> CNS depressants (opioids, benzos) especially dangerous</li>
+  </ul>
 
-      <div class="exam-focus">
-        <strong>🎯 ISOLATION REQUIREMENTS:</strong><br/>
-        <strong>Type:</strong> Airborne precautions<br/>
-        <strong>Room:</strong> Negative pressure room<br/>
-        <strong>PPE:</strong> N95 respirator (not just a surgical mask!)<br/>
-        <strong>Duration:</strong> Until 3 consecutive negative sputum cultures AND clinical improvement
-      </div>
+  <h4>Excretion (MOST SIGNIFICANT)</h4>
+  <ul>
+    <li><span class="hl-red">↓GFR (glomerular filtration rate)</span> — Progressive decline with age</li>
+    <li>↓Renal blood flow</li>
+    <li>↓Tubular secretion</li>
+    <li>→ <span class="hl-red">↓drug clearance → accumulation → TOXICITY</span></li>
+    <li><strong>Note:</strong> Serum creatinine may appear "normal" due to ↓muscle mass, but eGFR/CrCl shows renal impairment</li>
+    <li><strong>Clinical impact:</strong> Dose adjustments needed for renally cleared drugs (aminoglycosides, vancomycin, metformin, digoxin)</li>
+  </ul>
 
-      <div class="memory-tip">
-        <strong>💡 MEMORY TIP:</strong> TB = <strong>T</strong>hree negatives to <strong>B</strong>e free (3 negative sputum cultures)
-      </div>
-    </details>
+  <div class="callout critical">
+    <strong>🎯 EXAM PRINCIPLE:</strong> "Start low, go slow" in elderly<br/>
+    <strong>→ Use lowest effective dose and titrate slowly</strong>
+  </div>
 
-    <details>
-      <summary>💊 Enteric Coating Teaching</summary>
-      <div class="callout critical">
-        <strong>⚠️ DO NOT CRUSH OR CHEW ENTERIC-COATED MEDICATIONS!</strong>
-      </div>
+  <div class="exam-focus">
+    <strong>📋 NURSING:</strong><br/>
+    • <strong>Calculate eGFR/CrCl</strong> — Don't rely on serum creatinine alone in elderly<br/>
+    • <strong>Monitor closely</strong> for adverse effects, especially CNS depression and orthostatic hypotension<br/>
+    • <strong>Drug safety:</strong> Beers Criteria = list of potentially inappropriate meds for elderly (anticholinergics, benzos, long-acting opioids)<br/>
+    • <strong>Polypharmacy:</strong> Elderly often on multiple meds → ↑drug interaction risk<br/>
+    • <strong>Teach:</strong> Keep updated med list, bring ALL meds (including OTC/herbals) to appointments
+  </div>
+</details>
 
-      <div class="exam-focus">
-        <strong>🎯 PATIENT TEACHING:</strong><br/>
-        <strong>✓ DO:</strong> Swallow whole with water<br/>
-        <strong>✗ DON'T:</strong> Crush, chew, or break the tablet
-      </div>
-    </details>
+<details>
+  <summary>🩺 Nursing Process (ADPIE)</summary>
+  <div class="exam-focus">
+    <strong>🎯 MEMORIZE THE ORDER:</strong> Assessment → Diagnosis → Planning → Implementation → Evaluation
+  </div>
 
-    <details>
-      <summary>🩸 Hemoglobin (Hgb) Monitoring with Anticoagulants</summary>
-      <div class="exam-focus">
-        <strong>🎯 WHY MONITOR Hgb/Hct?</strong><br/>
-        Anticoagulants ↑bleeding risk → Blood loss → ↓Hgb/Hct → Anemia
-      </div>
+  <table class="table">
+    <thead>
+      <tr><th>Step</th><th>What You Do</th><th>Example</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1. Assessment</strong></td>
+        <td>Collect data (subjective + objective)</td>
+        <td class="muted">VS, pain scale, breath sounds, medication history, allergies</td>
+      </tr>
+      <tr>
+        <td><strong>2. Diagnosis</strong></td>
+        <td>Identify nursing problems</td>
+        <td class="muted">"Ineffective airway clearance r/t excessive secretions"</td>
+      </tr>
+      <tr>
+        <td><strong>3. Planning</strong></td>
+        <td>Set goals & interventions</td>
+        <td class="muted">Goal: "Patient will maintain O2 sat >92%"<br/>Intervention: "Administer albuterol q4h"</td>
+      </tr>
+      <tr>
+        <td><strong>4. Implementation</strong></td>
+        <td>Carry out the plan</td>
+        <td class="muted">Give albuterol, monitor response, document</td>
+      </tr>
+      <tr>
+        <td><strong>5. Evaluation</strong></td>
+        <td>Did it work? Reassess.</td>
+        <td class="muted">Check O2 sat after treatment, adjust plan if needed</td>
+      </tr>
+    </tbody>
+  </table>
 
-      <h4>Normal Values</h4>
-      <p>Hemoglobin: Males 14-18 g/dL, Females 12-16 g/dL</p>
-      <p>Hematocrit: Males 42-52%, Females 37-47%</p>
-    </details>
+  <div class="callout">
+    <strong>📌 EXAM TIP:</strong> When prioritizing nursing actions, <strong>Assessment ALWAYS comes first</strong> unless the patient is in immediate danger (then you implement life-saving interventions first, THEN assess).
+  </div>
+</details>
 
-    <details>
-      <summary>💉 LMWH (Low Molecular Weight Heparin)</summary>
-      <div class="exam-focus">
-        <strong>🎯 KEY DIFFERENCE:</strong> LMWH vs Unfractionated Heparin<br/>
-        <strong>LMWH:</strong> NO aPTT monitoring needed<br/>
-        <strong>UFH:</strong> aPTT required
-      </div>
-    </details>
+<details>
+  <summary>🦠 TB Infective Period & Isolation</summary>
+  <div class="callout critical">
+    <strong>⚠️ HIGH-YIELD:</strong> Know when TB patients are contagious and when isolation can be discontinued.
+  </div>
 
-    <details>
-      <summary>🩸 Thrombolytics — What Are They For?</summary>
-      <div class="callout critical">
-        <strong>⚠️ CRITICAL CONCEPT:</strong> Thrombolytics <strong>DISSOLVE existing clots</strong><br/>
-        (Anticoagulants just PREVENT new clots from forming)
-      </div>
+  <h4>When is TB Contagious?</h4>
+  <ul>
+    <li><strong class="hl-red">BEFORE treatment starts</strong> — Patient is most contagious</li>
+    <li><strong class="hl-red">First 2-3 weeks of treatment</strong> — Still potentially infectious</li>
+    <li><strong class="hl">After 2-3 weeks on effective therapy</strong> — Usually no longer contagious if:</li>
+    <ul>
+      <li>Clinical improvement (↓cough, ↓fever)</li>
+      <li>3 consecutive negative sputum cultures</li>
+      <li>Adherence to medication regimen confirmed</li>
+    </ul>
+  </ul>
 
-      <div class="exam-focus">
-        <strong>🎯 INDICATIONS:</strong><br/>
-        1. Acute MI (STEMI) - &lt;12 hours<br/>
-        2. Ischemic Stroke - &lt;4.5 hours (critical!)<br/>
-        3. Massive PE<br/>
-        4. Extensive DVT
-      </div>
+  <div class="exam-focus">
+    <strong>🎯 ISOLATION REQUIREMENTS:</strong><br/>
+    <strong>Type:</strong> Airborne precautions<br/>
+    <strong>Room:</strong> Negative pressure room<br/>
+    <strong>PPE:</strong> N95 respirator (not just a surgical mask!)<br/>
+    <strong>Duration:</strong> Until 3 consecutive negative sputum cultures AND clinical improvement
+  </div>
 
-      <div class="memory-tip">
-        <strong>💡 MEMORY TIP:</strong> <strong>TIME = TISSUE</strong> → Must give within narrow time window!
-      </div>
-    </details>
+  <div class="memory-tip">
+    <strong>💡 MEMORY TIP:</strong> TB = <strong>T</strong>hree negatives to <strong>B</strong>e free (3 negative sputum cultures)
+  </div>
+</details>
+
+<details>
+  <summary>💊 Enteric Coating Teaching</summary>
+  <div class="callout critical">
+    <strong>⚠️ DO NOT CRUSH OR CHEW ENTERIC-COATED MEDICATIONS!</strong>
+  </div>
+
+  <div class="exam-focus">
+    <strong>🎯 PATIENT TEACHING:</strong><br/>
+    <strong>✓ DO:</strong> Swallow whole with water<br/>
+    <strong>✗ DON'T:</strong> Crush, chew, or break the tablet
+  </div>
+</details>
+
+<details>
+  <summary>🩸 Hemoglobin (Hgb) Monitoring with Anticoagulants</summary>
+  <div class="exam-focus">
+    <strong>🎯 WHY MONITOR Hgb/Hct?</strong><br/>
+    Anticoagulants ↑bleeding risk → Blood loss → ↓Hgb/Hct → Anemia
+  </div>
+
+  <h4>Normal Values</h4>
+  <p>Hemoglobin: Males 14-18 g/dL, Females 12-16 g/dL</p>
+  <p>Hematocrit: Males 42-52%, Females 37-47%</p>
+</details>
+
+<details>
+  <summary>💉 LMWH (Low Molecular Weight Heparin)</summary>
+  <div class="exam-focus">
+    <strong>🎯 KEY DIFFERENCE:</strong> LMWH vs Unfractionated Heparin<br/>
+    <strong>LMWH:</strong> NO aPTT monitoring needed<br/>
+    <strong>UFH:</strong> aPTT required
+  </div>
+</details>
+
+<details>
+  <summary>🩸 Thrombolytics — What Are They For?</summary>
+  <div class="callout critical">
+    <strong>⚠️ CRITICAL CONCEPT:</strong> Thrombolytics <strong>DISSOLVE existing clots</strong><br/>
+    (Anticoagulants just PREVENT new clots from forming)
+  </div>
+
+  <div class="exam-focus">
+    <strong>🎯 INDICATIONS:</strong><br/>
+    1. Acute MI (STEMI) - &lt;12 hours<br/>
+    2. Ischemic Stroke - &lt;4.5 hours (critical!)<br/>
+    3. Massive PE<br/>
+    4. Extensive DVT
+  </div>
+
+  <div class="memory-tip">
+    <strong>💡 MEMORY TIP:</strong> <strong>TIME = TISSUE</strong> → Must give within narrow time window!
+  </div>
+</details>
+```
 
   </div>
 
@@ -1838,66 +2110,67 @@
     <h2 class="sectionTitle">🎮 Final Exam Practice Zone <span class="tag">Endless mode</span></h2>
     <button class="btn" onclick="go('hub')" style="margin-bottom:12px;">← Back to Hub</button>
 
-    <div class="callout">
-      <strong>Pick a deck:</strong> Teacher‑Style (harder reasoning) or NCLEX‑Style (mixed priority + SATA).<br/>
-      <span class="muted">Rationales always pop up after you submit — right or wrong.</span>
+```
+<div class="callout">
+  <strong>Pick a deck:</strong> Teacher‑Style (harder reasoning) or NCLEX‑Style (mixed priority + SATA).<br/>
+  <span class="muted">Rationales always pop up after you submit — right or wrong.</span>
+</div>
+
+<div class="quizTop">
+  <div class="toggle">
+    <div class="chip active" id="deckTeacher" onclick="setDeck('teacher')">👩‍🏫 Teacher‑Style (70)</div>
+    <div class="chip" id="deckNclex" onclick="setDeck('nclex')">🧠 NCLEX‑Style (70)</div>
+    <div class="chip" id="modeVault" onclick="setMode('vault')">🧊 Missed Vault</div>
+  </div>
+
+  <div class="toggle">
+    <div class="chip" id="toggleUnseen" onclick="toggleUnseen()">✨ Unseen Only: OFF</div>
+  </div>
+</div>
+
+<div class="callout good">
+  <strong>Vault rule:</strong> Missed questions go to Vault. You must answer the same question correctly <span class="hl">2 separate times</span> to release it back into the main pool.
+</div>
+
+<div class="qcard" id="qcard" aria-live="polite">
+  <div class="qhead">
+    <div class="meta">
+      <div class="badge">📌 <span id="qIndex">1</span>/<span id="qTotal">0</span></div>
+      <div class="badge">🏷️ <span id="qTopic">—</span></div>
+      <div class="badge">🎯 Correct: <span id="scoreCorrect">0</span> • ❌ Missed: <span id="scoreMissed">0</span></div>
     </div>
+  </div>
 
-    <div class="quizTop">
-      <div class="toggle">
-        <div class="chip active" id="deckTeacher" onclick="setDeck('teacher')">👩‍🏫 Teacher‑Style (70)</div>
-        <div class="chip" id="deckNclex" onclick="setDeck('nclex')">🧠 NCLEX‑Style (70)</div>
-        <div class="chip" id="modeVault" onclick="setMode('vault')">🧊 Missed Vault</div>
-      </div>
+  <div class="qbody">
+    <p class="stem" id="qStem">Loading…</p>
 
-      <div class="toggle">
-        <div class="chip" id="toggleUnseen" onclick="toggleUnseen()">✨ Unseen Only: OFF</div>
-        <button class="btn secondary" onclick="shuffleNow()">🔀 Shuffle</button>
-        <button class="btn danger" onclick="resetProgress()">Reset Progress</button>
-      </div>
-    </div>
+    <form id="qForm"></form>
 
-    <div class="callout good">
-      <strong>Vault rule:</strong> Missed questions go to Vault. You must answer the same question correctly <span class="hl">2 separate times</span> to release it back into the main pool.
-    </div>
-
-    <div class="qcard" id="qcard" aria-live="polite">
-      <div class="qhead">
-        <div class="meta">
-          <div class="badge">📌 <span id="qIndex">1</span>/<span id="qTotal">0</span></div>
-          <div class="badge">🏷️ <span id="qTopic">—</span></div>
-          <div class="badge">🎯 Correct: <span id="scoreCorrect">0</span> • ❌ Missed: <span id="scoreMissed">0</span></div>
+    <div class="statusLine">
+      <div style="flex:1; min-width:220px;">
+        <div class="progressBar"><div class="progressFill" id="progFill"></div></div>
+        <div class="muted" style="margin-top:6px;">
+          Seen in this deck: <strong id="seenCount">0</strong> • Unseen: <strong id="unseenCount">0</strong> • Vault: <strong id="vaultCount">0</strong>
         </div>
       </div>
-
-      <div class="qbody">
-        <p class="stem" id="qStem">Loading…</p>
-
-        <form id="qForm"></form>
-
-        <div class="statusLine">
-          <div style="flex:1; min-width:220px;">
-            <div class="progressBar"><div class="progressFill" id="progFill"></div></div>
-            <div class="muted" style="margin-top:6px;">
-              Seen in this deck: <strong id="seenCount">0</strong> • Unseen: <strong id="unseenCount">0</strong> • Vault: <strong id="vaultCount">0</strong>
-            </div>
-          </div>
-          <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;">
-            <button class="btn secondary" type="button" onclick="prevQ()">⬅️ Previous</button>
-            <button class="btn secondary" type="button" onclick="toggleHint()">💡 Hint</button>
-            <button class="btn" type="button" onclick="submitAnswer()">✅ Submit</button>
-            <button class="btn secondary" type="button" onclick="nextQ()">Next ➡️</button>
-          </div>
-        </div>
-
-        <div class="hintBox" id="hintBox"></div>
-        <div class="ratBox" id="ratBox"></div>
-
-        <div class="callout" style="margin-top:14px;">
-          <strong>Tip:</strong> If you want endless new questions, turn <span class="hl">Unseen Only</span> ON, then keep hitting Next.
-        </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;">
+        <button class="btn secondary" type="button" onclick="prevQ()">⬅️ Previous</button>
+        <button class="btn secondary" type="button" onclick="toggleHint()">💡 Hint</button>
+        <button class="btn" type="button" onclick="submitAnswer()">✅ Submit</button>
+        <button class="btn secondary" type="button" onclick="nextQ()">Next ➡️</button>
       </div>
     </div>
+
+    <div class="hintBox" id="hintBox"></div>
+    <div class="ratBox" id="ratBox"></div>
+
+    <div class="callout" style="margin-top:14px;">
+      <strong>Tip:</strong> If you want endless new questions, turn <span class="hl">Unseen Only</span> ON, then keep hitting Next.
+    </div>
+  </div>
+</div>
+```
+
   </div>
 
   <div class="card">
@@ -1938,12 +2211,38 @@
     }
   }
 
+  // Night Mode Toggle
+  function toggleNightMode() {
+    const body = document.body;
+    const icon = document.getElementById('nightIcon');
+    const text = document.getElementById('nightText');
+    
+    body.classList.toggle('night-mode');
+    
+    if (body.classList.contains('night-mode')) {
+      icon.textContent = '☀️';
+      text.textContent = 'Day Mode';
+      localStorage.setItem('nur138_night_mode', 'true');
+    } else {
+      icon.textContent = '🌙';
+      text.textContent = 'Night Mode';
+      localStorage.setItem('nur138_night_mode', 'false');
+    }
+  }
+
   window.addEventListener('DOMContentLoaded', () => {
     const mobileMode = localStorage.getItem('nur138_mobile_mode');
     if (mobileMode === 'true') {
       document.body.classList.add('mobile-mode');
       document.getElementById('mobileIcon').textContent = '💻';
       document.getElementById('mobileText').textContent = 'Desktop Mode';
+    }
+
+    const nightMode = localStorage.getItem('nur138_night_mode');
+    if (nightMode === 'true') {
+      document.body.classList.add('night-mode');
+      document.getElementById('nightIcon').textContent = '☀️';
+      document.getElementById('nightText').textContent = 'Day Mode';
     }
   });
 
@@ -2058,7 +2357,9 @@ function go(id) {
   }
 
   function shuffleNow(){
-    buildOrder();
+    if (state.order.length === 0) {
+      buildOrder();
+    }
     shuffleArray(state.order);
     state.idx = 0;
     render();
@@ -2093,7 +2394,9 @@ function go(id) {
   }
 
   function resetProgress(){
-    if (!confirm("Reset ALL progress for BOTH decks? (Seen, Vault, and scores)")) return;
+    if (!confirm("Reset ALL progress for BOTH decks? (Seen, Vault, and scores)")) {
+      return;
+    }
     state.seen = { teacher: {}, nclex: {} };
     state.correct = { teacher: 0, nclex: 0 };
     state.missed  = { teacher: 0, nclex: 0 };
@@ -2373,5 +2676,6 @@ function go(id) {
     render();
   })();
 </script>
+
 </body>
 </html>
